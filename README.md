@@ -25,3 +25,5 @@ Potential analysis :
 The analysis will be automated using `snakemake`, mainly because I would like to try it.
 I will probably use combination of `python`, `bash` and `R`.
 Details about all used software and versions should be recored here.
+
+I want to pull data from NCBI and `snakemake` seems to have a module exactly for this. There is a function `snakemake.remote.NCBI` for pulling data from NCBI (here is its [documentation](http://snakemake.readthedocs.io/en/stable/snakefiles/remote_files.html#genbank-ncbi-entrez)).
