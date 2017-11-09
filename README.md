@@ -27,3 +27,22 @@ I will probably use combination of `python`, `bash` and `R`.
 Details about all used software and versions should be recored here.
 
 I want to pull data from NCBI and `snakemake` seems to have a module exactly for this. There is a function `snakemake.remote.NCBI` for pulling data from NCBI (here is its [documentation](http://snakemake.readthedocs.io/en/stable/snakefiles/remote_files.html#genbank-ncbi-entrez)).
+
+## Vital-it execution
+
+I will try to use already installed version. However it's not the most recent one.
+
+```
+module add Utility/snakemake/3.5.4
+```
+
+seems to be working. However, one have to pay attention to - be in a directory that is accessible from everywhere, no scratch local!
+
+## other notes
+
+apparently I can produce a graph of the workflow :
+
+```
+snakemake --forceall --dag | dot -Tpng > dag1.png
+```
+
