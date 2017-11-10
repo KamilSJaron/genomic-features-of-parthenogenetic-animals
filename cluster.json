@@ -1,0 +1,19 @@
+{
+    "__default__" :
+    {
+        "queue"    : "bgee",
+        "nCPUs"     : "16",
+        "memory"    : 120000000,
+        "resources" : "\"rusage[mem=120000] span[hosts=1]\"",
+        "name"      : "{rule}.{wildcards}",
+        "output"    : "logs/cluster/{rule}.{wildcards}.out",
+        "error"     : "logs/cluster/{rule}.{wildcards}.err",
+    },
+    "priority" :
+    {
+        "queue" : "priority"
+        "nCPUs" : "1"
+        "memory" : 2000,
+        "resources" : "\"rusage[mem=2000] span[hosts=1]\"",
+    }
+}
