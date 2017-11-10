@@ -8,7 +8,7 @@
 # the last argument got to be the output
 
 WORKING_DIR=$(pwd)
-LOCAL_DIR="/scratch/local/$USER/$JOBID"
+LOCAL_DIR="/scratch/local/monthly/$USER/$JOBID"
 mkdir -p "$LOCAL_DIR/temp"
 export TMPDIR="$LOCAL_DIR/temp"
 
@@ -39,3 +39,14 @@ cd $LOCAL_DIR
 $SCRIPT $@
 
 mv $OUTPUT $WORKING_DIR/$OUTPUT
+
+rm $1
+for arg in "$@"; do
+    # if file exists, copy it to
+    if [[ -s "$arg" ]]
+    then
+        RELATIVE_PATH=$(dirname $arg)
+        mkdir -p $LOCAL_DIR/$RELATIVE_PATH
+        cp $arg $LOCAL_DIR/$RELATIVE_PATH
+    fi
+done

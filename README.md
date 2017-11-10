@@ -38,6 +38,16 @@ module add Utility/snakemake/3.5.4
 
 seems to be working. However, one have to pay attention to - be in a directory that is accessible from everywhere, no scratch local!
 
+cluster vital-it command :
+
+```
+snakemake -p --jobs 10 --keep-remote --cluster-config cluster.json --cluster "bsub -J {cluster.name} -q {cluster.queue} -n {cluster.nCPUs} -M {cluster.memory} -R {cluster.resources} -o {cluster.output} -e {cluster.error}" --jobscript cluster_wrapper.sh
+```
+
+other flags to consider / test :
+
+- `--cluster-status 'bjobs'` : allow snakemake to look at the status of jobs; this is not working on version of snakemake on Vital-it.
+
 ## other notes
 
 apparently I can produce a graph of the workflow :
@@ -46,3 +56,8 @@ apparently I can produce a graph of the workflow :
 snakemake --forceall --dag | dot -Tpng > dag1.png
 ```
 
+Snakemake version of `make clean` is
+
+```
+rm $(snakemake --summary | tail -n+2 | cut -f1)
+```
