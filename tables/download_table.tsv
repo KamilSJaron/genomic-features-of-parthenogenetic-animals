@@ -1,4 +1,4 @@
-code	species	genome.fa.gz	reads
+code	species	genome	reads
 Cbir	Cerapachys biroi	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Ooceraea_biroi/latest_assembly_versions/GCF_000611835.1_CerBir1.0/GCF_000611835.1_CerBir1.0_genomic.fna.gz	SRR1192097
 Avag	Adineta vaga	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/513/175/GCA_000513175.1_AMS_PRJEB1171_v1/GCA_000513175.1_AMS_PRJEB1171_v1_genomic.fna.gz	SRR801084
 Fcan	Folsomia candida	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Folsomia_candida/latest_assembly_versions/GCF_002217175.1_ASM221717v1/GCF_002217175.1_ASM221717v1_cds_from_genomic.fna.gz	SRR2743547

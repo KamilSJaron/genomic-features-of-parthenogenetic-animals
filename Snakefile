@@ -17,19 +17,17 @@ species='Cbir Avag Fcan Lcla Dcor Dpac Minc1 Minc2 Mjav Mare Mflo Mhap'
 rule all :
 	input :
 		expand("data/{sp}/genome.fa.gz", sp=species.split(' '))
+		expand("data/{sp}/reads_R1.fq.gz", sp=species.split(' '))
+		expand("data/{sp}/reads_R2.fq.gz", sp=species.split(' '))
 
-#rule download_reads
-#	input :
-#		expand("data/{sp}/genome.fa.gz", sp=species.split(' '))
-
-rule genome_download :
+rule download_genome :
 	output :
 		"data/{sp}/genome.fa.gz"
 	shell :
-		"scripts/download.sh {output}"
+		"scripts/download_genome.sh {output}"
 
-# rule reads_downlaod :
-# 	output :
-# 		"data/{sp}/{SRA_id}_1.fastq.gz", "data/{sp}/{SRA_id}_2.fastq.gz"
-# 	shell :
-# 		"fastq-dump --accession {SRA_id} --outdir data/{sp} --split-files --gzip"
+rule downlaod_reads :
+ 	output :
+ 		"data/{sp}/reads_R1.fq.gz", "data/{sp}/reads_R2.fq.gz"
+ 	shell :
+		"scripts/download_reads.sh {sp}"
