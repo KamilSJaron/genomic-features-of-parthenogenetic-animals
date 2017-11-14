@@ -10,13 +10,8 @@ ROW=$(echo $1 | cut -f 2 -d '/')
 URL=$(grep $ROW tables/download_table.tsv | cut -f $COL)
 
 if [ -z $URL ]; then
-    touch $1
+    echo $URL is not an adress
     exit 0
 fi
 
-if [ ! -s $1 ]; then
-    wget -nc $URL -O $1
-fi
-
-touch $1
-
+wget $URL -O $1
