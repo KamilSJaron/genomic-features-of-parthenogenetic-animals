@@ -1,7 +1,10 @@
 # from snakemake.remote.NCBI import RemoteProvider as NCBIRemoteProvider
 # NCBI = NCBIRemoteProvider(email="kamiljaron+ncbi@gmail.com") # email required by NCBI to prevent abuse
 
-species='Cbir Avag Fcan Lcla Dcor Dpac Pdav Psp62 Psp79 Minc1 Minc2 Mjav Mare Mflo Mhap Pant'
+species='Cbir Avag Fcan Lcla Dcor Dpac Minc1 Minc2 Mjav Mare Mflo Mhap'
+# kicked out :
+# Pdav Psp62 Psp79 -> not available (yet?)
+# Pant -> not published
 
 # ## help : print this help
 # rule help :
