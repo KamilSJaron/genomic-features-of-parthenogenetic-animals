@@ -3,7 +3,7 @@
 # import numpy
 
 species_with_genomes='Cbir Avag Fcan Lcla Dcor Dpac Minc1 Minc2 Mjav Mare Mflo Dpul'
-species_with_genomes='Cbir Avag Fcan Lcla Dcor Minc3 Mjav2 Mare2 Mflo Mflo2 Ment'
+species_with_reads='Cbir Avag Fcan Lcla Dcor Minc3 Mjav2 Mare2 Mflo Mflo2 Ment'
 # kicked out :
 # Dpac -> not available reads in SRA
 # Pdav Psp62 Psp79 -> not available (yet?)
@@ -19,18 +19,12 @@ species_with_genomes='Cbir Avag Fcan Lcla Dcor Minc3 Mjav2 Mare2 Mflo Mflo2 Ment
 ## all : all download all the genomes
 rule all :
 	input :
-		expand("data/{sp}/genome.fa.gz", sp=species_with_genomes.split(' '))
-		expand("data/{sp}/reads_R1.fq.gz", sp=species_with_genomes.split(' '))
-		expand("data/{sp}/reads_R2.fq.gz", sp=species_with_genomes.split(' '))
+		expand("data/{sp}/genome.fa.gz", sp=species_with_genomes.split(' ')), expand("data/{sp}/reads_R1.fq.gz", sp=species_with_reads.split(' '))
 
 rule download_genome :
-	output :
-		"data/{sp}/genome.fa.gz"
-	shell :
-		"scripts/download_genome.sh {output}"
+	output : "data/{sp}/genome.fa.gz"
+	shell : "scripts/download_genome.sh {output}"
 
 rule downlaod_reads :
- 	output :
- 		"data/{sp}/reads_R1.fq.gz", "data/{sp}/reads_R2.fq.gz"
- 	shell :
-		"scripts/download_reads.sh {sp}"
+ 	output : "data/{sp}/reads_R1.fq.gz"
+ 	shell : "scripts/download_reads.sh {output}"
