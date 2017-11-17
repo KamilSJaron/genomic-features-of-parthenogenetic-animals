@@ -1,7 +1,9 @@
 #!/bin/bash
 
+# for vital it
+module add Utility/aspera_connect/3.6.1.110647;
+
 # get data from NCBI
-# 2. arg - what to dl (data/Cbir/genome.fa.gz , data/Avag/reads.fq.gz)
 COL=$(head -1 tables/download_table.tsv | tr "\t" "\n" | grep -n "reads" | cut -f 1 -d ':')
 SPECIES=$1
 ACCESION=$(grep $SPECIES tables/download_table.tsv | cut -f $COL)
@@ -11,4 +13,9 @@ if [ -z $ACCESION ]; then
     exit 0
 fi
 
-fastq-dump --accession $ACCESION --outdir data/$SPECIES --split-files --gzip
+mkdir -p data/"$SPECIES"
+
+ascp -QT -i /software/Utility/aspera_connect/3.6.1.110647/etc/asperaweb_id_dsa.openssh \
+    anonftp@ftp-private.ncbi.nlm.nih.gov:/sra/sra-instant/reads/ByRun/sra/${ACCESION::3}/${ACCESION::6}/"$ACCESION"/"$ACCESION".sra data/"$SPECIES"
+
+fastq-dump data/"$SPECIES"/"$ACCESION".sra --outdir data/$SPECIES --split-files --gzip
