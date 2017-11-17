@@ -4,14 +4,19 @@ Avag	Adineta vaga	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/513/175/GCA_000513175
 Fcan	Folsomia candida	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Folsomia_candida/latest_assembly_versions/GCF_002217175.1_ASM221717v1/GCF_002217175.1_ASM221717v1_cds_from_genomic.fna.gz	SRR2743547
 Lcla	Leptopilina clavipes	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/855/655/GCA_001855655.1_ASM185565v1/GCA_001855655.1_ASM185565v1_genomic.fna.gz	SRR921610
 Dcor	Diploscapter coronatus	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/207/785/GCA_002207785.1_ASM220778v1/GCA_002207785.1_ASM220778v1_genomic.fna.gz	DRR029945
-Dpac	Diploscapter pachys	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/287/525/GCA_002287525.1_DipSp1Ass11Ann3/GCA_002287525.1_DipSp1Ass11Ann3_genomic.fna.gz
-Pdav	Panagrolaimus davidiDAW1
-Psp59	Panagrolaimus sp.PS1159
-Psp79	Panagrolaimus sp.PS1579
-Minc1	Meloidogyne incognita	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/180/415/GCA_000180415.1_ASM18041v1/GCA_000180415.1_ASM18041v1_genomic.fna.gz
-Minc2	Meloidogyne incognita	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/182/535/GCA_900182535.1_Meloidogyne_incognita_V3/GCA_900182535.1_Meloidogyne_incognita_V3_genomic.fna.gz
-Mjav	Meloidogyne javanica	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/003/945/GCA_900003945.1_ASM90000394v1/GCA_900003945.1_ASM90000394v1_genomic.fna.gz
-Mare	Meloidogyne arenaria	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/003/985/GCA_900003985.1_ASM90000398v1/GCA_900003985.1_ASM90000398v1_genomic.fna.gz
-Mflo	Meloidogyne floridensis	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/751/915/GCA_000751915.1_nMf_1_1/GCA_000751915.1_nMf_1_1_genomic.fna.gz
-Mhap	Meloidogyne hapla	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/172/435/GCA_000172435.1_Freeze_1/GCA_000172435.1_Freeze_1_genomic.fna.gz
-Pant	Potamopyrgus antipodarum
+Dpac	Diploscapter pachys	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/287/525/GCA_002287525.1_DipSp1Ass11Ann3/GCA_002287525.1_DipSp1Ass11Ann3_genomic.fna.gz	NA
+Pdav	Panagrolaimus davidiDAW1	NA	NA
+Psp59	Panagrolaimus sp.PS1159	NA	NA
+Psp79	Panagrolaimus sp.PS1579	NA	NA
+Minc1	Meloidogyne incognita	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/180/415/GCA_000180415.1_ASM18041v1/GCA_000180415.1_ASM18041v1_genomic.fna.gz	NA
+Minc2	Meloidogyne incognita	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/182/535/GCA_900182535.1_Meloidogyne_incognita_V3/GCA_900182535.1_Meloidogyne_incognita_V3_genomic.fna.gz	NA
+Minc3	Meloidogyne incognita	zenodo	SRR4242460
+Mjav	Meloidogyne javanica	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/003/945/GCA_900003945.1_ASM90000394v1/GCA_900003945.1_ASM90000394v1_genomic.fna.gz	NA
+Mjav2	Meloidogyne javanica	zenodo	SRR4242459
+Mare	Meloidogyne arenaria	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/003/985/GCA_900003985.1_ASM90000398v1/GCA_900003985.1_ASM90000398v1_genomic.fna.gz	NA
+Mare2	Meloidogyne arenaria	zenodo	SRR4242466
+Mflo	Meloidogyne floridensis	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/751/915/GCA_000751915.1_nMf_1_1/GCA_000751915.1_nMf_1_1_genomic.fna.gz	ERR104974
+Mflo2	Meloidogyne floridensis	zenodo	SRR4242475
+Ment	Meloidogyne enterolobii	NA	SRR4242473
+Pant	Potamopyrgus antipodarum	NA	NA
+Dpul	Daphnia pulex	not_yet	not_yet
