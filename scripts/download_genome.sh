@@ -13,4 +13,9 @@ if [ -z $URL ]; then
     exit 0
 fi
 
-wget $URL -O $1
+if [ ${URL##*.} -eq gz ]; then
+    wget $URL -O $1
+else
+    wget $URL -O ${1%.gz}
+    gzip ${1%.gz}
+fi

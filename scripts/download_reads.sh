@@ -6,7 +6,7 @@ module add Utility/aspera_connect/3.6.1.110647;
 
 # get data from NCBI
 COL=$(head -1 tables/download_table.tsv | tr "\t" "\n" | grep -n "reads" | cut -f 1 -d ':')
-SPECIES= ROW=$(echo $1 | cut -f 2 -d '/')
+SPECIES=$(echo $1 | cut -f 2 -d '/')
 ACCESION=$(grep $SPECIES tables/download_table.tsv | cut -f $COL)
 
 if [ -z $ACCESION ]; then
