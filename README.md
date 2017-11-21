@@ -20,6 +20,11 @@ Potential analysis :
 - other small summary tables of computationally intensive tasks
 - the paper
 
+## Sample labels
+
+The labels of genomes are composed of genus and species name `Gspe`. Some of genomes were sequenced multiple times therefore every sample label is followed by index of the seuqenced individual. For for instance second sequencing of _Meloidogyne incognita_ wouble be `Minc2`. 
+
+
 ## Development
 
 The analysis will be automated using `snakemake`, mainly because I would like to try it.
