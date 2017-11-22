@@ -42,11 +42,9 @@ mv $OUTPUT $WORKING_DIR/$OUTPUT
 
 rm $1
 for arg in "$@"; do
-    # if file exists, copy it to
+    # if tghe argument is an existing file, remove it
     if [[ -s "$arg" ]]
     then
-        RELATIVE_PATH=$(dirname $arg)
-        mkdir -p $LOCAL_DIR/$RELATIVE_PATH
-        cp $arg $LOCAL_DIR/$RELATIVE_PATH
+        rm $arg
     fi
 done
