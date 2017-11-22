@@ -7,12 +7,20 @@
 # all all the other arguments will be copied locally if they are valid files
 # the last argument got to be the output
 
+#####################
+# PREPARE LOCAL DIR #
+#####################
+
 WORKING_DIR=$(pwd)
 LOCAL_DIR="/scratch/local/monthly/$USER/$JOBID"
 mkdir -p "$LOCAL_DIR/temp"
 export TMPDIR="$LOCAL_DIR/temp"
 
 cd $LOCAL_DIR
+
+####################
+# COPY INPUT FILES #
+####################
 
 for arg in "$@"; do
     # if file exists, copy it to
@@ -23,6 +31,10 @@ for arg in "$@"; do
         cp $arg $LOCAL_DIR/$RELATIVE_PATH
     fi
 done
+
+###########################
+# PREPARE FOR OUTPUT FILE #
+###########################
 
 # get info about output
 OUTPUT=$arg
@@ -35,11 +47,26 @@ mkdir -p $WORKING_DIR/$RELATIVE_PATH
 SCRIPT=$1
 shift 1;
 
+###########
+# RUN JOB #
+###########
+
 cd $LOCAL_DIR
 $SCRIPT $@
 
-mv $OUTPUT $WORKING_DIR/$OUTPUT
+###############################
+# MOVE RESULTS TO WORKING_DIR #
+###############################
 
+if [ -d $OUTPUT ]; then
+    mv $OUTPUT $WORKING_DIR/$OUTPUT
+else
+    mv $OUTPUT* $WORKING_DIR/$RELATIVE_PATH
+done
+
+############
+# CLEANING #
+############
 rm $1
 for arg in "$@"; do
     # if tghe argument is an existing file, remove it
