@@ -19,12 +19,12 @@ all_species = list(set(map(lambda x: x[0:4], all_samples)))
 
 mapping_files = []
 # iterate though all species
-for species in all_species :
+for spec in all_species :
 	# iterate though all references of that species
-	for reference in [x for x in species_with_genomes if x.startswith(species)]:
+	for ref in [x for x in species_with_genomes if x.startswith(spec)]:
 		# iterate though all samples with reads given species
-		for sample in [x for x in species_with_reads if x.startswith(species)]:
-			mapping_file = 'data/' + sample + '/map_to_' + reference + '.bam'
+		for samp in [x for x in species_with_reads if x.startswith(spec)]:
+			mapping_file = 'data/' + samp + '/map_to_' + ref + '.bam'
 			mapping_files.append(mapping_file)
 
 
@@ -46,13 +46,13 @@ rule download_genome :
 	threads : 1
 	resources : mem=2000000, tmp=3000
 	output : "data/{sp}/genome.fa.gz"
-	shell : "scripts/cluster.sh scripts/download_genome.sh {output}"
+	shell : "scripts/cluster.sh scripts/download_genome.sh {wildcards.sp} tables/download_table.tsv {output}"
 
 rule downlaod_reads :
 	threads : 1
 	resources : mem=2000000, tmp=30000
 	output : "data/{sp}/reads_R1.fq.gz"
-	shell : "scripts/cluster.sh scripts/download_reads.sh data/{wildcards.sp}/reads_R"
+	shell : "scripts/cluster.sh scripts/download_reads.sh {wildcards.sp} tables/download_table.tsv data/{wildcards.sp}/reads_R"
 
 rule index_reference :
 	threads : 1
@@ -68,4 +68,4 @@ rule map_reads :
 	input : "data/{reference}/genome.fa.gz.bwt", "data/{sample}/reads_R1.fq.gz"
 	output : "data/{sample}/map_to_{reference}.bam"
 	shell :
-		"scripts/cluster.sh scripts/map_reads.sh {wildcards.sample} {wildcards.reference} data/{sample}/reads_R[1,2].fq.gz data/{wildcards.reference}/genome.fa.gz.* {output}"
+		"scripts/cluster.sh scripts/map_reads.sh {wildcards.sample} {wildcards.reference} data/{wildcards.sample}/reads_R[1,2].fq.gz data/{wildcards.reference}/genome.fa.gz.* {output}"
