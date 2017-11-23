@@ -1,15 +1,16 @@
 # TODO
 
-maping script :
-
-needs bwa reference
-needs reads
-
-produces bam file
-
-scripts/cluster.sh scripts/mapping.sh data/{sample}/reads_[12].fq.gz data/{ref}/genome.fa.gz.* data/{sample}/map_to_{ref}
+atlas script :
 
 
+
+
+---
+
+# TODO ??
+
+- Add a trimming step?
+- Base recalibration?
 
 # Notes
 

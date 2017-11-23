@@ -22,8 +22,9 @@ Potential analysis :
 
 ## Sample labels
 
-The labels of genomes are composed of genus and species name `Gspe`. Some of genomes were sequenced multiple times therefore every sample label is followed by index of the seuqenced individual. For for instance second sequencing of _Meloidogyne incognita_ wouble be `Minc2`.
+The labels of genomes are composed of **G**enus and **spe**cies name `Gspe`. Some of genomes were sequenced multiple times therefore every sample label is followed by index of the seuqenced individual. For for instance second sequencing of _Meloidogyne incognita_ wouble be `Minc2`.
 
+***
 
 ## Development
 
@@ -60,6 +61,16 @@ other flags to consider / test :
 - `--cluster-status 'bjobs'` : allow snakemake to look at the status of jobs; this is not working on version of snakemake on Vital-it.
 - `--jobscript cluster_wrapper.sh`
 - `--keep-remote`
+
+### Execution of different cluster
+
+`Snakefile` has no hardcoded any cluster-specific parameters. The resources should be accessed as `{resources.mem}` for memory in kilobytes, `{resources.tmp}` for needed local storage in megabytes and `{threads}` for number of used cores. The command used for cluster execution is stored in a bash wrapper `snakemake_clust.sh`. Modify this script as needed to work with syntax of your cluster.
+
+If you wish to compute from a disk space accessible from all nodes, you can just erase `scripts/cluster.sh ` from all rules in `Snakefile`. However, if you wish to use local storage of computational nodes you can modify `scripts/cluster.sh` to fit your local directory structure and to use environmental variables of your scheduler.
+
+The very last think to look at are program dependencies. These are actually hardcoded in job scripts as `module add UHTS/Analysis/sratoolkit/2.8.0;` for instance. These lines got to be deleted, but all the software got to be available.
+
+I know it sounds that there is a lot of things to do for reproduction of this analysis. However, I tried my best to combine reproducibility and good computational practice (like using local storage). I will wonk on that.
 
 ## other notes
 
