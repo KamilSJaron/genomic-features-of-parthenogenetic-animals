@@ -16,8 +16,6 @@ LOCAL_DIR="/scratch/local/monthly/$USER/$JOBID"
 mkdir -p "$LOCAL_DIR/temp"
 export TMPDIR="$LOCAL_DIR/temp"
 
-cd $LOCAL_DIR
-
 ####################
 # COPY INPUT FILES #
 ####################
@@ -62,12 +60,14 @@ if [ -d $OUTPUT ]; then
     mv $OUTPUT $WORKING_DIR/$OUTPUT
 else
     mv $OUTPUT* $WORKING_DIR/$RELATIVE_PATH
-done
+fi
 
 ############
 # CLEANING #
 ############
-rm $1
+
+# remove script and the input files (the output is hopefully already saved)
+rm $SCRIPT
 for arg in "$@"; do
     # if tghe argument is an existing file, remove it
     if [[ -s "$arg" ]]
@@ -75,3 +75,5 @@ for arg in "$@"; do
         rm $arg
     fi
 done
+# remove all empty direcories
+find ./* -depth -type d -exec rmdir {} \;

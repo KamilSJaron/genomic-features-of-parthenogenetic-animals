@@ -51,11 +51,11 @@ rule downlaod_reads :
 
 rule index_reference :
 	threads: 1
-	resources: "-M 20000000"
+	resources: M=20000000
 	input : "data/{reference}/genome.fa.gz"
-	output : "data/{reference}/genome.fa.bai"
+	output : "data/{reference}/genome.fa.gz.bwt"
 	shell :
-		"scripts/cluster.sh scripts/index_genome.sh {input} data/{wildcarts.reference}/genome"
+		"scripts/cluster.sh scripts/index_genome.sh {input} data/{wildcards.reference}/genome.fa.gz."
 #
 # rule map_reads :
 # 	input :  "data/{reference}/genome.fa.gz", "data/{reference}/genome.fa.bai", "data/{sample}/reads_R1.fq.gz"
