@@ -3,7 +3,7 @@
 TARGET=$1
 shift 1
 
-snakemake $TARGET -p --jobs 10 $@ --cluster "echo "\
+snakemake $TARGET -p --jobs 10 $@ --cluster "bsub "\
 "    -J {rule} "\
 "    -q bgee "\
 "    -n {threads} "\
