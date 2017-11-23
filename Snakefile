@@ -51,7 +51,7 @@ rule downlaod_reads :
 
 rule index_reference :
 	threads: 1
-	resources: M=20000000
+	resources: mem=20000000, tmp=10000
 	input : "data/{reference}/genome.fa.gz"
 	output : "data/{reference}/genome.fa.gz.bwt"
 	shell :
