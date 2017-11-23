@@ -12,7 +12,8 @@
 #####################
 
 WORKING_DIR=$(pwd)
-LOCAL_DIR="/scratch/local/monthly/$USER/$JOBID"
+LONG_INDEX=`printf "%03d" $LSB_JOBINDEX`
+LOCAL_DIR="/scratch/local/monthly/$USER/$LSB_JOBID.$LONG_INDEX"
 mkdir -p "$LOCAL_DIR/temp"
 export TMPDIR="$LOCAL_DIR/temp"
 
@@ -24,7 +25,7 @@ for arg in "$@"; do
     # if file exists, copy it to
     if [[ -s "$arg" ]]
     then
-        RELATIVE_PATH=$(dirname $arg)
+        RELATIVE_PATH=$(dirname "$arg")
         mkdir -p $LOCAL_DIR/$RELATIVE_PATH
         cp $arg $LOCAL_DIR/$RELATIVE_PATH
     fi
@@ -36,7 +37,7 @@ done
 
 # get info about output
 OUTPUT=$arg
-RELATIVE_PATH=$(dirname $OUTPUT)
+RELATIVE_PATH=$(dirname "$OUTPUT")
 # create directory for the output (both in the work dir and local dir)
 mkdir -p $LOCAL_DIR/$RELATIVE_PATH
 mkdir -p $WORKING_DIR/$RELATIVE_PATH
