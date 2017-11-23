@@ -22,7 +22,7 @@ Potential analysis :
 
 ## Sample labels
 
-The labels of genomes are composed of genus and species name `Gspe`. Some of genomes were sequenced multiple times therefore every sample label is followed by index of the seuqenced individual. For for instance second sequencing of _Meloidogyne incognita_ wouble be `Minc2`. 
+The labels of genomes are composed of genus and species name `Gspe`. Some of genomes were sequenced multiple times therefore every sample label is followed by index of the seuqenced individual. For for instance second sequencing of _Meloidogyne incognita_ wouble be `Minc2`.
 
 
 ## Development
@@ -46,12 +46,20 @@ seems to be working. However, one have to pay attention to - be in a directory t
 cluster vital-it command :
 
 ```
-snakemake -p --jobs 10 --keep-remote --cluster-config cluster.json --cluster "bsub -J {cluster.name} -q {cluster.queue} -n {cluster.nCPUs} -M {cluster.memory} -R {cluster.resources} -o {cluster.output} -e {cluster.error}" --jobscript cluster_wrapper.sh
+./snakemake_clust.sh {target} {other_flags} {other_flags} ...
+```
+
+to run default with other flags you can run
+
+```
+./snakemake_clust.sh " " {other_flags} {other_flags} ...
 ```
 
 other flags to consider / test :
 
 - `--cluster-status 'bjobs'` : allow snakemake to look at the status of jobs; this is not working on version of snakemake on Vital-it.
+- `--jobscript cluster_wrapper.sh`
+- `--keep-remote`
 
 ## other notes
 
@@ -65,4 +73,10 @@ Snakemake version of `make clean` is
 
 ```
 rm $(snakemake --summary | tail -n+2 | cut -f1)
+```
+
+Snakemake version of GNU make dry run is
+
+```
+snakemake -p --quiet -n
 ```

@@ -1,17 +1,14 @@
 # TODO
 
-map reads to corresponding sequences.
+maping script :
 
-species by species
-each sample with data to each reference available
+needs bwa reference
+needs reads
 
-for SP in YXXX;
-    for REFERENCE in "$SP"[123]/genome.fasta.gz ;
-        for SAMPLE in "$SP"[123]/reads_1.fq.gz ;
-            map $REFERENCE $SAMPLE
-        done
-    done
-done
+produces bam file
+
+scripts/cluster.sh scripts/mapping.sh data/{sample}/reads_[12].fq.gz data/{ref}/genome.fa.gz.* data/{sample}/map_to_{ref}
+
 
 
 # Notes
