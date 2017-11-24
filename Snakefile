@@ -4,8 +4,10 @@
 
 # species_with_genomes = [recrord['code'] for record in csv.DiscReader('download_table.tsv') if record['genome'] != 'NA']
 # species_with_reads = [recrord['code'] for record in csv.DiscReader('download_table.tsv') if record['reads'] != 'NA']
-species_with_genomes='Cbir1 Avag1 Fcan1 Lcla1 Dcor1 Dpac1 Minc1 Minc2 Mjav1 Mare1 Mflo1 Dpul1 Hduj1'.split(' ')
+species_with_genomes='Cbir1 Avag1 Fcan1 Lcla1 Dcor1 Dpac1 Minc1 Minc2 Mjav1 Mare1 Mflo1 Dpul1'.split(' ')
 species_with_reads='Cbir1 Avag1 Fcan1 Lcla1 Dcor1 Minc3 Mjav2 Mare2 Mflo1 Mflo2 Ment1 Hduj1'.split(' ')
+### TEMP Hduj1 kicked out (treated separately)
+
 # kicked out :
 # Dpac -> not available reads in SRA
 # Pdav Psp62 Psp79 -> not available (yet?)
@@ -24,7 +26,7 @@ for spec in all_species :
 	for ref in [x for x in species_with_genomes if x.startswith(spec)]:
 		# iterate though all samples with reads given species
 		for samp in [x for x in species_with_reads if x.startswith(spec)]:
-			mapping_file = 'data/' + samp + '/map_to_' + ref + '.bam'
+			mapping_file = 'data/' + samp + '/map_to_' + ref + '_marked.bam'
 			mapping_files.append(mapping_file)
 
 
@@ -69,3 +71,19 @@ rule map_reads :
 	output : "data/{sample}/map_to_{reference}.bam"
 	shell :
 		"scripts/cluster.sh scripts/map_reads.sh {wildcards.sample} {wildcards.reference} data/{wildcards.sample}/reads_R[1,2].fq.gz data/{wildcards.reference}/genome.fa.gz.* {output}"
+
+rule mark_duplicates :
+	threads : 2
+	resources : mem=20000000, tmp=40000
+	input : "data/{sample}/map_to_{reference}.bam"
+	output : "data/{sample}/map_to_{reference}_marked.bam"
+	shell :
+		"scripts/cluster.sh scripts/mark_dupl.sh {input} {output}"
+
+# rule estimate_theta :
+# 	threads : 1
+# 	resources : mem=20000000, tmp=40000
+# 	input : "data/{sample}/map_to_{reference}.bam"
+# 	output : "data/{sample}/{reference}_w{window_size}_theta_estimates.txt"
+# 	shell :
+# 		"scripts/cluster.sh scripts/est_theta.sh {wildcards.sample} {wildcards.reference} {wildcards.window_size} {input} {output}"
