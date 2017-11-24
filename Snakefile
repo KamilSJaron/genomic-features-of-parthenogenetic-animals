@@ -2,21 +2,25 @@
 # NCBI = NCBIRemoteProvider(email="kamiljaron+ncbi@gmail.com") # email required by NCBI to prevent abuse
 # import numpy
 
+# Get from the data table all samples with
+# genomes to species_with_genomes
+# reads   to species_with_reads
 species_with_genomes = []
 species_with_reads = []
 
-
-# species_with_genomes = [recrord['code'] for record in csv.DiscReader('download_table.tsv') if record['genome'] != 'NA']
-# species_with_reads = [recrord['code'] for record in csv.DiscReader('download_table.tsv') if record['reads'] != 'NA']
-species_with_genomes='Cbir1 Avag1 Fcan1 Lcla1 Dcor1 Dpac1 Minc1 Minc2 Mjav1 Mare1 Mflo1 Dpul1 Hduj1'.split(' ')
-species_with_reads='Cbir1 Avag1 Fcan1 Lcla1 Dcor1 Minc3 Mjav2 Mare2 Mflo1 Mflo2 Ment1 Hduj1'.split(' ')
-# kicked out :
-# Dpac -> not available reads in SRA
-# Pdav Psp62 Psp79 -> not available (yet?)
-# Pant -> not published
-# to be added
-# Dpul
-
+with open('tables/download_table.tsv') as tab :
+	tab.readline()
+	for textline in tab :
+		line = textline.split()
+		print(line[1])
+		# line[2] is location of genome
+		if line[2] != 'NA' :
+			print(line[2] + 'is not NA, adding :' + line[0])
+			species_with_genomes.append(line[0])
+		# line[3] is SRA accession number
+		if line[3] != 'NA' :
+			print(line[3] + 'is not NA, adding :' + line[0])
+			species_with_reads.append(line[0])
 
 all_samples = list(set(species_with_genomes + species_with_reads))
 all_species = list(set(map(lambda x: x[0:4], all_samples)))
