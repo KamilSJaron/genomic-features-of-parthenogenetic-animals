@@ -22,41 +22,48 @@ with open('tables/download_table.tsv') as tab :
 			print(line[3] + 'is not NA, adding :' + line[0])
 			species_with_reads.append(line[0])
 
+# all_samples are unique values in array of merged samples with reads and genome
 all_samples = list(set(species_with_genomes + species_with_reads))
+# all_species is just a vector of unique entries of 4 letter substrings
 all_species = list(set(map(lambda x: x[0:4], all_samples)))
 
 mapping_files = []
 theta_files = []
 
 wind_size = 1000000
-# iterate though all species
+# we need to find all combinations of sequencing reads and references, so
+# we iterate though all species
 for spec in all_species :
 	# iterate though all references of that species
 	for ref in [x for x in species_with_genomes if x.startswith(spec)]:
 		# iterate though all samples with reads given species
 		for samp in [x for x in species_with_reads if x.startswith(spec)]:
+			# for heterozygosity estimates
 			theta_file = 'data/' + samp + '/' + ref + '_w' + str(wind_size) + '_theta_estimates.txt'
 			theta_files.append(theta_file)
+			# for
 			mapping_file = 'data/' + samp + '/map_to_' + ref + '.bam'
 			mapping_files.append(mapping_file)
 
-
-
-# ## help : print this help
-# rule help :
-# 	shell :
-# 		"sed -n 's/^##//p' Snakefile"
-
+## calculate_thetas : calculate theta estimates
 rule calculate_thetas :
 	input : theta_files
 
+## map_all : map all samples reads to all reference genomes of the same species
 rule map_all :
 	input : mapping_files
 
+## download_all : download all genomes and reads usnig information form tables/download_table.tsv
 rule download_all :
 	input :
 		expand("data/{sp}/genome.fa.gz", sp=species_with_genomes),
 		expand("data/{sp}/reads_R1.fq.gz", sp=species_with_reads)
+
+##
+## help : print this help
+rule help :
+	shell :
+		"sed -n 's/^##//p' Snakefile"
 
 rule download_genome :
 	threads : 1
