@@ -2,12 +2,14 @@
 # NCBI = NCBIRemoteProvider(email="kamiljaron+ncbi@gmail.com") # email required by NCBI to prevent abuse
 # import numpy
 
+species_with_genomes = []
+species_with_reads = []
+
+
 # species_with_genomes = [recrord['code'] for record in csv.DiscReader('download_table.tsv') if record['genome'] != 'NA']
 # species_with_reads = [recrord['code'] for record in csv.DiscReader('download_table.tsv') if record['reads'] != 'NA']
-species_with_genomes='Cbir1 Avag1 Fcan1 Lcla1 Dcor1 Dpac1 Minc1 Minc2 Mjav1 Mare1 Mflo1 Dpul1'.split(' ')
+species_with_genomes='Cbir1 Avag1 Fcan1 Lcla1 Dcor1 Dpac1 Minc1 Minc2 Mjav1 Mare1 Mflo1 Dpul1 Hduj1'.split(' ')
 species_with_reads='Cbir1 Avag1 Fcan1 Lcla1 Dcor1 Minc3 Mjav2 Mare2 Mflo1 Mflo2 Ment1 Hduj1'.split(' ')
-### TEMP Hduj1 kicked out (treated separately)
-
 # kicked out :
 # Dpac -> not available reads in SRA
 # Pdav Psp62 Psp79 -> not available (yet?)
@@ -20,13 +22,18 @@ all_samples = list(set(species_with_genomes + species_with_reads))
 all_species = list(set(map(lambda x: x[0:4], all_samples)))
 
 mapping_files = []
+theta_files = []
+
+wind_size = 1000000
 # iterate though all species
 for spec in all_species :
 	# iterate though all references of that species
 	for ref in [x for x in species_with_genomes if x.startswith(spec)]:
 		# iterate though all samples with reads given species
 		for samp in [x for x in species_with_reads if x.startswith(spec)]:
-			mapping_file = 'data/' + samp + '/map_to_' + ref + '_marked.bam'
+			theta_file = 'data/' + samp + '/' + ref + '_w' + str(wind_size) + '_theta_estimates.txt'
+			theta_files.append(theta_file)
+			mapping_file = 'data/' + samp + '/map_to_' + ref + '.bam'
 			mapping_files.append(mapping_file)
 
 
@@ -35,6 +42,9 @@ for spec in all_species :
 # rule help :
 # 	shell :
 # 		"sed -n 's/^##//p' Snakefile"
+
+rule calculate_thetas :
+	input : theta_files
 
 rule map_all :
 	input : mapping_files
@@ -72,18 +82,10 @@ rule map_reads :
 	shell :
 		"scripts/cluster.sh scripts/map_reads.sh {wildcards.sample} {wildcards.reference} data/{wildcards.sample}/reads_R[1,2].fq.gz data/{wildcards.reference}/genome.fa.gz.* {output}"
 
-rule mark_duplicates :
-	threads : 2
+rule estimate_theta :
+	threads : 1
 	resources : mem=20000000, tmp=40000
 	input : "data/{sample}/map_to_{reference}.bam"
-	output : "data/{sample}/map_to_{reference}_marked.bam"
+	output : "data/{sample}/{reference}_w{window_size}_theta_estimates.txt"
 	shell :
-		"scripts/cluster.sh scripts/mark_dupl.sh {input} {output}"
-
-# rule estimate_theta :
-# 	threads : 1
-# 	resources : mem=20000000, tmp=40000
-# 	input : "data/{sample}/map_to_{reference}.bam"
-# 	output : "data/{sample}/{reference}_w{window_size}_theta_estimates.txt"
-# 	shell :
-# 		"scripts/cluster.sh scripts/est_theta.sh {wildcards.sample} {wildcards.reference} {wildcards.window_size} {input} {output}"
+		"scripts/cluster.sh scripts/est_theta.sh {wildcards.sample} {wildcards.reference} {wildcards.window_size} {input} {output}"
