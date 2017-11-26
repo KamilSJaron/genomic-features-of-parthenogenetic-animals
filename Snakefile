@@ -12,14 +12,14 @@ with open('tables/download_table.tsv') as tab :
 	tab.readline()
 	for textline in tab :
 		line = textline.split()
-		print(line[1])
+		# print(line[1])
 		# line[2] is location of genome
 		if line[2] != 'NA' :
-			print(line[2] + 'is not NA, adding :' + line[0])
+			# print(line[2] + 'is not NA, adding :' + line[0])
 			species_with_genomes.append(line[0])
 		# line[3] is SRA accession number
 		if line[3] != 'NA' :
-			print(line[3] + 'is not NA, adding :' + line[0])
+			# print(line[3] + 'is not NA, adding :' + line[0])
 			species_with_reads.append(line[0])
 
 # all_samples are unique values in array of merged samples with reads and genome
@@ -93,10 +93,20 @@ rule map_reads :
 	shell :
 		"scripts/cluster.sh scripts/map_reads.sh {wildcards.sample} {wildcards.reference} data/{wildcards.sample}/reads_R[1,2].fq.gz data/{wildcards.reference}/genome.fa.gz.* {output}"
 
+rule index_bam :
+	threads : 1
+	resources : mem=20000000, tmp=10000
+	input : "data/{sample}/map_to_{reference}.bam"
+	output : "data/{sample}/map_to_{reference}.bam.bai"
+	shell : """
+		module add UHTS/Analysis/samtools/1.3
+		samtools index {input}
+	"""
+
 rule estimate_theta :
 	threads : 1
 	resources : mem=20000000, tmp=40000
-	input : "data/{sample}/map_to_{reference}.bam"
+	input : "data/{sample}/map_to_{reference}.bam", "data/{sample}/map_to_{reference}.bam.bai"
 	output : "data/{sample}/{reference}_w{window_size}_theta_estimates.txt"
 	shell :
 		"scripts/cluster.sh scripts/est_theta.sh {wildcards.sample} {wildcards.reference} {wildcards.window_size} {input} {output}"
