@@ -105,7 +105,7 @@ rule index_bam :
 
 rule estimate_theta :
 	threads : 1
-	resources : mem=20000000, tmp=40000
+	resources : mem=50000000, tmp=50000
 	input : "data/{sample}/map_to_{reference}.bam", "data/{sample}/map_to_{reference}.bam.bai"
 	output : "data/{sample}/{reference}_w{window_size}_theta_estimates.txt"
 	shell :
