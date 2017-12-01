@@ -17,4 +17,4 @@ atlas task=estimateTheta \
 	window=$WINDOW \
 	suppressWarnings verbose
 
-mv $(dirname $5)/map_to_"$REF"_theta_estimates.txt $5
+mv $(dirname $5)/map_to_"$REF"_theta_estimates.txt ${@:$#}
