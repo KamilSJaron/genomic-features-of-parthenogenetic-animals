@@ -19,3 +19,5 @@ else
     wget $URL -O data/$1/genome.fa
     gzip data/$1/genome.fa
 fi
+
+touch data/$1/genome.fa.gz
