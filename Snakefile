@@ -110,3 +110,12 @@ rule estimate_theta :
 	output : "data/{sample}/{reference}_w{window_size}_theta_estimates.txt"
 	shell :
 		"scripts/cluster.sh scripts/est_theta.sh {wildcards.sample} {wildcards.reference} {wildcards.window_size} {input} {output}"
+
+rule plot_all :
+	input : expand(theta_files)
+	output : "figures/species_heterozygosity.png"
+	shell : "Rscript scripts/parse_thetas.R"
+
+
+
+
