@@ -68,7 +68,11 @@ other flags to consider / test :
 
 If you wish to compute from a disk space accessible from all nodes, you can just erase `scripts/cluster.sh ` from all rules in `Snakefile`. However, if you wish to use local storage of computational nodes you can modify `scripts/cluster.sh` to fit your local directory structure and to use environmental variables of your scheduler.
 
+- this might be doable in adding variable `CLUST="scripts/cluster.sh"` that could be replaces by `CLUST=""` if flag `--local` would be specified. The question is if snakemake allow custom flags. Otherwise I can somehow add it to `snakemake_clust.sh` wrapper.
+
 The very last think to look at are program dependencies. These are actually hardcoded in job scripts as `module add UHTS/Analysis/sratoolkit/2.8.0;` for instance. These lines got to be deleted, but all the software got to be available.
+
+- this should be extracted to loading script, so it get's separated from execution scripts
 
 I know it sounds that there is a lot of things to do for reproduction of this analysis. However, I tried my best to combine reproducibility and good computational practice (like using local storage). I will wonk on that.
 

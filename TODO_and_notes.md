@@ -6,8 +6,12 @@
 
 # TODO ??
 
-- Add a trimming step?
-- Base recalibration?
+- Add a trimming step :
+   - skewer, it's easier to install
+- BUSCO
+- palindromes
+- ? Blobology (check amounts of contaminations in assemblies)
+- ? Base recalibration
 
 # Notes
 
