@@ -5,7 +5,7 @@ Fcan1	Folsomia_candida	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Folsomia_can
 Lcla1	Leptopilina_clavipes	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/855/655/GCA_001855655.1_ASM185565v1/GCA_001855655.1_ASM185565v1_genomic.fna.gz	SRR921610
 Dcor1	Diploscapter_coronatus	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/207/785/GCA_002207785.1_ASM220778v1/GCA_002207785.1_ASM220778v1_genomic.fna.gz	DRR029945
 Dpac1	Diploscapter_pachys	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/287/525/GCA_002287525.1_DipSp1Ass11Ann3/GCA_002287525.1_DipSp1Ass11Ann3_genomic.fna.gz	NA
-Pdav1	Panagrolaimus_davidiDAW1	NA	NA
+Pdav1	Panagrolaimus_davidiDAW1	https://www.dropbox.com/s/vqjll5txk33b1wx/PS1159_v2.fna	NA
 Ps591	Panagrolaimus_sp.PS1159	NA	NA
 Ps791	Panagrolaimus_sp.PS1579	NA	NA
 Minc1	Meloidogyne_incognita	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/180/415/GCA_000180415.1_ASM18041v1/GCA_000180415.1_ASM18041v1_genomic.fna.gz	NA
@@ -21,3 +21,4 @@ Ment1	Meloidogyne_enterolobii	NA	SRR4242473
 Pant1	Potamopyrgus_antipodarum	NA	NA
 Dpul1	Daphnia_pulex	http://daphniagenomes.org/sites/daphniagenomes.org/files/Daphnia_pulex_PA42_v3.0.fasta	NA
 Hduj1	Hypsibius_dujardini	http://download.tardigrades.org/v1/sequence/Hypsibius_dujardini_nHd.2.3.1.scaffolds.fa.gz	ERR1147178
+Rvar1	Ramazzottius_varieornatus	http://kumamushi.org/data/YOKOZUNA-1.scaffolds.fa	DRR013910
