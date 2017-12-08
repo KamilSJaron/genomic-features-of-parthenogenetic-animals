@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-snakemake $@ -p --jobs 10 --cluster "bsub \
+USE_LOCAL="yes" snakemake $@ -p --jobs 10 --cluster "bsub \
     -J {rule} \
     -q bgee \
     -n {threads} \
