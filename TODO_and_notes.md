@@ -33,4 +33,4 @@ module add UHTS/Analysis/picard-tools/2.2.1
 picard-tools MarkDuplicates INPUT=map_to_Lcla1.bam OUTPUT=map_to_Lcla1_picard_marked.bam METRICS_FILE=picard_metrics.txt
 ```
 
-Let's see if the results are comparable.  0.486266. Then yes, it's comparable. I can leave it like this.
+Yhe results are comparable to samblaster.  0.486266. I can leave it like this.

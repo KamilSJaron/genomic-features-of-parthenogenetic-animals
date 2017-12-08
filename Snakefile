@@ -95,10 +95,10 @@ rule index_reference :
 rule map_reads :
 	threads : 16
 	resources : mem=104857600, tmp=40000
-	input : "data/{reference}/genome.fa.gz.bwt", "data/{sample}/reads_R1.fq.gz"
+	input : "data/{reference}/genome.fa.gz.bwt", "data/{sample}/reads-trimmed-pair1.fastq.gz"
 	output : "data/{sample}/map_to_{reference}.bam"
 	shell :
-		cluster_script + "scripts/map_reads.sh {wildcards.sample} {wildcards.reference} data/{wildcards.sample}/reads_R[1,2].fq.gz data/{wildcards.reference}/genome.fa.gz.* {output}"
+		cluster_script + "scripts/map_reads.sh {wildcards.sample} {wildcards.reference} data/{wildcards.sample}/reads-trimmed-pair[1,2].fastq.gz data/{wildcards.reference}/genome.fa.gz.* {output}"
 
 rule index_bam :
 	threads : 1
@@ -123,6 +123,9 @@ rule plot_all :
 	output : "figures/species_heterozygosity.png"
 	shell : "Rscript scripts/parse_thetas.R"
 
-
-
-
+rule trim_reads :
+	threads : 8
+	resources : mem=50000000, tmp=70000
+	input : "data/{sp}/reads_R1.fq.gz"
+	output : "data/{sp}/reads-trimmed-pair1.fastq.gz"
+	shell : cluster_script + "scripts/trim_reads.sh data/{wildcards.sp}/reads_R[1,2].fq.gz data/{wildcards.sp}/reads-trimmed"
