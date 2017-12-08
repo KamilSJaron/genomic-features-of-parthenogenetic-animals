@@ -45,6 +45,13 @@ for spec in all_species :
 			mapping_file = 'data/' + samp + '/map_to_' + ref + '.bam'
 			mapping_files.append(mapping_file)
 
+### if environmental variable USE_LOCAL contains anything, it will compute on /scratch/local
+cluster_script = os.environ.get("USE_LOCAL")
+if cluster_script == None :
+	cluster_script = ""
+else :
+	cluster_script = "scripts/use_local.sh "
+
 ## calculate_thetas : calculate theta estimates
 rule calculate_thetas :
 	input : theta_files
@@ -69,13 +76,13 @@ rule download_genome :
 	threads : 1
 	resources : mem=2000000, tmp=3000
 	output : "data/{sp}/genome.fa.gz"
-	shell : "scripts/cluster.sh scripts/download_genome.sh {wildcards.sp} tables/download_table.tsv {output}"
+	shell : cluster_script + "scripts/download_genome.sh {wildcards.sp} tables/download_table.tsv {output}"
 
 rule downlaod_reads :
 	threads : 1
 	resources : mem=2000000, tmp=30000
 	output : "data/{sp}/reads_R1.fq.gz"
-	shell : "scripts/cluster.sh scripts/download_reads.sh {wildcards.sp} tables/download_table.tsv data/{wildcards.sp}/reads_R"
+	shell : cluster_script + "scripts/download_reads.sh {wildcards.sp} tables/download_table.tsv data/{wildcards.sp}/reads_R"
 
 rule index_reference :
 	threads : 1
@@ -83,7 +90,7 @@ rule index_reference :
 	input : "data/{reference}/genome.fa.gz"
 	output : "data/{reference}/genome.fa.gz.bwt"
 	shell :
-		"scripts/cluster.sh scripts/index_genome.sh {input} data/{wildcards.reference}/genome.fa.gz."
+		cluster_script + "scripts/index_genome.sh {input} data/{wildcards.reference}/genome.fa.gz."
 
 rule map_reads :
 	threads : 16
@@ -91,7 +98,7 @@ rule map_reads :
 	input : "data/{reference}/genome.fa.gz.bwt", "data/{sample}/reads_R1.fq.gz"
 	output : "data/{sample}/map_to_{reference}.bam"
 	shell :
-		"scripts/cluster.sh scripts/map_reads.sh {wildcards.sample} {wildcards.reference} data/{wildcards.sample}/reads_R[1,2].fq.gz data/{wildcards.reference}/genome.fa.gz.* {output}"
+		cluster_script + "scripts/map_reads.sh {wildcards.sample} {wildcards.reference} data/{wildcards.sample}/reads_R[1,2].fq.gz data/{wildcards.reference}/genome.fa.gz.* {output}"
 
 rule index_bam :
 	threads : 1
@@ -109,7 +116,7 @@ rule estimate_theta :
 	input : "data/{sample}/map_to_{reference}.bam", "data/{sample}/map_to_{reference}.bam.bai"
 	output : "data/{sample}/{reference}_w{window_size}_theta_estimates.txt"
 	shell :
-		"scripts/cluster.sh scripts/est_theta.sh {wildcards.sample} {wildcards.reference} {wildcards.window_size} {input} {output}"
+		cluster_script + "scripts/est_theta.sh {wildcards.sample} {wildcards.reference} {wildcards.window_size} {input} {output}"
 
 rule plot_all :
 	input : expand(theta_files)

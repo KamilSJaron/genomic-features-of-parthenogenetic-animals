@@ -6,9 +6,14 @@ The idea of review is to put together all full genomes are of asexual animals an
 One of difficulties is to compare different genomics projects that are based on different inference methods and focus on different aspects.
 This review aims to put them in a line taking this bias into account and unify analysis whenever it's easy enough.
 
-Potential analysis :
+List of performed analysis :
 
-- estimates of heterozygosity between haplotypes
+- estimates of heterozygosity between haplotypes using substitution model (atlas)
+
+List of potential analysis :
+
+- BUSCO
+- Blobology
 - classification of repeats
 - analysis of palindromes
 
@@ -64,11 +69,7 @@ other flags to consider / test :
 
 ### Execution of different cluster
 
-`Snakefile` has no hardcoded any cluster-specific parameters. The resources should be accessed as `{resources.mem}` for memory in kilobytes, `{resources.tmp}` for needed local storage in megabytes and `{threads}` for number of used cores. The command used for cluster execution is stored in a bash wrapper `snakemake_clust.sh`. Modify this script as needed to work with syntax of your cluster.
-
-If you wish to compute from a disk space accessible from all nodes, you can just erase `scripts/cluster.sh ` from all rules in `Snakefile`. However, if you wish to use local storage of computational nodes you can modify `scripts/cluster.sh` to fit your local directory structure and to use environmental variables of your scheduler.
-
-- this might be doable in adding variable `CLUST="scripts/cluster.sh"` that could be replaces by `CLUST=""` if flag `--local` would be specified. The question is if snakemake allow custom flags. Otherwise I can somehow add it to `snakemake_clust.sh` wrapper.
+`Snakefile` has no hardcoded any cluster-specific parameters. The resources should be accessed as `{resources.mem}` for memory in kilobytes, `{resources.tmp}` for needed local storage in megabytes and `{threads}` for number of used cores. The command used for cluster execution is stored in a bash wrapper `snakemake_clust.sh`. Modify this script as needed to work with syntax of your cluster. It uses environmental variable `USE_LOCAL` to access if computations should be performed on local disks of computational nodes or not (the job wrapper is `scripts/use_local.sh` and it might need to be adjusted to different cluster settings, now it's set for lsf).
 
 The very last think to look at are program dependencies. These are actually hardcoded in job scripts as `module add UHTS/Analysis/sratoolkit/2.8.0;` for instance. These lines got to be deleted, but all the software got to be available.
 
