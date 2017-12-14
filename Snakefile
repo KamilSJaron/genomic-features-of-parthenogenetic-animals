@@ -84,6 +84,13 @@ rule downlaod_reads :
 	output : "data/{sp}/reads_R1.fq.gz"
 	shell : cluster_script + "scripts/download_reads.sh {wildcards.sp} tables/download_table.tsv data/{wildcards.sp}/reads_R"
 
+rule trim_reads :
+	threads : 8
+	resources : mem=50000000, tmp=70000
+	input : "data/{sp}/reads_R1.fq.gz"
+	output : "data/{sp}/reads-trimmed-pair1.fastq.gz"
+	shell : cluster_script + "scripts/trim_reads.sh data/{wildcards.sp}/reads_R[1,2].fq.gz data/{wildcards.sp}/reads-trimmed"
+
 rule index_reference :
 	threads : 1
 	resources : mem=20000000, tmp=10000
@@ -123,9 +130,20 @@ rule plot_all :
 	output : "figures/species_heterozygosity.png"
 	shell : "Rscript scripts/parse_thetas.R"
 
-rule trim_reads :
-	threads : 8
-	resources : mem=50000000, tmp=70000
-	input : "data/{sp}/reads_R1.fq.gz"
-	output : "data/{sp}/reads-trimmed-pair1.fastq.gz"
-	shell : cluster_script + "scripts/trim_reads.sh data/{wildcards.sp}/reads_R[1,2].fq.gz data/{wildcards.sp}/reads-trimmed"
+rule run_busco :
+	threads : 32
+	resources : mem=32000000, tmp=10000
+	input : "data/{sp}/genome.fa.gz", "data/busco_ref/metazoa_odb9"
+	output : "data/{sp}/busco"
+	shell : cluster_script + "scripts/busco.sh {input} {output}"
+
+rule get_busco_reference :
+	threads : 1
+	resources : mem=1000000, tmp=10000
+	output : "data/busco_ref/metazoa_odb9"
+	shell : """
+		mkdir -p data/busco_ref && cd data/busco_ref
+		wget http://busco.ezlab.org/datasets/metazoa_odb9.tar.gz
+		tar -zxf metazoa_odb9.tar.gz
+		rm metazoa_odb9.tar.gz
+	"""
