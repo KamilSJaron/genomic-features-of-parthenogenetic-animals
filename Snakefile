@@ -112,10 +112,7 @@ rule index_bam :
 	resources : mem=20000000, tmp=10000
 	input : "data/{sample}/map_to_{reference}.bam"
 	output : "data/{sample}/map_to_{reference}.bam.bai"
-	shell : """
-		module add UHTS/Analysis/samtools/1.3
-		samtools index {input}
-	"""
+	shell : cluster_script + "scripts/index_bam.sh {input} {output}"
 
 rule estimate_theta :
 	threads : 1
