@@ -13,7 +13,7 @@ if [ -z $URL ]; then
     exit 0
 fi
 
-if [ ${URL##*.} -eq gz ]; then
+if [[ ${URL##*.} == "gz" ]]; then
     wget $URL -O data/$1/genome.fa.gz
 else
     wget $URL -O data/$1/genome.fa

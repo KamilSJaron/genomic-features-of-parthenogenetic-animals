@@ -52,6 +52,10 @@ if cluster_script == None :
 else :
 	cluster_script = "scripts/use_local.sh "
 
+## calculate_genome_stats : calculate genome length, N50 and number of contigs of all genomes
+rule calculate_genome_stats :
+	input : expand("data/{sp}/genome.stats", sp=species_with_genomes)
+
 ## calculate_thetas : calculate theta estimates
 rule calculate_thetas :
 	input : theta_files
@@ -144,3 +148,10 @@ rule get_busco_reference :
 		tar -zxf metazoa_odb9.tar.gz
 		rm metazoa_odb9.tar.gz
 	"""
+
+rule genome_stats :
+	threads : 1
+	resources : mem=1000000, tmp=10000
+	input : "data/{sp}/genome.fa.gz"
+	output : "data/{sp}/genome.stats"
+	shell : "python3 scripts/fasta2genomic_stats.py {input} 1> {output}"
