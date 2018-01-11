@@ -1,11 +1,22 @@
-# Common and unique features of sequenced obligately parthenogenetic genomes
+# Common and unique features of obligately parthenogenetic genomes
 
-The studies of role of sex are a renaissance in the era of genomics.
-Till now XY genomes of XY asexual species were sequenced to reveal genomic consequences of asexual reproduction and thus reveal true role of sex in reproduction.
+The studies of role of sex are going thought renaissance in the era of genomics.
+Till now TODO genomes of TODO asexual species were sequenced to reveal genomic consequences of asexual reproduction and thus reveal true role of sex in reproduction.
 The studies have reported evaluation of an asexual genome or couple of asexual genomes within one taxa.
 Here we present a collection of all currently sequenced asexual genomes combined with a meta study accessing which genomic features thought to be asexual are in fact taxon specific traits and which are shared among multiple phylogenetically distant asexual species.
 
 ## Introduction
+
+The sexual reproduction is thought to be essential trait for long term evolutionary success of species with limited population size {REF}.
+It is vastly supported by phylogenetic distribution and relatively low frequency of asexual species {REF},
+but also by theoretical predictions {REF} and experiments validating theory {REF}.
+
+In last nine years TODO genomes were sequenced of TODO species. These studies brought a great insights to taxon specific effects of asexually to genomes.
+Here we aimed to gather all currently available genomic resources of asexual metazoans to summarize common features of asexual evolution.
+The sequenced asexual species are of various age of asexuality raging from couple of decades in Daphnia {REF} to ancient asexuals such as bdeliod rotifers that have survived more than TODO million years without sex {REF}.
+
+However, it is still important to note, that sequenced asexual species represent only asexual lineages that were till now evolutionary successful - they survived.
+Description of such set of species then represent a picture of (yet) not destructive genomic consequences of asexuality.
 
 ## Methods
 
