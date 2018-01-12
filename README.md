@@ -44,7 +44,7 @@ I want to pull data from NCBI and `snakemake` seems to have a module exactly for
 I will try to use already installed version. However it's not the most recent one.
 
 ```
-module add Utility/snakemake/3.5.4
+module add Utility/snakemake/3.11.2
 ```
 
 seems to be working. However, one have to pay attention to - be in a directory that is accessible from everywhere, no scratch local!
@@ -63,7 +63,7 @@ to run default with other flags you can run
 
 other flags to consider / test :
 
-- `--cluster-status 'bjobs'` : allow snakemake to look at the status of jobs; this is not working on version of snakemake on Vital-it.
+- `--cluster-status 'bjobs'` : allow snakemake to look at the status of jobs; ~this is not working on version of snakemake on Vital-it~ it was updated, but for some reason cluster status is not allowed even in version 11
 - `--jobscript cluster_wrapper.sh`
 - `--keep-remote`
 

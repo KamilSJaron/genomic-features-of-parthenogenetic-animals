@@ -9,7 +9,6 @@
 - BUSCO
 - palindromes
 - ? Blobology (check amounts of contaminations in assemblies)
-- ? Base recalibration
 
 # Notes
 

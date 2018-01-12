@@ -29,6 +29,7 @@ all_species = list(set(map(lambda x: x[0:4], all_samples)))
 
 mapping_files = []
 theta_files = []
+genome_stat_files = expand("data/{sp}/genome.stats", sp=species_with_genomes)
 
 wind_size = 1000000
 # we need to find all combinations of sequencing reads and references, so
@@ -52,9 +53,13 @@ if cluster_script == None :
 else :
 	cluster_script = "scripts/use_local.sh "
 
+## all
+rule all :
+	input : theta_files, genome_stat_files
+
 ## calculate_genome_stats : calculate genome length, N50 and number of contigs of all genomes
 rule calculate_genome_stats :
-	input : expand("data/{sp}/genome.stats", sp=species_with_genomes)
+	input : genome_stat_files
 
 ## calculate_thetas : calculate theta estimates
 rule calculate_thetas :
@@ -82,7 +87,7 @@ rule download_genome :
 	output : "data/{sp}/genome.fa.gz"
 	shell : cluster_script + "scripts/download_genome.sh {wildcards.sp} tables/download_table.tsv {output}"
 
-rule downlaod_reads :
+rule download_reads :
 	threads : 1
 	resources : mem=2000000, tmp=30000
 	output : "data/{sp}/reads_R1.fq.gz"
