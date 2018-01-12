@@ -30,6 +30,7 @@ all_species = list(set(map(lambda x: x[0:4], all_samples)))
 mapping_files = []
 theta_files = []
 genome_stat_files = expand("data/{sp}/genome.stats", sp=species_with_genomes)
+busco_files = expand("data/{sp}/busco", sp=species_with_genomes)
 
 wind_size = 1000000
 # we need to find all combinations of sequencing reads and references, so
@@ -55,7 +56,11 @@ else :
 
 ## all
 rule all :
-	input : theta_files, genome_stat_files
+	input : theta_files, genome_stat_files, busco_files
+
+## calculate_busco
+rule calculate_busco :
+	input : busco_files
 
 ## calculate_genome_stats : calculate genome length, N50 and number of contigs of all genomes
 rule calculate_genome_stats :
