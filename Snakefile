@@ -80,6 +80,16 @@ rule download_all :
 		expand("data/{sp}/genome.fa.gz", sp=species_with_genomes),
 		expand("data/{sp}/reads_R1.fq.gz", sp=species_with_reads)
 
+## trimm_all : trimm all reads
+rule trimm_all :
+	input :
+		expand("data/{sp}/reads-trimmed-pair1.fastq.gz", sp=species_with_reads)
+
+## annotate_all_repeats : annotate repreats using reads and assembly size as a proxy for genome size; needs to run on dee-serv04
+rule annotate_all_repeats :
+	input :
+		expand("data/{sp}/dnaPipeTE", sp=species_with_reads)
+
 ##
 ## help : print this help
 rule help :
@@ -127,6 +137,13 @@ rule index_bam :
 	input : "data/{sample}/map_to_{reference}.bam"
 	output : "data/{sample}/map_to_{reference}.bam.bai"
 	shell : cluster_script + "scripts/index_bam.sh {input} {output}"
+
+rule annotate_repeats :
+	threads : 12
+	resources : mem=150000000, tmp=30000
+	input : "data/{sample}/reads-trimmed-pair1.fastq.gz"
+	output : "data/{sample}/dnaPipeTE"
+	shell : "scripts/annotate_repeats.sh {input} {wildcards.sample} {output}"
 
 rule estimate_theta :
 	threads : 1
