@@ -19,7 +19,7 @@ Mflo1	Meloidogyne_floridensis	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/751
 Mflo2	Meloidogyne_floridensis	NA	SRR4242475
 Ment1	Meloidogyne_enterolobii	NA	SRR4242473
 Pant1	Potamopyrgus_antipodarum	NA	NA
-Dpul1	Daphnia_pulex	http://daphniagenomes.org/sites/daphniagenomes.org/files/Daphnia_pulex_PA42_v3.0.fasta	NA
+Dpul1	Daphnia_pulex	http://daphniagenomes.org/sites/default/files/Daphnia_pulex_PA42_v3.0.fasta	NA
 Dpul2	Daphnia_pulex	NA	NA
 Dpul3	Daphnia_pulex	NA	NA
 Hduj1	Hypsibius_dujardini	http://download.tardigrades.org/v1/sequence/Hypsibius_dujardini_nHd.2.3.1.scaffolds.fa.gz	ERR1147178
