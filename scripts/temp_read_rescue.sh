@@ -5,8 +5,9 @@
 SP="$1"
 REF="$2"
 
+READS1=reads-trimmed-pair1.fastq.gz
 BAM=map_to_"$REF".bam
-PATH_TO_DATA=/scratch/beegfs/monthly/kjaron/review-of-asexual-genomes/data/"$SP"/
+PATH_TO_DATA=/scratch/beegfs/monthly/kjaron/review-of-asexual-genomes/data/"$SP"
 
 
 if [[ -s "$PATH_TO_DATA"/"$READS1" ]]
@@ -58,8 +59,8 @@ pigz -p 16 reads_R2.fq
 mkdir -p "$PATH_TO_DATA"
 
 # move to working dir
-mv reads_R1.fq.gz "$PATH_TO_DATA" &
-mv reads_R2.fq.gz "$PATH_TO_DATA" &
+mv reads_R1.fq.gz "$PATH_TO_DATA"/reads-trimmed-pair1.fastq.gz &
+mv reads_R2.fq.gz "$PATH_TO_DATA"/reads-trimmed-pair2.fastq.gz &
 
 wait
 
