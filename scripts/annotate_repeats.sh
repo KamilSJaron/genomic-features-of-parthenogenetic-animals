@@ -22,9 +22,10 @@ READS=$1
 GENOME_SIZE=$(Rscript scripts/get_genome_length.R $2)
 OUTPUT=$3
 SP_DIR=$(dirname "$OUTPUT")
+SHARED_DIR=$(pwd)
 
 #tmp has to be adjusted -> already in the wrapper script, maybe I should veify
-LOCAL_DIR="/scratch/local/monthly/$USER"
+LOCAL_DIR="/scratch/local/monthly/$USER/repeats"
 mkdir -p "$LOCAL_DIR"/"$SP_DIR"/temp
 mkdir -p "$LOCAL_DIR"/"$OUTPUT"
 export TMPDIR="$LOCAL_DIR"/"$SP_DIR"/temp
@@ -49,5 +50,10 @@ python3 ./dnaPipeTE.py -input "$LOCAL_DIR"/"$READS" \
     -cpu 12 -genome_size "$GENOME_SIZE" -genome_coverage 0.5 -sample_number 3
 
 cd "$LOCAL_DIR"
+mv "$OUTPUT" "$SHARED_DIR"/"$OUTPUT"
+
+rm "$SP_DIR"/reads-trimmed-pair1.fastq.gz
+rm -r "$SP_DIR"/temp
+rmdir "$SP_DIR"
 
 printf "****DONE****\n"
