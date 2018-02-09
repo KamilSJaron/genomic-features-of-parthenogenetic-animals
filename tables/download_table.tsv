@@ -24,3 +24,4 @@ Dpul2	Daphnia_pulex	NA	NA
 Dpul3	Daphnia_pulex	NA	NA
 Hduj1	Hypsibius_dujardini	http://download.tardigrades.org/v1/sequence/Hypsibius_dujardini_nHd.2.3.1.scaffolds.fa.gz	ERR1147178
 Rvar1	Ramazzottius_varieornatus	http://kumamushi.org/data/YOKOZUNA-1.scaffolds.fa	DRR013910
+Pvir1	Procambarus_virginalis	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/838/885/GCA_002838885.1_Pvir0.4/GCA_002838885.1_Pvir0.4_genomic.fna.gz	SRR5710693
