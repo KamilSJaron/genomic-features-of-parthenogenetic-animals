@@ -110,7 +110,7 @@ rule download_reads :
 
 rule trim_reads :
 	threads : 8
-	resources : mem=50000000, tmp=70000
+	resources : mem=80000000, tmp=150000
 	input : "data/{sp}/reads_R1.fq.gz"
 	output : "data/{sp}/reads-trimmed-pair1.fastq.gz"
 	shell : cluster_script + "scripts/trim_reads.sh data/{wildcards.sp}/reads_R[1,2].fq.gz data/{wildcards.sp}/reads-trimmed"
