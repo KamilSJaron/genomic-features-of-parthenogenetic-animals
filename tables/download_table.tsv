@@ -1,28 +1,28 @@
-code	species	genome	reads
-Cbir1	Cerapachys_biroi	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Ooceraea_biroi/latest_assembly_versions/GCF_000611835.1_CerBir1.0/GCF_000611835.1_CerBir1.0_genomic.fna.gz	SRR1192097
-Avag1	Adineta_vaga	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/513/175/GCA_000513175.1_AMS_PRJEB1171_v1/GCA_000513175.1_AMS_PRJEB1171_v1_genomic.fna.gz	SRR801084
-Fcan1	Folsomia_candida	ftp.ncbi.nlm.nih.gov/genomes/all/GCF/002/217/175/GCF_002217175.1_ASM221717v1/GCF_002217175.1_ASM221717v1_genomic.fna.gz	SRR2743547
-Lcla1	Leptopilina_clavipes	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/855/655/GCA_001855655.1_ASM185565v1/GCA_001855655.1_ASM185565v1_genomic.fna.gz	SRR921610
-Dcor1	Diploscapter_coronatus	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/207/785/GCA_002207785.1_ASM220778v1/GCA_002207785.1_ASM220778v1_genomic.fna.gz	DRR029945
-Dpac1	Diploscapter_pachys	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/287/525/GCA_002287525.1_DipSp1Ass11Ann3/GCA_002287525.1_DipSp1Ass11Ann3_genomic.fna.gz	NA
-Pdav1	Panagrolaimus_davidiDAW1	NA	NA
-Ps591	Panagrolaimus_sp.PS1159	NA	NA
-Ps791	Panagrolaimus_sp.PS1579	NA	NA
-Minc1	Meloidogyne_incognita	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/180/415/GCA_000180415.1_ASM18041v1/GCA_000180415.1_ASM18041v1_genomic.fna.gz	NA
-Minc2	Meloidogyne_incognita	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/182/535/GCA_900182535.1_Meloidogyne_incognita_V3/GCA_900182535.1_Meloidogyne_incognita_V3_genomic.fna.gz	NA
-Minc3	Meloidogyne_incognita	NA	SRR4242460
-Mjav1	Meloidogyne_javanica	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/003/945/GCA_900003945.1_ASM90000394v1/GCA_900003945.1_ASM90000394v1_genomic.fna.gz	NA
-Mjav2	Meloidogyne_javanica	NA	SRR4242459
-Mare1	Meloidogyne_arenaria	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/003/985/GCA_900003985.1_ASM90000398v1/GCA_900003985.1_ASM90000398v1_genomic.fna.gz	NA
-Mare2	Meloidogyne_arenaria	NA	SRR4242468
-Mflo1	Meloidogyne_floridensis	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/751/915/GCA_000751915.1_nMf_1_1/GCA_000751915.1_nMf_1_1_genomic.fna.gz	ERR104974
-Mflo2	Meloidogyne_floridensis	NA	SRR4242475
-Ment1	Meloidogyne_enterolobii	NA	SRR4242473
-Pant1	Potamopyrgus_antipodarum	NA	NA
-Dpul1	Daphnia_pulex	http://daphniagenomes.org/sites/default/files/Daphnia_pulex_PA42_v3.0.fasta	NA
-Dpul2	Daphnia_pulex	NA	NA
-Dpul3	Daphnia_pulex	NA	NA
-Hduj1	Hypsibius_dujardini	http://download.tardigrades.org/v1/sequence/Hypsibius_dujardini_nHd.2.3.1.scaffolds.fa.gz	ERR1147178
-Rvar1	Ramazzottius_varieornatus	http://kumamushi.org/data/YOKOZUNA-1.scaffolds.fa	DRR013910
-Pvir1	Procambarus_virginalis	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/838/885/GCA_002838885.1_Pvir0.4/GCA_002838885.1_Pvir0.4_genomic.fna.gz	SRR5710693
-Pfor1	Poecilia formosa	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/485/575/GCA_000485575.1_Poecilia_formosa-5.1.2/GCA_000485575.1_Poecilia_formosa-5.1.2_genomic.fna.gz	SRR835658
+code	species	genome	reads	proteins	annotation
+Cbir1	Cerapachys_biroi	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Ooceraea_biroi/latest_assembly_versions/GCF_000611835.1_CerBir1.0/GCF_000611835.1_CerBir1.0_genomic.fna.gz	SRR1192097	NA	NA
+Avag1	Adineta_vaga	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/513/175/GCA_000513175.1_AMS_PRJEB1171_v1/GCA_000513175.1_AMS_PRJEB1171_v1_genomic.fna.gz	SRR801084	NA	NA
+Fcan1	Folsomia_candida	ftp.ncbi.nlm.nih.gov/genomes/all/GCF/002/217/175/GCF_002217175.1_ASM221717v1/GCF_002217175.1_ASM221717v1_genomic.fna.gz	SRR2743547	NA	NA
+Lcla1	Leptopilina_clavipes	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/855/655/GCA_001855655.1_ASM185565v1/GCA_001855655.1_ASM185565v1_genomic.fna.gz	SRR921610	NA	NA
+Dcor1	Diploscapter_coronatus	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/207/785/GCA_002207785.1_ASM220778v1/GCA_002207785.1_ASM220778v1_genomic.fna.gz	DRR029945	NA	NA
+Dpac1	Diploscapter_pachys	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/287/525/GCA_002287525.1_DipSp1Ass11Ann3/GCA_002287525.1_DipSp1Ass11Ann3_genomic.fna.gz	NA	NA	NA
+Pdav1	Panagrolaimus_davidiDAW1	NA	NA	NA	NA
+Ps591	Panagrolaimus_sp.PS1159	NA	NA	NA	NA
+Ps791	Panagrolaimus_sp.PS1579	NA	NA	NA	NA
+Minc1	Meloidogyne_incognita	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/180/415/GCA_000180415.1_ASM18041v1/GCA_000180415.1_ASM18041v1_genomic.fna.gz	NA	NA	NA
+Minc2	Meloidogyne_incognita	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/182/535/GCA_900182535.1_Meloidogyne_incognita_V3/GCA_900182535.1_Meloidogyne_incognita_V3_genomic.fna.gz	NA	NA	NA
+Minc3	Meloidogyne_incognita	NA	SRR4242460	NA	NA
+Mjav1	Meloidogyne_javanica	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/003/945/GCA_900003945.1_ASM90000394v1/GCA_900003945.1_ASM90000394v1_genomic.fna.gz	NA	NA	NA
+Mjav2	Meloidogyne_javanica	NA	SRR4242459	NA	NA
+Mare1	Meloidogyne_arenaria	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/003/985/GCA_900003985.1_ASM90000398v1/GCA_900003985.1_ASM90000398v1_genomic.fna.gz	NA	NA	NA
+Mare2	Meloidogyne_arenaria	NA	SRR4242468	NA	NA
+Mflo1	Meloidogyne_floridensis	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/751/915/GCA_000751915.1_nMf_1_1/GCA_000751915.1_nMf_1_1_genomic.fna.gz	ERR104974	NA	NA
+Mflo2	Meloidogyne_floridensis	NA	SRR4242475	NA	NA
+Ment1	Meloidogyne_enterolobii	NA	SRR4242473	NA	NA
+Pant1	Potamopyrgus_antipodarum	NA	NA	NA	NA
+Dpul1	Daphnia_pulex	http://daphniagenomes.org/sites/default/files/Daphnia_pulex_PA42_v3.0.fasta	NA	NA	NA
+Dpul2	Daphnia_pulex	NA	NA	NA	NA
+Dpul3	Daphnia_pulex	NA	NA	NA	NA
+Hduj1	Hypsibius_dujardini	http://download.tardigrades.org/v1/sequence/Hypsibius_dujardini_nHd.2.3.1.scaffolds.fa.gz	ERR1147178	NA	NA
+Rvar1	Ramazzottius_varieornatus	http://kumamushi.org/data/YOKOZUNA-1.scaffolds.fa	DRR013910	NA	NA
+Pvir1	Procambarus_virginalis	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/838/885/GCA_002838885.1_Pvir0.4/GCA_002838885.1_Pvir0.4_genomic.fna.gz	SRR5710693	NA	NA
+Pfor1	Poecilia_formosa	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/485/575/GCA_000485575.1_Poecilia_formosa-5.1.2/GCA_000485575.1_Poecilia_formosa-5.1.2_genomic.fna.gz	SRR835658	NA	NA
