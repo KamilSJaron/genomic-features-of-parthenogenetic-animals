@@ -1,5 +1,5 @@
 code	species	genome	reads	proteins	annotation
-Cbir1	Cerapachys_biroi	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Ooceraea_biroi/latest_assembly_versions/GCF_000611835.1_CerBir1.0/GCF_000611835.1_CerBir1.0_genomic.fna.gz	SRR1192097	NA	NA
+Cbir1	Cerapachys_biroi	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Ooceraea_biroi/latest_assembly_versions/GCF_000611835.1_CerBir1.0/GCF_000611835.1_CerBir1.0_genomic.fna.gz	SRR1192097	have to be downloaded from https://www.ncbi.nlm.nih.gov/protein?linkname=bioproject_protein&from_uid=230364	contacted author to get GFF
 Avag1	Adineta_vaga	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/513/175/GCA_000513175.1_AMS_PRJEB1171_v1/GCA_000513175.1_AMS_PRJEB1171_v1_genomic.fna.gz	SRR801084	NA	NA
 Fcan1	Folsomia_candida	ftp.ncbi.nlm.nih.gov/genomes/all/GCF/002/217/175/GCF_002217175.1_ASM221717v1/GCF_002217175.1_ASM221717v1_genomic.fna.gz	SRR2743547	NA	NA
 Lcla1	Leptopilina_clavipes	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/855/655/GCA_001855655.1_ASM185565v1/GCA_001855655.1_ASM185565v1_genomic.fna.gz	SRR921610	NA	NA
