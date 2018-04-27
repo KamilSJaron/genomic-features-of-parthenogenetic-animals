@@ -100,7 +100,19 @@ rule download_genome :
 	threads : 1
 	resources : mem=2000000, tmp=3000
 	output : "data/{sp}/genome.fa.gz"
-	shell : cluster_script + "scripts/download_genome.sh {wildcards.sp} tables/download_table.tsv {output}"
+	shell : cluster_script + "scripts/download_data.sh {wildcards.sp} genome tables/download_table.tsv {output}"
+
+rule download_proteins :
+	threads : 1
+	resources : mem=2000000, tmp=3000
+	output : "data/{sp}/proteins.fa.gz"
+	shell : cluster_script + "scripts/download_data.sh {wildcards.sp} proteins tables/download_table.tsv {output}"
+
+rule download_annotation :
+	threads : 1
+	resources : mem=2000000, tmp=3000
+	output : "data/{sp}/annotation.gff3.gz"
+	shell : cluster_script + "scripts/download_data.sh {wildcards.sp} annotation tables/download_table.tsv {output}"
 
 rule download_reads :
 	threads : 1
