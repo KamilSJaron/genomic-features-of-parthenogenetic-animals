@@ -9,6 +9,7 @@ check_sp_and_get_row <- function(sp){
 	if ( ! any(row) ){
 		genome_tab[nrow(genome_tab)+1,] <- NA
 		genome_tab[nrow(genome_tab), 'code'] <- sp
+		# get full name from the download table?
 		row <- sp == genome_tab$code
 	}
 	return(row)
