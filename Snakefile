@@ -31,6 +31,8 @@ mapping_files = []
 theta_files = []
 genome_stat_files = expand("data/{sp}/genome.stats", sp=species_with_genomes)
 busco_files = expand("data/{sp}/busco", sp=species_with_genomes)
+MUMmer_aln_files = expand("data/{sp}/MUMmer", sp=species_with_genomes)
+genomescope_files = expand("data/{sp}/genomescope", sp=species_with_reads)
 
 wind_size = 1000000
 # we need to find all combinations of sequencing reads and references, so
@@ -61,6 +63,14 @@ rule all :
 ## calculate_busco
 rule calculate_busco :
 	input : busco_files
+
+## calculate_selfalignments
+rule calculate_selfalignment :
+	input : MUMmer_aln_files
+
+## calculate_heterozygosity_using_kmers
+rule calculate_heterozygosity_using_kmers :
+	input : genomescope_files
 
 ## calculate_genome_stats : calculate genome length, N50 and number of contigs of all genomes
 rule calculate_genome_stats :
@@ -194,3 +204,17 @@ rule genome_stats :
 	input : "data/{sp}/genome.fa.gz"
 	output : "data/{sp}/genome.stats"
 	shell : "python3 scripts/fasta2genomic_stats.py {input} 1> {output}"
+
+rule align_genome_to_itself :
+	threads : 16
+	resources : mem=100000000, tmp = 40000
+	input : "data/{sample}/genome.fa.gz"
+	output : "data/{sample}/MUMmer"
+	shell : cluster_script + "scripts/MUMmer_selfaln.sh {input} {output}"
+
+rule genome_profiling :
+	threads : 16
+	resources : mem=64000000
+	input : "data/{sample}/reads-trimmed-pair1.fastq.gz"
+	output : "data/{sample}/genomescope"
+	shell : cluster_script + "scripts/GenomeScope.sh data/{wildcards.sample}/reads-trimmed-pair[1,2].fastq.gz {output}"

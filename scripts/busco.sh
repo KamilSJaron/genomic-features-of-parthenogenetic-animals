@@ -9,8 +9,10 @@ export AUGUSTUS_CONFIG_PATH=/home/kjaron/src/busco-master/augustus_config
 # 1 - gzipped genome
 # 2 - database with metazons
 # 3 - output directory
-zcat $1 > genome.fa
 
-run_BUSCO.py -i genome.fa -o $3 -m geno -l $2 -c 32
+TMPGENOME=$(mktemp -p $(echo $TMPDIR))
+zcat $1 > $TMPGENOME
 
-rm genome.fa
+run_BUSCO.py -i $TMPGENOME -o $3 -m geno -l $2 -c 16
+
+rm $TMPGENOME
