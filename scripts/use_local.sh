@@ -7,6 +7,8 @@
 # all all the other arguments will be copied locally if they are valid files
 # the last argument got to be the output
 
+set -e
+
 #####################
 # PREPARE LOCAL DIR #
 #####################
@@ -27,7 +29,7 @@ for arg in "$@"; do
     then
         RELATIVE_PATH=$(dirname "$arg")
         mkdir -p $LOCAL_DIR/$RELATIVE_PATH
-        cp $arg $LOCAL_DIR/$RELATIVE_PATH
+        cp -r $arg $LOCAL_DIR/$RELATIVE_PATH
     fi
 done
 
@@ -73,7 +75,7 @@ for arg in "$@"; do
     # if tghe argument is an existing file, remove it
     if [[ -s "$arg" ]]
     then
-        rm $arg
+        rm -r $arg
     fi
 done
 # remove all empty direcories

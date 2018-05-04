@@ -11,6 +11,8 @@ export AUGUSTUS_CONFIG_PATH=/home/kjaron/src/busco-master/augustus_config
 # 3 - output directory
 zcat $1 > genome.fa
 
-run_BUSCO.py -i genome.fa -o $3 -m geno -l $2 -c 32
+run_BUSCO.py -i genome.fa -o busco -m geno -l $2 -c 16
+
+mv run_busco $3
 
 rm genome.fa

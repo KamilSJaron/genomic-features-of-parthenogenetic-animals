@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # for vital it
-module add UHTS/Analysis/sratoolkit/2.8.0;
-module add Utility/aspera_connect/3.6.1.110647;
+module add UHTS/Analysis/sratoolkit/2.8.2.1;
+module add Utility/aspera_connect/3.7.4.147727;
 
 # get data from NCBI
 COL=$(head -1 tables/download_table.tsv | tr "\t" "\n" | grep -n "reads" | cut -f 1 -d ':')
