@@ -1,6 +1,6 @@
 #!/bin/bash
 
-module add UHTS/Aligner/bwa/0.7.13
+module add UHTS/Aligner/bwa/0.7.15
 module add UHTS/Analysis/samtools/1.3
 # samblaster v0.1.24 installed locally
 

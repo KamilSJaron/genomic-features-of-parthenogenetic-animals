@@ -13,6 +13,8 @@ export AUGUSTUS_CONFIG_PATH=/home/kjaron/src/busco-master/augustus_config
 TMPGENOME=$(mktemp -p $(echo $TMPDIR))
 zcat $1 > $TMPGENOME
 
-run_BUSCO.py -i $TMPGENOME -o $3 -m geno -l $2 -c 16
+run_BUSCO.py -i $TMPGENOME -o busco -m geno -l $2 -c 16
+
+mv run_busco $3
 
 rm $TMPGENOME

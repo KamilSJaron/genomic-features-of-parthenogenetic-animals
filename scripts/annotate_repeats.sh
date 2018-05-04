@@ -9,9 +9,9 @@
 
 #set up environment
 #module add Development/java/1.8.0_152 --> this simply does not work
-module add Development/java_jre/1.7.0_17
+module add Development/java/1.7.0_17
 #module add UHTS/Aligner/bowtie2/2.3.1;
-module add UHTS/Aligner/bowtie2/2.3.0
+module add UHTS/Aligner/bowtie2/2.3.1
 module add R/latest
 
 # reads						data/Avag1/reads-trimmed-pair1.fastq.gz

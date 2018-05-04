@@ -176,13 +176,15 @@ rule estimate_theta :
 		cluster_script + "scripts/est_theta.sh {wildcards.sample} {wildcards.reference} {wildcards.window_size} {input} {output}"
 
 rule plot_all :
+	threads : 1
+	resources : mem=500000, tmp=5000
 	input : expand(theta_files)
 	output : "figures/species_heterozygosity.png"
 	shell : "Rscript scripts/parse_thetas.R"
 
 rule run_busco :
-	threads : 32
-	resources : mem=32000000, tmp=10000
+	threads : 16
+	resources : mem=32000000, tmp=50000
 	input : "data/{sp}/genome.fa.gz", "data/busco_ref/metazoa_odb9"
 	output : "data/{sp}/busco"
 	shell : cluster_script + "scripts/busco.sh {input} {output}"
