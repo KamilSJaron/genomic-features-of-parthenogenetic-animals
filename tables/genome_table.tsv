@@ -1,20 +1,26 @@
-code	species	assembly_size	number_of_scaffolds	N50	TEs	other_repeats	all_repeats
-Cbir1	Cerapachys_biroi	212825769	4579	1350650	12.1	0.6	19.7
-Avag1	Adineta_vaga	217933776	36167	260259	7	0.7	66.4
-Fcan1	Folsomia_candida	221702752	162	6519406	8.9	0.5	28.1
-Lcla1	Leptopilina_clavipes	255343917	36600	13761	24.2	2	94.4
-Dcor1	Diploscapter_coronatus	170492099	520	1007652	7.6	0.6	65.5
-Dpac1	Diploscapter_pachys	157719873	10775	124241	2.6	1.3	34.7
-Pdav1	Panagrolaimus_davidiDAW1	84957092	17628	9924	NA	NA	NA
-Minc1	Meloidogyne_incognita	82095019	9538	12786	NA	NA	NA
-Minc2	Meloidogyne_incognita	183531997	12091	38588	NA	NA	NA
-Minc3	Meloidogyne_incognita	NA	NA	NA	8	1.6	47.9
-Mjav1	Meloidogyne_javanica	235798407	31341	10388	NA	NA	NA
-Mjav2	Meloidogyne_javanica	NA	NA	NA	11.1	1.9	56.4
-Mare1	Meloidogyne_arenaria	258067405	26196	16462	NA	NA	NA
-Mare2	Meloidogyne_arenaria	NA	NA	NA	10.8	1.8	59
-Mflo1	Meloidogyne_floridensis	96673063	58696	3698	8.6	2.9	32.9
-Mflo2	Meloidogyne_floridensis	NA	NA	NA	6.9	1.8	39.1
-Dpul1	Daphnia_pulex	156418198	1822	494773	NA	NA	NA
-Hduj1	Hypsibius_dujardini	134961902	13202	50531	0.1	0.4	1.9
-Rvar1	Ramazzottius_varieornatus	55828384	199	3294854	1.7	1.1	8.1
+-	-	ams_stats	-	-	DNApipeTE	-	-	BUSCO	-	-	-
+code	species	assembly_size[M]	number_of_scaffolds[k]	N50[k]	TEs	other_repeats	all_repeats	complete	fragmented	duplicated	missing
+Cbir1	Cerapachys_biroi	212.8	4.6	1350.7	12.1	0.6	19.7	98.16	1.02	1.02	0.82
+Avag1	Adineta_vaga	217.9	36.2	260.3	7	0.7	66.4	90.29	1.43	67.08	8.28
+Fcan1	Folsomia_candida	221.7	0.2	6519.4	8.9	0.5	28.1	93.15	1.64	1.94	5.21
+Lcla1	Leptopilina_clavipes	255.3	36.6	13.8	24.2	2	94.4	93.87	4.09	0.82	2.04
+Dcor1	Diploscapter_coronatus	170.5	0.5	1007.7	7.6	0.6	65.5	74.44	3.37	42.94	22.19
+Dpac1	Diploscapter_pachys	157.7	10.8	124.2	2.6	1.3	34.7	74.74	3.17	35.17	22.09
+Pdav1	Panagrolaimus_davidiDAW1	85	17.6	9.9	NA	NA	NA	NA	NA	NA	NA
+Minc1	Meloidogyne_incognita	82.1	9.5	12.8	NA	NA	NA	45.71	10.33	8.9	43.97
+Minc2	Meloidogyne_incognita	183.5	12.1	38.6	NA	NA	NA	57.36	9.41	31.49	33.23
+Minc3	Meloidogyne_incognita	NA	NA	NA	8	1.6	47.9	NA	NA	NA	NA
+Mjav1	Meloidogyne_javanica	235.8	31.3	10.4	NA	NA	NA	59.71	8.69	29.04	31.6
+Mjav2	Meloidogyne_javanica	NA	NA	NA	11.1	1.9	56.4	NA	NA	NA	NA
+Mare1	Meloidogyne_arenaria	258.1	26.2	16.5	NA	NA	NA	58.9	9.3	32.82	31.8
+Mare2	Meloidogyne_arenaria	NA	NA	NA	10.8	1.8	59	NA	NA	NA	NA
+Mflo1	Meloidogyne_floridensis	96.7	58.7	3.7	8.6	2.9	32.9	39.57	19.73	1.53	40.7
+Mflo2	Meloidogyne_floridensis	NA	NA	NA	6.9	1.8	39.1	NA	NA	NA	NA
+Dpul1	Daphnia_pulex	156.4	1.8	494.8	NA	NA	NA	97.75	0.61	3.37	1.64
+Hduj1	Hypsibius_dujardini	135	13.2	50.5	0.1	0.4	1.9	84.36	2.97	1.94	12.68
+Rvar1	Ramazzottius_varieornatus	55.8	0.2	3294.9	1.7	1.1	8.1	85.17	2.04	1.23	12.78
+Pfor1	Poecilia_formosa	748.9	4	1574.2	NA	NA	NA	98.06	0.51	7.57	1.43
+Pvir1	Procambarus_virginalis	3290.5	1942.8	39.3	NA	NA	NA	87.12	6.44	0.92	6.44
+Rmac1	Rotaria_macrura	NA	NA	NA	NA	NA	NA	89.16	1.64	15.24	9.2
+Aric1	Adineta_ricciae	NA	NA	NA	NA	NA	NA	88.34	2.25	62.99	9.41
+Rmag1	Rotaria_magnacalcarata	NA	NA	NA	NA	NA	NA	90.49	1.02	16.16	8.49
