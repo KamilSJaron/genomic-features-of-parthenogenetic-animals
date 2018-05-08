@@ -216,7 +216,7 @@ rule align_genome_to_itself :
 
 rule genome_profiling :
 	threads : 16
-	resources : mem=64000000
+	resources : mem=64000000, tmp = 60000
 	input : "data/{sample}/reads-trimmed-pair1.fastq.gz"
 	output : "data/{sample}/genomescope"
-	shell : cluster_script + "scripts/GenomeScope.sh data/{wildcards.sample}/reads-trimmed-pair[1,2].fastq.gz {output}"
+	shell : cluster_script + "scripts/GenomeScope.sh {input} data/{wildcards.sample}/reads-trimmed-pair2.fastq.gz {output}"
