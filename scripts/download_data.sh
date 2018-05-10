@@ -28,11 +28,15 @@ if [ -z $URL ]; then
     exit 0
 fi
 
-if [[ ${URL##*.} == "gz" ]]; then
-    echo wget $URL -O data/$ROW/$DATA.$SUFIX.gz
+# this is for github links -> they end by ?raw=true which makes it bit more annotying
+# so I extract just first 2 letters after the last dot
+AFTERPERIOD=${URL##*.}
+
+if [[ ${AFTERPERIOD:0:2} == "gz" ]]; then
+    wget $URL -O data/$ROW/$DATA.$SUFIX.gz
 else
-    echo wget $URL -O data/$ROW/$DATA.$SUFIX
-    echo gzip data/$ROW/$DATA.$SUFIX
+    wget $URL -O data/$ROW/$DATA.$SUFIX
+    gzip data/$ROW/$DATA.$SUFIX
 fi
 
 touch data/$ROW/$DATA.$SUFIX.gz
