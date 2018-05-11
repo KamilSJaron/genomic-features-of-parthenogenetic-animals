@@ -3,6 +3,7 @@
 # for vital it
 module add UHTS/Analysis/sratoolkit/2.8.2.1;
 module add Utility/aspera_connect/3.7.4.147727;
+OPENSSH=/software/Utility/aspera_connect/3.7.4.147727/etc/asperaweb_id_dsa.openssh
 
 # get data from NCBI
 COL=$(head -1 tables/download_table.tsv | tr "\t" "\n" | grep -n "reads" | cut -f 1 -d ':')
@@ -16,8 +17,9 @@ fi
 
 mkdir -p data/"$SPECIES"
 
-ascp -QT -i /software/Utility/aspera_connect/3.6.1.110647/etc/asperaweb_id_dsa.openssh \
-    anonftp@ftp-private.ncbi.nlm.nih.gov:/sra/sra-instant/reads/ByRun/sra/${ACCESION::3}/${ACCESION::6}/"$ACCESION"/"$ACCESION".sra data/"$SPECIES"
+URL=anonftp@ftp-private.ncbi.nlm.nih.gov:/sra/sra-instant/reads/ByRun/sra/${ACCESION::3}/${ACCESION::6}/"$ACCESION"/"$ACCESION".sra data/"$SPECIES"
+
+ascp -QT -i $OPENSSH $URL
 
 fastq-dump data/"$SPECIES"/"$ACCESION".sra --outdir data/$SPECIES --split-files --gzip
 

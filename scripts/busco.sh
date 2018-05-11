@@ -5,6 +5,10 @@ module add SequenceAnalysis/HMM-Profile/hmmer/3.1b2
 module add SequenceAnalysis/GenePrediction/augustus/3.2.3
 export AUGUSTUS_CONFIG_PATH=/home/kjaron/src/busco-master/augustus_config
 
+if [ -z "$TMPDIR" ]; then
+	TMPDIR="."
+fi
+
 # run busco
 # 1 - gzipped genome
 # 2 - database with metazons
