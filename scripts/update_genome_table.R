@@ -16,7 +16,7 @@ dl_table <- read.table('tables/download_table.tsv', header = T, row.names = 1, s
 #####################################################
 
 stat_files <- list.files(path = "data", pattern = "genome.stats", recursive = T, include.dirs = T)
-stat_files <- paste('data', genomescope_files, sep = '/')
+stat_files <- paste('data', stat_files, sep = '/')
 
 expand_table_if_needed <- function(.sp, .genome_tab){
 	row <- .sp == .genome_tab$code
@@ -145,6 +145,7 @@ for(genomescope_file in genomescope_files){
 ### Sort the table ###
 ######################
 
+# soring rows
 desired_order <- c('Pfor1',
                    'Avag1', 'Aric1', 'Rmac1', 'Rmag1',
 				   'Lcla1', 'Cbir1', 'Fcan1',
@@ -160,8 +161,16 @@ if ( length(desired_order) == nrow(genome_tab) ){
 	cat( genome_tab$code[ !genome_tab$code %in% desired_order] )
 }
 
+# sorting columns
+genome_tab <- genome_tab[, c('code', 'species',
+                             'assembly_size[M]', 'number_of_scaffolds[k]', 'N50[k]',
+                             'complete', 'fragmented', 'duplicated', 'missing',
+                             'haploid_length[M]', 'heterozygosity', 'repeats',
+                             'TEs','other_repeats','all_repeats')]
+
 ######################
-extra_header <- c(rep('-', 2), 'assembly', rep('-', 2), 'dnaPipeTE', rep('-', 2), 'BUSCO', rep('-', 3), 'GenomeScope', rep('-', 2) )
+
+extra_header <- c(rep('-', 2), 'assembly', rep('-', 2), 'BUSCO', rep('-', 3), 'GenomeScope', rep('-', 2), 'dnaPipeTE', rep('-', 2) )
 asm_template <- matrix(ncol = length(extra_header))
 colnames(asm_template) <- extra_header
 header <- as.data.frame(asm_template)[FALSE, ]
