@@ -1,40 +1,23 @@
 # TODO
 
-- Analyze theta outputs OR implement the script form timema project that sub select scaffolds that are at minimum of window size.
-- wighted median for representation of genome heterozygosity
-- adjust / fix / outsmart *reference ploidy problem* -> look at the subsection bellow
+- parse MUMer output
+- fix theta calls
+- run dnaPipeTE for other species (it does on work on cluster, why??)
+
+# TODO ??
+
+- palindromes -> too little data for MScanX, get the from MUMmer output??
+- ? Blobology (check amounts of contaminations in assemblies)
+- *recalibration* -> look at the subsection bellow
+- *triploid heterozygosity* -> look at the subsection bellow
 
 ### reference ploidy problem
 
-Haploid / diploid reference will for sure affect heterozygosity calls.
+Haploid / diploid / polyploid reference will for sure affect heterozygosity calls using atlas.
 
 #### Coverage solution
 
 One think we can look at is correlation of coverage and estimated heterozygosity to figure out if high heterozygosity locations are separated regions collapsed during genome assembly.
-
-#### Sexual reference solution
-
-reference assembly is combination of -> decent genomic sequences + contaminants + non-collapsed fragments + tiny contigs. We would like to keep only "decent genomic sequences" for downstream analysis. This idea is based on the same divergence of both asexual haplotypes to sexual sister species.
-
-1. Map asexual genome to sexual genome and Identify contigs that map -> trustworthy contigs
-2. Map asexual reads to asexual genome, subselect those reads that map to "trustworthy contigs" and call them "trustworthy reads"
-3. Map "trustworthy reads" to sexual assembly
-4. Call theta
-
-Also...
-
-- sexual contaminant contigs will have no read coverage of "trustworthy reads"
-- asexual that represent non-collapsed haplotypes will map to the same location on sexual genome
-- well covered one-to-one mappings represent reliable part of dataset, that can be further supported by coverage analysis
-- keep tiny contigs in reference for missmapping errors
-
-# TODO ??
-
-- BUSCO
-- palindromes -> Jonathan agreed to gather all the annotations and proteins
-- ? Blobology (check amounts of contaminations in assemblies)
-- *recalibration* -> look at the subsection bellow
-- *triploid theta* -> look at the subsection bellow
 
 ### Softmask references
 
@@ -71,8 +54,6 @@ We can estimate two thetas instead of one (one corresponding to divergence betwe
 - should not be constructed if problems above won't be resolved
 
 # Notes
-
-- A springtail Holacanthella duospinosa is sequenced. Is it the closed sequenced relative of the asexual springtail genome?
 
 ### Marking duplicates
 
