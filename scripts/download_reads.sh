@@ -17,9 +17,9 @@ fi
 
 mkdir -p data/"$SPECIES"
 
-URL=anonftp@ftp-private.ncbi.nlm.nih.gov:/sra/sra-instant/reads/ByRun/sra/${ACCESION::3}/${ACCESION::6}/"$ACCESION"/"$ACCESION".sra data/"$SPECIES"
+URL=anonftp@ftp-private.ncbi.nlm.nih.gov:/sra/sra-instant/reads/ByRun/sra/${ACCESION::3}/${ACCESION::6}/"$ACCESION"/"$ACCESION".sra
 
-ascp -QT -i $OPENSSH $URL
+ascp -QT -i $OPENSSH $URL data/"$SPECIES"
 
 fastq-dump data/"$SPECIES"/"$ACCESION".sra --outdir data/$SPECIES --split-files --gzip
 
