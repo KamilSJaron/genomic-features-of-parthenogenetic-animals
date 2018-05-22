@@ -10,7 +10,7 @@ DATA=$2
 COL=$(head -1 tables/download_table.tsv | tr "\t" "\n" | grep -n $DATA | cut -f 1 -d ':')
 URL=$(grep $ROW tables/download_table.tsv | cut -f $COL)
 
-if [[ $DATA == "genome" || $DATA == "proteins" ]]; then
+if [[ $DATA == "genome" ]]; then
     SUFIX=fa
 fi
 

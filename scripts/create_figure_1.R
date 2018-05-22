@@ -54,7 +54,7 @@ question_matrix <- t(question_matrix)
 # plot #
 ########
 
-pdf('~/Desktop/studies.pdf', width=12, height=8)
+pdf('figures/fig1_genomic_studies.pdf', width=12, height=8)
 
 # I will need space on the left side of the plot and above
 par(mar = c(0, 7.5, 5.5, 0) + 0.1)
