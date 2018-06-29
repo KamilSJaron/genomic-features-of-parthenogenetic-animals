@@ -7,33 +7,38 @@
 # reads   to species_with_reads
 species_with_genomes = []
 species_with_reads = []
+raw_read_files = []
+trimmed_read_files = []
 
 with open('tables/download_table.tsv') as tab :
 	tab.readline()
 	for textline in tab :
 		line = textline.split()
+		sp = line[0]
 		# print(line[1])
 		# line[2] is location of genome
 		if line[2] != 'NA' :
 			# print(line[2] + 'is not NA, adding :' + line[0])
-			species_with_genomes.append(line[0])
+			species_with_genomes.append(sp)
 		# line[3] is SRA accession number
 		if line[3] != 'NA' :
 			# print(line[3] + 'is not NA, adding :' + line[0])
-			species_with_reads.append(line[0])
+			species_with_reads.append(sp)
+			for lib in line[3].split(',') :
+				raw_lib_file = 'data/' + sp + '/raw_reads/' + lib + '_1.fastq.gz'
+				trimmed_lib_file = 'data/' + sp + '/trimmed_reads/' + lib + '-trimmed-pair1.fastq.gz'
+				raw_read_files.append(raw_lib_file)
+				trimmed_read_files.append(trimmed_lib_file)
 
 # all_samples are unique values in array of merged samples with reads and genome
 all_samples = list(set(species_with_genomes + species_with_reads))
 # all_species is just a vector of unique entries of 4 letter substrings
 all_species = list(set(map(lambda x: x[0:4], all_samples)))
 
+genome_stat_files = expand("data/{sp}/genome.stats", sp=species_with_genomes)
+
 mapping_files = []
 theta_files = []
-genome_stat_files = expand("data/{sp}/genome.stats", sp=species_with_genomes)
-busco_files = expand("data/{sp}/busco", sp=species_with_genomes)
-MUMmer_aln_files = expand("data/{sp}/MUMmer", sp=species_with_genomes)
-genomescope_files = expand("data/{sp}/genomescope", sp=species_with_reads)
-
 wind_size = 1000000
 # we need to find all combinations of sequencing reads and references, so
 # we iterate though all species
@@ -62,15 +67,18 @@ rule all :
 
 ## calculate_busco
 rule calculate_busco :
-	input : busco_files
+	input : expand("data/{sp}/busco", sp=species_with_genomes)
 
 ## calculate_selfalignments
 rule calculate_selfalignment :
-	input : MUMmer_aln_files
+	input : expand("data/{sp}/MUMmer", sp=species_with_genomes)
 
 ## calculate_heterozygosity_using_kmers
 rule calculate_heterozygosity_using_kmers :
-	input : genomescope_files
+	input : expand("data/{sp}/genomescope", sp=species_with_reads)
+
+## calculate_kmer_profiles_in_genome
+# TODO KAT_files = expand("data/{sp}/KAT", sp=species_with_reads)
 
 ## calculate_genome_stats : calculate genome length, N50 and number of contigs of all genomes
 rule calculate_genome_stats :
@@ -88,12 +96,12 @@ rule map_all :
 rule download_all :
 	input :
 		expand("data/{sp}/genome.fa.gz", sp=species_with_genomes),
-		expand("data/{sp}/reads_R1.fq.gz", sp=species_with_reads)
+		raw_read_files
 
 ## trimm_all : trimm all reads
 rule trimm_all :
 	input :
-		expand("data/{sp}/reads-trimmed-pair1.fastq.gz", sp=species_with_reads)
+		trimmed_read_files
 
 ## annotate_all_repeats : annotate repreats using reads and assembly size as a proxy for genome size; needs to run on dee-serv04
 rule annotate_all_repeats :
@@ -112,11 +120,12 @@ rule download_genome :
 	output : "data/{sp}/genome.fa.gz"
 	shell : cluster_script + "scripts/download_data.sh {wildcards.sp} genome tables/download_table.tsv {output}"
 
-rule download_proteins :
-	threads : 1
-	resources : mem=2000000, tmp=3000
-	output : "data/{sp}/proteins.fa.gz"
-	shell : cluster_script + "scripts/download_data.sh {wildcards.sp} proteins tables/download_table.tsv {output}"
+# TODO calculate proteins
+# rule download_proteins :
+# 	threads : 1
+# 	resources : mem=2000000, tmp=3000
+# 	output : "data/{sp}/proteins.fa.gz"
+# 	shell : cluster_script + "scripts/download_data.sh {wildcards.sp} proteins tables/download_table.tsv {output}"
 
 rule download_annotation :
 	threads : 1
@@ -127,15 +136,15 @@ rule download_annotation :
 rule download_reads :
 	threads : 1
 	resources : mem=2000000, tmp=30000
-	output : "data/{sp}/reads_R1.fq.gz"
-	shell : cluster_script + "scripts/download_reads.sh {wildcards.sp} tables/download_table.tsv data/{wildcards.sp}/reads_R"
+	output : "data/{sp}/raw_reads/{accesion}_1.fastq.gz"
+	shell : cluster_script + "scripts/download_reads.sh {wildcards.sp} {wildcards.accesion}"
 
 rule trim_reads :
 	threads : 8
 	resources : mem=80000000, tmp=150000
-	input : "data/{sp}/reads_R1.fq.gz"
-	output : "data/{sp}/reads-trimmed-pair1.fastq.gz"
-	shell : cluster_script + "scripts/trim_reads.sh data/{wildcards.sp}/reads_R[1,2].fq.gz data/{wildcards.sp}/reads-trimmed"
+	input : "data/{sp}/raw_reads/{accesion}_1.fq.gz"
+	output : "data/{sp}/trimmed_reads/{accesion}_trimmed-pair1.fastq.gz"
+	shell : cluster_script + "scripts/trim_reads.sh data/{wildcards.sp}/raw_reads/{wildcards.accesion}_[1,2].fq.gz data/{wildcards.sp}/trimmed_reads/{wildcards.accesion}"
 
 rule index_reference :
 	threads : 1
@@ -180,7 +189,7 @@ rule plot_all :
 	resources : mem=500000, tmp=5000
 	input : expand(theta_files)
 	output : "figures/species_heterozygosity.png"
-	shell : "Rscript scripts/parse_thetas.R"
+	shell : "script scripts/parse_thetas.R"
 
 rule run_busco :
 	threads : 16
@@ -220,3 +229,5 @@ rule genome_profiling :
 	input : "data/{sample}/reads-trimmed-pair1.fastq.gz"
 	output : "data/{sample}/genomescope"
 	shell : cluster_script + "scripts/GenomeScope.sh {input} data/{wildcards.sample}/reads-trimmed-pair2.fastq.gz {output}"
+
+# TODO run KAT
