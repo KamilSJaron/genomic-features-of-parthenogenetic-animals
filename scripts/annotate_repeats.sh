@@ -32,7 +32,7 @@ mkdir -p "$LOCAL_DIR"/"$OUTPUT"
 export TMPDIR="$LOCAL_DIR"/"$SP_DIR"/temp
 export _JAVA_OPTIONS="-XX:ParallelGCThreads=24"
 
-cp "$READS" "$LOCAL_DIR"/"$READS"
+cat "$READ_DIR"/*fastq.gz > "$LOCAL_DIR"/"$READ_DIR"/all_reads.fastq.gz
 
 #run the dnaPipeTE pipeline
 #IMPORTANT: must be run from installed software path !!
@@ -46,14 +46,14 @@ cd /scratch/beegfs/monthly/ptranvan/Software/dnaPipeTE/1.2
 #IMPORTANT: give genome size of organism
 #the genome_coverage and sample_number depends on how many TEs are expected, but the setting here should be generally ok
 
-python3 ./dnaPipeTE.py -input <("$LOCAL_DIR"/"$READ_DIR"/*.fastq.gz) \
+python3 ./dnaPipeTE.py -input "$LOCAL_DIR"/"$READ_DIR"/all_reads.fastq.gz \
     -output "$LOCAL_DIR"/"$OUTPUT" \
-    -cpu 12 -genome_size "$GENOME_SIZE" -genome_coverage 0.5 -sample_number 3
+    -cpu 24 -genome_size "$GENOME_SIZE" -genome_coverage 0.5 -sample_number 3
 
 cd "$LOCAL_DIR"
 mv "$OUTPUT" "$SHARED_DIR"/"$OUTPUT"
 
-rm "$SP_DIR"/reads-trimmed-pair1.fastq.gz
+rm "$READ_DIR"/all_reads.fastq.gz
 rm -r "$SP_DIR"/temp
 rmdir "$SP_DIR"
 
