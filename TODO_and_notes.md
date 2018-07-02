@@ -1,14 +1,13 @@
 # TODO
 
-- parse MUMer output
-- fix theta calls
+- parse MUMmer output
 - run dnaPipeTE for other species (it does on work on cluster, why??)
 
 # TODO ??
 
 - palindromes -> too little data for MScanX, get the from MUMmer output??
 - ? Blobology (check amounts of contaminations in assemblies)
-- *recalibration* -> look at the subsection bellow
+- find data/$*/trimmed_reads/ -name "*.fq.gz" -exec scripts/generic_genomics/fastq.gz2number_of_nt.sh {} \; > $@
 - *triploid heterozygosity* -> look at the subsection bellow
 
 ### reference ploidy problem
