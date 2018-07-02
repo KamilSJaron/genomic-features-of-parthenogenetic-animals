@@ -9,6 +9,7 @@ species_with_genomes = []
 species_with_reads = []
 raw_read_files = []
 trimmed_read_files = []
+sample_accesions = dict()
 
 with open('tables/download_table.tsv') as tab :
 	tab.readline()
@@ -26,9 +27,12 @@ with open('tables/download_table.tsv') as tab :
 			species_with_reads.append(sp)
 			for lib in line[3].split(',') :
 				raw_lib_file = 'data/' + sp + '/raw_reads/' + lib + '_1.fastq.gz'
-				trimmed_lib_file = 'data/' + sp + '/trimmed_reads/' + lib + '-trimmed-pair1.fastq.gz'
+				trimmed_lib_file = 'data/' + sp + '/trimmed_reads/' + lib + '_trimmed-pair1.fastq.gz'
 				raw_read_files.append(raw_lib_file)
 				trimmed_read_files.append(trimmed_lib_file)
+				sample_accesions[sp] = sample_accesions.get(sp, []) + [trimmed_lib_file]
+
+species_with_reads_and_genomes = [sp for sp in species_with_reads if sp in species_with_genomes]
 
 # all_samples are unique values in array of merged samples with reads and genome
 all_samples = list(set(species_with_genomes + species_with_reads))
@@ -36,6 +40,7 @@ all_samples = list(set(species_with_genomes + species_with_reads))
 all_species = list(set(map(lambda x: x[0:4], all_samples)))
 
 genome_stat_files = expand("data/{sp}/genome.stats", sp=species_with_genomes)
+busco_files = expand("data/{sp}/busco", sp=species_with_genomes)
 
 mapping_files = []
 theta_files = []
@@ -67,7 +72,7 @@ rule all :
 
 ## calculate_busco
 rule calculate_busco :
-	input : expand("data/{sp}/busco", sp=species_with_genomes)
+	input : busco_files
 
 ## calculate_selfalignments
 rule calculate_selfalignment :
@@ -78,7 +83,8 @@ rule calculate_heterozygosity_using_kmers :
 	input : expand("data/{sp}/genomescope", sp=species_with_reads)
 
 ## calculate_kmer_profiles_in_genome
-# TODO KAT_files = expand("data/{sp}/KAT", sp=species_with_reads)
+rule calculate_genome_kmer_content :
+	input : expand("data/{sp}/KAT", sp=species_with_reads_and_genomes)
 
 ## calculate_genome_stats : calculate genome length, N50 and number of contigs of all genomes
 rule calculate_genome_stats :
@@ -142,9 +148,9 @@ rule download_reads :
 rule trim_reads :
 	threads : 8
 	resources : mem=80000000, tmp=150000
-	input : "data/{sp}/raw_reads/{accesion}_1.fq.gz"
+	input : "data/{sp}/raw_reads/{accesion}_1.fastq.gz"
 	output : "data/{sp}/trimmed_reads/{accesion}_trimmed-pair1.fastq.gz"
-	shell : cluster_script + "scripts/trim_reads.sh data/{wildcards.sp}/raw_reads/{wildcards.accesion}_[1,2].fq.gz data/{wildcards.sp}/trimmed_reads/{wildcards.accesion}"
+	shell : cluster_script + "scripts/trim_reads.sh data/{wildcards.sp}/raw_reads/{wildcards.accesion}_[1,2].fastq.gz data/{wildcards.sp}/trimmed_reads/{wildcards.accesion}"
 
 rule index_reference :
 	threads : 1
@@ -230,4 +236,9 @@ rule genome_profiling :
 	output : "data/{sample}/genomescope"
 	shell : cluster_script + "scripts/GenomeScope.sh {input} data/{wildcards.sample}/reads-trimmed-pair2.fastq.gz {output}"
 
-# TODO run KAT
+rule kmer_genome_content :
+	threads : 8
+	resources : mem=32000000, tmp = 60000
+	input : lambda wildcards: sample_accesions[wildcards.sample], "data/{sample}/genome.fa.gz"
+	output : "data/{sample}/KAT"
+	shell : cluster_script + "scripts/KAT.sh {wildcards.sample} {input} data/{wildcards.sample}/trimmed_reads {output}"
