@@ -18,7 +18,7 @@ module add R/latest
 # sample code				244000000
 # output dir				data/Avag1/dnaPipeTE
 
-READS=$1
+READ_DIR=$1
 GENOME_SIZE=$(Rscript scripts/get_genome_length.R $2)
 OUTPUT=$3
 SP_DIR=$(dirname "$OUTPUT")
@@ -27,9 +27,10 @@ SHARED_DIR=$(pwd)
 #tmp has to be adjusted -> already in the wrapper script, maybe I should veify
 LOCAL_DIR="/scratch/local/monthly/$USER/repeats"
 mkdir -p "$LOCAL_DIR"/"$SP_DIR"/temp
+mkdir -p "$LOCAL_DIR"/"$SP_DIR"/trimmed_reads
 mkdir -p "$LOCAL_DIR"/"$OUTPUT"
 export TMPDIR="$LOCAL_DIR"/"$SP_DIR"/temp
-export _JAVA_OPTIONS="-XX:ParallelGCThreads=6"
+export _JAVA_OPTIONS="-XX:ParallelGCThreads=24"
 
 cp "$READS" "$LOCAL_DIR"/"$READS"
 
@@ -38,14 +39,14 @@ cp "$READS" "$LOCAL_DIR"/"$READS"
 
 
 #mabye better softlink to program folder if run on local scratch
-cd /scratch/beegfs/monthly/jbast/software/dnaPipeTE_old/1.2
-#cd /scratch/beegfs/monthly/ptranvan/Software/dnaPipeTE/1.2
+# cd /scratch/beegfs/monthly/jbast/software/dnaPipeTE_old/1.2
+cd /scratch/beegfs/monthly/ptranvan/Software/dnaPipeTE/1.2
 
 #run with single-end reads (can be gzipped)
 #IMPORTANT: give genome size of organism
 #the genome_coverage and sample_number depends on how many TEs are expected, but the setting here should be generally ok
 
-python3 ./dnaPipeTE.py -input "$LOCAL_DIR"/"$READS" \
+python3 ./dnaPipeTE.py -input <("$LOCAL_DIR"/"$READ_DIR"/*.fastq.gz) \
     -output "$LOCAL_DIR"/"$OUTPUT" \
     -cpu 12 -genome_size "$GENOME_SIZE" -genome_coverage 0.5 -sample_number 3
 

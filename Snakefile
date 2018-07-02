@@ -7,8 +7,9 @@
 # reads   to species_with_reads
 species_with_genomes = []
 species_with_reads = []
+species_with_annotation = []
+
 raw_read_files = []
-trimmed_read_files = []
 sample_accesions = dict()
 
 with open('tables/download_table.tsv') as tab :
@@ -29,7 +30,6 @@ with open('tables/download_table.tsv') as tab :
 				raw_lib_file = 'data/' + sp + '/raw_reads/' + lib + '_1.fastq.gz'
 				trimmed_lib_file = 'data/' + sp + '/trimmed_reads/' + lib + '_trimmed-pair1.fastq.gz'
 				raw_read_files.append(raw_lib_file)
-				trimmed_read_files.append(trimmed_lib_file)
 				sample_accesions[sp] = sample_accesions.get(sp, []) + [trimmed_lib_file]
 
 species_with_reads_and_genomes = [sp for sp in species_with_reads if sp in species_with_genomes]
@@ -65,6 +65,8 @@ if cluster_script == None :
 	cluster_script = ""
 else :
 	cluster_script = "scripts/use_local.sh "
+
+localrules : help, all, calculate_busco, calculate_selfalignment, calculate_heterozygosity_using_kmers, calculate_genome_kmer_content, calculate_genome_stats, calculate_thetas, map_all, download_all, trimm_all
 
 ## all
 rule all :
@@ -107,7 +109,7 @@ rule download_all :
 ## trimm_all : trimm all reads
 rule trimm_all :
 	input :
-		trimmed_read_files
+		sample_accesions.values()
 
 ## annotate_all_repeats : annotate repreats using reads and assembly size as a proxy for genome size; needs to run on dee-serv04
 rule annotate_all_repeats :
@@ -143,7 +145,7 @@ rule download_reads :
 	threads : 1
 	resources : mem=2000000, tmp=30000
 	output : "data/{sp}/raw_reads/{accesion}_1.fastq.gz"
-	shell : cluster_script + "scripts/download_reads.sh {wildcards.sp} {wildcards.accesion}"
+	shell : cluster_script + "scripts/download_reads.sh {wildcards.sp} {wildcards.accesion} data/{wildcards.sp}/raw_reads/{wildcards.accesion}"
 
 rule trim_reads :
 	threads : 8
@@ -163,10 +165,10 @@ rule index_reference :
 rule map_reads :
 	threads : 16
 	resources : mem=104857600, tmp=40000
-	input : "data/{reference}/genome.fa.gz.bwt", "data/{sample}/reads-trimmed-pair1.fastq.gz"
+	input : "data/{reference}/genome.fa.gz.bwt", lambda wildcards: sample_accesions[wildcards.sample]
 	output : "data/{sample}/map_to_{reference}.bam"
 	shell :
-		cluster_script + "scripts/map_reads.sh {wildcards.sample} {wildcards.reference} data/{wildcards.sample}/reads-trimmed-pair[1,2].fastq.gz data/{wildcards.reference}/genome.fa.gz.* {output}"
+		cluster_script + "scripts/map_reads.sh {wildcards.sample} {wildcards.reference} data/{wildcards.sample}/trimmed_reads/*.fastq.gz data/{wildcards.reference}/genome.fa.gz.* {output}"
 
 rule index_bam :
 	threads : 1
@@ -178,9 +180,9 @@ rule index_bam :
 rule annotate_repeats :
 	threads : 12
 	resources : mem=150000000, tmp=30000
-	input : "data/{sample}/reads-trimmed-pair1.fastq.gz"
+	input : lambda wildcards: sample_accesions[wildcards.sample], "data/{sample}/genomescope"
 	output : "data/{sample}/dnaPipeTE"
-	shell : "scripts/annotate_repeats.sh {input} {wildcards.sample} {output}"
+	shell : "scripts/annotate_repeats.sh data/{wildcards.sample}/trimmed_reads {wildcards.sample} {output}"
 
 rule estimate_theta :
 	threads : 1
@@ -232,7 +234,7 @@ rule align_genome_to_itself :
 rule genome_profiling :
 	threads : 16
 	resources : mem=64000000, tmp = 60000
-	input : "data/{sample}/reads-trimmed-pair1.fastq.gz"
+	input : lambda wildcards: sample_accesions[wildcards.sample]
 	output : "data/{sample}/genomescope"
 	shell : cluster_script + "scripts/GenomeScope.sh {input} data/{wildcards.sample}/reads-trimmed-pair2.fastq.gz {output}"
 
