@@ -4,7 +4,7 @@ Avag1	Adineta_vaga	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/513/175/GCA_00051317
 Fcan1	Folsomia_candida	ftp.ncbi.nlm.nih.gov/genomes/all/GCF/002/217/175/GCF_002217175.1_ASM221717v1/GCF_002217175.1_ASM221717v1_genomic.fna.gz	SRR2743547	ftp://ftp.ncbi.nlm.nih.gov/genomes/Folsomia_candida/GFF/ref_ASM221717v1_top_level.gff3.gz
 Lcla1	Leptopilina_clavipes	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/855/655/GCA_001855655.1_ASM185565v1/GCA_001855655.1_ASM185565v1_genomic.fna.gz	SRR921610	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/855/655/GCA_001855655.1_ASM185565v1/GCA_001855655.1_ASM185565v1_genomic.gff.gz
 Dcor1	Diploscapter_coronatus	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/207/785/GCA_002207785.1_ASM220778v1/GCA_002207785.1_ASM220778v1_genomic.fna.gz	DRR029945	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/207/785/GCA_002207785.1_ASM220778v1/GCA_002207785.1_ASM220778v1_genomic.gff.gz
-Dpac1	Diploscapter_pachys	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/287/525/GCA_002287525.1_DipSp1Ass11Ann3/GCA_002287525.1_DipSp1Ass11Ann3_genomic.fna.gz	NA	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/207/785/GCA_002207785.1_ASM220778v1/GCA_002207785.1_ASM220778v1_genomic.gff.gz
+Dpac1	Diploscapter_pachys	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/287/525/GCA_002287525.1_DipSp1Ass11Ann3/GCA_002287525.1_DipSp1Ass11Ann3_genomic.fna.gz	manual	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/207/785/GCA_002207785.1_ASM220778v1/GCA_002207785.1_ASM220778v1_genomic.gff.gz
 Pdav1	Panagrolaimus_davidiDAW1	NA	NA	NA
 Ps591	Panagrolaimus_sp.PS1159	manual	manual	NA
 Ps791	Panagrolaimus_sp.PS1579	NA	NA	NA
@@ -29,5 +29,6 @@ Pfor1	Poecilia_formosa	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/485/575/GC
 Aric1	Adineta_ricciae	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/240/375/GCA_900240375.1_nAr1.8.reference_genomic/GCA_900240375.1_nAr1.8.reference_genomic_genomic.fna.gz	ERR2135445	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/240/375/GCA_900240375.1_nAr1.8.reference_genomic/GCA_900240375.1_nAr1.8.reference_genomic_genomic.gff.gz
 Rmac1	Rotaria_macrura	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/239/685/GCA_900239685.1_nRc1.3.reference_genomic/GCA_900239685.1_nRc1.3.reference_genomic_genomic.fna.gz	ERR2135453	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/239/685/GCA_900239685.1_nRc1.3.reference_genomic/GCA_900239685.1_nRc1.3.reference_genomic_genomic.gff.gz
 Rmag1	Rotaria_magnacalcarata	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/239/745/GCA_900239745.1_nRg1.8.reference_genomic/GCA_900239745.1_nRg1.8.reference_genomic_genomic.fna.gz	ERR2135451	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/239/745/GCA_900239745.1_nRg1.8.reference_genomic/GCA_900239745.1_nRg1.8.reference_genomic_genomic.gff.gz
-Aruf1	manual	manual	NA
+Aruf1	Aptinothrips_rufus	manual	manual	NA
 Tpre1	Trichogramma_pretiosum	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/599/845/GCA_000599845.2_Tpre_1.0/GCA_000599845.2_Tpre_1.0_genomic.fna.gz	SRX488821	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/599/845/GCA_000599845.2_Tpre_1.0/GCA_000599845.2_Tpre_1.0_genomic.gff.gz
+Anan1	Acrobeloides_nanus	NA	NA	NA
