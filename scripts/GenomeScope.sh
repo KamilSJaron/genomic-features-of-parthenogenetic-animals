@@ -1,14 +1,14 @@
 #/bin/bash
 
-# 1, 2 input reads
-# 3 output dir data/<sp>/genomescope
+# 1 input read directory
+# 2 output dir data/<sp>/genomescope
 
-OUTDIR=$3
+OUTDIR=$2
 mkdir -p $OUTDIR
 
 #zcat $1 $2 > $OUTDIR/trimmed_reads.fasta
 
-jellyfish count -C -m 21 -s 1000000000 -t 16 -o $OUTDIR/kmer_counts <(zcat $1 $2)
+jellyfish count -C -m 21 -s 1000000000 -t 16 -o $OUTDIR/kmer_counts <(zcat "$1"/*)
 
 if [[ $(echo $OUTDIR/kmer_counts_* | wc -w) -eq 1 ]]
 then

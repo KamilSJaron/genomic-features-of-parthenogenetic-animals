@@ -28,7 +28,7 @@ with open('tables/download_table.tsv') as tab :
 			species_with_reads.append(sp)
 			for lib in line[3].split(',') :
 				raw_lib_file = 'data/' + sp + '/raw_reads/' + lib + '_1.fastq.gz'
-				trimmed_lib_file = 'data/' + sp + '/trimmed_reads/' + lib + '_trimmed-pair1.fastq.gz'
+				trimmed_lib_file = 'data/' + sp + '/trimmed_reads/' + lib + '-trimmed-pair1.fastq.gz'
 				raw_read_files.append(raw_lib_file)
 				sample_accesions[sp] = sample_accesions.get(sp, []) + [trimmed_lib_file]
 
@@ -151,7 +151,7 @@ rule trim_reads :
 	threads : 8
 	resources : mem=80000000, tmp=150000
 	input : "data/{sp}/raw_reads/{accesion}_1.fastq.gz"
-	output : "data/{sp}/trimmed_reads/{accesion}_trimmed-pair1.fastq.gz"
+	output : "data/{sp}/trimmed_reads/{accesion}-trimmed-pair1.fastq.gz"
 	shell : cluster_script + "scripts/trim_reads.sh data/{wildcards.sp}/raw_reads/{wildcards.accesion}_[1,2].fastq.gz data/{wildcards.sp}/trimmed_reads/{wildcards.accesion}"
 
 rule index_reference :
@@ -236,7 +236,7 @@ rule genome_profiling :
 	resources : mem=64000000, tmp = 60000
 	input : lambda wildcards: sample_accesions[wildcards.sample]
 	output : "data/{sample}/genomescope"
-	shell : cluster_script + "scripts/GenomeScope.sh {input} data/{wildcards.sample}/reads-trimmed-pair2.fastq.gz {output}"
+	shell : cluster_script + "scripts/GenomeScope.sh data/{wildcards.sample}/trimmed_reads {output}"
 
 rule kmer_genome_content :
 	threads : 8
