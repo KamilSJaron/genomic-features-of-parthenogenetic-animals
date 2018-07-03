@@ -8,6 +8,8 @@ An alternative for heterozygosity estimate is bellow
 
 ## heterozygosity by atlas
 
+- [atlas](https://bitbucket.org/phaentu/atlas/wiki/Home) - estimates of heterozygosity between haplotypes using substitution model
+
 The elegant way how to estimate heterozygosity is maximum likelihood, implemented for instance in [atlas package](https://bitbucket.org/phaentu/atlas).
 To estimate heterozygosity one needs to map reads to reference genome and then estimate heterozygosity of the mapped individual.
 The method is not using sequence of the reference, reference is needed only for the alignment of the reads.
@@ -77,4 +79,19 @@ module add UHTS/Analysis/picard-tools/2.2.1
 picard-tools MarkDuplicates INPUT=map_to_Lcla1.bam OUTPUT=map_to_Lcla1_picard_marked.bam METRICS_FILE=picard_metrics.txt
 ```
 
-Yhe results are comparable to samblaster.  0.486266. I can leave it like this.
+The results are comparable to samblaster.  0.486266. I can leave it like this.
+
+# Snakemake notes
+
+I had some decisions and notes I gathered along the way
+
+### Pulling sequencing data using Snakemake
+
+I wrote my own manual puller. However there is an option to use directly `snakemake`. Maybe I should use the native functionality. The problem was that our cluster had an older version without the functionality when I started this project, but it's updated now.
+
+I want to pull data from NCBI and `snakemake` seems to have a module exactly for this. There is a function `snakemake.remote.NCBI` for pulling data from NCBI (here is its [documentation](http://snakemake.readthedocs.io/en/stable/snakefiles/remote_files.html#genbank-ncbi-entrez)). One would probably like to specify `--keep-remote` if this option will be used.
+
+### other flags to consider
+
+- `--cluster-status 'bjobs'` : allow snakemake to look at the status of jobs; ~this is not working on version of snakemake on Vital-it~ it was updated, but for some reason cluster status is not allowed even in version 11
+- `--jobscript cluster_wrapper.sh`
