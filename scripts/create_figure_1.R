@@ -29,14 +29,14 @@ wrap.labels <- function(x, len)
 ############
 
 question_tab <- read.csv(text=gsheet2text("https://docs.google.com/spreadsheets/export?id=1T4BHQxzMGMlWiNJ7G9OLPXzdNBCqMw0mSO7C_ggGEbc&format=csv&gid=1327405223", format='csv'), stringsAsFactors=FALSE)
-question_tab <- question_tab[c(26, 27:30, 1, 3, 2, 20:22, 25, 4:5, 6:8, 19, 9:18, 23, 24),]
 
-question_matrix <- as.matrix(question_tab[,c(3:ncol(question_tab))])
+question_matrix <- as.matrix(question_tab[,c(4:ncol(question_tab))])
 
 convertor <- function(x){
-	if(x == "yes"){
+  x <- substr(x, 1, 1)
+	if(x == "y"){
 		return(1)
-	} else if(x == "no"){
+	} else if(x == "n"){
 		return(0)
 	} else {
 		return(0.5)
@@ -45,10 +45,27 @@ convertor <- function(x){
 
 # sapply(question_tab$species, function(x){expression(italic(x))})
 
-question_matrix <- matrix(sapply(question_matrix, FUN = convertor), nrow = nrow(question_tab))
+# create a matrix of colours
+heat_matrix <- matrix(sapply(question_matrix, FUN = convertor), nrow = nrow(question_tab))
 # transpose and reverse for image
-question_matrix <- apply(question_matrix, 2, rev)
-question_matrix <- t(question_matrix)
+heat_matrix <- apply(heat_matrix, 2, rev)
+heat_matrix <- t(heat_matrix)
+
+# extract references
+ref_matrix <- matrix(sapply(question_matrix, FUN = function(x){ substr(x, 2, max(2, nchar(x))) }), nrow = nrow(question_tab))
+# separate references by , and take unique list
+ref_list <- unique(unlist(strsplit(ref_matrix, ',')))
+ref_tags <- lapply(1:length(ref_list), print)
+names(ref_tags) <- ref_list
+
+# substitute ref with a key
+for(ref in ref_list){
+  ref_matrix <- gsub(ref, ref_tags[ref], ref_matrix)
+}
+
+# nicer formating ( [] around and space after comma)
+ref_matrix <- matrix(sapply(ref_matrix, FUN = function(x){ if(x != ""){ paste0('[', x, ']') } else { return("") } }), nrow = nrow(ref_matrix))
+ref_matrix <- gsub(",", ", ", ref_matrix)
 
 ########
 # plot #
@@ -57,10 +74,10 @@ question_matrix <- t(question_matrix)
 pdf('figures/fig1_genomic_studies.pdf', width=12, height=8)
 
 # I will need space on the left side of the plot and above
-par(mar = c(0, 7.5, 5.5, 0) + 0.1)
+par(mar = c(0, 7.5, 4.5, 0) + 0.1)
 
 # this will plot the hearmap but also keep the scale of the image (columns 1 .. questions and rows 1 .. sequenced genomes)
-image(seq(dim(question_matrix)[1]), seq(dim(question_matrix)[2]), question_matrix,
+image(seq(dim(heat_matrix)[1]), seq(dim(heat_matrix)[2]), heat_matrix,
 col=pal, xaxt="n", yaxt="n", ylab="", xlab="")
 
 # species names, the space in the end of each sp names is just for nice alignment
@@ -68,10 +85,14 @@ sp_labels <- lapply(paste0(question_tab$species, " "), function(x){bquote(italic
 mtext(do.call(expression, sp_labels), side = 2, at = rev(1:nrow(question_tab)), las = 1)
 
 # names are taken from columns, but with spaces instead of periods
-topics <- gsub("\\.", " ", colnames(question_tab)[3:ncol(question_tab)])
-text(1:ncol(question_tab), par("usr")[4] + 2.3, wrap.labels(topics, 10), srt = 45, xpd = TRUE)
+topics <- gsub("\\.", " ", colnames(question_tab)[4:ncol(question_tab)])
+text(1:ncol(question_tab), par("usr")[4] + 1.55, wrap.labels(topics, 10), srt = 45, xpd = TRUE)
 
 # create a black box around
 box()
+
+for(line in nrow(ref_matrix):1){
+  text(1:ncol(ref_matrix), line - 0.5, ref_matrix[24 - line,], pos = 3, cex = 0.7)
+}
 
 dev.off()
