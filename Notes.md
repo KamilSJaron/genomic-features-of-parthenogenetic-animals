@@ -1,22 +1,27 @@
-# TODO
+# Notes
 
-- parse MUMmer output
-- run dnaPipeTE for other species (it does on work on cluster, why??)
+## Reference ploidy and heterozygosity
 
-# TODO ??
+We use kmer-profiles to estimate genome sizes, and heterozygosity estimates (genomescope). The model already works for diploids, the polyploid solution is currently developed and done by collaborators.
 
-- palindromes -> too little data for MScanX, get the from MUMmer output??
-- ? Blobology (check amounts of contaminations in assemblies)
-- find data/$*/trimmed_reads/ -name "*.fq.gz" -exec scripts/generic_genomics/fastq.gz2number_of_nt.sh {} \; > $@
-- *triploid heterozygosity* -> look at the subsection bellow
+An alternative for heterozygosity estimate is bellow
 
-### reference ploidy problem
+## heterozygosity by atlas
 
-Haploid / diploid / polyploid reference will for sure affect heterozygosity calls using atlas.
+The elegant way how to estimate heterozygosity is maximum likelihood, implemented for instance in [atlas package](https://bitbucket.org/phaentu/atlas).
+To estimate heterozygosity one needs to map reads to reference genome and then estimate heterozygosity of the mapped individual.
+The method is not using sequence of the reference, reference is needed only for the alignment of the reads.
+The likelihood is calculated using quality scores of individual bases that were sequenced. The model is currently diploid.
 
-#### Coverage solution
+We did not used this method in the end.
+The reason is because there are couple of potential problem if the reference is not of high quality:
 
-One think we can look at is correlation of coverage and estimated heterozygosity to figure out if high heterozygosity locations are separated regions collapsed during genome assembly.
+ - some of the paralogs will be collapsed into one sequence (creating artificially heterozygous region)
+ - some of the alternative haplotypes get separately assembled (creating two artificially homozygous regions)
+ - some of the genomes in this review are not diploid
+ - Illumina is overestimating quality scores a lot and it's not streightforward to recalibrate them without other knowledge of genomes (location of conserved loci, known haploid regions like sex chromosomes or mtDNA)
+
+ However, we spent some time thinking about this problems therefore here are some thoughts we had:
 
 ### Softmask references
 
@@ -33,6 +38,10 @@ OR
 OR
 
 - use Jens' TE prediction with Repeat Masker
+
+### Coverage solution
+
+One think we can look at is correlation of coverage and estimated heterozygosity to figure out if high heterozygosity locations are separated regions collapsed during genome assembly.
 
 ### Recalibration
 
@@ -51,8 +60,6 @@ We can estimate two thetas instead of one (one corresponding to divergence betwe
 
 - This model require trustworthy triploid mapping
 - should not be constructed if problems above won't be resolved
-
-# Notes
 
 ### Marking duplicates
 
