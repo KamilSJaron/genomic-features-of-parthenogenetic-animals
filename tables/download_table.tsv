@@ -2,7 +2,7 @@ code	species	genome	reads	annotation
 Obir1	Ooceraea_biroi	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Ooceraea_biroi/latest_assembly_versions/GCF_000611835.1_CerBir1.0/GCF_000611835.1_CerBir1.0_genomic.fna.gz	SRR1192097	ftp://ftp.ncbi.nlm.nih.gov/genomes/Cerapachys_biroi/GFF/ref_CerBir1.0_top_level.gff3.gz
 Avag1	Adineta_vaga	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/513/175/GCA_000513175.1_AMS_PRJEB1171_v1/GCA_000513175.1_AMS_PRJEB1171_v1_genomic.fna.gz	SRR801084	http://www.genoscope.cns.fr/adineta/data/Adineta_vaga.v2.gff3
 Fcan1	Folsomia_candida	ftp.ncbi.nlm.nih.gov/genomes/all/GCF/002/217/175/GCF_002217175.1_ASM221717v1/GCF_002217175.1_ASM221717v1_genomic.fna.gz	SRR2743547	ftp://ftp.ncbi.nlm.nih.gov/genomes/Folsomia_candida/GFF/ref_ASM221717v1_top_level.gff3.gz
-Lcla1	Leptopilina_clavipes	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/855/655/GCA_001855655.1_ASM185565v1/GCA_001855655.1_ASM185565v1_genomic.fna.gz	SRR921610	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/855/655/GCA_001855655.1_ASM185565v1/GCA_001855655.1_ASM185565v1_genomic.gff.gz
+Lcla1	Leptopilina_clavipes	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/855/655/GCA_001855655.1_ASM185565v1/GCA_001855655.1_ASM185565v1_genomic.fna.gz	SRR7028347 ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/855/655/GCA_001855655.1_ASM185565v1/GCA_001855655.1_ASM185565v1_genomic.gff.gz
 Dcor1	Diploscapter_coronatus	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/207/785/GCA_002207785.1_ASM220778v1/GCA_002207785.1_ASM220778v1_genomic.fna.gz	DRR029945	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/207/785/GCA_002207785.1_ASM220778v1/GCA_002207785.1_ASM220778v1_genomic.gff.gz
 Dpac1	Diploscapter_pachys	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/287/525/GCA_002287525.1_DipSp1Ass11Ann3/GCA_002287525.1_DipSp1Ass11Ann3_genomic.fna.gz	manual	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/207/785/GCA_002207785.1_ASM220778v1/GCA_002207785.1_ASM220778v1_genomic.gff.gz
 Pdav1	Panagrolaimus_davidiDAW1	NA	NA	NA
@@ -22,7 +22,7 @@ Pant1	Potamopyrgus_antipodarum	NA	NA	NA
 Dpul1	Daphnia_pulex	http://daphniagenomes.org/sites/default/files/Daphnia_pulex_PA42_v3.0.fasta	NA	NA
 Dpul2	Daphnia_pulex	NA	SRR2148392	NA
 Dpul3	Daphnia_pulex	NA	SRR2148389	NA
-Hduj1	Hypsibius_dujardini	http://download.tardigrades.org/v1/sequence/Hypsibius_dujardini_nHd.3.1.5.scaffolds.fa.gz	ERR1147178	http://download.tardigrades.org/v1/features/Hypsibius_dujardini_nHd.3.1.5.gff3.gz
+Hduj1	Hypsibius_dujardini	http://download.tardigrades.org/v1/sequence/Hypsibius_dujardini_nHd.3.1.5.scaffolds.fa.gz	ERR1147177,ERR1147178	http://download.tardigrades.org/v1/features/Hypsibius_dujardini_nHd.3.1.5.gff3.gz
 Rvar1	Ramazzottius_varieornatus	http://download.tardigrades.org/v1/sequence/Ramazzottius_varieornatus_Rv101.scaffolds.fa.gz	DRR013910	http://download.tardigrades.org/v1/features/Ramazzottius_varieornatus_Rv101.gff3.gz
 Pvir1	Procambarus_virginalis	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/838/885/GCA_002838885.1_Pvir0.4/GCA_002838885.1_Pvir0.4_genomic.fna.gz	SRR5115148,SRR5115143,SRR5115145,SRR5115147,SRR5115146,SRR5115144	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/838/885/GCA_002838885.1_Pvir0.4/GCA_002838885.1_Pvir0.4_genomic.gff.gz
 Pfor1	Poecilia_formosa	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/485/575/GCA_000485575.1_Poecilia_formosa-5.1.2/GCA_000485575.1_Poecilia_formosa-5.1.2_genomic.fna.gz	SRR835658	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/485/575/GCA_000485575.1_Poecilia_formosa-5.1.2/GCA_000485575.1_Poecilia_formosa-5.1.2_genomic.gff.gz
