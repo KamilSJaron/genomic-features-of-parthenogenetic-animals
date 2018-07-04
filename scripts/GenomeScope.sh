@@ -8,7 +8,7 @@ mkdir -p $OUTDIR
 
 #zcat $1 $2 > $OUTDIR/trimmed_reads.fasta
 
-jellyfish count -C -m 21 -s 1000000000 -t 16 -o $OUTDIR/kmer_counts <(zcat "$1"/*)
+jellyfish count -C -m 21 -s 1000000000 -t 16 -o $OUTDIR/kmer_counts <(zcat "$1"/*.fastq.gz)
 
 if [[ $(echo $OUTDIR/kmer_counts_* | wc -w) -eq 1 ]]
 then

@@ -55,6 +55,7 @@ mv "$OUTPUT" "$SHARED_DIR"/"$OUTPUT"
 
 rm "$READ_DIR"/all_reads.fastq.gz
 rm -r "$SP_DIR"/temp
+rmdir "$SP_DIR"/trimmed_reads
 rmdir "$SP_DIR"
 
 printf "****DONE****\n"

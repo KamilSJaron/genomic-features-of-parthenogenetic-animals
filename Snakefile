@@ -240,7 +240,7 @@ rule genome_profiling :
 
 rule kmer_genome_content :
 	threads : 8
-	resources : mem=32000000, tmp = 60000
+	resources : mem=64000000, tmp = 60000
 	input : lambda wildcards: sample_accesions[wildcards.sample], "data/{sample}/genome.fa.gz"
 	output : "data/{sample}/KAT"
-	shell : cluster_script + "scripts/KAT.sh {wildcards.sample} {input} data/{wildcards.sample}/trimmed_reads {output}"
+	shell : cluster_script + "scripts/KAT.sh {wildcards.sample} data/{wildcards.sample}/trimmed_reads data/{wildcards.sample}/genome.fa.gz {output}"
