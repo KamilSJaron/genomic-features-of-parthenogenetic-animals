@@ -11,6 +11,7 @@ species_with_annotation = []
 
 raw_read_files = []
 sample_accesions = dict()
+busco_refs = dict()
 
 with open('tables/download_table.tsv') as tab :
 	tab.readline()
@@ -33,6 +34,9 @@ with open('tables/download_table.tsv') as tab :
 				sample_accesions[sp] = sample_accesions.get(sp, []) + [trimmed_lib_file]
 
 species_with_reads_and_genomes = [sp for sp in species_with_reads if sp in species_with_genomes]
+
+for sp in ["Dcor1", "Dpac1", "Minc1", "Minc2", "Minc3", "Mjav1", "Mjav2", "Mare1", "Mare2", "Mflo1", "Mflo2", "Ment1", "Pdav1", "Ps591"]:
+	busco_refs[sp] = 'data/busco_ref/nematoda_odb9'
 
 # all_samples are unique values in array of merged samples with reads and genome
 all_samples = list(set(species_with_genomes + species_with_reads))
@@ -202,19 +206,19 @@ rule plot_all :
 rule run_busco :
 	threads : 16
 	resources : mem=32000000, tmp=50000
-	input : "data/{sp}/genome.fa.gz", "data/busco_ref/metazoa_odb9"
+	input : "data/{sp}/genome.fa.gz", lambda wildcards: busco_refs.get(wildcards.sp, "data/busco_ref/metazoa_odb9")
 	output : "data/{sp}/busco"
 	shell : cluster_script + "scripts/busco.sh {input} {output}"
 
 rule get_busco_reference :
 	threads : 1
 	resources : mem=1000000, tmp=10000
-	output : "data/busco_ref/metazoa_odb9"
+	output : "data/busco_ref/{reference}_odb9"
 	shell : """
 		mkdir -p data/busco_ref && cd data/busco_ref
-		wget http://busco.ezlab.org/datasets/metazoa_odb9.tar.gz
-		tar -zxf metazoa_odb9.tar.gz
-		rm metazoa_odb9.tar.gz
+		wget http://busco.ezlab.org/datasets/{wildcards.reference}_odb9.tar.gz
+		tar -zxf {wildcards.reference}_odb9.tar.gz
+		rm {wildcards.reference}_odb9.tar.gz
 	"""
 
 rule genome_stats :
