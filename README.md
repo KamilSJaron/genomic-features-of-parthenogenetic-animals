@@ -8,22 +8,11 @@ This review aims to put them in a line taking this bias into account and unify a
 
 List of performed analysis :
 
-- estimates of heterozygosity between haplotypes using substitution model (atlas)
-
-List of potential analysis :
-
-- BUSCO
-- Blobology
-- classification of repeats
-- analysis of palindromes
-
-## What should be in this repository
-
-- scripts for downloading, processing and analyzing asexual genomes
-- a small table of analyzed asexual genomes, their code names and urls for downloading
-- one big table -> an overview of all the asexual genomes
-- other small summary tables of computationally intensive tasks
-- the paper
+- [GenomeScope](https://github.com/schatzlab/genomescope) `dev` - genome profiling from kmer spectra of sequencing reads - estimates of genome size, heterozygosity and repetitive content
+- [KAT](https://github.com/TGAC/KAT) `2.4.1` - kmer spectra analysis in context of genome assembly - resolving how much are individual haplotypes collapsed in the assembly
+- [MUMmer](https://github.com/mummer4/mummer/blob/master/MANUAL.md) `v4.0.0beta2` - genome self-alignment - evaluation of genome structure
+- [dnaPipeTE](https://github.com/clemgoub/dnaPipeTE) `v1.2` - evaluation of repetitive content using sequencing reads
+- [BUSCO](https://busco.ezlab.org/) `v3` - benchmarking using single copy orthologs - evaluation of unusual conserved gene content
 
 ## Sample labels
 
@@ -33,23 +22,20 @@ The labels of genomes are composed of **G**enus and **spe**cies name `Gspe`. Som
 
 ## Development
 
-The analysis will be automated using `snakemake`, mainly because I would like to try it.
-I will probably use combination of `python`, `bash` and `R`.
-Details about all used software and versions should be recored here.
+**What should be in this repository:**
 
-I want to pull data from NCBI and `snakemake` seems to have a module exactly for this. There is a function `snakemake.remote.NCBI` for pulling data from NCBI (here is its [documentation](http://snakemake.readthedocs.io/en/stable/snakefiles/remote_files.html#genbank-ncbi-entrez)).
+- scripts for downloading, processing and analyzing asexual genomes
+- a small table of analyzed asexual genomes, their code names and urls for downloading
+- one big table -> an overview of all the asexual genomes
+- other small summary tables of computationally intensive tasks
+- the paper
+
+The analysis is automated using [snakemake](https://snakemake.readthedocs.io/en/stable/), tested with version `4.8.0`.
+The scripts for analysis are combination of `bash`, `R` anf `python`.
 
 ## Vital-it execution
 
-I will try to use already installed version. However it's not the most recent one.
-
-```
-module add Utility/snakemake/3.11.2
-```
-
-seems to be working. However, one have to pay attention to - be in a directory that is accessible from everywhere, no scratch local!
-
-cluster vital-it command :
+I wrote a [wrapper](snakemake_clust.sh) around snakemake so it understands our cluster. Then the execution is
 
 ```
 ./snakemake_clust.sh {target} {other_flags} {other_flags} ...
@@ -61,12 +47,6 @@ to run default with other flags you can run
 ./snakemake_clust.sh " " {other_flags} {other_flags} ...
 ```
 
-other flags to consider / test :
-
-- `--cluster-status 'bjobs'` : allow snakemake to look at the status of jobs; ~this is not working on version of snakemake on Vital-it~ it was updated, but for some reason cluster status is not allowed even in version 11
-- `--jobscript cluster_wrapper.sh`
-- `--keep-remote`
-
 ### Execution of different cluster
 
 `Snakefile` has no hardcoded any cluster-specific parameters. The resources should be accessed as `{resources.mem}` for memory in kilobytes, `{resources.tmp}` for needed local storage in megabytes and `{threads}` for number of used cores. The command used for cluster execution is stored in a bash wrapper `snakemake_clust.sh`. Modify this script as needed to work with syntax of your cluster. It uses environmental variable `USE_LOCAL` to access if computations should be performed on local disks of computational nodes or not (the job wrapper is `scripts/use_local.sh` and it might need to be adjusted to different cluster settings, now it's set for lsf).
@@ -77,21 +57,21 @@ The very last think to look at are program dependencies. These are actually hard
 
 I know it sounds that there is a lot of things to do for reproduction of this analysis. However, I tried my best to combine reproducibility and good computational practice (like using local storage). I will wonk on that.
 
-## other notes
+## Snakemake hints
 
-apparently I can produce a graph of the workflow :
+apparently I can produce a graph of the workflow (it's really pretty) :
 
 ```
 snakemake --forceall --dag | dot -Tpng > dag1.png
 ```
 
-Snakemake version of `make clean` is
+Snakemake version of `make clean` (removed all downloaded and coputed data) is
 
 ```
 rm $(snakemake --summary | tail -n+2 | cut -f1)
 ```
 
-Snakemake version of GNU make dry run is
+Snakemake version of GNU make dry run (show commands, don't execute them) is
 
 ```
 snakemake -p --quiet -n
