@@ -4,47 +4,64 @@
 
 # table to update
 tab_file <- 'tables/genome_table.tsv'
-genome_tab <- read.table(tab_file, header = T, stringsAsFactors = F, skip = 1)
+genome_tab <- read.table(tab_file, header = T, stringsAsFactors = F, skip = 1, check.names = F)
 # following line corrects names that are automatically replaced when R loads the table
-colnames(genome_tab)[c(3:5, 13)] <- c('assembly_size[M]', 'number_of_scaffolds[k]', 'N50[k]', 'haploid_length[M]')
+# colnames(genome_tab)[c(3:5, 13)] <- c('assembly_size[M]', 'number_of_scaffolds[k]', 'N50[k]', 'haploid_length[M]')
 # download table for cases if there is a new organism
 dl_table <- read.table('tables/download_table.tsv', header = T, row.names = 1, stringsAsFactors = F)
 
+sp_with_reads <- rownames(dl_table)[!is.na(dl_table$reads)]
+sp_with_genomes <- rownames(dl_table)[!is.na(dl_table$genome)]
+
 #####################################################
 # ASSEMBLY STATS ( scripts/fasta2genomic_stats.py ) #
-#	assembly_size number_of_scaffolds N50           #
+#    assembly_size number_of_scaffolds N50           #
 #####################################################
 
-stat_files <- list.files(path = "data", pattern = "genome.stats", recursive = T, include.dirs = T)
-stat_files <- paste('data', stat_files, sep = '/')
+checkFiles <- function(.files, .type){
+    files_exists <- file.exists(.files)
+    if( !all(files_exists) ){
+        warning(paste("missing ", .type, "files:\n", paste('\t\t\t\t', .files[!files_exists], collapse = '\n')))
+        .files <- .files[files_exists]
+    }
+    return(.files)
+}
+
+stat_files <- paste("data", sp_with_genomes, "genome.stats", sep = "/")
+stat_files <- checkFiles(stat_files, 'stats')
 
 expand_table_if_needed <- function(.sp, .genome_tab){
-	row <- .sp == .genome_tab$code
-	row[is.na(row)] <- FALSE
-	if ( ! any(row) ){
-		row <- nrow(.genome_tab) + 1
-		.genome_tab[row, ] <- NA
-		.genome_tab[row, 'code'] <- .sp
-		# fill full latin names from download table : 'tables/download_table.tsv'
-		.genome_tab[row, 'species'] <- dl_table[sp,'species']
-	}
-	return(.genome_tab)
+    row <- .sp == .genome_tab$code
+    row[is.na(row)] <- FALSE
+    if ( ! any(row) ){
+        row <- nrow(.genome_tab) + 1
+        .genome_tab[row, ] <- NA
+        .genome_tab[row, 'code'] <- .sp
+        # fill full latin names from download table : 'tables/download_table.tsv'
+        .genome_tab[row, 'species'] <- dl_table[sp,'species']
+    }
+    return(.genome_tab)
 }
 
 get_value <- function(line){
-	as.numeric(strsplit(stat_lines[line], '\t')[[1]][[2]])
+    as.numeric(strsplit(stat_lines[line], '\t')[[1]][[2]])
+}
+
+# function that unlists strsplit
+ssplit <- function (s, split = "="){
+    unlist(strsplit(s, split = split))
 }
 
 for(stat_file in stat_files){
-	sp <- strsplit(stat_file, "/")[[1]][2]
-	genome_tab <- expand_table_if_needed(sp, genome_tab)
-	row <- sp == genome_tab$code
+    sp <- ssplit(stat_file, "/")[2]
+    genome_tab <- expand_table_if_needed(sp, genome_tab)
+    row <- sp == genome_tab$code
 
-	stat_lines <- readLines(stat_file)
+    stat_lines <- readLines(stat_file)
 
-	genome_tab[row, 'assembly_size[M]'] <- round(get_value(1) / 1000000, 1)
-	genome_tab[row, 'number_of_scaffolds[k]'] <- round(get_value(2) / 1000, 1)
-	genome_tab[row, 'N50[k]'] <- round(get_value(7) / 1000, 1)
+    genome_tab[row, 'assembly_size[M]'] <- round(get_value(1) / 1000000, 1)
+    genome_tab[row, 'number_of_scaffolds[k]'] <- round(get_value(2) / 1000, 1)
+    genome_tab[row, 'N50[k]'] <- round(get_value(7) / 1000, 1)
 }
 
 #############################################
@@ -52,28 +69,25 @@ for(stat_file in stat_files){
 # TEs other_repeats all_repeats             #
 #############################################
 
-TE_files <- list.files(path = "data", pattern = "Counts.txt", recursive = T, include.dirs = T)
+TE_files <- paste("data", sp_with_reads, "dnaPipeTE/Counts.txt", sep = "/")
+TE_files <- checkFiles(TE_files, 'TEs')
 
 for(TE_file in TE_files){
-	sp <- strsplit(TE_file, "/")[[1]][1]
-	genome_tab <- expand_table_if_needed(sp, genome_tab)
-	row <- sp == genome_tab$code
+    sp <- ssplit(TE_file, "/")[2]
+    genome_tab <- expand_table_if_needed(sp, genome_tab)
+    row <- sp == genome_tab$code
 
-	TEs <- read.table(paste0('data/',TE_file))
+    TEs <- read.table(TE_file)
 
-	genome_tab[row,'TEs'] <- round(sum(TEs[1:6,'V2']) / TEs[nrow(TEs),'V2'], 3) * 100
-	genome_tab[row,'other_repeats'] <- round(sum(TEs[7:12,'V2']) / TEs[nrow(TEs),'V2'], 3) * 100
-	genome_tab[row,'all_repeats'] <- round(sum(TEs[-nrow(TEs),'V2']) / TEs[nrow(TEs),'V2'], 3) * 100
+    genome_tab[row,'TEs'] <- round(sum(TEs[1:6,'V2']) / TEs[nrow(TEs),'V2'], 3) * 100
+    genome_tab[row,'other_repeats'] <- round(sum(TEs[7:12,'V2']) / TEs[nrow(TEs),'V2'], 3) * 100
+    genome_tab[row,'all_repeats'] <- round(sum(TEs[-nrow(TEs),'V2']) / TEs[nrow(TEs),'V2'], 3) * 100
 }
 
 #############################################
 # BUSCO ( scripts/busco.sh )                #
 # complete duplicated fragmented missing    #
 #############################################
-
-ssplit <- function (s, split = "="){
-    unlist(strsplit(s, split = split))
-}
 
 read_busco <- function(busco_file){
     if( is.na(busco_file) ){
@@ -82,21 +96,22 @@ read_busco <- function(busco_file){
     busco_file <- readLines(busco_file)
     total_genes <- as.numeric(ssplit(busco_file[15], '\t')[2])
     bscores <- c(complete = as.numeric(ssplit(busco_file[10], '\t')[2]),
-	             fragmented = as.numeric(ssplit(busco_file[13], '\t')[2]),
+                 fragmented = as.numeric(ssplit(busco_file[13], '\t')[2]),
                  duplicated = as.numeric(ssplit(busco_file[12], '\t')[2]),
                  missing = as.numeric(ssplit(busco_file[14], '\t')[2]))
     bscores <- round(100 * (bscores / total_genes), 2)
     return(bscores)
 }
 
-busco_files <- list.files(path = ".", pattern = "short_summary", recursive = T, include.dirs = T)
+busco_files <- paste("data", sp_with_genomes, "busco/short_summary_busco.txt", sep = "/")
+busco_files <- checkFiles(busco_files, 'busco')
 
 for(busco_file in busco_files){
-	sp <- strsplit(busco_file, "/")[[1]][2]
-	genome_tab <- expand_table_if_needed(sp, genome_tab)
-	row <- sp == genome_tab$code
+    sp <- strsplit(busco_file, "/")[[1]][2]
+    genome_tab <- expand_table_if_needed(sp, genome_tab)
+    row <- sp == genome_tab$code
 
-	genome_tab[row, c('complete', 'fragmented', 'duplicated', 'missing')] <- read_busco(busco_file)
+    genome_tab[row, c('complete', 'fragmented', 'duplicated', 'missing')] <- read_busco(busco_file)
 }
 
 ####################################
@@ -114,7 +129,7 @@ for(busco_file in busco_files){
 parse_genomescope_summary <- function(file){
     genoscope_file <- readLines(file)
     line <- ssplit(genoscope_file[5], ' ')
-	het_string <- line[line != ''][3]
+    het_string <- line[line != ''][3]
     heterozygosity <- as.numeric(substr(het_string, 0, nchar(het_string) - 1))
 
     line <- ssplit(genoscope_file[6], ' ')
@@ -123,22 +138,22 @@ parse_genomescope_summary <- function(file){
     line <- ssplit(genoscope_file[7], ' ')
     repeats <- (as.numeric(gsub(",", "", line[line != ''][6])) * 100) / haploid_genome
 
-	if( heterozygosity == -100 ){
-		return( c(NA, NA, NA) )
-	} else {
-		return( c(round(haploid_genome / 1e6, 1), round(repeats, 2), round(heterozygosity, 2)) )
-	}
+    if( heterozygosity == -100 ){
+        return( c(NA, NA, NA) )
+    } else {
+        return( c(round(haploid_genome / 1e6, 1), round(repeats, 2), round(heterozygosity, 2)) )
+    }
 }
 
-genomescope_files <- list.files(path = "data", pattern = "summary.txt", recursive = T, include.dirs = T)
-genomescope_files <- paste('data', genomescope_files, sep = '/')
+genomescope_files <- paste("data", sp_with_reads, "genomescope/summary.txt", sep = "/")
+genomescope_files <- checkFiles(genomescope_files, 'genomescope')
 
 for(genomescope_file in genomescope_files){
-	sp <- strsplit(genomescope_file, "/")[[1]][2]
-	genome_tab <- expand_table_if_needed(sp, genome_tab)
-	row <- sp == genome_tab$code
+    sp <- ssplit(genomescope_file, "/")[2]
+    genome_tab <- expand_table_if_needed(sp, genome_tab)
+    row <- sp == genome_tab$code
 
-	genome_tab[row, c('haploid_length[M]', 'repeats', 'heterozygosity')] <- parse_genomescope_summary(genomescope_file)
+    genome_tab[row, c('haploid_length[M]', 'repeats', 'heterozygosity')] <- parse_genomescope_summary(genomescope_file)
 }
 
 ######################
@@ -148,17 +163,17 @@ for(genomescope_file in genomescope_files){
 # soring rows
 desired_order <- c('Pfor1',
                    'Avag1', 'Aric1', 'Rmac1', 'Rmag1',
-				   'Lcla1', 'Cbir1', 'Fcan1',
-				   'Pvir1', 'Dpul1',
-				   'Pdav1', 'Dcor1', 'Dpac1', 'Minc1', 'Minc2', 'Minc3', 'Mjav1', 'Mjav2', 'Mare1', 'Mare2', 'Mflo1', 'Mflo2', 'Ment1',
-				   'Hduj1', 'Rvar1')
+                   'Lcla1', 'Tpre1', 'Obir1', 'Aruf1', 'Fcan1',
+                   'Pvir1', 'Dpul1', 'Dpul2', 'Dpul3',
+                   'Ps591', 'Dcor1', 'Dpac1', 'Minc1', 'Minc2', 'Minc3', 'Mjav1', 'Mjav2', 'Mare1', 'Mare2', 'Mflo1', 'Mflo2', 'Ment1',
+                   'Hduj1', 'Rvar1')
 if ( length(desired_order) == nrow(genome_tab) ){
-	row.names(genome_tab) <- genome_tab$code
-	genome_tab <- genome_tab[desired_order, ]
+    row.names(genome_tab) <- genome_tab$code
+    genome_tab <- genome_tab[desired_order, ]
 } else {
-	cat('There are species in the table with unknown position by the hand-made-order in this script.\n')
-	cat('namely : ')
-	cat( genome_tab$code[ !genome_tab$code %in% desired_order] )
+    cat('There are species in the table with unknown position by the hand-made-order in this script.\n')
+    cat('namely : ')
+    cat( genome_tab$code[ !genome_tab$code %in% desired_order] )
 }
 
 # sorting columns

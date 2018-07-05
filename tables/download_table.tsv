@@ -32,3 +32,4 @@ Rmag1	Rotaria_magnacalcarata	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/239/
 Aruf1	Aptinothrips_rufus	manual	manual	NA
 Tpre1	Trichogramma_pretiosum	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/599/845/GCA_000599845.2_Tpre_1.0/GCA_000599845.2_Tpre_1.0_genomic.fna.gz	SRR1191749	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/599/845/GCA_000599845.2_Tpre_1.0/GCA_000599845.2_Tpre_1.0_genomic.gff.gz
 Anan1	Acrobeloides_nanus	NA	NA	NA
+Psam1	Plectus_sambesii	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/796/945/GCA_002796945.1_Psam_v1.0/GCA_002796945.1_Psam_v1.0_genomic.fna.gz	NA	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/796/945/GCA_002796945.1_Psam_v1.0/GCA_002796945.1_Psam_v1.0_genomic.gff.gz
