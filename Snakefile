@@ -132,13 +132,6 @@ rule download_genome :
 	output : "data/{sp}/genome.fa.gz"
 	shell : cluster_script + "scripts/download_data.sh {wildcards.sp} genome tables/download_table.tsv {output}"
 
-# TODO calculate proteins
-# rule download_proteins :
-# 	threads : 1
-# 	resources : mem=2000000, tmp=3000
-# 	output : "data/{sp}/proteins.fa.gz"
-# 	shell : cluster_script + "scripts/download_data.sh {wildcards.sp} proteins tables/download_table.tsv {output}"
-
 rule download_annotation :
 	threads : 1
 	resources : mem=2000000, tmp=3000
@@ -248,3 +241,10 @@ rule kmer_genome_content :
 	input : lambda wildcards: sample_accesions[wildcards.sample], "data/{sample}/genome.fa.gz"
 	output : "data/{sample}/KAT"
 	shell : cluster_script + "scripts/KAT.sh {wildcards.sample} data/{wildcards.sample}/trimmed_reads data/{wildcards.sample}/genome.fa.gz {output}"
+
+rule colinearity_analysis :
+	threads : 16
+	resources : mem=64000000, tmp=60000
+	input : "data/{sample}/genome.fa.gz", "data/{sample}/annotation.gff3.gz"
+	output : "data/{sample}/MCScanX"
+	shell : cluster_script + "scripts/MCScanX_palindromes.sh {wildcards.sample} {input} {output}"
