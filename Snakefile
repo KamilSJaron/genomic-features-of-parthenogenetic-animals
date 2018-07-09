@@ -35,7 +35,7 @@ with open('tables/download_table.tsv') as tab :
 
 species_with_reads_and_genomes = [sp for sp in species_with_reads if sp in species_with_genomes]
 
-for sp in ["Dcor1", "Dpac1", "Minc1", "Minc2", "Minc3", "Mjav1", "Mjav2", "Mare1", "Mare2", "Mflo1", "Mflo2", "Ment1", "Pdav1", "Ps591"]:
+for sp in ["Dcor1", "Dpac1", "Minc1", "Minc2", "Minc3", "Mjav1", "Mjav2", "Mare1", "Mare2", "Mflo1", "Mflo2", "Ment1", "Pdav1", "Ps591", "Psam1"]:
 	busco_refs[sp] = 'data/busco_ref/nematoda_odb9'
 
 # all_samples are unique values in array of merged samples with reads and genome
