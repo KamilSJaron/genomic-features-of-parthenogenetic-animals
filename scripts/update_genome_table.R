@@ -219,7 +219,7 @@ genome_tab <- genome_tab[, c('code', 'species', 'reproduction_mode', 'hybrid_ori
 
 ######################
 
-extra_header <- c(rep('-', 2), 'assembly', rep('-', 2), 'BUSCO', rep('-', 3), 'GenomeScope', rep('-', 2), 'dnaPipeTE', rep('-', 2) )
+extra_header <- c(rep('-', 5), 'assembly', rep('-', 2), 'BUSCO', rep('-', 3), 'GenomeScope', rep('-', 2), 'dnaPipeTE', rep('-', 2) )
 asm_template <- matrix(ncol = length(extra_header))
 colnames(asm_template) <- extra_header
 header <- as.data.frame(asm_template)[FALSE, ]
