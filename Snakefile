@@ -92,6 +92,9 @@ rule calculate_heterozygosity_using_kmers :
 rule calculate_genome_kmer_content :
 	input : expand("data/{sp}/KAT", sp=species_with_reads_and_genomes)
 
+rule calculate_colinearity :
+	input : expand("data/{sp}/MCScanX", sp=species_with_genomes)
+
 ## calculate_genome_stats : calculate genome length, N50 and number of contigs of all genomes
 rule calculate_genome_stats :
 	input : genome_stat_files
