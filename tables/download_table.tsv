@@ -15,6 +15,7 @@ Mjav1	Meloidogyne_javanica	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/003/94
 Mjav2	Meloidogyne_javanica	https://github.com/HullUni-bioinformatics/MIG-Phylogenomics/blob/master/meloidogyne_assemblies/mjavanica_gapClosed.fa.gz?raw=true	SRR4242459	NA
 Mare1	Meloidogyne_arenaria	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/003/985/GCA_900003985.1_ASM90000398v1/GCA_900003985.1_ASM90000398v1_genomic.fna.gz	NA	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/003/985/GCA_900003985.1_ASM90000398v1/GCA_900003985.1_ASM90000398v1_genomic.gff.gz
 Mare2	Meloidogyne_arenaria	https://github.com/HullUni-bioinformatics/MIG-Phylogenomics/blob/master/meloidogyne_assemblies/HarA_gapClosed.fa.gz?raw=true	SRR4242468	NA
+Mare3	Meloidogyne_arenaria	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/003/133/805/GCA_003133805.1_ASM313380v1/GCA_003133805.1_ASM313380v1_genomic.fna.gz	NA	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/003/133/805/GCA_003133805.1_ASM313380v1/GCA_003133805.1_ASM313380v1_genomic.gff.gz
 Mflo1	Meloidogyne_floridensis	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/751/915/GCA_000751915.1_nMf_1_1/GCA_000751915.1_nMf_1_1_genomic.fna.gz	ERR104974	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/751/915/GCA_000751915.1_nMf_1_1/GCA_000751915.1_nMf_1_1_genomic.gff.gz
 Mflo2	Meloidogyne_floridensis	https://github.com/HullUni-bioinformatics/MIG-Phylogenomics/blob/master/meloidogyne_assemblies/MfloSJ1.scf.fasta.gz?raw=true	SRR4242475	NA
 Ment1	Meloidogyne_enterolobii	https://github.com/HullUni-bioinformatics/MIG-Phylogenomics/blob/master/meloidogyne_assemblies/Ent_gapClosed.fa.gz?raw=true	SRR4242473	NA
@@ -22,6 +23,8 @@ Pant1	Potamopyrgus_antipodarum	NA	NA	NA
 Dpul1	Daphnia_pulex	http://daphniagenomes.org/sites/default/files/Daphnia_pulex_PA42_v3.0.fasta	NA	NA
 Dpul2	Daphnia_pulex	NA	SRR2148392	NA
 Dpul3	Daphnia_pulex	NA	SRR2148389	NA
+Dpul2	Daphnia_pulex	NA	SRR7516827,SRR7519633,SRR7519634,SRR7519635	NA
+Dpul3	Daphnia_pulex	NA	SRR7516535	NA
 Hduj1	Hypsibius_dujardini	http://download.tardigrades.org/v1/sequence/Hypsibius_dujardini_nHd.3.1.5.scaffolds.fa.gz	ERR1147177,ERR1147178	http://download.tardigrades.org/v1/features/Hypsibius_dujardini_nHd.3.1.5.gff3.gz
 Rvar1	Ramazzottius_varieornatus	http://download.tardigrades.org/v1/sequence/Ramazzottius_varieornatus_Rv101.scaffolds.fa.gz	DRR013910	http://download.tardigrades.org/v1/features/Ramazzottius_varieornatus_Rv101.gff3.gz
 Pvir1	Procambarus_virginalis	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/838/885/GCA_002838885.1_Pvir0.4/GCA_002838885.1_Pvir0.4_genomic.fna.gz	SRR5115148,SRR5115143,SRR5115145,SRR5115147,SRR5115146,SRR5115144	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/838/885/GCA_002838885.1_Pvir0.4/GCA_002838885.1_Pvir0.4_genomic.gff.gz
