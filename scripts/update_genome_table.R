@@ -164,7 +164,7 @@ for(genomescope_file in genomescope_files){
 
 literature_data <- read.csv(text = gsheet2text("https://docs.google.com/spreadsheets/d/1T4BHQxzMGMlWiNJ7G9OLPXzdNBCqMw0mSO7C_ggGEbc/edit?usp=sharing", format='csv'),
                             stringsAsFactors = F, skip = 1, header = T, check.names = F)
-literature_data <- literature_data[,c(2, 7, 8, 11)]
+literature_data <- literature_data[,c(2, 8, 9, 12)]
 
 meio <- grepl('auto', literature_data[,'reproduction_mode']) | grepl('meiosis', literature_data[,'reproduction_mode'])
 mito <- grepl('apo', literature_data[,'reproduction_mode']) | grepl('mitosis', literature_data[,'reproduction_mode'])
@@ -195,12 +195,12 @@ genome_tab[literature_data$code, columns] <- literature_data[, columns]
 #  vertebrates
 #  rotifers
 #  arthropods
-#  nematodes; TODO add 'Anan1' to end
+#  nematodes
 #  tardigrades
 desired_order <- c('Pfor1',
                    'Avag1', 'Aric1', 'Rmac1', 'Rmag1',
-                   'Lcla1', 'Tpre1', 'Obir1', 'Aruf1', 'Fcan1', 'Dpul1', 'Dpul2', 'Dpul3', 'Pvir1',
-                   'Psam1', 'Dcor1', 'Dpac1', 'Ps591', 'Minc1', 'Minc2', 'Minc3', 'Mjav1', 'Mjav2', 'Mare1', 'Mare2', 'Mflo1', 'Mflo2', 'Ment1',
+                   'Lcla1', 'Tpre1', 'Obir1', 'Aruf1', 'Fcan1', 'Dpul1', 'Dpul2', 'Dpul3', 'Dpul4', 'Pvir1',
+                   'Psam1', 'Dcor1', 'Dpac1', 'Pdav1', 'Ps591', 'Ps791', 'Minc1', 'Minc2', 'Minc3', 'Mjav1', 'Mjav2', 'Mare1', 'Mare2', 'Mare3', 'Mflo1', 'Mflo2', 'Ment1', 'Anan1',
                    'Hduj1', 'Rvar1')
 if ( length(desired_order) == nrow(genome_tab) ){
     genome_tab <- genome_tab[desired_order, ]
