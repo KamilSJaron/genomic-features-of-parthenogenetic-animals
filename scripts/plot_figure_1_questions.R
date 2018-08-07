@@ -92,7 +92,7 @@ text(1:ncol(question_tab), par("usr")[4] + 1.55, wrap.labels(topics, 10), srt = 
 box()
 
 for(line in nrow(ref_matrix):1){
-  text(1:ncol(ref_matrix), line - 0.5, ref_matrix[24 - line,], pos = 3, cex = 0.7)
+  text(1:ncol(ref_matrix), line - 0.5, ref_matrix[25 - line,], pos = 3, cex = 0.7)
 }
 
 dev.off()
