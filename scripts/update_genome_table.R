@@ -16,8 +16,9 @@ sp_with_reads <- rownames(dl_table)[!is.na(dl_table$reads)]
 sp_with_genomes <- rownames(dl_table)[!is.na(dl_table$genome)]
 
 #####################################################
+#                   COMPUTED DATA                   #
 # ASSEMBLY STATS ( scripts/fasta2genomic_stats.py ) #
-#    assembly_size number_of_scaffolds N50           #
+#    assembly_size number_of_scaffolds N50          #
 #####################################################
 
 checkFiles <- function(.files, .type){
@@ -147,8 +148,14 @@ parse_genomescope_summary <- function(file){
     }
 }
 
-genomescope_files <- paste("data", sp_with_reads, "genomescope/summary.txt", sep = "/")
+polyploid_genomescope_files <- paste("data", sp_with_reads, "genomescope_v2/summary.txt", sep = "/")
+polyploid_genomescope_files <- checkFiles(polyploid_genomescope_files, 'polyploid genomescope v2')
+
+genomescope_files <- paste("data", sp_with_reads[!sp_with_reads %in% substring(polyploid_genomescope_files, 6, 10)], "genomescope/summary.txt", sep = "/")
 genomescope_files <- checkFiles(genomescope_files, 'genomescope')
+
+genomescope_files <- checkFiles(genomescope_files, 'genomescope')
+genomescope_files <- c(polyploid_genomescope_files, genomescope_files)
 
 for(genomescope_file in genomescope_files){
     sp <- ssplit(genomescope_file, "/")[2]
@@ -159,6 +166,7 @@ for(genomescope_file in genomescope_files){
 }
 
 #####################################################
+###                LITERATURE DATA                ###
 ### add reproduction mode, ploidy and genome_size ###
 #####################################################
 
@@ -199,7 +207,7 @@ genome_tab[literature_data$code, columns] <- literature_data[, columns]
 #  tardigrades
 desired_order <- c('Pfor1',
                    'Avag1', 'Aric1', 'Rmac1', 'Rmag1',
-                   'Lcla1', 'Tpre1', 'Obir1', 'Aruf1', 'Fcan1', 'Dpul1', 'Dpul2', 'Dpul3', 'Dpul4', 'Pvir1',
+                   'Lcla1', 'Tpre1', 'Obir1', 'Aruf1', 'Fcan1', 'Dpul1', 'Dpul2', 'Dpul3', 'Dpul4', 'Dpul5', 'Pvir1',
                    'Psam1', 'Dcor1', 'Dpac1', 'Pdav1', 'Ps591', 'Ps791', 'Minc1', 'Minc2', 'Minc3', 'Mjav1', 'Mjav2', 'Mare1', 'Mare2', 'Mare3', 'Mflo1', 'Mflo2', 'Ment1', 'Anan1',
                    'Hduj1', 'Rvar1')
 if ( length(desired_order) == nrow(genome_tab) ){

@@ -237,7 +237,7 @@ rule genome_profiling :
 	resources : mem=64000000, tmp = 60000
 	input : lambda wildcards: sample_accesions[wildcards.sample]
 	output : "data/{sample}/genomescope"
-	shell : cluster_script + "scripts/GenomeScope.sh data/{wildcards.sample}/trimmed_reads {output}"
+	shell : cluster_script + "scripts/GenomeScope.sh data/{wildcards.sample}/trimmed_reads table/download_table.tsv {output}"
 
 rule kmer_genome_content :
 	threads : 8
