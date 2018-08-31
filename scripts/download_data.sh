@@ -15,6 +15,7 @@ if [[ $DATA == "genome" ]]; then
 fi
 
 if [[ $DATA == "annotation" ]]; then
+    # TODO gff gff3 -> should be dependent of what is available from URL
     SUFIX=gff3
 fi
 
