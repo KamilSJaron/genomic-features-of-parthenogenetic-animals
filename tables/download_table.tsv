@@ -32,6 +32,6 @@ Aric1	Adineta_ricciae	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/240/375/GCA
 Rmac1	Rotaria_macrura	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/239/685/GCA_900239685.1_nRc1.3.reference_genomic/GCA_900239685.1_nRc1.3.reference_genomic_genomic.fna.gz	ERR2135453	https://doi.org/10.1371/journal.pbio.2004830.s002
 Rmag1	Rotaria_magnacalcarata	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/239/745/GCA_900239745.1_nRg1.8.reference_genomic/GCA_900239745.1_nRg1.8.reference_genomic_genomic.fna.gz	ERR2135451	https://doi.org/10.1371/journal.pbio.2004830.s002
 Aruf1	Aptinothrips_rufus	manual	manual	NA
-Tpre1	Trichogramma_pretiosum	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/599/845/GCA_000599845.2_Tpre_1.0/GCA_000599845.2_Tpre_1.0_genomic.fna.gz	SRR1191749	NA
+Tpre1	Trichogramma_pretiosum	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/599/845/GCA_000599845.2_Tpre_1.0/GCA_000599845.2_Tpre_1.0_genomic.fna.gz	SRR1191749	ftp://ftp.hgsc.bcm.edu/I5K-pilot/Trichogramma_pretiosum/maker_annotation/version_0.5.3/TPRE.Models.gff3
 Anan1	Acrobeloides_nanus	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/406/225/GCA_900406225.1_v1/GCA_900406225.1_v1_genomic.fna.gz	NA	NA
 Psam1	Plectus_sambesii	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/796/945/GCA_002796945.1_Psam_v1.0/GCA_002796945.1_Psam_v1.0_genomic.fna.gz	NA	ftp://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS11/species/plectus_sambesii/PRJNA390260/plectus_sambesii.PRJNA390260.WBPS11.annotations.gff3.gz
