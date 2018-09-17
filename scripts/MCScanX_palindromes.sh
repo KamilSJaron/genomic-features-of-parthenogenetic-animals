@@ -1,6 +1,5 @@
 #!/bin/bash
 
-module add UHTS/Assembler/cufflinks/2.2.1;
 module add Development/java/1.8.0_172;
 module add Blast/ncbi-blast/2.7.1+;
 
@@ -12,19 +11,13 @@ MCScanX_DIR=$4
 
 mkdir -p $MCScanX_DIR
 
-## TODO preparation
-
-##### GENERATE BLAST of ALL PROTEINS vs ALL PROTEINS
-# create blast database
-makeblastdb -in $PROTEINS -dbtype prot
-
-# blast all proteins vs all proteins
-blastp -query $PROTEINS -db $PROTEINS \
-    -out "$MCScanX_DIR"/"$SP"_prot.blast \
-    -evalue 1e-10 -outfmt 6 -num_alignments 5 -num_threads 4
+## TODO preparation - extract prot, run blast
 
 ##### RUN COLINEARITY ANALYSIS
 
 MCScanX "$MCScanX_DIR"/"$SP"_prot
+
+rm -r "$MCScanX_DIR"/"$SP"_prot.html
+mv "$MCScanX_DIR"/"$SP"_prot* /scratch/beegfs/monthly/kjaron/review-of-asexual-genomes/data/$SP/MCScanX/
 
 rm $GENOME_UNZIPED $GFF_UNZIPED $PROTEINS*
