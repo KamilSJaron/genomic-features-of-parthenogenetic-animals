@@ -22,9 +22,8 @@ Dpac1	Diploscapter_pachys	automixis	possibly	2	157.7	10.8	124.2	90.63	5.3	49.49	
 Pdav1	Panagrolaimus_davidiDAW1	automixis	yes	3	163.2	51.9	4.9	31.36	9.16	4.18	59.47	123.9	5.1	48.6	NA	NA	NA
 Ps591	Panagrolaimus_sp.PS1159	automixis	yes	3	85	17.6	9.9	74.75	8.66	1.83	16.6	71.5	4.49	92.08	9.8	1.4	77.4
 Ps791	Panagrolaimus_sp.PS1579	automixis	yes	3	48.8	23.5	2.9	73.01	6.13	2.86	20.86	58.7	3.4	71.06	NA	NA	NA
-Minc1	Meloidogyne_incognita	apomixis	yes	3	82.1	9.5	12.8	41.45	8.35	9.67	50.2	NA	NA	NA	NA	NA	NA
-Minc2	Meloidogyne_incognita	apomixis	yes	3	183.5	12.1	38.6	61.71	7.84	36.35	30.45	NA	NA	NA	NA	NA	NA
-Minc3	Meloidogyne_incognita	apomixis	yes	3	148.1	245.3	12.2	52.34	9.16	19.45	38.49	69	5.76	30.6	8	1.6	47.9
+Minc1	Meloidogyne_incognita	apomixis	yes	3	183.5	12.1	38.6	61.71	7.84	36.35	30.45	NA	NA	NA	NA	NA	NA
+Minc2	Meloidogyne_incognita	apomixis	yes	3	148.1	245.3	12.2	52.34	9.16	19.45	38.49	69	5.76	30.6	8	1.6	47.9
 Mjav1	Meloidogyne_javanica	apomixis	yes	4	235.8	31.3	10.4	61.1	7.54	31.06	31.36	NA	NA	NA	NA	NA	NA
 Mjav2	Meloidogyne_javanica	apomixis	yes	4	152.9	54.5	13.9	57.64	9.67	25.15	32.69	70.1	4.75	38.58	11.1	1.9	56.4
 Mare1	Meloidogyne_arenaria	apomixis	yes	4	258.1	26.2	16.5	65.07	7.43	36.46	27.49	NA	NA	NA	NA	NA	NA
