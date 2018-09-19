@@ -11,7 +11,7 @@ cp /scratch/beegfs/monthly/kjaron/review-of-asexual-genomes/data/$SP/genome.fa.g
 GENOME=data/$SP/genome.fa.gz
 # scripts/download_data.sh $SP annotation
 GFF=$(echo data/$SP/annotation*)
-echo $GENOME $GFF
+ll -h $GENOME $GFF
 MCScanX_DIR=data/$SP/MCScanX
 
 GENOME_UNZIPED=${GENOME%.*}
@@ -19,10 +19,30 @@ GFF_UNZIPED=${GFF%.*}
 PROTEINS=$MCScanX_DIR/annotation_proteins.fa
 
 zcat $GENOME > $GENOME_UNZIPED
+# sed 's/gi.*.ref.//g' $GENOME_UNZIPED | sed 's/|//g' > data/Pfor1/genome_corrected.fa
+# rotifers
+# awk '/>/{ print ">"$7 } !/>/ { print $0 } ' $GENOME_UNZIPED | sed 's/,//g' > data/$SP/genome_corrected.fa
+# plectus sambesii
+# awk '/>/{ print ">PSAMB."$6 } !/>/{print $0} ' $GENOME_UNZIPED | sed s/,$// > data/$SP/genome_corrected.fa
+# GENOME_UNZIPED=data/$SP/genome_corrected.fa
 zcat $GFF > $GFF_UNZIPED
+# sed -i'' -e 's/;Name=;Name=/;Name=/' $GFF_UNZIPED
+# Ps591
+# sed -i'' -e 's/|/_/' $GFF_UNZIPED
+# and this SEQ={what gffread complains about}
+# grep -v $SEQ $GFF_UNZIPED > temp
+# rm $GFF_UNZIPED
+# mv temp $GFF_UNZIPED
+# gffread -g $GENOME_UNZIPED -y $PROTEINS $GFF_UNZIPED
+
+# for P sambesii I had to remove two genes from the annotation (mapping outside of the assembled genome...)
 
 gffread -g $GENOME_UNZIPED -y $PROTEINS $GFF_UNZIPED
 sed -i'' -e 's/.$//' $PROTEINS
+
+head -1 $GENOME_UNZIPED
+grep ">" $PROTEINS | head
+grep "mRNA" $GFF_UNZIPED | head -1
 
 awk '($3 == "mRNA") {
     OFS="\t";
@@ -44,12 +64,19 @@ awk '($3 == "mRNA") {
     print $1, substr($9,RSTART+3,RLENGTH-3), $4, $5
 }' $GFF_UNZIPED > data/$SP/MCScanX/"$SP"_prot.gff
 
-# lcla
+# lcla, Mjav1, Mjav2, Mare1, Mare2, Obir1
 awk '($3 == "mRNA") {
     OFS="\t";
     match($9, /ID=.+;Parent/);
     print $1, substr($9,RSTART+3,RLENGTH-10), $4, $5
-}' lclav_annotation.gff3.1 > lclav_prot.gff
+}' $GFF_UNZIPED > $MCScanX_DIR/"$SP"_prot.gff
+
+# Tpre1
+awk '($3 == "mRNA") {
+    OFS="\t";
+    match($9, /ID=.+;Name/);
+    print $1, substr($9,RSTART+3,RLENGTH-8), $4, $5
+}' $GFF_UNZIPED > $MCScanX_DIR/"$SP"_prot.gff
 
 # gff - Pdav
 awk '($3 == "transcript") {
