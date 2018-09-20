@@ -20,15 +20,18 @@ PROTEINS=$MCScanX_DIR/annotation_proteins.fa
 
 zcat $GENOME > $GENOME_UNZIPED
 # sed 's/gi.*.ref.//g' $GENOME_UNZIPED | sed 's/|//g' > data/Pfor1/genome_corrected.fa
-# rotifers
+# rotifers A. nanus
 # awk '/>/{ print ">"$7 } !/>/ { print $0 } ' $GENOME_UNZIPED | sed 's/,//g' > data/$SP/genome_corrected.fa
 # plectus sambesii
 # awk '/>/{ print ">PSAMB."$6 } !/>/{print $0} ' $GENOME_UNZIPED | sed s/,$// > data/$SP/genome_corrected.fa
+# Dcor1
+# awk '/>/{ print ">"$6 } !/>/ { print $0 } ' $GENOME_UNZIPED | sed 's/,//g' > data/$SP/genome_corrected.fa
 # GENOME_UNZIPED=data/$SP/genome_corrected.fa
 zcat $GFF > $GFF_UNZIPED
 # sed -i'' -e 's/;Name=;Name=/;Name=/' $GFF_UNZIPED
-# Ps591
+# Ps591, Dcor1 as well, A. nanus
 # sed -i'' -e 's/|/_/' $GFF_UNZIPED
+# sed -i'' -e 's/|size[0-9]*//' $GFF_UNZIPED # Anan1
 # and this SEQ={what gffread complains about}
 # grep -v $SEQ $GFF_UNZIPED > temp
 # rm $GFF_UNZIPED
@@ -44,16 +47,18 @@ head -1 $GENOME_UNZIPED
 grep ">" $PROTEINS | head
 grep "mRNA" $GFF_UNZIPED | head -1
 
+# DEFAULT
+# used for lcla, Mjav1, Mjav2, Mare1, Mare2, Obir1
 awk '($3 == "mRNA") {
     OFS="\t";
-    match($9, /Name=.+/);
-    print $1, substr($9,RSTART+5,RLENGTH), $4, $5
-}' "$GFF_UNZIPED" > "$MCScanX_DIR"/"$SP"_prot.gff
+    match($9, /ID=.+;Parent/);
+    print $1, substr($9,RSTART+3,RLENGTH-10), $4, $5
+}' $GFF_UNZIPED > $MCScanX_DIR/"$SP"_prot.gff
 
-# gff - Dpac
+# gff - Dpac, Dcor
 awk '($3 == "mRNA") {
     OFS="\t";
-    match($9, /ID=[a-z]+[0-9]+/);
+    match($9, /ID=.+/);
     print $1, substr($9,RSTART+3,RLENGTH-3), $4, $5
 }' $GFF_UNZIPED > data/$SP/MCScanX/"$SP"_prot.gff
 
@@ -63,13 +68,6 @@ awk '($3 == "mRNA") {
     match($9, /ID=transcript:Minc3s[0-9]+[a-z]+[0-9]+/);
     print $1, substr($9,RSTART+3,RLENGTH-3), $4, $5
 }' $GFF_UNZIPED > data/$SP/MCScanX/"$SP"_prot.gff
-
-# lcla, Mjav1, Mjav2, Mare1, Mare2, Obir1
-awk '($3 == "mRNA") {
-    OFS="\t";
-    match($9, /ID=.+;Parent/);
-    print $1, substr($9,RSTART+3,RLENGTH-10), $4, $5
-}' $GFF_UNZIPED > $MCScanX_DIR/"$SP"_prot.gff
 
 # Tpre1
 awk '($3 == "mRNA") {
@@ -85,12 +83,18 @@ awk '($3 == "transcript") {
     print $1, substr($9,RSTART+3,RLENGTH-3), $4, $5
 }' $GFF_UNZIPED > data/$SP/MCScanX/"$SP"_prot.gff
 
-# Minc2 >g19756.t1
+# Minc2
 awk '($3 == "mRNA") {
     OFS="\t";
     match($9, /ID=[a-z]+[0-9]+.t1/);
     print $1, substr($9,RSTART+3,RLENGTH-3), $4, $5
 }' $GFF_UNZIPED > data/$SP/MCScanX/"$SP"_prot.gff
+
+# Anan
+awk '($3 == "transcript") {
+    OFS="\t";
+    print $1, $9, $4, $5
+}' "$GFF_UNZIPED" > "$MCScanX_DIR"/"$SP"_prot.gff
 
 TARGET_DIR=/scratch/beegfs/monthly/kjaron/review-of-asexual-genomes/data/$SP/MCScanX/
 mkdir -p $TARGET_DIR

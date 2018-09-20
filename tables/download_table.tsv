@@ -8,7 +8,7 @@ Lcla1	Leptopilina_clavipes	http://parasitoids.labs.vu.nl/parasitoids/leptopilina
 Tpre1	Trichogramma_pretiosum	ftp://ftp.hgsc.bcm.edu/I5K-pilot/Trichogramma_pretiosum/genome_assemblies/NCBI_submitted/Tpre_scaffolds.50.fa	SRR1191749	ftp://ftp.hgsc.bcm.edu/I5K-pilot/Trichogramma_pretiosum/maker_annotation/version_0.5.3/TPRE.Models.gff3
 Obir1	Ooceraea_biroi	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Ooceraea_biroi/latest_assembly_versions/GCF_000611835.1_CerBir1.0/GCF_000611835.1_CerBir1.0_genomic.fna.gz	SRR1192097	ftp://ftp.ncbi.nlm.nih.gov/genomes/Cerapachys_biroi/GFF/ref_CerBir1.0_top_level.gff3.gz
 Aruf1	Aptinothrips_rufus	manual	manual	NA
-Fcan1	Folsomia_candida	ftp.ncbi.nlm.nih.gov/genomes/all/GCF/002/217/175/GCF_002217175.1_ASM221717v1/GCF_002217175.1_ASM221717v1_genomic.fna.gz	SRR2743547	ftp://ftp.ncbi.nlm.nih.gov/genomes/Folsomia_candida/GFF/ref_ASM221717v1_top_level.gff3.gz
+Fcan1	Folsomia_candida	http://animalecology.labs.vu.nl/collembolomics/folsomia/data/fcand_genome.fa	SRR2743547	http://animalecology.labs.vu.nl/collembolomics/folsomia/data/fcand_genes.gff
 Dpul1	Daphnia_pulex	http://daphniagenomes.org/sites/default/files/Daphnia_pulex_PA42_v3.0.fasta	NA	NA
 Dpul2	Daphnia_pulex	NA	SRR2148392	NA
 Dpul3	Daphnia_pulex	NA	SRR2148389	NA
