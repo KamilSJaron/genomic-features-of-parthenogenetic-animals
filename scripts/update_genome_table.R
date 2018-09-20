@@ -165,6 +165,32 @@ for(genomescope_file in genomescope_files){
     genome_tab[row, c('haploid_length[M]', 'repeats', 'heterozygosity')] <- parse_genomescope_summary(genomescope_file)
 }
 
+#############################################################
+# MCScanX ( scripts/MCScanX_???????.sh )                    #
+# total_genes, colinear_genes, palindromes                  #
+#############################################################
+
+parse_MCScanX_summary_file <- function(file){
+    MCScanX_summary_file <- readLines(file)
+    col_genes <- as.numeric(ssplit(ssplit(MCScanX_summary_file[1], 'genes: ')[2], ",")[1])
+    total_genes <- as.numeric(ssplit(MCScanX_summary_file[2], 'genes: ')[2])
+    palindromes <- as.numeric(ssplit(ssplit(MCScanX_summary_file[3], 'parsed. ')[2], " pal")[1])
+    colinear_blocks <- as.numeric(MCScanX_summary_file[4])
+
+    return( c(total_genes, col_genes, palindromes, colinear_blocks) )
+}
+
+MCScanX_summary_files <- paste0("data/", sp_with_genomes, "/MCScanX/", sp_with_genomes, "_prot.collinearity_summary.txt")
+MCScanX_summary_files <- checkFiles(MCScanX_summary_files, 'MCScanX files')
+
+for(MCScanX_summary_file in MCScanX_summary_files){
+    sp <- ssplit(MCScanX_summary_file, "/")[2]
+    genome_tab <- expand_table_if_needed(sp, genome_tab)
+    row <- sp == genome_tab$code
+
+    genome_tab[row, c('genes', 'colinear_genes', 'palindromes', 'colinear_blocks')] <- parse_MCScanX_summary_file(MCScanX_summary_file)
+}
+
 #####################################################
 ###                LITERATURE DATA                ###
 ### add reproduction mode, ploidy and genome_size ###
@@ -174,15 +200,19 @@ literature_data <- read.csv(text = gsheet2text("https://docs.google.com/spreadsh
                             stringsAsFactors = F, skip = 1, header = T, check.names = F)
 literature_data <- literature_data[,c(2, 8, 9, 12)]
 
-meio <- grepl('auto', literature_data[,'reproduction_mode']) | grepl('meiosis', literature_data[,'reproduction_mode'])
-mito <- grepl('apo', literature_data[,'reproduction_mode']) | grepl('mitosis', literature_data[,'reproduction_mode'])
-gupl <- grepl('dupl', literature_data[,'reproduction_mode'])
+mitotic <- grepl('apomixis', literature_data[,'reproduction_mode'])
+central_fusion <- grepl('central', literature_data[,'reproduction_mode'])
+terminal_fusion <- grepl('terminal', literature_data[,'reproduction_mode'])
+gdupl <- grepl('dupl', literature_data[,'reproduction_mode'])
+unknown_meiotic <- grepl('automix', literature_data[,'reproduction_mode']) & !central_fusion & !terminal_fusion & !gdupl
 
 # create three categories
-literature_data$reproduction_mode[meio] <- 'automixis' # involve meiosis
-literature_data$reproduction_mode[mito] <- 'apomixis' # wo mitosis
-literature_data$reproduction_mode[gupl] <- 'gamete_duplication' # gamete duplications
-literature_data$reproduction_mode[ ! (meio | mito | gupl) ] <- NA # unknown
+literature_data$reproduction_mode <- NA # unknown is default
+literature_data$reproduction_mode[mitotic] <- 'apomixis' # mitosis
+literature_data$reproduction_mode[central_fusion] <- 'central_fusion'  # automixis central fusion
+literature_data$reproduction_mode[terminal_fusion] <- 'terminal_fusion' # automixis terminal fusion
+literature_data$reproduction_mode[gdupl] <- 'gamete_duplication'  # gamete duplications
+literature_data$reproduction_mode[unknown_meiotic] <- 'unknown_automixis' # unknown automixis
 
 literature_data <- literature_data[literature_data$code %in% genome_tab$code,]
 
@@ -208,7 +238,7 @@ genome_tab[literature_data$code, columns] <- literature_data[, columns]
 desired_order <- c('Pfor1',
                    'Avag1', 'Aric1', 'Rmac1', 'Rmag1',
                    'Lcla1', 'Tpre1', 'Obir1', 'Aruf1', 'Fcan1', 'Dpul1', 'Dpul2', 'Dpul3', 'Dpul4', 'Dpul5', 'Pvir1',
-                   'Psam1', 'Dcor1', 'Dpac1', 'Pdav1', 'Ps591', 'Ps791', 'Minc1', 'Minc2', 'Minc3', 'Mjav1', 'Mjav2', 'Mare1', 'Mare2', 'Mare3', 'Mflo1', 'Mflo2', 'Ment1', 'Anan1',
+                   'Psam1', 'Dcor1', 'Dpac1', 'Pdav1', 'Ps591', 'Ps791', 'Minc1', 'Minc2', 'Mjav1', 'Mjav2', 'Mare1', 'Mare2', 'Mare3', 'Mflo1', 'Ment1', 'Anan1',
                    'Hduj1', 'Rvar1')
 if ( length(desired_order) == nrow(genome_tab) ){
     genome_tab <- genome_tab[desired_order, ]
@@ -223,11 +253,17 @@ genome_tab <- genome_tab[, c('code', 'species', 'reproduction_mode', 'hybrid_ori
                              'assembly_size[M]', 'number_of_scaffolds[k]', 'N50[k]',
                              'complete', 'fragmented', 'duplicated', 'missing',
                              'haploid_length[M]', 'heterozygosity', 'repeats',
-                             'TEs','other_repeats','all_repeats')]
+                             'TEs','other_repeats','all_repeats',
+                             'genes', 'colinear_genes', 'colinear_blocks', 'palindromes')]
 
 ######################
 
-extra_header <- c(rep('-', 5), 'assembly', rep('-', 2), 'BUSCO', rep('-', 3), 'GenomeScope', rep('-', 2), 'dnaPipeTE', rep('-', 2) )
+extra_header <- c(rep('-', 5),
+                  'assembly', rep('-', 2),
+                  'BUSCO', rep('-', 3),
+                  'GenomeScope', rep('-', 2),
+                  'dnaPipeTE', rep('-', 2),
+                  'MCScanX', rep('-', 3) )
 asm_template <- matrix(ncol = length(extra_header))
 colnames(asm_template) <- extra_header
 header <- as.data.frame(asm_template)[FALSE, ]
