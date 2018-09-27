@@ -13,16 +13,9 @@ genome_tab <- read.table('tables/genome_table.tsv',
                          header = T, stringsAsFactors = F, skip = 1, check.names = F)
 rownames(genome_tab) <- genome_tab$code
 
-# fix wrongly reported ploidy using using kmer spectra analysis
-genome_tab[c('Mflo1', 'Mflo2'),'ploidy'] <- 3
-# add unoknown ploidy using kmer spectra analysis
-genome_tab['Ment1','ploidy'] <- 3
-
-genome_tab['Ment1','hybrid_origin'] <- "possibly"
-genome_tab['Pvir1','hybrid_origin'] <- "possibly"
-
 genome_tab['Rmac1','heterozygosity'] <- 0.123 # these estimates should be added to the big genome table, not here
 genome_tab['Rmag1','heterozygosity'] <- 0.492
+genome_tab['Dcor1','reproduction_mode'] <- "unknown_automixis"
 
 genome_tab$reproduction_mode[is.na(genome_tab$reproduction_mode)] <- "unknown"
 genome_tab$hybrid_origin[is.na(genome_tab$hybrid_origin)] <- "unknown"
@@ -30,7 +23,8 @@ genome_tab$hybrid_origin[genome_tab$hybrid_origin == "possibly"] <- "suggested"
 genome_tab$ploidy[is.na(genome_tab$ploidy)] <- "unknown"
 
 hyb_origins <- c("no", "unknown", "suggested", "yes")
-repr_modes  <- c("gamete_duplication", "automixis", "apomixis", "unknown")
+repr_modes  <- c("gamete_duplication", "terminal_fusion", "central_fusion", "unknown_automixis",
+                 "apomixis", "unknown")
 
 # ordering
 genome_tab$hybrid_origin <- ordered(genome_tab$hybrid_origin, levels=hyb_origins )
@@ -40,14 +34,16 @@ genome_tab$reproduction_mode <- ordered(genome_tab$reproduction_mode, levels=rep
 # plot #
 ########
 
-pal <- c(rgb(1,      1,      0.4274), # yellow - gamete duplication
-         rgb(0,      0.5725, 0.5725), # drak green - automixis
-         rgb(0,      0.4274, 0.8588), # blue - apomixis
-         rgb(0.5725, 0,      0     )) # red - unknown
+pal <- c(rgb(0.9411, 0.8941, 0.2588), # yellow - gamete duplication
+         rgb(0.9019, 0.6235, 0     ), # orange - terminal fusion
+         rgb(0.8352, 0.3686, 0     ), # vermillion - central fusion
+         rgb(0.8,    0.4745, 0.6549), # pink - automixis unknown
+         rgb(0,      0.4470, 0.6980), # blue - apomixis
+         rgb(0,      3/5,    2/5     )) # black - unknown
 
 plot_ploits <- function(hyb_origin = "no", repr_mode = "gamete_duplication"){
          which_rm <- which(repr_mode == repr_modes)
-         at <- which(hyb_origin == hyb_origins) +  which_rm / 5 - 0.5
+         at <- which(hyb_origin == hyb_origins) +  which_rm / 7 - 0.5
          subset <- genome_tab[genome_tab$hybrid_origin == hyb_origin & genome_tab$reproduction_mode == repr_mode, c("heterozygosity", "ploidy")]
          if( nrow(subset) > 0 ){
                   points(rep(at, nrow(subset)), subset$heterozygosity, col = pal[which_rm], pch = ifelse(subset$ploidy == 2, 19, 15), cex = 1.3)
@@ -70,14 +66,13 @@ with(genome_tab,
 axis(2, las=1)
 axis(1, labels = hyb_origins, at = 1:4, tick = F, line = F, cex.axis = 1.4)
 
-
 for ( ho in hyb_origins ){
          for ( rm in repr_modes ){
                   plot_ploits(ho, rm)
          }
 }
 
-legend('topleft', bty = 'n', c(repr_modes,'diplod','polyploid'), col = c(pal,1,1), pch = c(rep(20,5), 15), cex = 1.2)
+legend('topleft', bty = 'n', c(repr_modes,'diplod','polyploid'), col = c(pal,1,1), pch = c(rep(20,6), 15), cex = 1.2)
 
 
 dev.off()

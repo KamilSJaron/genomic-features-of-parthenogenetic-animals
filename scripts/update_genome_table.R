@@ -204,7 +204,7 @@ mitotic <- grepl('apomixis', literature_data[,'reproduction_mode'])
 central_fusion <- grepl('central', literature_data[,'reproduction_mode'])
 terminal_fusion <- grepl('terminal', literature_data[,'reproduction_mode'])
 gdupl <- grepl('dupl', literature_data[,'reproduction_mode'])
-unknown_meiotic <- grepl('automix', literature_data[,'reproduction_mode']) & !central_fusion & !terminal_fusion & !gdupl
+unknown_meiotic <- grepl('automix', literature_data[,'reproduction_mode']) & grepl('unknown', literature_data[,'reproduction_mode'])
 
 # create three categories
 literature_data$reproduction_mode <- NA # unknown is default
