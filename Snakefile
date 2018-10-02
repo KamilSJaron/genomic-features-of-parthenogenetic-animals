@@ -233,11 +233,18 @@ rule align_genome_to_itself :
 	shell : cluster_script + "scripts/MUMmer_selfaln.sh {input} {output}"
 
 rule genome_profiling :
+	threads : 1
+	resources : mem=4000000, tmp = 60000
+	input : "data/{sample}/jellyfish"
+	output : "data/{sample}/genomescope"
+	shell : "scripts/genomescope.sh data/{wildcards.sample}/jellyfish {output}"
+
+rule jellyfish :
 	threads : 16
 	resources : mem=64000000, tmp = 60000
 	input : lambda wildcards: sample_accesions[wildcards.sample]
-	output : "data/{sample}/genomescope"
-	shell : cluster_script + "scripts/GenomeScope.sh data/{wildcards.sample}/trimmed_reads table/download_table.tsv {output}"
+	output : "data/{sample}/jellyfish"
+	shell : cluster_script + "scripts/jellyfish.sh data/{wildcards.sample}/trimmed_reads table/download_table.tsv {output}"
 
 rule kmer_genome_content :
 	threads : 8

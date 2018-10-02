@@ -29,8 +29,3 @@ else
         jellyfish merge $OUTDIR/kmer_counts_* -o $OUTDIR/kmer_counts.jf
         rm data/*/genomescope/kmer_counts_*
 fi
-
-jellyfish histo -t 16 $OUTDIR/kmer_counts.jf > "$HIST"
-genomescope.R $OUTDIR/"$HIST" $KMER 100 $OUTDIR 1000 verbose
-
-#rm $OUTDIR/kmer_counts.jf
