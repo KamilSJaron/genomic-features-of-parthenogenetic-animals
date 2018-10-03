@@ -88,6 +88,10 @@ rule calculate_selfalignment :
 rule calculate_heterozygosity_using_kmers :
 	input : expand("data/{sp}/genomescope", sp=species_with_reads)
 
+## create_smudgeplots
+rule create_smudgeplots :
+	input : expand("data/{sp}/smudgeplot", sp=species_with_reads)
+
 ## calculate_kmer_profiles_in_genome
 rule calculate_genome_kmer_content :
 	input : expand("data/{sp}/KAT", sp=species_with_reads_and_genomes)
@@ -237,7 +241,14 @@ rule genome_profiling :
 	resources : mem=4000000, tmp = 60000
 	input : "data/{sample}/jellyfish"
 	output : "data/{sample}/genomescope"
-	shell : "scripts/genomescope.sh data/{wildcards.sample}/jellyfish {output}"
+	shell : "scripts/genomescope.sh {input} {output}"
+
+rule smudgeplot :
+	threads : 8
+	resources : mem=228000000, tmp = 60000
+	input : "data/{sample}/jellyfish"
+	output : "data/{sp}/smudgeplot"
+	shell : cluster_script + "scripts/generate_smudgeplot.sh {input} {output}"
 
 rule jellyfish :
 	threads : 16
