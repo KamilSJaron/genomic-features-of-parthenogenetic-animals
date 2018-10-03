@@ -244,7 +244,7 @@ rule jellyfish :
 	resources : mem=64000000, tmp = 60000
 	input : lambda wildcards: sample_accesions[wildcards.sample]
 	output : "data/{sample}/jellyfish"
-	shell : cluster_script + "scripts/jellyfish.sh data/{wildcards.sample}/trimmed_reads table/download_table.tsv {output}"
+	shell : cluster_script + "scripts/jellyfish.sh data/{wildcards.sample}/trimmed_reads tables/download_table.tsv {output}"
 
 rule kmer_genome_content :
 	threads : 8

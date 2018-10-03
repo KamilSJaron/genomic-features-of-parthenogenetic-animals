@@ -27,5 +27,5 @@ then
         mv $OUTDIR/kmer_counts_0 $OUTDIR/kmer_counts.jf
 else
         jellyfish merge $OUTDIR/kmer_counts_* -o $OUTDIR/kmer_counts.jf
-        rm data/*/genomescope/kmer_counts_*
+        rm $OUTDIR/kmer_counts_*
 fi
