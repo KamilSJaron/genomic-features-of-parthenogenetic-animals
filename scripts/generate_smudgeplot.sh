@@ -18,6 +18,6 @@ fi
 L=$(kmer_cov_cutoff.R $HISTOGRAM L)
 U=$(kmer_cov_cutoff.R $HISTOGRAM U)
 
-jellyfish dump -c -L $L -U $U $JELLYFISH_FILE | hetkmers.py -k $KMER -t 8 -o $OUTDIR/kmer_pairs
+jellyfish dump -c -L $L -U $U $JF_FILE | hetkmers.py -k $KMER -t 8 -o $OUTDIR/kmer_pairs
 
 smudgeplot.R -i $OUTDIR/kmer_pairs_coverages_2.tsv -o $OUTDIR/$SP -t $SP -L $L -k $KMER $HOMOZYG

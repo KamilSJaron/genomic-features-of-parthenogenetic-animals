@@ -12,9 +12,6 @@ if [[ ! -v KMER ]]; then
         KMER=21
 fi
 
-# name of histogram file should contain all library IDs and kmer size
-HIST=$OUTDIR/$(grep "$sp" "$DL_TABLE" | cut -f 4)_k"$KMER".hist
-
 mkdir -p $OUTDIR
 
 #zcat $1 $2 > $OUTDIR/trimmed_reads.fasta
@@ -29,3 +26,9 @@ else
         jellyfish merge $OUTDIR/kmer_counts_* -o $OUTDIR/kmer_counts.jf
         rm $OUTDIR/kmer_counts_*
 fi
+
+# name of histogram file should contain all library IDs and kmer size
+HIST=$OUTDIR/$(grep "$sp" "$DL_TABLE" | cut -f 4)_k"$KMER".hist
+
+jellyfish histo $OUTDIR/kmer_counts.jf > $HIST
+

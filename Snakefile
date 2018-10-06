@@ -225,8 +225,8 @@ rule get_busco_reference :
 rule genome_stats :
 	threads : 1
 	resources : mem=1000000, tmp=10000
-	input : "data/{sp}/genome.fa.gz"
-	output : "data/{sp}/genome.stats"
+	input : "data/{sample}/genome.fa.gz"
+	output : "data/{sample}/genome.stats"
 	shell : "python3 scripts/fasta2genomic_stats.py {input} 1> {output}"
 
 rule align_genome_to_itself :
@@ -247,7 +247,7 @@ rule smudgeplot :
 	threads : 8
 	resources : mem=228000000, tmp = 60000
 	input : "data/{sample}/jellyfish"
-	output : "data/{sp}/smudgeplot"
+	output : "data/{sample}/smudgeplot"
 	shell : cluster_script + "scripts/generate_smudgeplot.sh {input} {output}"
 
 rule jellyfish :
