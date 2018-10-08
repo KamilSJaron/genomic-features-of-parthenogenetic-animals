@@ -11,7 +11,7 @@ mkdir $OUTDIR
 
 SP=$(echo $OUTDIR | cut -f 2 -d \/)
 
-if [[ $SP == "Lcla1" || $SP == "Tpre1" || $SP == "Aruf1" ]]; then
+if [[ $SP == "Lcla1" || $SP == "Tpre1" || $SP == "Aruf1" || $SP == "Rvar1" ]]; then
     HOMOZYG="--homozygous"
 fi
 
