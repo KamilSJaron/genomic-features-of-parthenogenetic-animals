@@ -30,9 +30,6 @@ checkFiles <- function(.files, .type){
     return(.files)
 }
 
-stat_files <- paste("data", sp_with_genomes, "genome.stats", sep = "/")
-stat_files <- checkFiles(stat_files, 'stats')
-
 expand_table_if_needed <- function(.sp, .genome_tab){
     row <- .sp == .genome_tab$code
     row[is.na(row)] <- FALSE
@@ -54,6 +51,9 @@ get_value <- function(line){
 ssplit <- function (s, split = "="){
     unlist(strsplit(s, split = split))
 }
+
+stat_files <- paste("data", sp_with_genomes, "genome.stats", sep = "/")
+stat_files <- checkFiles(stat_files, 'stats')
 
 for(stat_file in stat_files){
     sp <- ssplit(stat_file, "/")[2]
@@ -117,6 +117,24 @@ for(busco_file in busco_files){
     genome_tab[row, c('complete', 'fragmented', 'duplicated', 'missing')] <- read_busco(busco_file)
 }
 
+###################################################
+# Smudgeplot ( scripts/generate_smudgeplot.sh )   #
+#            Ploidy                               #
+###################################################
+
+smudgeplot_files <- paste0("data/", sp_with_reads, "/smudgeplot/", sp_with_reads, "_verbose_summary.txt")
+smudgeplot_files <- checkFiles(smudgeplot_files, 'smudgeplot files')
+
+for(smudge_file in smudgeplot_files){
+    sp <- ssplit(smudge_file, "/")[2]
+    genome_tab <- expand_table_if_needed(sp, genome_tab)
+    row <- sp == genome_tab$code
+
+    smudge_est_ploidy <- ssplit(readLines(smudge_file)[6], '\t')[2]
+
+    genome_tab[row,'ploidy'] <- as.numeric(smudge_est_ploidy)
+}
+
 ####################################
 # ATLAS ( scripts/est_theta.sh )   #
 # ML_heterozygosity                #
@@ -131,38 +149,38 @@ for(busco_file in busco_files){
 
 parse_genomescope_summary <- function(file){
     genoscope_file <- readLines(file)
-    line <- ssplit(genoscope_file[5], ' ')
-    het_string <- line[line != ''][3]
-    heterozygosity <- as.numeric(substr(het_string, 0, nchar(het_string) - 1))
+    est_ploidy <- as.numeric(ssplit(genoscope_file[3], ' ')[3])
 
-    line <- ssplit(genoscope_file[6], ' ')
-    haploid_genome <- as.numeric(gsub(",", "", line[line != ''][6]))
+    homozygous_pattern <- paste(rep('A', est_ploidy), collapse='')
+    line <- ssplit(genoscope_file[grepl(homozygous_pattern, genoscope_file)], ' ')
+    line <- line[line != '']
+    heterozygosity_min <- round(100 - as.numeric(substr(line[3], 0, nchar(line[3]) - 1)), 2)
+    heterozygosity_max <- round(100 - as.numeric(substr(line[2], 0, nchar(line[2]) - 1)), 2)
 
-    line <- ssplit(genoscope_file[7], ' ')
-    repeats <- (as.numeric(gsub(",", "", line[line != ''][6])) * 100) / haploid_genome
+    line <- ssplit(genoscope_file[grepl("Haploid", genoscope_file)], ' ')
+    line <- gsub(",", "", line[line != ''])
+    haploid_genome <- as.numeric(line[c(4, 6)])
 
-    if( heterozygosity == -100 ){
-        return( c(NA, NA, NA) )
-    } else {
-        return( c(round(haploid_genome / 1e6, 1), round(repeats, 2), round(heterozygosity, 2)) )
-    }
+    line <- ssplit(genoscope_file[grepl("Repeat", genoscope_file)], ' ')
+    line <- gsub(",", "", line[line != ''])
+    repeats <- round((as.numeric(line[c(4, 6)]) * 100) / mean(haploid_genome), 2)
+
+    return( c(round(haploid_genome / 1e6, 1),
+              repeats,
+              heterozygosity_min, heterozygosity_max) )
 }
 
-polyploid_genomescope_files <- paste("data", sp_with_reads, "genomescope_v2/summary.txt", sep = "/")
-polyploid_genomescope_files <- checkFiles(polyploid_genomescope_files, 'polyploid genomescope v2')
-
-genomescope_files <- paste("data", sp_with_reads[!sp_with_reads %in% substring(polyploid_genomescope_files, 6, 10)], "genomescope/summary.txt", sep = "/")
-genomescope_files <- checkFiles(genomescope_files, 'genomescope')
-
-genomescope_files <- checkFiles(genomescope_files, 'genomescope')
-genomescope_files <- c(polyploid_genomescope_files, genomescope_files)
+genomescope_files <- paste("data", sp_with_reads, "genomescope/summary.txt", sep = "/")
+genomescope_files <- checkFiles(genomescope_files, 'genomescope files (not converged)')
 
 for(genomescope_file in genomescope_files){
     sp <- ssplit(genomescope_file, "/")[2]
     genome_tab <- expand_table_if_needed(sp, genome_tab)
     row <- sp == genome_tab$code
 
-    genome_tab[row, c('haploid_length[M]', 'repeats', 'heterozygosity')] <- parse_genomescope_summary(genomescope_file)
+    genome_tab[row, c('haploid_length_min[M]', 'haploid_length_max[M]',
+                      'repeats_min', 'repeats_max',
+                      'heterozygosity_min', 'heterozygosity_max')] <- parse_genomescope_summary(genomescope_file)
 }
 
 #############################################################
@@ -252,7 +270,7 @@ if ( length(desired_order) == nrow(genome_tab) ){
 genome_tab <- genome_tab[, c('code', 'species', 'reproduction_mode', 'hybrid_origin', 'ploidy',
                              'assembly_size[M]', 'number_of_scaffolds[k]', 'N50[k]',
                              'complete', 'fragmented', 'duplicated', 'missing',
-                             'haploid_length[M]', 'heterozygosity', 'repeats',
+                             'haploid_length_min[M]', 'haploid_length_max[M]', 'heterozygosity_min', 'heterozygosity_max', 'repeats_min', 'repeats_max',
                              'TEs','other_repeats','all_repeats',
                              'genes', 'colinear_genes', 'colinear_blocks', 'palindromes')]
 
@@ -261,7 +279,7 @@ genome_tab <- genome_tab[, c('code', 'species', 'reproduction_mode', 'hybrid_ori
 extra_header <- c(rep('-', 5),
                   'assembly', rep('-', 2),
                   'BUSCO', rep('-', 3),
-                  'GenomeScope', rep('-', 2),
+                  'GenomeScope', rep('-', 5),
                   'dnaPipeTE', rep('-', 2),
                   'MCScanX', rep('-', 3) )
 asm_template <- matrix(ncol = length(extra_header))
