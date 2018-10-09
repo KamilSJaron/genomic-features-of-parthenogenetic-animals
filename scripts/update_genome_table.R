@@ -276,7 +276,9 @@ genome_tab <- genome_tab[, c('code', 'species', 'reproduction_mode', 'hybrid_ori
 
 ######################
 
-extra_header <- c(rep('-', 5),
+extra_header <- c(rep('-', 2),
+                  'literature', rep('-', 1),
+                  'smudgeplot',
                   'assembly', rep('-', 2),
                   'BUSCO', rep('-', 3),
                   'GenomeScope', rep('-', 5),

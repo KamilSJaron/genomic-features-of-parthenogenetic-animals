@@ -1,36 +1,36 @@
--	-	-	-	-	assembly	-	-	BUSCO	-	-	-	GenomeScope	-	-	-	-	-	dnaPipeTE	-	-	MCScanX	-	-	-
-code	species	reproduction_mode	hybrid_origin	ploidy	assembly_size[M]	number_of_scaffolds[k]	N50[k]	complete	fragmented	duplicated	missing	haploid_length[M]	heterozygosity	repeats	TEs	other_repeats	all_repeats	genes	colinear_genes	colinear_blocks	palindromes	heterozygosity_min	heterozygosity_max	haploid_length_min[M]	haploid_length_max[M]	repeats_min	repeats_max
-Pfor1	Poecilia_formosa	apomixis	yes	2	748.9	4	1574.2	98.06	0.51	7.57	1.43	NA	NA	NA	3.1	0.8	6.7	49495	1569	99	0	1.72	1.74	985.9	990.6	57.89	58.16
-Avag1	Adineta_vaga	apomixis	NA	2	218.1	38.9	259.9	90.29	1.43	67.08	8.28	96.8	2.43	13.16	7	0.7	66.4	49300	31871	1584	17	2.39	2.41	97.7	97.9	15.49	15.52
-Aric1	Adineta_ricciae	apomixis	NA	4	174.5	4.1	276.8	88.34	2.25	62.99	9.41	192.4	0.02	35.83	0.8	0.4	5.2	58489	41581	1399	0	4.27	12.01	94.3	94.4	10.86	10.88
-Rmac1	Rotaria_macrura	apomixis	NA	4	234.7	29.3	73.2	89.16	1.64	15.24	9.2	130.6	11.76	25.33	8	2.1	42.8	26284	3307	199	0	0.58	37.37	130	130.1	26.48	26.5
-Rmag1	Rotaria_magnacalcarata	apomixis	NA	2	180.5	20.9	53.2	90.49	1.02	16.16	8.49	192.9	0.52	25.29	9.1	1.3	38.4	37380	3884	242	0	0	155.49	108.3	108.7	37.42	37.57
-Lcla1	Leptopilina_clavipes	gamete_duplication	no	2	255.4	36.6	13.8	93.87	4.09	0.82	2.04	241.6	0.31	23.7	12.5	1	34.8	50004	98	5	0	0.3	0.3	273.8	274	32.79	32.82
-Tpre1	Trichogramma_pretiosum	gamete_duplication	no	2	195.1	0.4	3706.2	98.36	0.31	4.4	1.33	183.2	0.04	10.6	6.2	2.3	21.5	13200	0	0	0	0.03	0.03	192.7	192.7	15.06	15.06
-Obir1	Ooceraea_biroi	central_fusion	NA	2	212.8	4.6	1350.7	98.16	1.02	1.02	0.82	181.6	0.53	9.19	12.1	0.6	19.7	22760	24	2	1	0.52	0.53	190.9	191	13.69	13.7
-Aruf1	Aptinothrips_rufus	gamete_duplication	no	2	339.9	301.7	4.1	97.55	1.33	0.82	1.12	332.3	0.25	24.92	8.4	2.9	38.2	NA	NA	NA	NA	0.25	0.25	362.6	362.8	31.26	31.28
-Fcan1	Folsomia_candida	terminal_fusion	no	2	221.7	0.2	6519.4	93.15	1.64	1.94	5.21	251.1	0.15	35.99	8.9	0.5	28.1	28734	871	54	11	0.12	0.13	295.5	296	45.77	45.85
-Dpul1	Daphnia_pulex	NA	NA	2	156.4	1.8	494.8	97.75	0.61	3.37	1.64	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
-Dpul2	Daphnia_pulex	central_fusion	yes	2	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	6.1	4.5	22.8	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
-Dpul3	Daphnia_pulex	central_fusion	yes	2	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	5.5	4.1	22.9	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
-Dpul4	Daphnia_pulex	central_fusion	yes	2	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
-Dpul5	Daphnia_pulex	central_fusion	yes	2	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
-Pvir1	Procambarus_virginalis	apomixis	possibly	3	3290.5	1942.8	39.3	87.12	6.44	0.92	6.44	1638.1	1.28	42.22	34.5	1.7	56.4	22206	0	0	0	1.84	1.85	3527.2	3529.3	83.06	83.11
-Psam1	Plectus_sambesii	gamete_duplication	NA	2	186.7	19	23.4	75.87	13.34	16.4	10.79	NA	NA	NA	NA	NA	NA	40528	1163	89	0	3.74	3.81	117.6	117.8	24.12	24.15
-Dcor1	Diploscapter_coronatus	terminal_fusion	possibly	2	170.5	0.5	1007.7	91.55	4.58	67.92	3.87	82.5	5.12	8.78	7.6	0.6	65.5	34421	0	0	0	5.1	5.11	84.2	84.2	12.04	12.04
-Dpac1	Diploscapter_pachys	central_fusion	possibly	2	157.7	10.8	124.2	90.63	5.3	49.49	4.07	93.2	5.77	32.28	2.6	1.3	34.7	38423	11857	499	0	5.09	5.43	93.9	94.7	42.94	43.31
-Pdav1	Panagrolaimus_davidiDAW1	unknown_automixis	yes	3	163.2	51.9	4.9	31.36	9.16	4.18	59.47	123.9	5.1	48.6	NA	NA	NA	31646	0	0	0	5.65	5.78	123.8	123.9	48.57	48.63
-Ps591	Panagrolaimus_sp.PS1159	unknown_automixis	yes	3	85	17.6	9.9	74.75	8.66	1.83	16.6	71.5	4.49	92.08	9.8	1.4	77.4	24793	0	0	0	NA	NA	NA	NA	NA	NA
-Ps791	Panagrolaimus_sp.PS1579	unknown_automixis	yes	3	48.8	23.5	2.9	73.01	6.13	2.86	20.86	58.7	3.4	71.06	NA	NA	NA	18063	0	0	0	NA	NA	NA	NA	NA	NA
-Minc1	Meloidogyne_incognita	apomixis	yes	3	183.5	12.1	38.6	61.71	7.84	36.35	30.45	NA	NA	NA	NA	NA	NA	43718	11464	774	1	NA	NA	NA	NA	NA	NA
-Minc2	Meloidogyne_incognita	apomixis	yes	3	148.1	245.3	12.2	52.34	9.16	19.45	38.49	69	5.76	30.6	8	1.6	47.9	24714	1072	76	0	6.34	6.4	68.9	69	30.6	30.61
-Mjav1	Meloidogyne_javanica	apomixis	yes	4	235.8	31.3	10.4	61.1	7.54	31.06	31.36	NA	NA	NA	NA	NA	NA	97208	4408	389	0	NA	NA	NA	NA	NA	NA
-Mjav2	Meloidogyne_javanica	apomixis	yes	4	152.9	54.5	13.9	57.64	9.67	25.15	32.69	70.1	4.75	38.58	11.1	1.9	56.4	25697	1056	75	0	6.29	13.67	70	70.1	38.6	38.62
-Mare1	Meloidogyne_arenaria	apomixis	yes	4	258.1	26.2	16.5	65.07	7.43	36.46	27.49	NA	NA	NA	NA	NA	NA	101269	12868	1199	2	NA	NA	NA	NA	NA	NA
-Mare2	Meloidogyne_arenaria	apomixis	yes	4	165.4	58.3	10.3	55.91	9.47	21.18	34.62	72.6	5	37.24	10.8	1.8	59	30308	421	32	0	5.96	11.09	72.5	72.6	37.23	37.25
-Mare3	Meloidogyne_arenaria	apomixis	yes	4	284	2.2	204.6	61.35	8.28	33.74	30.37	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
-Mflo1	Meloidogyne_floridensis	unknown_automixis	yes	3	74.9	9.1	13.3	49.9	8.66	2.95	41.45	67.3	2.64	28.88	6.9	1.8	39.1	14414	28	2	0	2.65	2.94	67.1	67.4	28.81	28.94
-Ment1	Meloidogyne_enterolobii	apomixis	yes	3	166.3	68.4	10.3	49.69	10.39	17.62	39.92	88.2	5.19	39.5	6.6	1.3	28.1	31051	464	38	0	5.99	6.14	88.1	88.2	39.48	39.52
-Anan1	Acrobeloides_nanus	terminal_fusion	NA	2	248.1	30.8	19.6	73.93	6.13	9.71	19.94	NA	NA	NA	NA	NA	NA	35692	0	0	0	2.38	2.39	261.8	262	63.04	63.08
-Hduj1	Hypsibius_dujardini	terminal_fusion	NA	2	135	13.2	50.5	84.36	2.97	1.94	12.68	NA	NA	NA	0.1	0.4	1.9	20480	39	3	0	NA	NA	NA	NA	NA	NA
-Rvar1	Ramazzottius_varieornatus	NA	NA	2	55.8	0.2	3294.9	85.17	2.04	1.23	12.78	47.7	0.71	5.83	1.7	1.1	8.1	14532	0	0	0	0.45	0.46	51	51	6.59	6.6
+-	-	literature	-	smudgeplot	assembly	-	-	BUSCO	-	-	-	GenomeScope	-	-	-	-	-	dnaPipeTE	-	-	MCScanX	-	-	-
+code	species	reproduction_mode	hybrid_origin	ploidy	assembly_size[M]	number_of_scaffolds[k]	N50[k]	complete	fragmented	duplicated	missing	haploid_length_min[M]	haploid_length_max[M]	heterozygosity_min	heterozygosity_max	repeats_min	repeats_max	TEs	other_repeats	all_repeats	genes	colinear_genes	colinear_blocks	palindromes
+Pfor1	Poecilia_formosa	apomixis	yes	2	748.9	4	1574.2	98.06	0.51	7.57	1.43	985.9	990.6	1.72	1.74	57.89	58.16	3.1	0.8	6.7	49495	1569	99	0
+Avag1	Adineta_vaga	apomixis	NA	2	218.1	38.9	259.9	90.29	1.43	67.08	8.28	97.7	97.9	2.39	2.41	15.49	15.52	7	0.7	66.4	49300	31871	1584	17
+Aric1	Adineta_ricciae	apomixis	NA	4	174.5	4.1	276.8	88.34	2.25	62.99	9.41	94.3	94.4	4.27	12.01	10.86	10.88	0.8	0.4	5.2	58489	41581	1399	0
+Rmac1	Rotaria_macrura	apomixis	NA	4	234.7	29.3	73.2	89.16	1.64	15.24	9.2	130	130.1	0.58	37.37	26.48	26.5	8	2.1	42.8	26284	3307	199	0
+Rmag1	Rotaria_magnacalcarata	apomixis	NA	2	180.5	20.9	53.2	90.49	1.02	16.16	8.49	108.3	108.7	0	155.49	37.42	37.57	9.1	1.3	38.4	37380	3884	242	0
+Lcla1	Leptopilina_clavipes	gamete_duplication	no	2	255.4	36.6	13.8	93.87	4.09	0.82	2.04	273.8	274	0.3	0.3	32.79	32.82	12.5	1	34.8	50004	98	5	0
+Tpre1	Trichogramma_pretiosum	gamete_duplication	no	2	195.1	0.4	3706.2	98.36	0.31	4.4	1.33	192.7	192.7	0.03	0.03	15.06	15.06	6.2	2.3	21.5	13200	0	0	0
+Obir1	Ooceraea_biroi	central_fusion	NA	2	212.8	4.6	1350.7	98.16	1.02	1.02	0.82	190.9	191	0.52	0.53	13.69	13.7	12.1	0.6	19.7	22760	24	2	1
+Aruf1	Aptinothrips_rufus	gamete_duplication	no	2	339.9	301.7	4.1	97.55	1.33	0.82	1.12	362.6	362.8	0.25	0.25	31.26	31.28	8.4	2.9	38.2	NA	NA	NA	NA
+Fcan1	Folsomia_candida	terminal_fusion	no	2	221.7	0.2	6519.4	93.15	1.64	1.94	5.21	295.5	296	0.12	0.13	45.77	45.85	8.9	0.5	28.1	28734	871	54	11
+Dpul1	Daphnia_pulex	NA	NA	2	156.4	1.8	494.8	97.75	0.61	3.37	1.64	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+Dpul2	Daphnia_pulex	central_fusion	yes	2	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	6.1	4.5	22.8	NA	NA	NA	NA
+Dpul3	Daphnia_pulex	central_fusion	yes	2	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	5.5	4.1	22.9	NA	NA	NA	NA
+Dpul4	Daphnia_pulex	central_fusion	yes	2	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+Dpul5	Daphnia_pulex	central_fusion	yes	2	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+Pvir1	Procambarus_virginalis	apomixis	possibly	3	3290.5	1942.8	39.3	87.12	6.44	0.92	6.44	3527.2	3529.3	1.84	1.85	83.06	83.11	34.5	1.7	56.4	22206	0	0	0
+Psam1	Plectus_sambesii	gamete_duplication	NA	2	186.7	19	23.4	75.87	13.34	16.4	10.79	117.6	117.8	3.74	3.81	24.12	24.15	NA	NA	NA	40528	1163	89	0
+Dcor1	Diploscapter_coronatus	terminal_fusion	possibly	2	170.5	0.5	1007.7	91.55	4.58	67.92	3.87	84.2	84.2	5.1	5.11	12.04	12.04	7.6	0.6	65.5	34421	0	0	0
+Dpac1	Diploscapter_pachys	central_fusion	possibly	2	157.7	10.8	124.2	90.63	5.3	49.49	4.07	93.9	94.7	5.09	5.43	42.94	43.31	2.6	1.3	34.7	38423	11857	499	0
+Pdav1	Panagrolaimus_davidiDAW1	unknown_automixis	yes	3	163.2	51.9	4.9	31.36	9.16	4.18	59.47	123.8	123.9	5.65	5.78	48.57	48.63	NA	NA	NA	31646	0	0	0
+Ps591	Panagrolaimus_sp.PS1159	unknown_automixis	yes	3	85	17.6	9.9	74.75	8.66	1.83	16.6	NA	NA	NA	NA	NA	NA	9.8	1.4	77.4	24793	0	0	0
+Ps791	Panagrolaimus_sp.PS1579	unknown_automixis	yes	3	48.8	23.5	2.9	73.01	6.13	2.86	20.86	NA	NA	NA	NA	NA	NA	NA	NA	NA	18063	0	0	0
+Minc1	Meloidogyne_incognita	apomixis	yes	3	183.5	12.1	38.6	61.71	7.84	36.35	30.45	NA	NA	NA	NA	NA	NA	NA	NA	NA	43718	11464	774	1
+Minc2	Meloidogyne_incognita	apomixis	yes	3	148.1	245.3	12.2	52.34	9.16	19.45	38.49	68.9	69	6.34	6.4	30.6	30.61	8	1.6	47.9	24714	1072	76	0
+Mjav1	Meloidogyne_javanica	apomixis	yes	4	235.8	31.3	10.4	61.1	7.54	31.06	31.36	NA	NA	NA	NA	NA	NA	NA	NA	NA	97208	4408	389	0
+Mjav2	Meloidogyne_javanica	apomixis	yes	4	152.9	54.5	13.9	57.64	9.67	25.15	32.69	70	70.1	6.29	13.67	38.6	38.62	11.1	1.9	56.4	25697	1056	75	0
+Mare1	Meloidogyne_arenaria	apomixis	yes	4	258.1	26.2	16.5	65.07	7.43	36.46	27.49	NA	NA	NA	NA	NA	NA	NA	NA	NA	101269	12868	1199	2
+Mare2	Meloidogyne_arenaria	apomixis	yes	4	165.4	58.3	10.3	55.91	9.47	21.18	34.62	72.5	72.6	5.96	11.09	37.23	37.25	10.8	1.8	59	30308	421	32	0
+Mare3	Meloidogyne_arenaria	apomixis	yes	4	284	2.2	204.6	61.35	8.28	33.74	30.37	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+Mflo1	Meloidogyne_floridensis	unknown_automixis	yes	3	74.9	9.1	13.3	49.9	8.66	2.95	41.45	67.1	67.4	2.65	2.94	28.81	28.94	6.9	1.8	39.1	14414	28	2	0
+Ment1	Meloidogyne_enterolobii	apomixis	yes	3	166.3	68.4	10.3	49.69	10.39	17.62	39.92	88.1	88.2	5.99	6.14	39.48	39.52	6.6	1.3	28.1	31051	464	38	0
+Anan1	Acrobeloides_nanus	terminal_fusion	NA	2	248.1	30.8	19.6	73.93	6.13	9.71	19.94	261.8	262	2.38	2.39	63.04	63.08	NA	NA	NA	35692	0	0	0
+Hduj1	Hypsibius_dujardini	terminal_fusion	NA	2	135	13.2	50.5	84.36	2.97	1.94	12.68	NA	NA	NA	NA	NA	NA	0.1	0.4	1.9	20480	39	3	0
+Rvar1	Ramazzottius_varieornatus	NA	NA	2	55.8	0.2	3294.9	85.17	2.04	1.23	12.78	51	51	0.45	0.46	6.59	6.6	1.7	1.1	8.1	14532	0	0	0
