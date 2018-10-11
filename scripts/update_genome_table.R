@@ -7,6 +7,8 @@ library('gsheet')
 # table to update
 tab_file <- 'tables/genome_table.tsv'
 genome_tab <- read.table(tab_file, header = T, stringsAsFactors = F, skip = 1, check.names = F)
+row.names(genome_tab) <- genome_tab$code
+
 # following line corrects names that are automatically replaced when R loads the table
 # colnames(genome_tab)[c(3:5, 13)] <- c('assembly_size[M]', 'number_of_scaffolds[k]', 'N50[k]', 'haploid_length[M]')
 # download table for cases if there is a new organism
@@ -135,6 +137,11 @@ for(smudge_file in smudgeplot_files){
     genome_tab[row,'ploidy'] <- as.numeric(smudge_est_ploidy)
 }
 
+# This species is most likely hozmozygous within genome copies,
+# but very heterozygous between othnologs, it is AABB where AA and BB are the same,
+# but AB is very diverged (~12%)
+genome_tab[genome_tab$code == "Rmag1",'ploidy'] <- 4
+
 ####################################
 # ATLAS ( scripts/est_theta.sh )   #
 # ML_heterozygosity                #
@@ -156,6 +163,7 @@ parse_genomescope_summary <- function(file){
     line <- line[line != '']
     heterozygosity_min <- round(100 - as.numeric(substr(line[3], 0, nchar(line[3]) - 1)), 2)
     heterozygosity_max <- round(100 - as.numeric(substr(line[2], 0, nchar(line[2]) - 1)), 2)
+    heterozygosity <- mean(c(heterozygosity_min, heterozygosity_max))
 
     line <- ssplit(genoscope_file[grepl("Haploid", genoscope_file)], ' ')
     line <- gsub(",", "", line[line != ''])
@@ -163,13 +171,14 @@ parse_genomescope_summary <- function(file){
 
     line <- ssplit(genoscope_file[grepl("Repeat", genoscope_file)], ' ')
     line <- gsub(",", "", line[line != ''])
-    repeats <- round((as.numeric(line[c(4, 6)]) * 100) / mean(haploid_genome), 2)
+    repeats <- round((mean(as.numeric(line[c(4, 6)])) * 100) / mean(haploid_genome), 2)
 
-    return( c(round(haploid_genome / 1e6, 1),
+    return( c(round(mean(haploid_genome) / 1e6, 1),
               repeats,
-              heterozygosity_min, heterozygosity_max) )
+              heterozygosity) )
 }
 
+# genome_tab[, c('haploid_length[M]', 'repeats', 'heterozygosity')] <- NA
 genomescope_files <- paste("data", sp_with_reads, "genomescope/summary.txt", sep = "/")
 genomescope_files <- checkFiles(genomescope_files, 'genomescope files (not converged)')
 
@@ -178,10 +187,16 @@ for(genomescope_file in genomescope_files){
     genome_tab <- expand_table_if_needed(sp, genome_tab)
     row <- sp == genome_tab$code
 
-    genome_tab[row, c('haploid_length_min[M]', 'haploid_length_max[M]',
-                      'repeats_min', 'repeats_max',
-                      'heterozygosity_min', 'heterozygosity_max')] <- parse_genomescope_summary(genomescope_file)
+    genome_tab[row, c('haploid_length[M]',
+                      'repeats',
+                      'heterozygosity')] <- parse_genomescope_summary(genomescope_file)
 }
+
+# tetraploids have for some reason a problem with summaries, all other ploidies have values corresponding to figures, tetraplods do not
+# therefore I use values from their figures:
+
+genome_tab[c('Aric1', 'Rmac1', 'Rmag1', 'Mjav2', 'Mare2'),
+           'heterozygosity'] <- c(6.1, 12.4, 11.7, 8.5, 8.1)
 
 #############################################################
 # MCScanX ( scripts/MCScanX_???????.sh )                    #
@@ -218,15 +233,15 @@ literature_data <- read.csv(text = gsheet2text("https://docs.google.com/spreadsh
                             stringsAsFactors = F, skip = 1, header = T, check.names = F)
 literature_data <- literature_data[,c(2, 8, 9, 12)]
 
-mitotic <- grepl('apomixis', literature_data[,'reproduction_mode'])
+mitotic <- grepl('apomixis', literature_data[,'reproduction_mode']) | grepl('endoduplication', literature_data[,'reproduction_mode'])
 central_fusion <- grepl('central', literature_data[,'reproduction_mode'])
 terminal_fusion <- grepl('terminal', literature_data[,'reproduction_mode'])
-gdupl <- grepl('dupl', literature_data[,'reproduction_mode'])
+gdupl <- grepl('gamete dupl', literature_data[,'reproduction_mode'])
 unknown_meiotic <- grepl('automix', literature_data[,'reproduction_mode']) & grepl('unknown', literature_data[,'reproduction_mode'])
 
 # create three categories
 literature_data$reproduction_mode <- NA # unknown is default
-literature_data$reproduction_mode[mitotic] <- 'apomixis' # mitosis
+literature_data$reproduction_mode[mitotic] <- 'functional_apomixis' # mitosis or endoduplication
 literature_data$reproduction_mode[central_fusion] <- 'central_fusion'  # automixis central fusion
 literature_data$reproduction_mode[terminal_fusion] <- 'terminal_fusion' # automixis terminal fusion
 literature_data$reproduction_mode[gdupl] <- 'gamete_duplication'  # gamete duplications
@@ -234,12 +249,10 @@ literature_data$reproduction_mode[unknown_meiotic] <- 'unknown_automixis' # unkn
 
 literature_data <- literature_data[literature_data$code %in% genome_tab$code,]
 
-genome_tab$ploidy <- NA
 genome_tab$reproduction_mode <- NA
 genome_tab$hybrid_origin <- NA
 
-row.names(genome_tab) <- genome_tab$code
-columns <- c('ploidy', 'reproduction_mode', 'hybrid_origin')
+columns <- c('reproduction_mode', 'hybrid_origin')
 genome_tab[literature_data$code, columns] <- literature_data[, columns]
 
 ######################
@@ -270,7 +283,7 @@ if ( length(desired_order) == nrow(genome_tab) ){
 genome_tab <- genome_tab[, c('code', 'species', 'reproduction_mode', 'hybrid_origin', 'ploidy',
                              'assembly_size[M]', 'number_of_scaffolds[k]', 'N50[k]',
                              'complete', 'fragmented', 'duplicated', 'missing',
-                             'haploid_length_min[M]', 'haploid_length_max[M]', 'heterozygosity_min', 'heterozygosity_max', 'repeats_min', 'repeats_max',
+                             'haploid_length[M]', 'heterozygosity', 'repeats',
                              'TEs','other_repeats','all_repeats',
                              'genes', 'colinear_genes', 'colinear_blocks', 'palindromes')]
 
@@ -281,7 +294,7 @@ extra_header <- c(rep('-', 2),
                   'smudgeplot',
                   'assembly', rep('-', 2),
                   'BUSCO', rep('-', 3),
-                  'GenomeScope', rep('-', 5),
+                  'GenomeScope', rep('-', 2),
                   'dnaPipeTE', rep('-', 2),
                   'MCScanX', rep('-', 3) )
 asm_template <- matrix(ncol = length(extra_header))
