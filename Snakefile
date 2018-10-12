@@ -100,6 +100,10 @@ rule calculate_genome_kmer_content :
 rule calculate_colinearity :
 	input : expand("data/{sp}/MCScanX", sp=species_with_genomes)
 
+## blast
+rule calculate_blast :
+	input : expand("data/{sp}/proteins.blast", sp=species_with_genomes)
+
 ## calculate_genome_stats : calculate genome length, N50 and number of contigs of all genomes
 rule calculate_genome_stats :
 	input : genome_stat_files
@@ -270,3 +274,10 @@ rule colinearity_analysis :
 	input : "data/{sample}/genome.fa.gz", "data/{sample}/annotation.gff3.gz"
 	output : "data/{sample}/MCScanX"
 	shell : cluster_script + "scripts/MCScanX_palindromes.sh {wildcards.sample} {input} {output}"
+
+rule blast :
+	threads : 16
+	resources : mem=64000000, tmp=60000
+	intput : "data/{sample}/genome.fa.gz" "scripts/blast_filter.py"
+	output : "data/{sample}/proteins.blast"
+	shell : cluster_script + "scripts/blast.sh {input} {output}"
