@@ -32,6 +32,8 @@ with open('tables/download_table.tsv') as tab :
 				trimmed_lib_file = 'data/' + sp + '/trimmed_reads/' + lib + '-trimmed-pair1.fastq.gz'
 				raw_read_files.append(raw_lib_file)
 				sample_accesions[sp] = sample_accesions.get(sp, []) + [trimmed_lib_file]
+		if line[4] != 'NA' :
+			species_with_annotation.append(sp)
 
 species_with_reads_and_genomes = [sp for sp in species_with_reads if sp in species_with_genomes]
 
@@ -96,13 +98,9 @@ rule create_smudgeplots :
 rule calculate_genome_kmer_content :
 	input : expand("data/{sp}/KAT", sp=species_with_reads_and_genomes)
 
-## calculate_colinearity
-rule calculate_colinearity :
-	input : expand("data/{sp}/MCScanX", sp=species_with_genomes)
-
 ## blast
 rule calculate_blast :
-	input : expand("data/{sp}/proteins.blast", sp=species_with_genomes)
+	input : expand("data/{sp}/MCScanX/{sp}_prot.blast", sp=species_with_annotation)
 
 ## calculate_genome_stats : calculate genome length, N50 and number of contigs of all genomes
 rule calculate_genome_stats :
@@ -268,16 +266,9 @@ rule kmer_genome_content :
 	output : "data/{sample}/KAT"
 	shell : cluster_script + "scripts/KAT.sh {wildcards.sample} data/{wildcards.sample}/trimmed_reads data/{wildcards.sample}/genome.fa.gz {output}"
 
-rule colinearity_analysis :
-	threads : 16
-	resources : mem=64000000, tmp=60000
-	input : "data/{sample}/genome.fa.gz", "data/{sample}/annotation.gff3.gz"
-	output : "data/{sample}/MCScanX"
-	shell : cluster_script + "scripts/MCScanX_palindromes.sh {wildcards.sample} {input} {output}"
-
 rule blast :
 	threads : 16
 	resources : mem=64000000, tmp=60000
-	intput : "data/{sample}/genome.fa.gz" "scripts/blast_filter.py"
-	output : "data/{sample}/proteins.blast"
+	input : "data/{sample}/annotation_proteins.fa", "scripts/blast_filter.py"
+	output : "data/{sample}/MCScanX/{sample}_prot.blast"
 	shell : cluster_script + "scripts/blast.sh {input} {output}"

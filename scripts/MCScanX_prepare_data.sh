@@ -3,9 +3,16 @@
 # Avag1
 module add UHTS/Assembler/cufflinks/2.2.1;
 
+################
+#### README ####
+################
+# This script contains bits of code that were manually executed for speices mentioned in commnets
+# the reason is that evey single annotatoin file is different
+# and I had to make sure that I will manage to extract protein sequences that have compatible headars with annotation_proteins
+# the two exceptions are Fcan1 and Lcla1 for which I downloaded directly the protein files
+################
+
 mkdir -p data/$SP/MCScanX
-cp /scratch/beegfs/monthly/kjaron/review-of-asexual-genomes/data/$SP/annotation* data/$SP
-cp /scratch/beegfs/monthly/kjaron/review-of-asexual-genomes/data/$SP/genome.fa.gz data/$SP
 
 # scripts/download_data.sh $SP genome
 GENOME=data/$SP/genome.fa.gz
@@ -16,7 +23,7 @@ MCScanX_DIR=data/$SP/MCScanX
 
 GENOME_UNZIPED=${GENOME%.*}
 GFF_UNZIPED=${GFF%.*}
-PROTEINS=$MCScanX_DIR/annotation_proteins.fa
+PROTEINS=data/$SP/annotation_proteins.fa
 
 zcat $GENOME > $GENOME_UNZIPED
 # sed 's/gi.*.ref.//g' $GENOME_UNZIPED | sed 's/|//g' > data/Pfor1/genome_corrected.fa
@@ -96,7 +103,7 @@ awk '($3 == "transcript") {
     print $1, $9, $4, $5
 }' "$GFF_UNZIPED" > "$MCScanX_DIR"/"$SP"_prot.gff
 
-TARGET_DIR=/scratch/beegfs/monthly/kjaron/review-of-asexual-genomes/data/$SP/MCScanX/
+TARGET_DIR=data/$SP/MCScanX/
 mkdir -p $TARGET_DIR
 cp data/$SP/MCScanX/"$SP"_prot.gff $TARGET_DIR
 cp $PROTEINS $TARGET_DIR

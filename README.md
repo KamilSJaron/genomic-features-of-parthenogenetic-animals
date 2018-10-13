@@ -1,24 +1,23 @@
 # Review of asexual genomes
 
-This repository serves for supplementary analyses performed for review of asexual genomes.
+This repository serves for the analyses performed for a metastudy of asexual genomes.
 
-The idea of review is to put together all full genomes are of asexual animals and compare patterns observed, other eukaryotes will be only discussed.
-One of difficulties is to compare different genomics projects that are based on different inference methods and focus on different aspects.
-This review aims to put them in a line taking this bias into account and unify analysis whenever it's easy enough.
+The idea is to review all genomes of asexual animals and compare patterns observed. Other eukaryotes will be only discussed.
+One of difficulties is to compare different genomics projects that are based on different inference methods and focus on different aspects. Therefore we estimate the most of the genomic properties using unified methodology.
 
 List of performed analysis :
 
-- [GenomeScope](https://github.com/schatzlab/genomescope) `dev` - genome profiling from kmer spectra of sequencing reads - estimates of genome size, heterozygosity and repetitive content
-- [KAT](https://github.com/TGAC/KAT) `2.4.1` - kmer spectra analysis in context of genome assembly - resolving how much are individual haplotypes collapsed in the assembly
-- [MUMmer](https://github.com/mummer4/mummer/blob/master/MANUAL.md) `v4.0.0beta2` - genome self-alignment - evaluation of genome structure
-- [dnaPipeTE](https://github.com/clemgoub/dnaPipeTE) `v1.2` - evaluation of repetitive content using sequencing reads
-- [BUSCO](https://busco.ezlab.org/) `v3` - benchmarking using single copy orthologs - evaluation of unusual conserved gene content
+- [GenomeScope](https://github.com/schatzlab/genomescope) `v2 dev` - genome profiling from kmer spectra of sequencing reads. Estimate of genome size, heterozygosity and repetitive content.
+- [smudgeplot](https://github.com/tbenavi1/smudgeplot) `v0.1.3` - Estimation of ploidy and heterozygosity structure, helps in interpretation of GenomeScope kmer spectra.
+- [KAT](https://github.com/TGAC/KAT) `2.4.1` - Kmer spectra analysis in context of genome assembly. Resolving how much are individual haplotypes collapsed in the assembly.
+- [MUMmer](https://github.com/mummer4/mummer/blob/master/MANUAL.md) `v4.0.0beta2` - Genome self-alignment. Evaluation of genome structure.
+- [dnaPipeTE](https://github.com/clemgoub/dnaPipeTE) `v1.2` - Evaluation of repetitive content using sequencing reads.
+- [BUSCO](https://busco.ezlab.org/) `v3` - Benchmarking using single copy orthologs. Evaluation of unusual conserved gene content.
+- [MCScanX](http://chibba.pgml.uga.edu/mcscan2/) `untagged version` released 28.3.2013 - Collinearity and palindrome analysis. Evaluation of abundance of palindromes in asexual genomes.
 
 ## Sample labels
 
-The labels of genomes are composed of **G**enus and **spe**cies name `Gspe`. Some of genomes were sequenced multiple times therefore every sample label is followed by index of the seuqenced individual. For for instance second sequencing of _Meloidogyne incognita_ wouble be `Minc2`.
-
-***
+The labels of genomes are composed of **G**enus and **spe**cies name `Gspe` and an index, which serves only as a distinction of the different sequencing projects. The full list of genomes considered in this study is in the table [tables/download_table.tsv](tables/download_table.tsv).
 
 ## Development
 
@@ -33,7 +32,7 @@ The labels of genomes are composed of **G**enus and **spe**cies name `Gspe`. Som
 The analysis is automated using [snakemake](https://snakemake.readthedocs.io/en/stable/), tested with version `4.8.0`.
 The scripts for analysis are combination of `bash`, `R` anf `python`.
 
-## Vital-it execution
+## Cluster execution
 
 I wrote a [wrapper](snakemake_clust.sh) around snakemake so it understands our cluster. Then the execution is
 
@@ -57,7 +56,7 @@ The very last think to look at are program dependencies. These are actually hard
 
 I know it sounds that there is a lot of things to do for reproduction of this analysis. However, I tried my best to combine reproducibility and good computational practice (like using local storage). I will wonk on that.
 
-## Snakemake hints
+## Snakemake tips
 
 apparently I can produce a graph of the workflow (it's really pretty) :
 
