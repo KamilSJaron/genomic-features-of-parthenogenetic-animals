@@ -140,7 +140,7 @@ for(smudge_file in smudgeplot_files){
 # This species is most likely hozmozygous within genome copies,
 # but very heterozygous between othnologs, it is AABB where AA and BB are the same,
 # but AB is very diverged (~12%)
-genome_tab[genome_tab$code == "Rmag1",'ploidy'] <- 4
+genome_tab[genome_tab$code %in% c("Avag1", "Rmag1"),'ploidy'] <- 4
 
 ####################################
 # ATLAS ( scripts/est_theta.sh )   #
