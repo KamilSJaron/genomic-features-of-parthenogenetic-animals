@@ -53,8 +53,8 @@ plot_corpus <- function(){
     rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col=rgb(0.92,0.92,0.92))
 
     ellipse_col <- rgb(0.66, 0.66, 0.66, alpha=0.5)
-    filledellipse(rx1 = 4.8, ry1 = 0.21, col = ellipse_col, angle = 92.8, dr = 0.1, mid = c(2.1, 8))
-    filledellipse(rx1 = 3.8, ry1 = 0.2, col = ellipse_col, angle = 87.5, dr = 0.1, mid = c(3.15, 6))
+    filledellipse(rx1 = 5.3, ry1 = 0.21, col = ellipse_col, angle = 90.8, dr = 0.1, mid = c(1.97, 7.4))
+    filledellipse(rx1 = 3.8, ry1 = 0.2, col = ellipse_col, angle = 87.5, dr = 0.1, mid = c(3.13, 6))
     filledellipse(rx1 = 0.2, ry1 = 0.9, col = ellipse_col, angle = 0, dr = 0.1, mid = c(2.67, 4.86))
 
     boxplot_col <- rgb(0.66, 0.66, 0.66, alpha=0.5)
@@ -104,7 +104,7 @@ plot_ploits <- function(hyb_origin = "no"){
     # }
 }
 
-pdf('figures/fig2_heterozygosity.pdf', width=8, height=8)
+pdf('figures/fig2a_heterozygosity.pdf', width=8, height=8)
 # png('figures/fig2_heterozygosity.png')
 
 # 'c(bottom, left, top, right)'
