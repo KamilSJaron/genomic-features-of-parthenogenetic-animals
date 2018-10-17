@@ -1,7 +1,7 @@
-code	AAAA	AABB	A	dupl
-Avag1	NA	NA	2.4	5.88
-Aric1	93.9	5.56	0.54	2.03
-Rmac1	87.6	12.2	0.2	1.89
-Rmag1	88.3	11.7	NA	3.56
-Mjav2	91.5	4.01	4.49	1.47
-Mare2	91.9	2.28	5.82	0.77
+code	AAAA	AAAB	AABB	AB	dupl
+Avag1	NA	NA	NA	2.4	5.88
+Aric1	93.9	0.25	5.56	0.3	2.03
+Rmac1	87.6	0.25	12.2	0	1.89
+Rmag1	88.3	NA	11.7	NA	3.56
+Mjav2	91.5	4.26	4.01	0.24	1.47
+Mare2	91.9	4.86	2.28	0.97	0.77
