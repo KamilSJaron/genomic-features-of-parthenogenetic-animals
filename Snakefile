@@ -185,9 +185,9 @@ rule index_bam :
 	shell : cluster_script + "scripts/index_bam.sh {input} {output}"
 
 rule annotate_repeats :
-	threads : 12
+	threads : 36
 	resources : mem=150000000, tmp=30000
-	input : lambda wildcards: sample_accesions[wildcards.sample], "data/{sample}/genomescope"
+	input : lambda wildcards: sample_accesions[wildcards.sample]
 	output : "data/{sample}/dnaPipeTE"
 	shell : "scripts/annotate_repeats.sh data/{wildcards.sample}/trimmed_reads {wildcards.sample} {output}"
 

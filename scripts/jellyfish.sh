@@ -28,7 +28,8 @@ else
 fi
 
 # name of histogram file should contain all library IDs and kmer size
-HIST=$OUTDIR/$(grep "$sp" "$DL_TABLE" | cut -f 4)_k"$KMER".hist
+SP=$(echo $OUTDIR | cut -f 2 -d '/')
+HIST=$OUTDIR/$(grep "$SP" "$DL_TABLE" | cut -f 4)_k"$KMER".hist
 
 jellyfish histo $OUTDIR/kmer_counts.jf > $HIST
 

@@ -48,7 +48,7 @@ cd /scratch/beegfs/monthly/ptranvan/Software/dnaPipeTE/1.2
 
 python3 ./dnaPipeTE.py -input "$LOCAL_DIR"/"$READ_DIR"/all_reads.fastq.gz \
     -output "$LOCAL_DIR"/"$OUTPUT" \
-    -cpu 24 -genome_size "$GENOME_SIZE" -genome_coverage 0.5 -sample_number 3
+    -cpu 32 -genome_size "$GENOME_SIZE" -genome_coverage 0.5 -sample_number 3
 
 cd "$LOCAL_DIR"
 mv "$OUTPUT" "$SHARED_DIR"/"$OUTPUT"

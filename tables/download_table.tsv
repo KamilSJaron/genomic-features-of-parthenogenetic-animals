@@ -6,7 +6,7 @@ Rmac1	Rotaria_macrura	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/239/685/GCA
 Rmag1	Rotaria_magnacalcarata	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/239/745/GCA_900239745.1_nRg1.8.reference_genomic/GCA_900239745.1_nRg1.8.reference_genomic_genomic.fna.gz	ERR2135451	https://doi.org/10.1371/journal.pbio.2004830.s002
 Lcla1	Leptopilina_clavipes	http://parasitoids.labs.vu.nl/parasitoids/leptopilina/data/lclav_genome.fa	SRR7028347	http://animalecology.labs.vu.nl/parasitoids/leptopilina/data/lclav_annotation.gff3
 Tpre1	Trichogramma_pretiosum	ftp://ftp.hgsc.bcm.edu/I5K-pilot/Trichogramma_pretiosum/genome_assemblies/NCBI_submitted/Tpre_scaffolds.50.fa	SRR1191749	ftp://ftp.hgsc.bcm.edu/I5K-pilot/Trichogramma_pretiosum/maker_annotation/version_0.5.3/TPRE.Models.gff3
-Obir1	Ooceraea_biroi	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Ooceraea_biroi/latest_assembly_versions/GCF_000611835.1_CerBir1.0/GCF_000611835.1_CerBir1.0_genomic.fna.gz	SRR1192097	ftp://ftp.ncbi.nlm.nih.gov/genomes/Cerapachys_biroi/GFF/ref_CerBir1.0_top_level.gff3.gz
+Obir1	Ooceraea_biroi	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Ooceraea_biroi/latest_assembly_versions/GCF_000611835.1_CerBir1.0/GCF_000611835.1_CerBir1.0_genomic.fna.gz	SRR1192095,SRR1192097,SRR1192107	ftp://ftp.ncbi.nlm.nih.gov/genomes/Cerapachys_biroi/GFF/ref_CerBir1.0_top_level.gff3.gz
 Aruf1	Aptinothrips_rufus	manual	manual	NA
 Fcan1	Folsomia_candida	http://animalecology.labs.vu.nl/collembolomics/folsomia/data/fcand_genome.fa	SRR2743547	http://animalecology.labs.vu.nl/collembolomics/folsomia/data/fcand_genes.gff
 Dpul1	Daphnia_pulex	http://daphniagenomes.org/sites/default/files/Daphnia_pulex_PA42_v3.0.fasta	NA	NA
