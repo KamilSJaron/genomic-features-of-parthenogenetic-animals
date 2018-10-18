@@ -268,7 +268,7 @@ genome_tab[literature_data$code, columns] <- literature_data[, columns]
 #  tardigrades
 desired_order <- c('Pfor1',
                    'Avag1', 'Aric1', 'Rmac1', 'Rmag1',
-                   'Lcla1', 'Tpre1', 'Obir1', 'Aruf1', 'Fcan1', 'Dpul1', 'Dpul2', 'Dpul3', 'Dpul4', 'Dpul5', 'Pvir1',
+                   'Lcla1', 'Tpre1', 'Obir1', 'Aruf1', 'Fcan1', 'Dpul1', 'Dpul2', 'Dpul3', 'Pvir1',
                    'Psam1', 'Dcor1', 'Dpac1', 'Pdav1', 'Ps591', 'Ps791', 'Minc1', 'Minc2', 'Mjav1', 'Mjav2', 'Mare1', 'Mare2', 'Mare3', 'Mflo1', 'Ment1', 'Anan1',
                    'Hduj1', 'Rvar1')
 if ( length(desired_order) == nrow(genome_tab) ){
