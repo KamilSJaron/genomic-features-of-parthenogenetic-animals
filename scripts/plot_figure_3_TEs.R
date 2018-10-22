@@ -102,14 +102,16 @@ legend('bottomright', bty = 'n', c('single', 'duplicated', 'missing'),
 # 'c(bottom, left, top, right)'
 par(mar = c(5, 1, 1, 2) + 0.1)
 
-barplot(c(rep(100, nrow(genome_tab) - 13), NA, NA, rep(100, 11)),
-        xlab = "BUSCO [ % ]", cex.lab = 1.3,
-        col = busco_pal[3], horiz = T, axes = F, names.arg = F, space = spaces)
+bar_pos <- barplot(c(rep(100, nrow(genome_tab) - 13), NA, NA, rep(100, 11)),
+                   xlab = "BUSCO [ % ]", cex.lab = 1.3,
+                   col = busco_pal[3], horiz = T, axes = F, names.arg = F, space = spaces)
 axis(1)
 
 barplot(genome_tab$complete + genome_tab$fragmented, space = spaces,
         col = busco_pal[2], horiz = T, add = T, axes = F, names.arg = F)
 barplot(genome_tab$complete + genome_tab$fragmented - genome_tab$duplicated, space = spaces,
         col = busco_pal[1], horiz = T, add = T, axes = F, names.arg = F)
+
+lines(c(90,90), range(bar_pos) + c(-0.5,0.5), lty = 3, lwd = 2)
 
 dev.off()
