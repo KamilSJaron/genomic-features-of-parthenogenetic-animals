@@ -40,7 +40,7 @@ bar_pos <- barplot(c(rep(NA, 5), tetra_tab$heter), col = pal[1],
                    ylab = 'Heterozygosity [%]', space = spaces)
 barplot(c(rep(NA, 5), tetra_tab$single_A_het), col = pal[2], add = T, space = spaces)
 barplot(c(trip_tab$heter, tetra_tab$AAAB), col = pal[3], add = T, space = spaces)
-barplot(c(trip_tab$ABC, rep(NA, 6)), col = pal[4], add = T, space = spaces)
+barplot(c(trip_tab$ABC, rep(NA, 6)), col = pal[2], add = T, space = spaces)
 
 # 2 digit rounding
 # text(bar_pos, c(rep(NA, 5), tetra_tab$single_A_het + 0.25), c(rep(NA, 5), tetra_tab$AABB[1:2], 'high', tetra_tab$AABB[4:6]))

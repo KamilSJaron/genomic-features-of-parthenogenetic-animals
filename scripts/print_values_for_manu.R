@@ -28,6 +28,12 @@ cat("Number of diploid species: ", length(unique(genome_tab$species[diploids])),
 cat("Number of polyploid species: ", length(unique(genome_tab$species[otherploids])), "\n")
 
 cat("Max missing conserved genes in Meloidogyne: ", max(genome_tab[substr(genome_tab$species, 1, 11) == "Meloidogyne",'missing']), "\n")
+
+cat("Max missing conserved genes in Meloidogyne: ", max(genome_tab[substr(genome_tab$species, 1, 11) == "Meloidogyne",'missing']), "\n")
 cat("HGT in A. vaga: ", literature_data[literature_data$code == "Avag1", "HGT"], "\n")
 cat("Heterozygosity of D. pachys: ", genome_tab[genome_tab$code == "Dpac1", 'heterozygosity'], "\n")
 
+sum(table(genome_tab$reproduction_mode))
+table(genome_tab[genome_tab$ploidy > 2,'reproduction_mode'])
+sum(is.na(genome_tab$hybrid_origin))
+genome_tab[genome_tab$ploidy > 2,c('species', 'hybrid_origin')]

@@ -29,6 +29,7 @@ repr_modes  <- c("gamete_duplication", "terminal_fusion", "central_fusion", "unk
 # ordering
 genome_tab$hybrid_origin <- ordered(genome_tab$hybrid_origin, levels=hyb_origins )
 genome_tab$reproduction_mode <- ordered(genome_tab$reproduction_mode, levels=repr_modes )
+genome_tab['Avag1','heterozygosity'] <- NA
 genome_tab <- genome_tab[!is.na(genome_tab$heterozygosity),]
 
 ########
@@ -53,7 +54,7 @@ plot_corpus <- function(){
     rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col=rgb(0.92,0.92,0.92))
 
     ellipse_col <- rgb(0.66, 0.66, 0.66, alpha=0.5)
-    filledellipse(rx1 = 5.3, ry1 = 0.21, col = ellipse_col, angle = 90.8, dr = 0.1, mid = c(1.97, 7.4))
+    filledellipse(rx1 = 3.5, ry1 = 0.21, col = ellipse_col, angle = 90.8, dr = 0.1, mid = c(1.97, 9.3))
     filledellipse(rx1 = 3.8, ry1 = 0.2, col = ellipse_col, angle = 87.5, dr = 0.1, mid = c(3.13, 6))
     filledellipse(rx1 = 0.2, ry1 = 0.9, col = ellipse_col, angle = 0, dr = 0.1, mid = c(2.67, 4.86))
 
