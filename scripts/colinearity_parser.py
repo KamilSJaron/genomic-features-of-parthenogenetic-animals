@@ -35,6 +35,7 @@ out_name = in_name.split(".")[0] + "_palindromes.collinearity"
 # - gene -> position; which will be used to retrieve position of genes with respect to strand
 annotation_file = gzip.GzipFile(gff_name,'r')
 lines = annotation_file.readlines()
+annotation_file.close()
 
 rna2gene = dict()
 gene2pos = dict()
@@ -44,16 +45,40 @@ for line in lines:
     if processed_line[0] == "#":
         continue
     processed_line = processed_line.rstrip().split('\t')
+    if processed_line[2] != "gene" and processed_line[2] != 'mRNA' and processed_line[2] != 'transcript':
+        continue
     line_details = processed_line[8].split(';')
     if processed_line[2] == 'gene':
-        gene_name = line_details[0].split('=')[1]
+        if "=" in  line_details[0]:
+            gene_name = line_details[0].split('=')[1]
+        else:
+            gene_name = line_details[0]
         gene2pos[gene_name] = (int(processed_line[3]), int(processed_line[4]), processed_line[6])
     if processed_line[2] == 'mRNA':
         transcript_name = line_details[0].split('=')[1]
         gene_name = line_details[1].split('=')[1]
         rna2gene[transcript_name] = gene_name
+    if processed_line[2] == 'transcript':
+        transcript_name = line_details[0]
+        gene_name = transcript_name.split('.')[0]
+        rna2gene[transcript_name] = gene_name
 
-annotation_file.close()
+sys.stderr.write("Loaded: " + str(len(rna2gene.keys())) + " transcripts\n")
+
+# if
+if len(gene2pos.keys()) == 0:
+    sys.stderr.write("... but no gene annotation found; using transcript instead.\n")
+    for line in lines:
+        processed_line = line.decode()
+        if processed_line[0] == "#":
+            continue
+        processed_line = processed_line.rstrip().split('\t')
+        line_details = processed_line[8].split(';')
+        if processed_line[2] == 'mRNA':
+            gene_name = line_details[1].split('=')[1]
+            gene2pos[gene_name] = (int(processed_line[3]), int(processed_line[4]), processed_line[6])
+else:
+    sys.stderr.write("Corresponging to: " + str(len(gene2pos.keys())) + " genes\n")
 
 ### some parsing functions to make code bit cleaner
 
@@ -109,36 +134,36 @@ putative_palindrome_count = 0
 palindrome_count = 0
 palindrome_distances = []
 
-in_file = open(in_name, 'r')
 with open(in_name, 'r') as in_file, open(out_name, 'w') as out_file:
     # removing the initial lines with parameters
     for alignment_header in in_file:
         if "Alignment" in alignment_header:
             break
-    alignment_buffer = []
-    if is_rerverse_tandem(alignment_header):
-        putative_palindrome_count += 1
+    if "Alignment" in alignment_header:
+        alignment_buffer = []
+        if is_rerverse_tandem(alignment_header):
+            putative_palindrome_count += 1
 
-    # iterating though alignment part of the file
-    for line in in_file:
-        if "Alignment" in line:
-            alignment_buffer = keep_palindomes(alignment_header, alignment_buffer)
-            if alignment_buffer:
-                palindrome_count += 1
-                palindrome_distances.append(parse_alignment(alignment_buffer))
-                out_file.write(alignment_header)
-                for aln in alignment_buffer:
-                    out_file.write(aln)
-            alignment_header = line
-            if is_rerverse_tandem(alignment_header):
-                putative_palindrome_count += 1
-            alignment_buffer = []
-        else:
-            alignment_buffer.append(line)
-    # if the last one is palindrome
-    alignment_buffer = keep_palindomes(alignment_header, alignment_buffer)
-    if alignment_buffer:
-        palindrome_distances.append(parse_alignment(alignment_buffer))
+        # iterating though alignment part of the file
+        for line in in_file:
+            if "Alignment" in line:
+                alignment_buffer = keep_palindomes(alignment_header, alignment_buffer)
+                if alignment_buffer:
+                    palindrome_count += 1
+                    palindrome_distances.append(parse_alignment(alignment_buffer))
+                    out_file.write(alignment_header)
+                    for aln in alignment_buffer:
+                        out_file.write(aln)
+                alignment_header = line
+                if is_rerverse_tandem(alignment_header):
+                    putative_palindrome_count += 1
+                alignment_buffer = []
+            else:
+                alignment_buffer.append(line)
+        # if the last one is palindrome
+        alignment_buffer = keep_palindomes(alignment_header, alignment_buffer)
+        if alignment_buffer:
+            palindrome_distances.append(parse_alignment(alignment_buffer))
 
 print("Parsed:\t", in_name)
 print("Created:\t", out_name)

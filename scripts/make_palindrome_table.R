@@ -1,0 +1,40 @@
+source('scripts/R_functions/checkFiles.R')
+
+tab_file <- 'tables/palindrome_table.tsv'
+species <- dir('data/', pattern = "*[0-9]")
+filenames <- paste0('data/', species, '/MCScanX_biggap/', species, '_prot_palindrome_summary.txt')
+filenames <- checkFiles(filenames, "palindrome summary file")
+
+species <- substr(filenames, 6, 10)
+
+palindorme_files <- paste0('data/', species, '/MCScanX_biggap/', species, '_prot_palindromes.collinearity')
+palindorme_files <- checkFiles(palindorme_files, "palindrome collinearity file")
+
+process_palindorme_file <- function(.x){
+    genome_tab <- read.table(.x, skip = 5, header = T)
+    return(c(sum(genome_tab$spacer < 200000), nrow(genome_tab), round(median(genome_tab$spacer)), range(genome_tab$spacer)))
+}
+
+fish_out_reverse_blocks <- function(.x){
+    as.numeric(strsplit(readLines(.x)[3], '\t ')[[1]][2])
+}
+
+fish_out_affected_genes <- function(.x){
+    lines <- readLines(.x)
+    (length(lines) - sum(grepl("Alig", lines))) * 2
+}
+
+palindorme_summaries <- lapply(filenames, process_palindorme_file)
+reverse_blocks <- sapply(filenames, fish_out_reverse_blocks)
+
+keep <- reverse_blocks > 0
+palindromes <- sapply(palindorme_summaries[keep], function(x){ x[2] })
+close_palindromes <- sapply(palindorme_summaries[keep], function(x){ x[1] })
+affected_genes <- sapply(palindorme_files, fish_out_affected_genes)
+
+
+pal_tab <- data.frame(sp = species[keep], reverse_blocks = reverse_blocks[keep], palindromes = palindromes, close_palindromes = close_palindromes, affected_genes = affected_genes[keep])
+
+row.names(pal_tab) <- pal_tab$sp
+
+write.table(pal_tab, tab_file, quote = F, sep = '\t', row.names = F)
