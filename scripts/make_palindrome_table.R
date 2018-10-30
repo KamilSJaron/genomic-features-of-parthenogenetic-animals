@@ -15,13 +15,20 @@ process_palindorme_file <- function(.x){
     return(c(sum(genome_tab$spacer < 200000), nrow(genome_tab), round(median(genome_tab$spacer)), range(genome_tab$spacer)))
 }
 
+which_are_close <- function(.x){
+    genome_tab <- read.table(.x, skip = 5, header = T)
+    return(genome_tab$spacer < 200000)
+}
+
 fish_out_reverse_blocks <- function(.x){
     as.numeric(strsplit(readLines(.x)[3], '\t ')[[1]][2])
 }
 
-fish_out_affected_genes <- function(.x){
+get_palindrome_sizes <- function(.x){
     lines <- readLines(.x)
-    (length(lines) - sum(grepl("Alig", lines))) * 2
+    aligments <- rep(0, length(lines))
+    aligments[grepl("Alig", lines)] <- 1
+    2 * (table(cumsum(aligments)) - 1)
 }
 
 palindorme_summaries <- lapply(filenames, process_palindorme_file)
@@ -30,10 +37,13 @@ reverse_blocks <- sapply(filenames, fish_out_reverse_blocks)
 keep <- reverse_blocks > 0
 palindromes <- sapply(palindorme_summaries[keep], function(x){ x[2] })
 close_palindromes <- sapply(palindorme_summaries[keep], function(x){ x[1] })
-affected_genes <- sapply(palindorme_files, fish_out_affected_genes)
+palindrome_genes <- lapply(palindorme_files[keep], get_palindrome_sizes)
+which_close_palindromes <- lapply(filenames[keep], which_are_close)
 
+potentially_affected_genes <- sapply(palindrome_genes, sum)
+affected_genes <- sapply(1:length(palindrome_genes), function(x){ sum(palindrome_genes[[x]][which_close_palindromes[[x]]]) })
 
-pal_tab <- data.frame(sp = species[keep], reverse_blocks = reverse_blocks[keep], palindromes = palindromes, close_palindromes = close_palindromes, affected_genes = affected_genes[keep])
+pal_tab <- data.frame(sp = species[keep], reverse_blocks = reverse_blocks[keep], palindromes = palindromes, close_palindromes = close_palindromes, potentially_affected_genes = potentially_affected_genes, affected_genes = affected_genes)
 
 row.names(pal_tab) <- pal_tab$sp
 
