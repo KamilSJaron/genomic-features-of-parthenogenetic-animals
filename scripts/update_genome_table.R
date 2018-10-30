@@ -23,14 +23,8 @@ sp_with_genomes <- rownames(dl_table)[!is.na(dl_table$genome)]
 #    assembly_size number_of_scaffolds N50          #
 #####################################################
 
-checkFiles <- function(.files, .type){
-    files_exists <- file.exists(.files)
-    if( !all(files_exists) ){
-        warning(paste("missing ", .type, "files:\n", paste('\t\t\t\t', .files[!files_exists], collapse = '\n')))
-        .files <- .files[files_exists]
-    }
-    return(.files)
-}
+# funciton to check files
+source('scripts/R_functions/checkFiles.R')
 
 expand_table_if_needed <- function(.sp, .genome_tab){
     row <- .sp == .genome_tab$code
