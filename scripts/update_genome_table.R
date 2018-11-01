@@ -136,13 +136,6 @@ for(smudge_file in smudgeplot_files){
 # but AB is very diverged (~12%)
 genome_tab[genome_tab$code %in% c("Avag1", "Rmag1"),'ploidy'] <- 4
 
-####################################
-# ATLAS ( scripts/est_theta.sh )   #
-# ML_heterozygosity                #
-####################################
-
-# TODO
-
 #############################################################
 # GenomeScope ( scripts/GenomeScope.sh )                    #
 # kmer_genome_size, kmer_heterozygosity, kmer_repetitions   #
