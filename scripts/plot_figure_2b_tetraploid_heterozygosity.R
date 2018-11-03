@@ -38,8 +38,8 @@ pdf('figures/fig2b_heterozygosity_of_tetraploids.pdf', width = 8, height = 6)
 spaces <- c(rep(0.4, 3), rep(0.2, 2), 0.6, 0.2, 0.4, rep(0.2, 3))
 bar_pos <- barplot(c(rep(NA, 5), tetra_tab$heter), col = pal[1],
                    ylab = 'Heterozygosity [%]', space = spaces)
-barplot(c(rep(NA, 5), tetra_tab$single_A_het), col = pal[2], add = T, space = spaces)
-barplot(c(trip_tab$heter, tetra_tab$AAAB), col = pal[3], add = T, space = spaces)
+barplot(c(trip_tab$heter, tetra_tab$single_A_het), col = pal[3], add = T, space = spaces)
+barplot(c(rep(NA, 5), tetra_tab$AB), col = pal[2], add = T, space = spaces)
 barplot(c(trip_tab$ABC, rep(NA, 6)), col = pal[2], add = T, space = spaces)
 
 # 2 digit rounding
@@ -51,8 +51,8 @@ barplot(c(trip_tab$ABC, rep(NA, 6)), col = pal[2], add = T, space = spaces)
 
 # 1 digit rounding
 text(bar_pos, c(rep(NA, 5), tetra_tab$single_A_het + 0.25), c(rep(NA, 5), round(tetra_tab$AABB[1:2], 1), 'high', round(tetra_tab$AABB[4:6], 1)))
-text(bar_pos[c(7, 8)], tetra_tab$AAAB[c(2, 3)] + 0.25, round(c(tetra_tab$AB[c(2, 3)]), 1))
-text(bar_pos[c(6, 7)], 0.25, round(tetra_tab$AAAB[c(1, 2)], 1))
+text(bar_pos[c(7, 8)], 0.25, round(c(tetra_tab$AB[c(2, 3)]), 1))
+text(bar_pos[c(6, 7)], tetra_tab$AB[c(1, 2)] + 0.25, round(tetra_tab$AAAB[c(1, 2)], 1))
 text(bar_pos[c(1:5)], trip_tab$ABC + 0.25, round(trip_tab$AAB, 1))
 text(bar_pos[c(2,3,5)], 0.25, round(trip_tab$ABC[c(2,3,5)], 1))
 
