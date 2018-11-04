@@ -12,12 +12,12 @@ palindorme_files <- checkFiles(palindorme_files, "palindrome collinearity file")
 
 process_palindorme_file <- function(.x){
     genome_tab <- read.table(.x, skip = 5, header = T)
-    return(c(sum(genome_tab$spacer < 200000), nrow(genome_tab), round(median(genome_tab$spacer)), range(genome_tab$spacer)))
+    return(c(sum(genome_tab$spacer < 170000), nrow(genome_tab), round(median(genome_tab$spacer)), range(genome_tab$spacer)))
 }
 
 which_are_close <- function(.x){
     genome_tab <- read.table(.x, skip = 5, header = T)
-    return(genome_tab$spacer < 200000)
+    return(genome_tab$spacer < 170000)
 }
 
 fish_out_reverse_blocks <- function(.x){

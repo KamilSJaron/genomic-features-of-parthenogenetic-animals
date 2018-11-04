@@ -51,7 +51,7 @@ pal <- c('#FF6A42', # DNA
          '#B966F4', # SINE
          '#8b0000') # helitron
 
-spaces <- c(0.1, 0.1, 1, rep(0.1, 9),1 , rep(0.15, 8), 1, rep(0.15, 3), 1)
+spaces <- c(0.1, 0.1, 1, rep(0.1, 10),1 , rep(0.15, 7), 1, rep(0.15, 3), 1)
 plot_bars <- function(index){
     if (index == 5){
         bar_sizes <- TEs[,5]
