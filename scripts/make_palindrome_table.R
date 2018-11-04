@@ -43,8 +43,20 @@ which_close_palindromes <- lapply(filenames[keep], which_are_close)
 potentially_affected_genes <- sapply(palindrome_genes, sum)
 affected_genes <- sapply(1:length(palindrome_genes), function(x){ sum(palindrome_genes[[x]][which_close_palindromes[[x]]]) })
 
-pal_tab <- data.frame(sp = species[keep], reverse_blocks = reverse_blocks[keep], palindromes = palindromes, close_palindromes = close_palindromes, potentially_affected_genes = potentially_affected_genes, affected_genes = affected_genes)
+pal_tab <- data.frame(code = species[keep], reverse_blocks = reverse_blocks[keep], palindromes = palindromes, close_palindromes = close_palindromes, potentially_affected_genes = potentially_affected_genes, affected_genes = affected_genes)
 
-row.names(pal_tab) <- pal_tab$sp
+gene_annotations <- read.table('tables/gene_annotations.tsv', header = T)
+source('scripts/R_functions/load_genome_table.R')
+species_names <- load_genome_table(1:4)[,c(1,2)]
+
+pal_tab <- merge(merge(pal_tab, gene_annotations), species_names)
+names_split <- strsplit(pal_tab$species, "_")
+genus_names <- sapply(names_split, substr, 1, 1)[1,]
+species_names <- sapply(names_split, function(x){ x[2] })
+sp_labels <- paste(genus_names, species_names, sep = '. ')
+
+pal_tab <- data.frame(species = sp_labels, reverse_blocks = reverse_blocks[keep], palindromes = palindromes, cloese_palindromes = close_palindromes, potentially_affected_genes = potentially_affected_genes, affected_genes = affected_genes, annotated_genes = pal_tab$genes, propotion_of_affected_genes = round((pal_tab$potentially_affected_genes / pal_tab$genes) * 100, 2))
+row.names(pal_tab) <- 1:9
+pal_tab
 
 write.table(pal_tab, tab_file, quote = F, sep = '\t', row.names = F)

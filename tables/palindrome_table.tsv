@@ -1,10 +1,10 @@
-sp	reverse_blocks	palindromes	close_palindromes	potentially_affected_genes	affected_genes
-Avag1	19	19	19	636	636
-Dpac1	3	1	1	2	2
-Fcan1	16	15	6	152	54
-Hduj1	1	1	0	8	0
-Mare1	3	3	3	38	38
-Minc1	1	1	1	26	26
-Obir1	5	2	0	6	0
-Pfor1	9	1	1	2	2
-Rvar1	4	4	0	22	0
+species	reverse_blocks	palindromes	cloese_palindromes	potentially_affected_genes	affected_genes	annotated_genes	propotion_of_affected_genes
+A. vaga	19	19	19	636	636	49300	1.29
+D. pachys	3	1	1	2	2	27341	0.01
+F. candida	16	15	6	152	54	28734	0.53
+H. dujardini	1	1	0	8	0	19700	0.04
+M. arenaria	3	3	3	38	38	103000	0.04
+M. incognita	1	1	1	26	26	45351	0.06
+O. biroi	5	2	0	6	0	13438	0.04
+P. formosa	9	1	1	2	2	31997	0.01
+R. varieornatus	4	4	0	22	0	13920	0.16
