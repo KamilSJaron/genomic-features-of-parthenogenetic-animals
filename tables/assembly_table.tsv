@@ -1,30 +1,30 @@
-species	assembly_size[M]	number_of_scaffolds[k]	N50[k]	complete	fragmented	duplicated	missing	haplotypes_assembled	genes
-Poecilia_formosa	748.9	4	1574.2	98.06	0.51	7.57	1.43	0.76	31997
-Adineta_vaga	218.1	38.9	259.9	90.29	1.43	67.08	8.28	2.23	49300
-Adineta_ricciae	174.5	4.1	276.8	88.34	2.25	62.99	9.41	1.85	55801
-Rotaria_macrura	234.7	29.3	73.2	89.16	1.64	15.24	9.2	1.8	26284
-Rotaria_magnacalcarata	180.5	20.9	53.2	90.49	1.02	16.16	8.49	1.66	36377
-Leptopilina_clavipes	255.4	36.6	13.8	93.87	4.09	0.82	2.04	0.93	49568
-Trichogramma_pretiosum	195.1	0.4	3706.2	98.36	0.31	4.4	1.33	1.01	13200
-Ooceraea_biroi	212.8	4.6	1350.7	98.16	1.02	1.02	0.82	1.11	13438
-Aptinothrips_rufus	339.9	301.7	4.1	97.55	1.33	0.82	1.12	0.94	NA
-Folsomia_candida	221.7	0.2	6519.4	93.15	1.64	1.94	5.21	0.75	28734
-Procambarus_virginalis	3290.5	1942.8	39.3	87.12	6.44	0.92	6.44	0.93	21773
-Plectus_sambesii	186.7	19	23.4	75.87	13.34	16.4	10.79	1.59	39150
-Diploscapter_coronatus	170.5	0.5	1007.7	91.55	4.58	67.92	3.87	2.02	34424
-Diploscapter_pachys	157.7	10.8	124.2	90.63	5.3	49.49	4.07	1.67	27341
-Panagrolaimus_davidiDAW1	163.2	51.9	4.9	31.36	9.16	4.18	59.47	1.32	94938
-Panagrolaimus_sp.PS1159	85	17.6	9.9	74.75	8.66	1.83	16.6	NA	74547
-Panagrolaimus_sp.PS1579	48.8	23.5	2.9	73.01	6.13	2.86	20.86	NA	54189
-Meloidogyne_incognita	183.5	12.1	38.6	61.71	7.84	36.35	30.45	NA	45351
-Meloidogyne_incognita	148.1	245.3	12.2	52.34	9.16	19.45	38.49	2.15	24714
-Meloidogyne_javanica	235.8	31.3	10.4	61.1	7.54	31.06	31.36	NA	98578
-Meloidogyne_javanica	152.9	54.5	13.9	57.64	9.67	25.15	32.69	2.18	25697
-Meloidogyne_arenaria	258.1	26.2	16.5	65.07	7.43	36.46	27.49	NA	103000
-Meloidogyne_arenaria	165.4	58.3	10.3	55.91	9.47	21.18	34.62	2.28	30308
-Meloidogyne_arenaria	284	2.2	204.6	61.35	8.28	33.74	30.37	NA	NA
-Meloidogyne_floridensis	74.9	9.1	13.3	49.9	8.66	2.95	41.45	1.11	14414
-Meloidogyne_enterolobii	166.3	68.4	10.3	49.69	10.39	17.62	39.92	1.89	31051
-Acrobeloides_nanus	248.1	30.8	19.6	73.93	6.13	9.71	19.94	0.95	99486
-Hypsibius_dujardini	135	13.2	50.5	84.36	2.97	1.94	12.68	NA	19700
-Ramazzottius_varieornatus	55.8	0.2	3294.9	85.17	2.04	1.23	12.78	1.09	13920
+species	assembly_size[M]	number_of_scaffolds[k]	N50[k]	complete	fragmented	duplicated	missing	haplotypes_assembled	genes	gene_per_ploidy	gene_per_assembled_ploidy
+Poecilia_formosa	748.9	4	1574.2	98.06	0.51	7.57	1.43	0.76	31997	15998.5	42101.3
+Adineta_vaga	218.1	38.9	259.9	90.29	1.43	67.08	8.28	2.23	49300	12325	22107.6
+Adineta_ricciae	174.5	4.1	276.8	88.34	2.25	62.99	9.41	1.85	55801	13950.2	30162.7
+Rotaria_macrura	234.7	29.3	73.2	89.16	1.64	15.24	9.2	1.8	26284	6571	14602.2
+Rotaria_magnacalcarata	180.5	20.9	53.2	90.49	1.02	16.16	8.49	1.66	36377	9094.2	21913.9
+Leptopilina_clavipes	255.4	36.6	13.8	93.87	4.09	0.82	2.04	0.93	49568	24784	53298.9
+Trichogramma_pretiosum	195.1	0.4	3706.2	98.36	0.31	4.4	1.33	1.01	13200	6600	13069.3
+Ooceraea_biroi	212.8	4.6	1350.7	98.16	1.02	1.02	0.82	1.11	13438	6719	12106.3
+Aptinothrips_rufus	339.9	301.7	4.1	97.55	1.33	0.82	1.12	0.94	NA	NA	NA
+Folsomia_candida	221.7	0.2	6519.4	93.15	1.64	1.94	5.21	0.75	28734	14367	38312
+Procambarus_virginalis	3290.5	1942.8	39.3	87.12	6.44	0.92	6.44	0.93	21773	7257.7	23411.8
+Plectus_sambesii	186.7	19	23.4	75.87	13.34	16.4	10.79	1.59	39150	19575	24622.6
+Diploscapter_coronatus	170.5	0.5	1007.7	91.55	4.58	67.92	3.87	2.02	34424	17212	17041.6
+Diploscapter_pachys	157.7	10.8	124.2	90.63	5.3	49.49	4.07	1.67	27341	13670.5	16371.9
+Panagrolaimus_davidiDAW1	163.2	51.9	4.9	31.36	9.16	4.18	59.47	1.32	94938	31646	71922.7
+Panagrolaimus_sp.PS1159	85	17.6	9.9	74.75	8.66	1.83	16.6	NA	74547	24849	NA
+Panagrolaimus_sp.PS1579	48.8	23.5	2.9	73.01	6.13	2.86	20.86	NA	54189	18063	NA
+Meloidogyne_incognita	183.5	12.1	38.6	61.71	7.84	36.35	30.45	NA	45351	15117	NA
+Meloidogyne_incognita	148.1	245.3	12.2	52.34	9.16	19.45	38.49	2.15	24714	8238	11494.9
+Meloidogyne_javanica	235.8	31.3	10.4	61.1	7.54	31.06	31.36	NA	98578	24644.5	NA
+Meloidogyne_javanica	152.9	54.5	13.9	57.64	9.67	25.15	32.69	2.18	25697	6424.2	11787.6
+Meloidogyne_arenaria	258.1	26.2	16.5	65.07	7.43	36.46	27.49	NA	103000	25750	NA
+Meloidogyne_arenaria	165.4	58.3	10.3	55.91	9.47	21.18	34.62	2.28	30308	7577	13293
+Meloidogyne_arenaria	284	2.2	204.6	61.35	8.28	33.74	30.37	NA	NA	NA	NA
+Meloidogyne_floridensis	74.9	9.1	13.3	49.9	8.66	2.95	41.45	1.11	14414	4804.7	12985.6
+Meloidogyne_enterolobii	166.3	68.4	10.3	49.69	10.39	17.62	39.92	1.89	31051	10350.3	16429.1
+Acrobeloides_nanus	248.1	30.8	19.6	73.93	6.13	9.71	19.94	0.95	99486	49743	104722.1
+Hypsibius_dujardini	135	13.2	50.5	84.36	2.97	1.94	12.68	NA	19700	9850	NA
+Ramazzottius_varieornatus	55.8	0.2	3294.9	85.17	2.04	1.23	12.78	1.09	13920	6960	12770.6
