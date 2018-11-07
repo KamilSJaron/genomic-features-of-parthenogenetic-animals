@@ -57,6 +57,7 @@ sp_labels <- paste(genus_names, species_names, sep = '. ')
 
 pal_tab <- data.frame(species = sp_labels, reverse_blocks = reverse_blocks[keep], palindromes = palindromes, cloese_palindromes = close_palindromes, potentially_affected_genes = potentially_affected_genes, affected_genes = affected_genes, annotated_genes = pal_tab$genes, propotion_of_affected_genes = round((pal_tab$potentially_affected_genes / pal_tab$genes) * 100, 2))
 row.names(pal_tab) <- 1:9
-pal_tab
+
+pal_tab <- pal_tab[c(8, 1, 7, 3, 2, 6, 5, 4, 9),]
 
 write.table(pal_tab, tab_file, quote = F, sep = '\t', row.names = F)
