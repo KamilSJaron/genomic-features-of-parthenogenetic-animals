@@ -10,8 +10,6 @@ genome_tab <- genome_tab[nrow(genome_tab):1,]
 # kick out those that have no TEs estimated
 genome_tab <- genome_tab[!is.na(genome_tab$complete), ]
 
-source('scripts/R_functions/make_data_frame.R')
-
 ####
 # Adding genome size esitmates form data that are available
 
