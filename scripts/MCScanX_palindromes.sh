@@ -8,14 +8,12 @@
 
 SP=$1
 
-DIR=data/$SP/MCScanX
+DIR=data/$SP/MCScanX_biggap
 
 ##### GENERATE BLAST of ALL PROTEINS vs ALL PROTEINS
 
-MCScanX -s 1 -m 0 $DIR/"$SP"_prot
+MCScanX -s 1 -m 100 -a $DIR/"$SP"_prot
 
 grep "# Number of" "$DIR"/"$SP"_prot.collinearity > "$DIR"/"$SP"_prot.collinearity_summary.txt;
 python3 scripts/colinearity_parser.py $DIR/"$SP"_prot.collinearity >> $DIR/"$SP"_prot.collinearity_summary.txt;
 grep "Align" $DIR/"$SP"_prot.collinearity | wc -l >> $DIR/"$SP"_prot.collinearity_summary.txt;
-
-rm -r "$DIR"/"$SP"_prot.html
