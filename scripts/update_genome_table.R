@@ -185,32 +185,6 @@ for(genomescope_file in genomescope_files){
 genome_tab[c('Aric1', 'Rmac1', 'Rmag1', 'Mjav2', 'Mare2'),
            'heterozygosity'] <- c(6.1, 12.4, 11.7, 8.5, 8.1)
 
-#############################################################
-# MCScanX ( scripts/MCScanX_???????.sh )                    #
-# total_genes, colinear_genes, palindromes                  #
-#############################################################
-
-parse_MCScanX_summary_file <- function(file){
-    MCScanX_summary_file <- readLines(file)
-    col_genes <- as.numeric(ssplit(ssplit(MCScanX_summary_file[1], 'genes: ')[2], ",")[1])
-    total_genes <- as.numeric(ssplit(MCScanX_summary_file[2], 'genes: ')[2])
-    palindromes <- as.numeric(ssplit(ssplit(MCScanX_summary_file[3], 'parsed. ')[2], " pal")[1])
-    colinear_blocks <- as.numeric(MCScanX_summary_file[4])
-
-    return( c(total_genes, col_genes, palindromes, colinear_blocks) )
-}
-
-MCScanX_summary_files <- paste0("data/", sp_with_genomes, "/MCScanX/", sp_with_genomes, "_prot.collinearity_summary.txt")
-MCScanX_summary_files <- checkFiles(MCScanX_summary_files, 'MCScanX files')
-
-for(MCScanX_summary_file in MCScanX_summary_files){
-    sp <- ssplit(MCScanX_summary_file, "/")[2]
-    genome_tab <- expand_table_if_needed(sp, genome_tab)
-    row <- sp == genome_tab$code
-
-    genome_tab[row, c('genes', 'colinear_genes', 'palindromes', 'colinear_blocks')] <- parse_MCScanX_summary_file(MCScanX_summary_file)
-}
-
 #####################################################
 ###                LITERATURE DATA                ###
 ### add reproduction mode, ploidy and genome_size ###
@@ -271,8 +245,7 @@ genome_tab <- genome_tab[, c('code', 'species', 'reproduction_mode', 'hybrid_ori
                              'assembly_size[M]', 'number_of_scaffolds[k]', 'N50[k]',
                              'complete', 'fragmented', 'duplicated', 'missing',
                              'haploid_length[M]', 'heterozygosity', 'repeats',
-                             'TEs','other_repeats','all_repeats',
-                             'genes', 'colinear_genes', 'colinear_blocks', 'palindromes')]
+                             'TEs','other_repeats','all_repeats')]
 
 ######################
 
@@ -282,8 +255,7 @@ extra_header <- c(rep('-', 2),
                   'assembly', rep('-', 2),
                   'BUSCO', rep('-', 3),
                   'GenomeScope', rep('-', 2),
-                  'dnaPipeTE', rep('-', 2),
-                  'MCScanX', rep('-', 3) )
+                  'dnaPipeTE', rep('-', 2))
 asm_template <- matrix(ncol = length(extra_header))
 colnames(asm_template) <- extra_header
 header <- as.data.frame(asm_template)[FALSE, ]
