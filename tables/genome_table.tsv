@@ -1,5 +1,5 @@
 -	-	literature	-	smudgeplot	assembly	-	-	BUSCO	-	-	-	GenomeScope	-	-	dnaPipeTE	-	-
-code	species	reproduction_mode	hybrid_origin	ploidy	assembly_size[M]	number_of_scaffolds[k]	N50[k]	complete	fragmented	duplicated	missing	haploid_length[M]	heterozygosity	repeats	TEs	other_repeats	all_repeats
+code	species	callular_mechanism	hybrid_origin	ploidy	assembly_size[M]	number_of_scaffolds[k]	N50[k]	complete	fragmented	duplicated	missing	haploid_length[M]	heterozygosity	repeats	TEs	other_repeats	all_repeats
 Pfor1	Poecilia_formosa	functional_apomixis	yes	2	748.9	4	1574.2	98.06	0.51	7.57	1.43	988.2	1.73	58.02	17.9	1	26.1
 Avag1	Adineta_vaga	functional_apomixis	NA	4	218.1	38.9	259.9	90.29	1.43	67.08	8.28	97.8	2.4	15.51	7	0.7	66.4
 Aric1	Adineta_ricciae	functional_apomixis	NA	4	174.5	4.1	276.8	88.34	2.25	62.99	9.41	94.4	6.1	10.87	0.8	0.4	5.2
@@ -27,7 +27,7 @@ Mjav2	Meloidogyne_javanica	functional_apomixis	yes	4	152.9	54.5	13.9	57.64	9.67	
 Mare1	Meloidogyne_arenaria	functional_apomixis	yes	4	258.1	26.2	16.5	65.07	7.43	36.46	27.49	NA	NA	NA	NA	NA	NA
 Mare2	Meloidogyne_arenaria	functional_apomixis	yes	4	165.4	58.3	10.3	55.91	9.47	21.18	34.62	72.5	8.1	37.24	10.8	1.8	59
 Mare3	Meloidogyne_arenaria	functional_apomixis	yes	4	284	2.2	204.6	61.35	8.28	33.74	30.37	NA	NA	NA	NA	NA	NA
-Mflo1	Meloidogyne_floridensis	unknown_automixis	yes	3	74.9	9.1	13.3	49.9	8.66	2.95	41.45	67.3	2.795	28.88	6.9	1.8	39.1
+Mflo1	Meloidogyne_floridensis	NA	yes	3	74.9	9.1	13.3	49.9	8.66	2.95	41.45	67.3	2.795	28.88	6.9	1.8	39.1
 Ment1	Meloidogyne_enterolobii	functional_apomixis	yes	3	166.3	68.4	10.3	49.69	10.39	17.62	39.92	88.1	6.065	39.5	6.6	1.3	28.1
 Anan1	Acrobeloides_nanus	terminal_fusion	NA	2	248.1	30.8	19.6	73.93	6.13	9.71	19.94	261.9	2.385	63.06	12.5	6	86.2
 Hduj1	Hypsibius_dujardini	terminal_fusion	NA	2	135	13.2	50.5	84.36	2.97	1.94	12.68	NA	NA	NA	1.3	1.9	13.1

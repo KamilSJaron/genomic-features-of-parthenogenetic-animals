@@ -192,28 +192,30 @@ genome_tab[c('Aric1', 'Rmac1', 'Rmag1', 'Mjav2', 'Mare2'),
 
 literature_data <- read.csv(text = gsheet2text("https://docs.google.com/spreadsheets/d/1T4BHQxzMGMlWiNJ7G9OLPXzdNBCqMw0mSO7C_ggGEbc/edit?usp=sharing", format='csv'),
                             stringsAsFactors = F, skip = 1, header = T, check.names = F)
-literature_data <- literature_data[,c(2, 8, 9, 12)]
+literature_data <- literature_data[,c(2, 8, 9)]
 
-mitotic <- grepl('apomixis', literature_data[,'reproduction_mode']) | grepl('endoduplication', literature_data[,'reproduction_mode'])
-central_fusion <- grepl('central', literature_data[,'reproduction_mode'])
-terminal_fusion <- grepl('terminal', literature_data[,'reproduction_mode'])
-gdupl <- grepl('gamete dupl', literature_data[,'reproduction_mode'])
-unknown_meiotic <- grepl('automix', literature_data[,'reproduction_mode']) & grepl('unknown', literature_data[,'reproduction_mode'])
+repr_col <- 'cellular mechanism of asexuality'
+
+mitotic <- grepl('mitotic', literature_data[,repr_col]) | grepl('endoduplication', literature_data[,repr_col])
+central_fusion <- grepl('central', literature_data[,repr_col])
+terminal_fusion <- grepl('terminal', literature_data[,repr_col])
+gdupl <- grepl('gamete dupl', literature_data[,repr_col])
+unknown_meiotic <- grepl('meiotic', literature_data[,repr_col]) & ! (central_fusion | terminal_fusion | mitotic)
 
 # create three categories
-literature_data$reproduction_mode <- NA # unknown is default
-literature_data$reproduction_mode[mitotic] <- 'functional_apomixis' # mitosis or endoduplication
-literature_data$reproduction_mode[central_fusion] <- 'central_fusion'  # automixis central fusion
-literature_data$reproduction_mode[terminal_fusion] <- 'terminal_fusion' # automixis terminal fusion
-literature_data$reproduction_mode[gdupl] <- 'gamete_duplication'  # gamete duplications
-literature_data$reproduction_mode[unknown_meiotic] <- 'unknown_automixis' # unknown automixis
+literature_data$callular_mechanism <- NA # unknown is default
+literature_data$callular_mechanism[mitotic] <- 'functional_apomixis' # mitosis or endoduplication
+literature_data$callular_mechanism[central_fusion] <- 'central_fusion'  # automixis central fusion
+literature_data$callular_mechanism[terminal_fusion] <- 'terminal_fusion' # automixis terminal fusion
+literature_data$callular_mechanism[gdupl] <- 'gamete_duplication'  # gamete duplications
+literature_data$callular_mechanism[unknown_meiotic] <- 'unknown_automixis' # unknown automixis
 
 literature_data <- literature_data[literature_data$code %in% genome_tab$code,]
 
-genome_tab$reproduction_mode <- NA
+genome_tab$callular_mechanism <- NA
 genome_tab$hybrid_origin <- NA
 
-columns <- c('reproduction_mode', 'hybrid_origin')
+columns <- c('callular_mechanism', 'hybrid_origin')
 genome_tab[literature_data$code, columns] <- literature_data[, columns]
 
 ######################
@@ -241,7 +243,7 @@ if ( length(desired_order) == nrow(genome_tab) ){
 }
 
 # sorting columns
-genome_tab <- genome_tab[, c('code', 'species', 'reproduction_mode', 'hybrid_origin', 'ploidy',
+genome_tab <- genome_tab[, c('code', 'species', 'callular_mechanism', 'hybrid_origin', 'ploidy',
                              'assembly_size[M]', 'number_of_scaffolds[k]', 'N50[k]',
                              'complete', 'fragmented', 'duplicated', 'missing',
                              'haploid_length[M]', 'heterozygosity', 'repeats',
