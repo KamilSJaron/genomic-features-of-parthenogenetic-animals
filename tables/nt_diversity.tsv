@@ -1,0 +1,281 @@
+Latin name	Common name	Phylum	Class	Total loci	Mean diversity/bp across loci (%); (populations separated by semi-colon)	ThetaW or Pi	Type of chromosome	Type of site	Sampling strategy	Reference (PMID)	Mating system	Habitat	Range category	Included in main analysis (Y/N)	Included in sex-autosome comparison (Y/N)
+Acyrthosiphon pisum	Pea aphid	Arthropoda	Insecta	4	0.145;0.245;0.23;0.355	Pi	Sex	non-coding	Multiple populations, separately	19470181	Partial selfing	Terrestrial	Cosmopolitan	Y	Y
+Acyrthosiphon pisum	Pea aphid	Arthropoda	Insecta	4	0.845;0.82;0.92;0.94	Pi	Autosome	non-coding	Multiple populations, separately	19470181	Partial selfing	Terrestrial	Cosmopolitan	Y	Y
+Aedes aegypti	Mosquito	Arthropoda	Insecta	25	1.421	Pi	Autosome	non-coding	Unknown	14986924	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Agelaius phoeniceus	Red-winged blackbirds	Chordata	Aves	3	0.59	Pi	Autosome	intronic	Multiple populations, combined	15822606	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Ailuropoda melanoleuca	Giant panda	Chordata	Mammalia	chromosome-wide	0.066	Pi	Sex	chromosome-wide	One population	20010809	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Ailuropoda melanoleuca	Giant panda	Chordata	Mammalia	genome-wide	0.135	Pi	Autosome	genome-wide	One population	20010809	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Amphimedon queenslandica	Sponge	Porifera	Demospongiae	genome-wide	2.37	Pi	Autosome	genome-wide	One population	20686567	Partial selfing	Marine	Broad endemic	Y	N
+Anopheles arabiensis	Mosquito	Arthropoda	Insecta	3	2.2	Pi	Autosome	mixed	Multiple populations, combined	12947038	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Anopheles baimaii	Mosquito	Arthropoda	Insecta	3	0.61;0.553;0.46	Pi	Autosome	mixed	Multiple populations, separately	20444081	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Anopheles cruzii	Mosquito	Arthropoda	Insecta	6	1.856;1.022	Pi	Autosome	mixed	Multiple populations, separately	20356389	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Anopheles dirus	Mosquito	Arthropoda	Insecta	3	0.98;0.963	Pi	Autosome	mixed	Multiple populations, separately	20444081	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Anopheles gambiae	Mosquito	Arthropoda	Insecta	3	2.88	Pi	Autosome	mixed	Multiple populations, combined	12947038	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Anopheles melas	Mosquito	Arthropoda	Insecta	3	0.57	Pi	Autosome	mixed	Multiple populations, combined	12947038	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Anopheles merus	Mosquito	Arthropoda	Insecta	3	1.24	Pi	Autosome	mixed	Multiple populations, combined	12947038	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Anopheles minimus	Mosquito	Arthropoda	Insecta	8	0.425	Pi	Sex	intronic	One population	21251999	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Anopheles quadriannulatus	Mosquito	Arthropoda	Insecta	3	2.28	Pi	Autosome	mixed	Multiple populations, combined	12947038	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Anopheles scanloni	Mosquito	Arthropoda	Insecta	3	0.58	Pi	Autosome	mixed	One population	20444081	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Aphanarthrum subglabrum/glabrum	Bark beetle	Arthropoda	Insecta	3	0.233;0.187;0.147	Pi	Autosome	mixed	Multiple populations, separately	16911212	Obligatory outcrossing	Terrestrial	Island	Y	N
+Apis cerana	Eastern honey bee	Arthropoda	Insecta	6	0.848	Pi	Autosome	non-coding	Multiple populations, combined	17065615	Partial selfing	Terrestrial	Broad endemic	Y	N
+Apis mellifera	Western honey bee	Arthropoda	Insecta	6	0.848	Pi	Autosome	non-coding	Multiple populations, combined	17065615	Partial selfing	Terrestrial	Cosmopolitan	Y	N
+Aquila clanga/pomarina	Greater/Lesser spotted eagle	Chordata	Aves	15	0.0743;0.0763	Pi	Sex	intronic	Multiple populations, separately	21492478	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Aquila clanga/pomarina	Greater/Lesser spotted eagle	Chordata	Aves	36	0.132;0.0966	Pi	Autosome	intronic	Multiple populations, separately	21492478	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Aquilegia formosa/pubescens	Crimson/Sierra columbine	Magnoliophyta	Magnoliopsida	8	0.235;0.221	Pi	Autosome	synonymous	Multiple populations, separately	20098727	Partial selfing	Terrestrial	Broad endemic	Y	N
+Arabidopsis halleri	Rockcress	Magnoliophyta	Magnoliopsida	8	1.502	Pi	Autosome	silent	Multiple populations, combined	15020431	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Arabidopsis lyrata	Rockcress	Magnoliophyta	Magnoliopsida	77	1.35;1.29;0.71;0.97;0.55;0.6	Pi	Autosome	silent	Multiple populations, separately	18545707	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Arabidopsis thaliana	Thale cress	Magnoliophyta	Magnoliopsida	876	0.55	Pi	Autosome	4-fold degenerate	Multiple populations, combined	15907155	Partial selfing	Terrestrial	Cosmopolitan	Y	N
+Arabidopsis thaliana	Thale cress	Magnoliophyta	Magnoliopsida	876	0.61	Pi	Autosome	non-coding	Multiple populations, combined	15907155	Partial selfing	Terrestrial	Cosmopolitan	Y	N
+Arabidopsis thaliana	Thale cress	Magnoliophyta	Magnoliopsida	876	0.65	Pi	Autosome	intronic	Multiple populations, combined	15907155	Partial selfing	Terrestrial	Cosmopolitan	Y	N
+Bactrocera depressa	Pumpkin Fruit Fly	Arthropoda	Insecta	3	0.23	Pi	Autosome	mixed	Multiple populations, combined	14629375	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Balaenoptera bonaerensis	Antarctic minke whale	Chordata	Mammalia	11	0.387	Pi	Autosome	intronic	Multiple populations, combined	20025655	Obligatory outcrossing	Marine	Cosmopolitan	Y	N
+Boechera stricta	Drummonds rockress	Magnoliophyta	Magnoliopsida	82	0.35	Pi	Autosome	silent	Multiple populations, combined	19104077	Partial selfing	Terrestrial	Broad endemic	Y	N
+Caenorhabditis briggsae	Nematode	Nematoda	Secernentea	3	0.013;0.013	Pi	Autosome	silent	Multiple populations, separately	18073782	Partial selfing	Terrestrial	Cosmopolitan	Y	Y
+Caenorhabditis briggsae	Nematode	Nematoda	Secernentea	3	0.023;0	Pi	Sex	silent	Multiple populations, separately	18073782	Partial selfing	Terrestrial	Cosmopolitan	Y	Y
+Caenorhabditis briggsae	Nematode	Nematoda	Secernentea	3	0.119;0.006	Pi	Autosome	silent	Multiple populations, separately	16783011	Partial selfing	Terrestrial	Cosmopolitan	Y	Y
+Caenorhabditis briggsae	Nematode	Nematoda	Secernentea	3	0.336;0.002	Pi	Sex	silent	Multiple populations, separately	16783011	Partial selfing	Terrestrial	Cosmopolitan	Y	Y
+Caenorhabditis elegans	Nematode	Nematoda	Secernentea	3	0.017	Pi	Sex	silent	Multiple populations, combined	18073782	Partial selfing	Terrestrial	Cosmopolitan	Y	Y
+Caenorhabditis elegans	Nematode	Nematoda	Secernentea	3	0.054	Pi	Sex	silent	Multiple populations, combined	16272415	Partial selfing	Terrestrial	Cosmopolitan	Y	Y
+Caenorhabditis elegans	Nematode	Nematoda	Secernentea	3	0.373	Pi	Autosome	silent	Multiple populations, combined	18073782	Partial selfing	Terrestrial	Cosmopolitan	Y	Y
+Caenorhabditis elegans	Nematode	Nematoda	Secernentea	3	0.37	Pi	Autosome	silent	Multiple populations, combined	16272415	Partial selfing	Terrestrial	Cosmopolitan	Y	Y
+Caenorhabditis remanei	Nematode	Nematoda	Secernentea	3	5.67	Pi	Autosome	silent	Multiple populations, combined	16951062	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	Y
+Caenorhabditis remanei	Nematode	Nematoda	Secernentea	3	5.67	Pi	Sex	silent	Multiple populations, combined	16951062	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	Y
+Caenorhabditis sp.5	Nematode	Nematoda	Secernentea	7	6.839	Pi	Sex	synonymous	Multiple populations, combined	20958820	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Callithrix jacchus	Common marmoset	Chordata	Mammalia	1046	0.123	Pi	Autosome	synonymous	One population	22207615	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Canis latrans/lupus	Coyote, grey wolf	Chordata	Mammalia	10	0.202;0.108;0.155;0.180;0.211	Pi	Autosome	intronic	Multiple populations, separately	18647238	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Canis lupus	Grey wolf	Chordata	Mammalia	11	0.038	Pi	Sex	intronic	Multiple populations, combined	14595096	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Capsella grandiflora	Shepardspurse	Magnoliophyta	Magnoliopsida	39	3.202	Pi	Autosome	synonymous	Multiple populations, combined	19228944	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Capsella rubella	Shepardspurse	Magnoliophyta	Magnoliopsida	39	0.666	Pi	Autosome	synonymous	Multiple populations, combined	19228944	Partial selfing	Terrestrial	Cosmopolitan	Y	N
+Cecidostiba fungosa	Oak gall parasitoid wasp	Arthropoda	Insecta	17	1.088	Pi	Autosome	synonymous	One population	20455927	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Cecidostiba fungosa	Oak gall parasitoid wasp	Arthropoda	Insecta	17	1.165	Pi	Autosome	intronic	One population	20455927	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Ceratitis capitata	Mediterranean fruit fly	Arthropoda	Insecta	4	2.951	Pi	Autosome	intronic	Multiple populations, combined	9633100	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Chlamydomonas reinhardtii	Green alga	Chlorophyta	Chlorophyceae	5	2.086	Pi	Autosome	synonymous	One population	18495022	Partial selfing	Terrestrial and freshwater	Cosmopolitan	Y	N
+Chlamydomonas reinhardtii	Green alga	Chlorophyta	Chlorophyceae	7	3.613	Pi	Autosome	intronic	One population	18495022	Partial selfing	Terrestrial and freshwater	Cosmopolitan	Y	N
+Chlorocebus aethiops	Vervet monkey	Chordata	Mammalia	1116	0.233	Pi	Autosome	synonymous	Unknown	22207615	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Cichla pleiozona	Peacock bass	Chordata	Actinopterygii	5	0.3;0.7;0.3;2.6;1;1.3	Pi	Autosome	intronic	Multiple populations, separately	20817108	Obligatory outcrossing	Freshwater	Narrow endemic	Y	N
+Ciona intestinalis A	Sea squirt	Chordata	Ascidiacea	3	0.99	Pi	Autosome	non-coding	Multiple populations, combined	20403444	Obligatory outcrossing	Marine	Cosmopolitan	Y	N
+Ciona intestinalis B	Sea squirt	Chordata	Ascidiacea	3	4.017	Pi	Autosome	non-coding	Multiple populations, combined	20403444	Obligatory outcrossing	Marine	Broad endemic	Y	N
+Ciona roulei	Sea squirt	Chordata	Ascidiacea	5	3.238	Pi	Autosome	mixed	One population	20403444	Obligatory outcrossing	Marine	Narrow endemic	Y	N
+Ciona savignyi	Sea squirt	Chordata	Ascidiacea	genome-wide	8.01	Pi	Autosome	4-fold degenerate	One population	17372217	Obligatory outcrossing	Marine	Broad endemic	Y	N
+Crassostrea gigas	Pacific oyster	Mollusca	Bivalvia	27	3.33	Pi	Autosome	intronic	One population	17616269	Partial selfing	Marine	Broad endemic	Y	N
+Crassostrea gigas	Pacific oyster	Mollusca	Bivalvia	33	3.306	Pi	Autosome	synonymous	One population	17616269	Partial selfing	Marine	Broad endemic	Y	N
+Cryptococcus neoformans	Yeast	Basidiomycota	Tremellomycetes	7	0.643;0.0843;0.729;0.614	Pi	Autosome	mixed	Multiple populations, separately	21573144	Partial selfing	Terrestrial	Cosmopolitan	Y	N
+Cryptomeria japonica	Japanese cedar (sugi)	Pinophyta	Pinopsida	3	0.619	Pi	Autosome	intronic	Multiple populations, combined	12930759	Partial selfing	Terrestrial	Cosmopolitan	Y	N
+Cryptomeria japonica	Japanese cedar (sugi)	Pinophyta	Pinopsida	7	0.421	Pi	Autosome	synonymous	Multiple populations, combined	12930759	Partial selfing	Terrestrial	Cosmopolitan	Y	N
+Danio rerio	Zebrafish	Chordata	Actinopterygii	400	0.54	ThetaW	Autosome	silent	Unknown	16533913	Obligatory outcrossing	Freshwater	Broad endemic	Y	N
+Daphnia arenata	Water flea	Arthropoda	Crustacea	6	0.172	Pi	Autosome	synonymous	Multiple populations, combined	19304589	Partial selfing	Freshwater	Narrow endemic	Y	N
+Daphnia arenata	Water flea	Arthropoda	Crustacea	6	0.248	Pi	Autosome	intronic	Multiple populations, combined	19304589	Partial selfing	Freshwater	Narrow endemic	Y	N
+Daphnia magna	Water flea	Arthropoda	Crustacea	8	1.128	Pi	Autosome	non-coding	Multiple populations, combined	19299338	Partial selfing	Freshwater	Cosmopolitan	Y	N
+Daphnia magna	Water flea	Arthropoda	Crustacea	8	1.508	Pi	Autosome	synonymous	Multiple populations, combined	19299338	Partial selfing	Freshwater	Cosmopolitan	Y	N
+Daphnia obtusa	Water flea	Arthropoda	Crustacea	6	0.938	Pi	Autosome	synonymous	Multiple populations, combined	19304589	Selfing	Freshwater	Broad endemic	Y	N
+Daphnia obtusa	Water flea	Arthropoda	Crustacea	6	1.415	Pi	Autosome	intronic	Multiple populations, combined	19304589	Selfing	Freshwater	Broad endemic	Y	N
+Daphnia pulex	Water flea	Arthropoda	Crustacea	7	2.203	Pi	Autosome	synonymous	Multiple populations, combined	19299338	Partial selfing	Freshwater	Cosmopolitan	Y	N
+Daphnia pulicaria	Water flea	Arthropoda	Crustacea	6	1.587	Pi	Autosome	synonymous	Multiple populations, combined	19304589	Partial selfing	Freshwater	Narrow endemic	Y	N
+Daphnia pulicaria	Water flea	Arthropoda	Crustacea	6	2.458	Pi	Autosome	intronic	Multiple populations, combined	19304589	Partial selfing	Freshwater	Narrow endemic	Y	N
+Dasypus novemcinctus	Nine-banded armadillo	Chordata	Mammalia	2441	0.153	Pi	Autosome	synonymous	Unknown	22207615	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Daubentonia madagascariensis	Aye-aye	Chordata	Mammalia	1175	0.073	Pi	Autosome	synonymous	Multiple populations, combined	22207615	Obligatory outcrossing	Terrestrial	Island	Y	N
+Drosophila albomicans	Fruit fly	Arthropoda	Insecta	5	1.454	Pi	Sex	silent	Multiple populations, combined	17014741	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila americana	Fruit fly	Arthropoda	Insecta	10	2.52	Pi	Autosome	synonymous	Multiple populations, combined	17507679	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Drosophila americana	Fruit fly	Arthropoda	Insecta	5	1.44	Pi	Sex	intronic	Multiple populations, combined	17507679	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Drosophila americana	Fruit fly	Arthropoda	Insecta	7	1.786	Pi	Autosome	intronic	Multiple populations, combined	17507679	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Drosophila americana	Fruit fly	Arthropoda	Insecta	8	1.138	Pi	Sex	synonymous	Multiple populations, combined	17507679	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Drosophila ananassae	Fruit fly	Arthropoda	Insecta	10	0.27;0.24;0.62;0.63;0.57;0.74;0.62;0.7;1.08;0.94;1.13;1.24;1.14;1.12;0.59;0.98	Pi	Sex	intronic	Multiple populations, separately	15611168	Partial selfing	Terrestrial	Cosmopolitan	Y	N
+Drosophila ananassae	Fruit fly	Arthropoda	Insecta	14	1.91	Pi	Sex	synonymous	One population	20015359	Partial selfing	Terrestrial	Cosmopolitan	Y	Y
+Drosophila ananassae	Fruit fly	Arthropoda	Insecta	29	2.36	Pi	Autosome	synonymous	One population	20015359	Partial selfing	Terrestrial	Cosmopolitan	Y	Y
+Drosophila arizonae	Cactophilic Drosophila	Arthropoda	Insecta	10	1.13	Pi	Sex	mixed	Multiple populations, combined	17080365	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Drosophila arizonae	Cactophilic Drosophila	Arthropoda	Insecta	8	0.812	Pi	Autosome	mixed	Multiple populations, combined	17080365	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Drosophila arizonae	Cactophilic Drosophila	Arthropoda	Insecta	8	0.845	Pi	Autosome	mixed	Multiple populations, combined	17614914	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila bipectinata	Fruit fly	Arthropoda	Insecta	5	2.01	Pi	Autosome	non-coding	Multiple populations, combined	16089034	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila bogotana	Fruit fly	Arthropoda	Insecta	3	0.13	Pi	Sex	non-coding	Multiple populations, combined	11919289	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila bogotana	Fruit fly	Arthropoda	Insecta	6	0.622	Pi	Autosome	non-coding	Multiple populations, combined	11919289	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila buzzatii	Fruit fly	Arthropoda	Insecta	3	1.936	Pi	Autosome	anonymous	One population	12716995	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Drosophila kepulauana	Fruit fly	Arthropoda	Insecta	5	2.054	Pi	Sex	silent	Multiple populations, combined	17014741	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila kikkawai	Fruit fly	Arthropoda	Insecta	7	3.23	Pi	Autosome	silent	One population	15056933	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Drosophila kohkoa	Fruit fly	Arthropoda	Insecta	5	3.036	Pi	Sex	silent	Multiple populations, combined	17014741	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila malerkotliana	Fruit fly	Arthropoda	Insecta	5	1.68	Pi	Autosome	non-coding	Multiple populations, combined	16089034	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila mauritiana	Fruit fly	Arthropoda	Insecta	6	1.76;1.05	Pi	Sex	synonymous	Multiple populations, separately	21599771	Obligatory outcrossing	Terrestrial	Island	Y	N
+Drosophila melanogaster	Fruit fly	Arthropoda	Insecta	105	2.21	Pi	Sex	4-fold degenerate	One population	21173424	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Drosophila melanogaster	Fruit fly	Arthropoda	Insecta	105	2.21	Pi	Sex	intronic	One population	21173424	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Drosophila melanogaster	Fruit fly	Arthropoda	Insecta	16	1.33;1.65	Pi	Autosome	synonymous	Multiple populations, separately	11230529	Obligatory outcrossing	Terrestrial	Cosmopolitan	N	Y
+Drosophila melanogaster	Fruit fly	Arthropoda	Insecta	252	1.72	Pi	Autosome	non-coding	Multiple populations, combined	17284599	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Drosophila melanogaster	Fruit fly	Arthropoda	Insecta	252	2.32	Pi	Autosome	synonymous	Multiple populations, combined	17284599	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Drosophila melanogaster	Fruit fly	Arthropoda	Insecta	259;249	0.48;1.17	Pi	Sex	silent	Multiple populations, separately	17660560	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	Y
+Drosophila melanogaster	Fruit fly	Arthropoda	Insecta	378;53	0.66;1.04	Pi	Autosome	silent	Multiple populations, separately	17660560	Obligatory outcrossing	Terrestrial	Cosmopolitan	N	Y
+Drosophila melanogaster	Fruit fly	Arthropoda	Insecta	5	1.16;2.42	Pi	Sex	synonymous	Multiple populations, separately	11230529	Obligatory outcrossing	Terrestrial	Cosmopolitan	N	Y
+Drosophila miranda	Fruit fly	Arthropoda	Insecta	13	0.34	Pi	Sex	synonymous	Multiple populations, combined	17028331	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila miranda	Fruit fly	Arthropoda	Insecta	13	0.36	Pi	Autosome	non-coding	Multiple populations, combined	17028331	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila miranda	Fruit fly	Arthropoda	Insecta	13	0.37	Pi	Autosome	intronic	Multiple populations, combined	17028331	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila miranda	Fruit fly	Arthropoda	Insecta	13	0.45	Pi	Sex	non-coding	Multiple populations, combined	17028331	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila miranda	Fruit fly	Arthropoda	Insecta	13	0.53	Pi	Autosome	synonymous	Multiple populations, combined	17028331	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila miranda	Fruit fly	Arthropoda	Insecta	13	0.53	Pi	Sex	intronic	Multiple populations, combined	17028331	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila miranda	Fruit fly	Arthropoda	Insecta	37	0.664	Pi	Autosome	synonymous	Multiple populations, combined	20516497	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila miranda	Fruit fly	Arthropoda	Insecta	39	0.662	Pi	Sex	synonymous	Multiple populations, combined	20516497	Obligatory outcrossing	Terrestrial	Narrow endemic	N	Y
+Drosophila miranda	Fruit fly	Arthropoda	Insecta	91	0.621	Pi	Sex	synonymous	Multiple populations, combined	19091130	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Drosophila mojavensis	Cactophilic Drosophila	Arthropoda	Insecta	10	0.85;0.54	Pi	Sex	mixed	Multiple populations, separately	17080365	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila mojavensis	Cactophilic Drosophila	Arthropoda	Insecta	8	0.512;0.688	Pi	Autosome	mixed	Multiple populations, separately	17080365	Obligatory outcrossing	Terrestrial	Narrow endemic	N	Y
+Drosophila mojavensis	Cactophilic Drosophila	Arthropoda	Insecta	8	0.781	Pi	Autosome	mixed	Multiple populations, combined	17614914	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Drosophila nasuta	Fruit fly	Arthropoda	Insecta	5	0.944	Pi	Sex	silent	Multiple populations, combined	17014741	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila navojoa	Cactophilic Drosophila	Arthropoda	Insecta	7	0.804	Pi	Autosome	mixed	Multiple populations, combined	17614914	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Drosophila novamexicana	Fruit fly	Arthropoda	Insecta	3	0.28	Pi	Sex	non-coding	Multiple populations, combined	18482259	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila novamexicana	Fruit fly	Arthropoda	Insecta	6	0.202	Pi	Autosome	non-coding	Multiple populations, combined	18482259	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila parabipectinata	Fruit fly	Arthropoda	Insecta	5	1.33	Pi	Autosome	non-coding	Multiple populations, combined	16089034	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila persimilis	Fruit fly	Arthropoda	Insecta	3	0.89	Pi	Sex	non-coding	Multiple populations, combined	11919289	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila persimilis	Fruit fly	Arthropoda	Insecta	6	0.777	Pi	Autosome	non-coding	Multiple populations, combined	11919289	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	Y
+Drosophila pseudoananassae	Fruit fly	Arthropoda	Insecta	5	1.834	Pi	Autosome	non-coding	Multiple populations, combined	16089034	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila pseudoobscura	Fruit fly	Arthropoda	Insecta	37	2.265	Pi	Autosome	synonymous	One population	20516497	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Drosophila pseudoobscura	Fruit fly	Arthropoda	Insecta	39	1.779	Pi	Sex	synonymous	One population	20516497	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Drosophila pseudoobscura	Fruit fly	Arthropoda	Insecta	chromosome-wide	1.1	Pi	Autosome	non-coding	Unknown	18621713	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila pseudoobscura	Fruit fly	Arthropoda	Insecta	chromosome-wide	1.2	Pi	Autosome	intronic	Unknown	18621713	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila santomea	Fruit fly	Arthropoda	Insecta	17	2.085	ThetaW	Autosome	silent	Multiple populations, combined	15965264	Obligatory outcrossing	Terrestrial	Island	Y	N
+Drosophila santomea	Fruit fly	Arthropoda	Insecta	26	0.65	Pi	Sex	intronic	One population	Andolfatto, P. (unpublished results)	Obligatory outcrossing	Terrestrial	Island	Y	N
+Drosophila santomea	Fruit fly	Arthropoda	Insecta	67	1.3	Pi	Sex	4-fold degenerate	One population	Andolfatto, P. (unpublished results)	Obligatory outcrossing	Terrestrial	Island	Y	N
+Drosophila sechellia	Fruit fly	Arthropoda	Insecta	3	0.096	Pi	Autosome	silent	Multiple populations, combined	19506309	Obligatory outcrossing	Terrestrial	Island	Y	Y
+Drosophila sechellia	Fruit fly	Arthropoda	Insecta	7	0.114	Pi	Sex	silent	Multiple populations, combined	19506309	Obligatory outcrossing	Terrestrial	Island	Y	Y
+Drosophila simulans	Fruit fly	Arthropoda	Insecta	chromosome-wide	1.53	Pi	Sex	non-coding	Multiple populations, combined	17988176	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	Y
+Drosophila simulans	Fruit fly	Arthropoda	Insecta	chromosome-wide	1.66	Pi	Sex	intronic	Multiple populations, combined	17988176	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	Y
+Drosophila simulans	Fruit fly	Arthropoda	Insecta	chromosome-wide	1.99	Pi	Sex	synonymous	Multiple populations, combined	17988176	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	Y
+Drosophila simulans	Fruit fly	Arthropoda	Insecta	genome-wide	2.04	Pi	Autosome	non-coding	Multiple populations, combined	17988176	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	Y
+Drosophila simulans	Fruit fly	Arthropoda	Insecta	genome-wide	2.12	Pi	Autosome	intronic	Multiple populations, combined	17988176	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	Y
+Drosophila simulans	Fruit fly	Arthropoda	Insecta	genome-wide	3.52	Pi	Autosome	synonymous	Multiple populations, combined	17988176	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	Y
+Drosophila subobscura	Fruit fly	Arthropoda	Insecta	8	0.988	Pi	Autosome	silent	One population	15687280	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Drosophila sulfurigaster albostrigata	Fruit fly	Arthropoda	Insecta	5	0.858	Pi	Sex	silent	Multiple populations, combined	17014741	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila sulfurigaster bilimbata	Fruit fly	Arthropoda	Insecta	5	0	Pi	Sex	silent	Multiple populations, combined	17014741	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila sulfurigaster sulfurigaster	Fruit fly	Arthropoda	Insecta	5	0.994	Pi	Sex	silent	Multiple populations, combined	17014741	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila teissieri	Fruit fly	Arthropoda	Insecta	26	2.1	Pi	Sex	intronic	Multiple populations, combined	Andolfatto, P. (unpublished results)	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila teissieri	Fruit fly	Arthropoda	Insecta	67	2.9	Pi	Sex	4-fold degenerate	Multiple populations, combined	Andolfatto, P. (unpublished results)	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila yakuba	Fruit fly	Arthropoda	Insecta	17	2.98	ThetaW	Autosome	silent	Multiple populations, combined	15965264	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila yakuba	Fruit fly	Arthropoda	Insecta	26	1.1	Pi	Sex	intronic	One population	Andolfatto, P. (unpublished results)	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Drosophila yakuba	Fruit fly	Arthropoda	Insecta	67	1.9	Pi	Sex	4-fold degenerate	One population	Andolfatto, P. (unpublished results)	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Eichhornia paniculata	Brazilian water hyacinth	Magnoliophyta	Liliopsida	10	0.22;0.08;0.28;0.24;0.2;0.12;0.26;0.24;0.09;0.17;0.15;0.16;0.07;0.13;0.18;0.17;0.08;0.03;0.15;0.21;0.13;0.07;0.03;0.01;0.02	Pi	Autosome	silent	Multiple populations, separately	19917767	Partial selfing	Freshwater	Broad endemic	Y	N
+Eschrichtius robustus	Gray whale	Chordata	Mammalia	7	0.117	Pi	Autosome	intronic	One population	17848511	Obligatory outcrossing	Marine	Broad endemic	Y	N
+Eulemur coronatus	Crowned lemur	Chordata	Mammalia	1133	0.281	Pi	Autosome	synonymous	Unknown	22207615	Obligatory outcrossing	Terrestrial	Island	Y	N
+Eulemur mongoz	Mongoose lemur	Chordata	Mammalia	1257	0.244	Pi	Autosome	synonymous	Unknown	22207615	Obligatory outcrossing	Terrestrial	Island	Y	N
+Ficedula albicollis	Collared flycatcher	Chordata	Aves	16	0.38	Pi	Autosome	intronic	One population	15956661	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Ficedula albicollis	Collared flycatcher	Chordata	Aves	23	0.373	Pi	Autosome	mixed	One population	15956661	Obligatory outcrossing	Terrestrial	Broad endemic	N	Y
+Ficedula albicollis	Collared flycatcher	Chordata	Aves	74	0.316	Pi	Sex	intronic	Multiple populations, combined	20629730	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Ficedula albicollis	Collared flycatcher	Chordata	Aves	9	0.12	Pi	Sex	mixed	One population	15956661	Obligatory outcrossing	Terrestrial	Broad endemic	N	Y
+Ficedula hypoleuca	Pied Flycatcher	Chordata	Aves	16	0.31	Pi	Autosome	intronic	One population	15956661	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Ficedula hypoleuca	Pied Flycatcher	Chordata	Aves	23	0.27	Pi	Autosome	mixed	One population	15956661	Obligatory outcrossing	Terrestrial	Broad endemic	N	Y
+Ficedula hypoleuca	Pied Flycatcher	Chordata	Aves	74	0.182	Pi	Sex	intronic	Multiple populations, combined	20629730	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Ficedula hypoleuca	Pied Flycatcher	Chordata	Aves	9	0.141	Pi	Sex	mixed	One population	15956661	Obligatory outcrossing	Terrestrial	Broad endemic	N	Y
+Galago moholi	Mohol bushbaby	Chordata	Mammalia	414	0.204	Pi	Autosome	synonymous	Unknown	22207615	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Gasterosteus aculeatus	Three-spined stickleback	Chordata	Actinopterygii	genome-wide	0.216;0.25;0.203;0.227;0.268	Pi	Autosome	genome-wide	Multiple populations, separately	20195501	Obligatory outcrossing	Marine and freshwater	Cosmopolitan	Y	N
+Gorilla beringei/gorilla	Eastern/Western Gorilla	Chordata	Mammalia	14;16	0.0873;0.151	Pi	Autosome	non-coding	Multiple populations, separately	17065595	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Gryllus firmus	Sand field cricket	Arthropoda	Insecta	3	0.889	Pi	Autosome	intronic	Multiple populations, combined	19619226	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Gryllus pennsylvanicus	Field cricket	Arthropoda	Insecta	3	0.928	Pi	Autosome	intronic	Multiple populations, combined	19619226	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Gulo gulo	Wolverine	Chordata	Mammalia	10	0.0064;0.0516	Pi	Autosome	intronic	Multiple populations, separately	18647238	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Heliconius cydno	Cydno longwing butterfly	Arthropoda	Insecta	13	2.425	Pi	Autosome	mixed	Multiple populations, combined	16892975	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Heliconius hecale	Tiger longwing butterfly	Arthropoda	Insecta	12	2.106	Pi	Autosome	mixed	Multiple populations, combined	16892975	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Heliconius melpomene	Postman butterfly	Arthropoda	Insecta	13	1.996	Pi	Autosome	mixed	Multiple populations, combined	16892975	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Heliconius pachinus	Pachinus longwing butterfly	Arthropoda	Insecta	13	1.881	Pi	Autosome	mixed	Multiple populations, combined	16892975	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Histoplasma capsulatum	Fungus	Ascomycota	Eurotiomycetes	4	2.195	Pi	Autosome	mixed	Multiple populations, combined	14629354	Partial selfing	NA	Cosmopolitan	Y	N
+Homo sapiens	Human	Chordata	Mammalia	1052	0.119	Pi	Autosome	synonymous	Multiple populations, combined	22207615	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Homo sapiens	Human	Chordata	Mammalia	chromosome-wide	 0.09;0.07;0.075	Pi	Sex	non-coding	Multiple populations, separately	21330547	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	Y
+Homo sapiens	Human	Chordata	Mammalia	genome-wide	0.13;0.10;0.09	Pi	Autosome	non-coding	Multiple populations, separately	21330547	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	Y
+Hoolock leuconedys	Eastern hoolock gibbon	Chordata	Mammalia	3	0.21	Pi	Autosome	unclear	Unknown	21368318	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Hylobates agilis/lar/moloch/pileatus	Agile/Lar/Javan/Pileated gibbon	Chordata	Mammalia	4;3;3;4	0.22;0.213;0.29;0.298	Pi	Autosome	unclear	Multiple populations, separately	21368318	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Ixodes ricinus	Common tick	Arthropoda	Insecta	4	0.87	Pi	Autosome	mixed	Multiple populations, combined	20946897	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Limenitis arthemis	American admiral butterfly	Arthropoda	Insecta	5	1.304;1.552	Pi	Autosome	anonymous	Multiple populations, separately	18331459	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Lutzomyia intermedia	Brazilian sand fly	Arthropoda	Insecta	10	1.165	Pi	Autosome	mixed	One population	18474115	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Lutzomyia whitmani	Brazilian sand fly	Arthropoda	Insecta	10	1.592	Pi	Autosome	mixed	One population	18474115	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Lynx lynx	Eurasian lynx	Chordata	Mammalia	10	0.0103	Pi	Autosome	intronic	One population	18647238	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Lynx lynx	Eurasian lynx	Chordata	Mammalia	5	0.016	Pi	Sex	intronic	Multiple populations, combined	14595096	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Macaca mulatta	Rhesus macaque	Chordata	Mammalia	1079	0.288	Pi	Autosome	synonymous	Unknown	22207615	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Malurus melanocephalus	Red-backed fairy wren	Chordata	Aves	29	1.6;1.4;1.5	Pi	Autosome	anonymous	Multiple populations, separately	19087188	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Malurus melanocephalus	Red-backed fairy wren	Chordata	Aves	6	0.9;0.8;1.0	Pi	Autosome	intronic	Multiple populations, separately	19087188	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Melanopus oregonensis	Oregon short-wing grasshopper	Arthropoda	Insecta	5	0.935	Pi	Autosome	anonymous	Multiple populations, combined	17348914	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Mesobuthus cyprius/gibbosus	Mediterranean scorpion	Arthropoda	Chelicerata	9	1.7856;2.014;0.828;0.369;1.262	Pi	Autosome	mixed	Multiple populations, separately	15612292	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Microtus agrestis	Field vole	Chordata	Mammalia	10	0.08	Pi	Sex	intronic	Multiple populations, combined	14595096	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Monodelphis domestica	Gray short-tailed opossum	Chordata	Mammalia	892	0.164	Pi	Autosome	synonymous	Unknown	22207615	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Mus musculus castaneus	House mouse	Chordata	Mammalia	6	0.265;0.038	Pi	Sex	silent	Multiple populations, separately	17287527	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Mus musculus castaneus	House mouse	Chordata	Mammalia	65	0.66	Pi	Autosome	intronic	Multiple populations, combined	21059791	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Mus musculus castaneus	House mouse	Chordata	Mammalia	7	0.821;0.608	Pi	Autosome	non-coding	Multiple populations, separately	17287527	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Mus musculus castaneus	House mouse	Chordata	Mammalia	78	0.75	Pi	Autosome	synonymous	Multiple populations, combined	21059791	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Mus musculus domesticus	House mouse	Chordata	Mammalia	1335	0.368	Pi	Autosome	synonymous	One population	22207615	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Mus musculus domesticus	House mouse	Chordata	Mammalia	4	0.155	Pi	Autosome	intronic	Multiple populations, combined	19121002	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Mus musculus domesticus	House mouse	Chordata	Mammalia	5	0.066	Pi	Sex	intronic	Multiple populations, combined	18073432	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Mus musculus domesticus	House mouse	Chordata	Mammalia	6	0.123;0.01;0.049	Pi	Sex	silent	Multiple populations, separately	17287527	Obligatory outcrossing	Terrestrial	Broad endemic	N	Y
+Mus musculus domesticus	House mouse	Chordata	Mammalia	7	0.325;0.260;0.126	Pi	Autosome	non-coding	Multiple populations, separately	17287527	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Mus musculus musculus	House mouse	Chordata	Mammalia	4	0.198	Pi	Autosome	intronic	Multiple populations, combined	19121002	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Mus musculus musculus	House mouse	Chordata	Mammalia	5	0.034	Pi	Sex	intronic	Multiple populations, combined	18073432	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Mus musculus musculus	House mouse	Chordata	Mammalia	6	0.095;0.025	Pi	Sex	silent	Multiple populations, separately	17287527	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Mus musculus musculus	House mouse	Chordata	Mammalia	7	0.168;0.142	Pi	Autosome	non-coding	Multiple populations, separately	17287527	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Nasonia vitripennis	Parasitoid wasp	Arthropoda	Insecta	11	0.16;0.16	Pi	Autosome	silent	Multiple populations, separately	20087396	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Neurospora crassa	Bread mold	Ascomycota	Ascomycetes	genome-wide	0.23;0.24	Pi	Autosome	genome-wide	Multiple populations, separately	21282627	Partial selfing	Terrestrial	Cosmopolitan	Y	N
+Nomascus gabriellae/leucogenys	Yellow-cheeked/Northern white-cheeked gibbon	Chordata	Mammalia	4	0.212;0.265	Pi	Autosome	unclear	Multiple populations, separately	21368318	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Nycticebus coucang	Greater slow loris	Chordata	Mammalia	1004	0.214	Pi	Autosome	synonymous	Unknown	22207615	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Oncorhynchus tshawytscha	Chinook salmon	Chordata	Actinopterygii	3	0.297;0.26;0.203;0.283	Pi	Autosome	synonymous	Multiple populations, separately	10886648	Obligatory outcrossing	Marine and freshwater	Broad endemic	Y	N
+Oryctolagus cuniculus	European rabbit	Chordata	Mammalia	27	0.42;0.358	Pi	Sex	non-coding	Multiple populations, separately	20666840	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Oryctolagus cuniculus	European rabbit	Chordata	Mammalia	5	0.894;0.792	Pi	Autosome	silent	Multiple populations, separately	19015539	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Ostrinia nubilalis	European cornborer	Arthropoda	Insecta	3	1.2	Pi	Sex	mixed	Multiple populations, combined	16204000	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Pan paniscus	Bonobo	Chordata	Mammalia	26	0.1	Pi	Autosome	non-coding	Unknown	16753568	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Pan troglodytes	Chimpanzee	Chordata	Mammalia	1201	0.206	Pi	Autosome	synonymous	Unknown	22207615	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Pan troglodytes	Chimpanzee	Chordata	Mammalia	26	0.2;0.16;0.08	Pi	Autosome	non-coding	Multiple populations, separately	16753568	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Pan troglodytes	Chimpanzee	Chordata	Mammalia	420,610 bp	0.034	Pi	Sex	unclear	Unknown	21054605	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Pan troglodytes	Chimpanzee	Chordata	Mammalia	861,142 bp of chr 21	0.081	Pi	Autosome	unclear	Unknown	21054605	Obligatory outcrossing	Terrestrial	Broad endemic	N	Y
+Papilio canadensis	Swallowtail	Arthropoda	Insecta	5	0.92	Pi	Sex	silent	Multiple populations, combined	17439621	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Papilio dardanus	African swallowtail	Arthropoda	Insecta	6	1.7	Pi	Autosome	mixed	Multiple populations, combined	19694948	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Papilio glaucus	Swallowtail	Arthropoda	Insecta	5	1.28	Pi	Sex	silent	Multiple populations, combined	17439621	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Paracoccidioides brasiliensis PS2/PS3/S1	Fungus	Ascomycota	Eurotiomycetes	13	0.132;0.222;0.213	Pi	Autosome	mixed	Multiple populations, separately	16151188	Partial selfing	NA	Broad endemic	Y	N
+Paracoccidioides lutzii	Fungus	Ascomycota	Eurotiomycetes	13	1.695	Pi	Autosome	mixed	Multiple populations, combined	19376249	Partial selfing	NA	Broad endemic	Y	N
+Paramecium biaurelia	Paramecium	Ciliophora	Ciliatea	10	0.38	Pi	Autosome	synonymous	Multiple populations, combined	19023087	Partial selfing	Freshwater	Unknown	Y	N
+Paramecium decaurelia	Paramecium	Ciliophora	Ciliatea	10	1.04	Pi	Autosome	synonymous	Multiple populations, combined	19023087	Partial selfing	Freshwater	Unknown	Y	N
+Paramecium dodecaurelia	Paramecium	Ciliophora	Ciliatea	10	0.78	Pi	Autosome	synonymous	Multiple populations, combined	19023087	Partial selfing	Freshwater	Unknown	Y	N
+Paramecium novaurelia	Paramecium	Ciliophora	Ciliatea	10	0.91	Pi	Autosome	synonymous	Multiple populations, combined	19023087	Partial selfing	Freshwater	Unknown	Y	N
+Paramecium octaurelia	Paramecium	Ciliophora	Ciliatea	10	0.36	Pi	Autosome	synonymous	Multiple populations, combined	19023087	Partial selfing	Freshwater	Unknown	Y	N
+Paramecium pentaurelia	Paramecium	Ciliophora	Ciliatea	10	0.17	Pi	Autosome	synonymous	Multiple populations, combined	19023087	Partial selfing	Freshwater	Unknown	Y	N
+Paramecium primaurelia	Paramecium	Ciliophora	Ciliatea	10	2.28	Pi	Autosome	synonymous	Multiple populations, combined	19023087	Partial selfing	Freshwater	Unknown	Y	N
+Paramecium quadecaurelia	Paramecium	Ciliophora	Ciliatea	10	3.45	Pi	Autosome	synonymous	Multiple populations, combined	19023087	Partial selfing	Freshwater	Unknown	Y	N
+Paramecium septaurelia	Paramecium	Ciliophora	Ciliatea	10	0.34	Pi	Autosome	synonymous	Multiple populations, combined	19023087	Partial selfing	Freshwater	Unknown	Y	N
+Paramecium sexaurelia	Paramecium	Ciliophora	Ciliatea	10	0.38	Pi	Autosome	synonymous	Multiple populations, combined	19023087	Partial selfing	Freshwater	Unknown	Y	N
+Paramecium tetraurelia	Paramecium	Ciliophora	Ciliatea	10	0.79	Pi	Autosome	synonymous	Multiple populations, combined	19023087	Partial selfing	Freshwater	Unknown	Y	N
+Paramecium triaurelia	Paramecium	Ciliophora	Ciliatea	10	0.66	Pi	Autosome	synonymous	Multiple populations, combined	19023087	Partial selfing	Freshwater	Unknown	Y	N
+Peromyscus maniculatus	Deer mouse	Chordata	Mammalia	6	1.313	Pi	Autosome	silent	Multiple populations, combined	18716337	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Phlebotomus ariasi	Mediterranean sandfly	Arthropoda	Insecta	3	0.494;0.672;0.473;0.494;0.468;0.393;0.514;0.416;0.336;0.438;0.455;0.475;0.400;0.423;0.331;0.333;0.164;0.202	Pi	Autosome	mixed	Multiple populations, separately	20736970	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Phytophthora capsici	Oomycete plant pathogen	Heterokontophyta	Oomycota	6	0.617	Pi	Autosome	mixed	Multiple populations, combined	21486143	Partial selfing	NA	Cosmopolitan	Y	N
+Phytophthora infestans	Potato blight	Heterokontophyta	Oomycota	4	0.1;0.03;0.0075;0.275;0.0575;0.22	Pi	Autosome	mixed	Multiple populations, separately	21303555	Partial selfing	NA	Cosmopolitan	Y	N
+Picea abies	Norway spruce	Pinophyta	Pinopsida	10	0.709	Pi	Autosome	silent	Multiple populations, combined	19639012	Partial selfing	Terrestrial	Broad endemic	Y	N
+Picea breweriana	Brewer spruce	Pinophyta	Pinopsida	10	0.201	Pi	Autosome	silent	Multiple populations, combined	19639012	Partial selfing	Terrestrial	Narrow endemic	Y	N
+Picea glauca	White spruce	Pinophyta	Pinopsida	10	0.905	Pi	Autosome	silent	Unclear	19639012	Partial selfing	Terrestrial	Broad endemic	Y	N
+Picea mariana	Black spruce	Pinophyta	Pinopsida	10	0.461	Pi	Autosome	silent	Unclear	19639012	Partial selfing	Terrestrial	Broad endemic	Y	N
+Pieris rapae	Small white butterfly	Arthropoda	Insecta	6	2.502;1.791;2.024;2.065	Pi	Autosome	synonymous	Multiple populations, separately	20181249	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Pinus pinaster	Maritime pine	Pinophyta	Pinopsida	4	0.244	Pi	Autosome	non-coding	Multiple populations, combined	15948834	Partial selfing	Terrestrial	Narrow endemic	Y	N
+Pinus pinaster	Maritime pine	Pinophyta	Pinopsida	7	0.028	Pi	Autosome	synonymous	Multiple populations, combined	15948834	Partial selfing	Terrestrial	Narrow endemic	Y	N
+Pinus radiata	Monterey pine	Pinophyta	Pinopsida	4	0.0698	Pi	Autosome	non-coding	One population	15948834	Partial selfing	Terrestrial	Broad endemic	Y	N
+Pinus radiata	Monterey pine	Pinophyta	Pinopsida	7	0.0754	Pi	Autosome	synonymous	One population	15948834	Partial selfing	Terrestrial	Broad endemic	Y	N
+Pinus sylvestris	Scots pine	Pinophyta	Pinopsida	11	0.56	Pi	Autosome	synonymous	One population	11801746	Partial selfing	Terrestrial	Broad endemic	Y	N
+Pinus taeda	Loblolly pine	Pinophyta	Pinopsida	19	0.746	Pi	Autosome	silent	Multiple populations, combined	15477602	Partial selfing	Terrestrial	Broad endemic	Y	N
+Plasmodium falciparum	Malaria pathogen	Apicomplexa	Aconoidasida	genome-wide	0.126	Pi	Autosome	non-coding	Multiple populations, combined	17159979	Partial selfing	NA	Cosmopolitan	Y	N
+Plasmodium falciparum	Malaria pathogen	Apicomplexa	Aconoidasida	genome-wide	0.148	Pi	Autosome	intronic	Multiple populations, combined	17159979	Partial selfing	NA	Cosmopolitan	Y	N
+Plasmodium falciparum	Malaria pathogen	Apicomplexa	Aconoidasida	genome-wide	0.151	Pi	Autosome	4-fold degenerate	Multiple populations, combined	17159979	Partial selfing	NA	Cosmopolitan	Y	N
+Plasmodium vivax	Malaria pathogen	Apicomplexa	Aconoidasida	26	0.0616	Pi	Autosome	mixed	Multiple populations, combined	12799466	Partial selfing	NA	Cosmopolitan	Y	N
+Pongo abelii/pygmaeus	Sumatran/Bornean Orangutan	Chordata	Mammalia	19	0.35;0.27	Pi	Autosome	non-coding	Multiple populations, separately	16753568	Obligatory outcrossing	Terrestrial	Island	Y	N
+Populus balsamifera	Balsam poplar	Magnoliophyta	Magnoliopsida	361	0.35	Pi	Autosome	intronic	Multiple populations, combined	20122131	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Populus balsamifera	Balsam poplar	Magnoliophyta	Magnoliopsida	515	0.45	Pi	Autosome	synonymous	Multiple populations, combined	20122131	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Populus tremula	European aspen	Magnoliophyta	Magnoliopsida	5	1.23;1.52;1.64;1.43	Pi	Autosome	silent	Multiple populations, separately	15489521	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Populus trichocarpa	Western black cottonwood	Magnoliophyta	Magnoliopsida	3	0.449	Pi	Autosome	silent	One population	19228296	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Propithecus coquereli	Coquerels sifaka	Chordata	Mammalia	1048	0.681	Pi	Autosome	synonymous	Multiple populations, combined	22207615	Obligatory outcrossing	Terrestrial	Island	Y	N
+Rangifer tarandus	Reindeer	Chordata	Mammalia	4	0.05	Pi	Sex	intronic	Multiple populations, combined	14595096	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Rattus norvegicus	Rat	Chordata	Mammalia	genome-wide	0.125	ThetaW	Autosome	mixed	Multiple populations, combined	15231757	Obligatory outcrossing	Terrestrial	Cosmopolitan	Y	N
+Saccharomyces cerevisiae	Bakers yeast	Ascomycota	Saccharomycetes	genome-wide	0.14;0.044;0.27	Pi	Autosome	synonymous	Multiple populations, separately	20817943	Partial selfing	Terrestrial	Cosmopolitan	Y	N
+Saccharomyces paradoxus	Yeast	Ascomycota	Saccharomycetes	genome-wide	0.21;0.15;0.46	Pi	Autosome	synonymous	Multiple populations, separately	20817943	Partial selfing	Terrestrial	Cosmopolitan	Y	N
+Sceloporus undulatus	Eastern fence lizard	Chordata	Reptilia	19	0.623	Pi	Autosome	anonymous	Multiple populations, combined	17611259	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Silene latifolia	Bladder campion	Magnoliophyta	Magnoliopsida	3	2.42	Pi	Sex	silent	Multiple populations, combined	20519224	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Silene latifolia	Bladder campion	Magnoliophyta	Magnoliopsida	8	2.88	Pi	Autosome	silent	Multiple populations, combined	20519224	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Sistrurus catenatus	Eastern massasauga rattlesnake	Chordata	Reptilia	10	0.0235	Pi	Autosome	anonymous	One population	21565006	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Sistrurus catenatus	Eastern massasauga rattlesnake	Chordata	Reptilia	8	0.0388	Pi	Autosome	intronic	One population	21565006	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Spermophilus parryii	Arctic ground squirrel	Chordata	Mammalia	8	0.259	Pi	Autosome	anonymous	Multiple populations, combined	21729045	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Strongylocentrotus droebachiensis	Green sea urchin	Echinodermata	Echinoidea	4	1.45	Pi	Autosome	mixed	One population	19222750	Obligatory outcrossing	Marine	Broad endemic	Y	N
+Strongylocentrotus pallidus	Pale sea urchin	Echinodermata	Echinoidea	4	2.492	Pi	Autosome	mixed	One population	19222750	Obligatory outcrossing	Marine	Broad endemic	Y	N
+Strongylocentrotus purpuratus	Purple sea urchin	Echinodermata	Echinoidea	4	1.69	Pi	Autosome	mixed	One population	19222750	Obligatory outcrossing	Marine	Broad endemic	Y	N
+Symphalangus syndactylus	Siamang	Chordata	Mammalia	4	0.168	Pi	Autosome	unclear	Unknown	21368318	Obligatory outcrossing	Terrestrial	Narrow endemic	Y	N
+Taeniopygia guttata	Zebra finch	Chordata	Aves	21	1.1;0.23	Pi	Autosome	non-coding	Multiple populations, separately	19047416	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Taeniopygia guttata	Zebra finch	Chordata	Aves	4	1.09;0.01	Pi	Autosome	intronic	Multiple populations, separately	19047416	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Taeniopygia guttata	Zebra finch	Chordata	Aves	5	0.32;0.03	Pi	Sex	intronic	Multiple populations, separately	19047416	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Takifugu rubripes	Japanese pufferfish	Chordata	Actinopterygii	genome-wide	0.4	Pi	Autosome	genome-wide	One population	12142439	Obligatory outcrossing	Marine	Broad endemic	Y	N
+Tupaia belangeri	Northern tree shrew	Chordata	Mammalia	1603	0.532	Pi	Autosome	synonymous	Unknown	22207615	Obligatory outcrossing	Terrestrial	Broad endemic	Y	N
+Varecia variegata variegata	Black and white ruffed lemur	Chordata	Mammalia	921	0.375	Pi	Autosome	synonymous	Unknown	22207615	Obligatory outcrossing	Terrestrial	Island	Y	N
+Volvox carteri	Green alga	Chlorophyta	Chlorophyceae	6	0.358	Pi	Autosome	synonymous	Multiple populations, combined	20430860	Partial selfing	Freshwater	Unknown	Y	N
+Volvox carteri	Green alga	Chlorophyta	Chlorophyceae	6	0.534	Pi	Autosome	intronic	Multiple populations, combined	20430860	Partial selfing	Freshwater	Unknown	Y	N
+Zonotrichia albicollis	White-throated sparrow	Chordata	Aves	27	0.66	Pi	Autosome	silent	One population	21029465	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
+Zonotrichia albicollis	White-throated sparrow	Chordata	Aves	9	0.0464	Pi	Sex	silent	One population	21029465	Obligatory outcrossing	Terrestrial	Broad endemic	Y	Y
