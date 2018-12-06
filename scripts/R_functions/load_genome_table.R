@@ -9,7 +9,7 @@ load_genome_table <- function(columns = NA){
     }
 
     genome_tab[is.na(genome_tab$hybrid_origin),'hybrid_origin'] <- "unknown"
-    genome_tab[is.na(genome_tab$reproduction_mode),'reproduction_mode'] <- "unknown"
+    genome_tab[is.na(genome_tab$callular_mechanism),'callular_mechanism'] <- "unknown"
 
     hyb_origins <- c("no", "unknown", "yes")
     repr_modes  <- c("gamete_duplication", "terminal_fusion", "central_fusion", "unknown_automixis",
@@ -17,6 +17,6 @@ load_genome_table <- function(columns = NA){
 
     # ordering
     genome_tab$hybrid_origin <- ordered(genome_tab$hybrid_origin, levels=hyb_origins )
-    genome_tab$reproduction_mode <- ordered(genome_tab$reproduction_mode, levels=repr_modes )
+    genome_tab$callular_mechanism <- ordered(genome_tab$callular_mechanism, levels=repr_modes )
     genome_tab
 }

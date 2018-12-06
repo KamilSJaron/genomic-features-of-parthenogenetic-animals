@@ -18,8 +18,8 @@ row.names(genome_tab) <- genome_tab$code
 sp_codes <- load_genome_table(1:4)[,1]
 sp_codes <- sp_codes[sp_codes %in% genome_tab$code]
 
-genome_tab$gene_per_ploidy <- round(genome_tab$genes / genome_tab$ploidy, 1)
-genome_tab$gene_per_assembled_ploidy <- round(genome_tab$genes / genome_tab$haplotypes_assembled, 1)
+# genome_tab$gene_per_ploidy <- round(genome_tab$genes / genome_tab$ploidy)
+genome_tab$gene_per_assembled_ploidy <- round(genome_tab$genes / genome_tab$haplotypes_assembled)
 
 # barplot(genome_tab$genes / genome_tab$haplotypes_assembled, ylim = c(0, 65000), col = 'green')
 # barplot(genome_tab$genes / genome_tab$ploidy, ylim = c(0, 65000), add = T)

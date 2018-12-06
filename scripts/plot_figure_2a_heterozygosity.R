@@ -16,10 +16,10 @@ rownames(genome_tab) <- genome_tab$code
 
 # genome_tab['Rmac1','heterozygosity'] <- 0.123 # these estimates should be added to the big genome table, not here
 # genome_tab['Rmag1','heterozygosity'] <- 0.492
-# genome_tab['Dcor1','reproduction_mode'] <- "unknown_automixis"
+# genome_tab['Dcor1','callular_mechanism'] <- "unknown_automixis"
 # genome_tab[4:5,15:16] <- NA # delete rotifers
 
-genome_tab$reproduction_mode[is.na(genome_tab$reproduction_mode)] <- "unknown"
+genome_tab$callular_mechanism[is.na(genome_tab$callular_mechanism)] <- "unknown"
 genome_tab$hybrid_origin[is.na(genome_tab$hybrid_origin)] <- "unknown"
 
 hyb_origins <- c("no", "unknown", "yes")
@@ -28,7 +28,7 @@ repr_modes  <- c("gamete_duplication", "terminal_fusion", "central_fusion", "unk
 
 # ordering
 genome_tab$hybrid_origin <- ordered(genome_tab$hybrid_origin, levels=hyb_origins )
-genome_tab$reproduction_mode <- ordered(genome_tab$reproduction_mode, levels=repr_modes )
+genome_tab$callular_mechanism <- ordered(genome_tab$callular_mechanism, levels=repr_modes )
 genome_tab['Avag1','heterozygosity'] <- NA
 genome_tab <- genome_tab[!is.na(genome_tab$heterozygosity),]
 
@@ -64,11 +64,12 @@ plot_corpus <- function(){
     )
 
     # grid(lwd = 1.2, col = 'gray', nx=NA, ny=NULL)
-    grid(lwd = 1, col = 1, nx=3, ny=NULL)
-    abline(lwd = 0.1, h = seq(0, 14, by = 0.5)[(1:28) %% 4 != 1])
+    grid(lwd = 2, col = 1, nx=3, ny=NA)
+    grid(lwd = 0.5, col = 1, nx=NA, ny=NULL, lty = 3)
+    # abline(lwd = 0.1, h = seq(0, 14, by = 0.5)[(1:28) %% 4 != 1])
 
     legend('topleft', bty = 'n',
-           c("gamete duplication", "terminal fusion", "central fusion", "unknown automixis", "unknown", "functional apomixis"),
+           c("gamete duplication", "terminal fusion", "central fusion", "unknown meiosis", "unknown", "functional mitosis"),
            col = pal, pch = c(rep(20,6)), cex = 1.2)
     # legend('topleft', bty = 'n',
     #        c("gamete duplication", "terminal fusion", "central fusion", "unknown automixis", "unknown", "functional apomixis",
@@ -78,8 +79,8 @@ plot_corpus <- function(){
 
 plot_ploits <- function(hyb_origin = "no"){
     # repr_modes
-    subset <- genome_tab[genome_tab$hybrid_origin == hyb_origin, c("heterozygosity", "ploidy", "reproduction_mode")]
-    subset <- subset[order(subset$reproduction_mode),]
+    subset <- genome_tab[genome_tab$hybrid_origin == hyb_origin, c("heterozygosity", "ploidy", "callular_mechanism")]
+    subset <- subset[order(subset$callular_mechanism),]
     subset <- subset[!is.na(subset$heterozygosity),]
 
     if(hyb_origin == "unknown"){
@@ -92,7 +93,7 @@ plot_ploits <- function(hyb_origin = "no"){
     # conture_symbols <- c(NA, 21, 24, 22)
 
     points(at + misplacement, subset$heterozygosity,
-           col = pal[subset$reproduction_mode],
+           col = pal[subset$callular_mechanism],
            pch = 19, cex = 1.3) #symbols[subset$ploidy]
     points(at + misplacement, subset$heterozygosity,
            pch = 21, cex = 1.3) #conture_symbols[subset$ploidy]

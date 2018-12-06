@@ -2,23 +2,14 @@
 # Get data #
 ############
 
-genome_tab <- read.table('tables/genome_table.tsv',
-                         header = T, stringsAsFactors = F, skip = 1, check.names = F)
-rownames(genome_tab) <- genome_tab$code
-# take only relevant columns and reverse the order of rows
-genome_tab <- genome_tab[nrow(genome_tab):1,c(1,3:5,15:18)]
-# kick out those that have no
-genome_tab <- genome_tab[!(is.na(genome_tab$TEs) & is.na(genome_tab$repeats)),]
+source('scripts/R_functions/load_genome_table.R')
 
-genome_tab$reproduction_mode[is.na(genome_tab$reproduction_mode)] <- "unknown"
-genome_tab$hybrid_origin[is.na(genome_tab$hybrid_origin)] <- "unknown"
+genome_tab <- load_genome_table(c(1:18))
+genome_tab <- genome_tab[nrow(genome_tab):1,]
+
 hyb_origins <- c("no", "unknown", "yes")
 repr_modes  <- c("gamete_duplication", "terminal_fusion", "central_fusion", "unknown_automixis",
                  "unknown", "functional_apomixis")
-
-# ordering
-genome_tab$hybrid_origin <- ordered(genome_tab$hybrid_origin, levels=hyb_origins )
-genome_tab$reproduction_mode <- ordered(genome_tab$reproduction_mode, levels=repr_modes )
 
 ###
 # misc
@@ -48,15 +39,15 @@ plot_corpus <- function(.var, .ylab, .legend = F){
 
     if(.legend){
         legend('topleft', bty = 'n',
-               c("gamete duplication", "terminal fusion", "central fusion", "unknown automixis", "unknown", "functional apomixis"),
+               c("gamete duplication", "terminal fusion", "central fusion", "unknown meiosis", "unknown", "functional mitosis"),
                col = pal, pch = c(rep(20,6)), cex = 1)
     }
 }
 
 plot_ploits <- function(hyb_origin = "no", .var = "repeats"){
     # repr_modes
-    subset <- genome_tab[genome_tab$hybrid_origin == hyb_origin, c(.var, "ploidy", "reproduction_mode")]
-    subset <- subset[order(subset$reproduction_mode),]
+    subset <- genome_tab[genome_tab$hybrid_origin == hyb_origin, c(.var, "ploidy", "callular_mechanism")]
+    subset <- subset[order(subset$callular_mechanism),]
     subset <- subset[!is.na(subset[,.var]),]
 
     # if(hyb_origin == "unknown"){
@@ -68,7 +59,7 @@ plot_ploits <- function(hyb_origin = "no", .var = "repeats"){
                         length = nrow(subset) + 2)[2:(nrow(subset)+1)]
 
     points(at + misplacement, subset[,.var],
-           col = pal[subset$reproduction_mode],
+           col = pal[subset$callular_mechanism],
            pch = 19, cex = 1.3)
     points(at + misplacement, subset[,.var],
            pch = 21, cex = 1.3)
@@ -88,13 +79,13 @@ tiff("figures/Supp_fig2_rep_TE_patterns.tiff",
 #      width = 8, height = 8, units = 'in', res = 90)
 # # png('figures/Supp_fig2a_repetitions.png')
 
-plot_tab <- genome_tab[!is.na(genome_tab$repeats),]
-par(mfrow = c(1,2))
-plot_corpus("repeats", "Repetitions [%]", T)
-title("Overall repetitive content")
-plot_ploits("no", "repeats")
-plot_ploits("unknown", "repeats")
-plot_ploits("yes", "repeats")
+# plot_tab <- genome_tab[!is.na(genome_tab$repeats),]
+# # par(mfrow = c(1,2))
+# plot_corpus("repeats", "Repetitions [%]", T)
+# title("Overall repetitive content")
+# plot_ploits("no", "repeats")
+# plot_ploits("unknown", "repeats")
+# plot_ploits("yes", "repeats")
 
 # dev.off()
 
@@ -103,11 +94,11 @@ plot_ploits("yes", "repeats")
 ####
 plot_tab <- genome_tab[!is.na(genome_tab$TEs),]
 
-# tiff("figures/Supp_fig2b_TEs.tiff",
-#      width = 8, height = 8, units = 'in', res = 90)
+tiff("figures/Supp_fig2b_TEs.tiff",
+     width = 8, height = 8, units = 'in', res = 90)
 # # png('figures/Supp_fig2b_TEs.png')
 
-plot_corpus("TEs", "TEs [%]")
+plot_corpus("TEs", "TEs [%]", T)
 title("Transposable elements")
 plot_ploits("no", "TEs")
 plot_ploits("unknown", "TEs")
