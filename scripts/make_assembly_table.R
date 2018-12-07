@@ -1,3 +1,4 @@
+library('gsheet')
 source('scripts/R_functions/load_genome_table.R')
 
 tab_file <- "tables/assembly_table.tsv"
@@ -20,6 +21,17 @@ sp_codes <- sp_codes[sp_codes %in% genome_tab$code]
 
 # genome_tab$gene_per_ploidy <- round(genome_tab$genes / genome_tab$ploidy)
 genome_tab$gene_per_assembled_ploidy <- round(genome_tab$genes / genome_tab$haplotypes_assembled)
+
+# add TEs
+literature_data <- read.csv(text = gsheet2text("https://docs.google.com/spreadsheets/d/1T4BHQxzMGMlWiNJ7G9OLPXzdNBCqMw0mSO7C_ggGEbc/edit?usp=sharing", format='csv'),
+                            stringsAsFactors = F, skip = 1, header = T, check.names = F)
+
+extracted_TEs <- literature_data[,c('code','TEs [ % ]')]
+colnames(extracted_TEs) <- c('code', 'annotated_TEs')
+
+genome_tab <- merge(genome_tab, extracted_TEs)
+genome_tab$annotated_TEs[is.na(genome_tab$annotated_TEs)] <- "NA"
+rownames(genome_tab) <- genome_tab$code
 
 # barplot(genome_tab$genes / genome_tab$haplotypes_assembled, ylim = c(0, 65000), col = 'green')
 # barplot(genome_tab$genes / genome_tab$ploidy, ylim = c(0, 65000), add = T)
