@@ -15,7 +15,7 @@ Dpul3	Daphnia_pulex	NA	SRR2148389	NA
 Pvir1	Procambarus_virginalis	http://marmorkrebs.dkfz.de/downloads/genome/pvirGEN-0.4/Pvir04.fa.gz	SRR5115148,SRR5115143,SRR5115145,SRR5115147,SRR5115146,SRR5115144	http://marmorkrebs.dkfz.de/downloads/genome/pvirGEN-0.4/Pvir04.annotation.gff.gz
 Psam1	Plectus_sambesii	ftp://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS11/species/plectus_sambesii/PRJNA390260/plectus_sambesii.PRJNA390260.WBPS11.genomic.fa.gz	SRR7508118	ftp://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS11/species/plectus_sambesii/PRJNA390260/plectus_sambesii.PRJNA390260.WBPS11.annotations.gff3.gz
 Dcor1	Diploscapter_coronatus	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/207/785/GCA_002207785.1_ASM220778v1/GCA_002207785.1_ASM220778v1_genomic.fna.gz	DRR029945	manual
-Dpac1	Diploscapter_pachys	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/287/525/GCA_002287525.1_DipSp1Ass11Ann3/GCA_002287525.1_DipSp1Ass11Ann3_genomic.fna.gz	manual	https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/287/525/GCA_002287525.1_DipSp1Ass11Ann3/GCA_002287525.1_DipSp1Ass11Ann3_genomic.gff.gz
+Dpac1	Diploscapter_pachys	ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/287/525/GCA_002287525.1_DipSp1Ass11Ann3/GCA_002287525.1_DipSp1Ass11Ann3_genomic.fna.gz	SRR8384819,SRR8384820,SRR8384821,SRR8384822	https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/287/525/GCA_002287525.1_DipSp1Ass11Ann3/GCA_002287525.1_DipSp1Ass11Ann3_genomic.gff.gz
 Pdav1	Panagrolaimus_davidiDAW1	manual	SRR1265985,SRR1544448	manual
 Ps591	Panagrolaimus_sp.PS1159	manual	manual	manual
 Ps791	Panagrolaimus_sp.PS1579	manual	SRR5257057	manual
