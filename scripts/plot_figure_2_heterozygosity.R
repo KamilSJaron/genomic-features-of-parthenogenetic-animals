@@ -1,6 +1,20 @@
-library('gsheet')
-library('RColorBrewer')
+#!/usr/bin/env Rscript
+args = commandArgs(trailingOnly=TRUE)
+
+require('gsheet')
+require('RColorBrewer')
+library('extrafont')
 library('shape')
+
+loadfonts(quiet=TRUE)
+
+# if flag --presentation is specified; a figre for presentation is generated
+presentation <- F
+if ( length(args) == 1 ) {
+  if ( args[1] == "--presentation" ){
+    presentation = T
+  }
+}
 
 ############
 # Get data #

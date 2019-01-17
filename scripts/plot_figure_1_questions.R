@@ -3,9 +3,9 @@ args = commandArgs(trailingOnly=TRUE)
 
 require('gsheet')
 require('RColorBrewer')
-library('extrafont')
+# library('extrafont')
 
-loadfonts(quiet=TRUE)
+# loadfonts(device = "pdf", quiet=TRUE)
 
 # if flag --presentation is specified; a figre for presentation is generated
 presentation <- F
@@ -86,10 +86,11 @@ ref_matrix <- gsub(",", ", ", ref_matrix)
 
 presentation_string <- ifelse(presentation, '_presentation', '')
 file_to_save <- paste0('figures/fig1_genomic_studies', presentation_string ,'.pdf')
-pdf(file_to_save, width=6, height=4, pointsize=8, family="Times")
+# , family="Arial"
+pdf(file_to_save, width=6, height=4, pointsize=8)
 
 # I will need space on the left side of the plot and above
-par(mar = c(0, 7.5, 4.5, 0) + 0.1)
+par(mar = c(0, 7.5, 4, 0) + 0.1)
 
 # this will plot the hearmap but also keep the scale of the image (columns 1 .. questions and rows 1 .. sequenced genomes)
 image(seq(dim(heat_matrix)[1]), seq(dim(heat_matrix)[2]), heat_matrix, col=pal, xaxt="n", yaxt="n", ylab="", xlab="")
@@ -103,7 +104,6 @@ mtext(do.call(expression, sp_labels), side = 2, at = rev(1:nrow(question_tab)), 
 # names are taken from columns, but with spaces instead of periods
 topics <- gsub("\\.", " ", colnames(question_tab)[plotted_cols])
 if (presentation) {
-  cat("I know how to make pancakes")
   text(1:(ncol(question_tab) - 1), par("usr")[4] + 1.55 + c(0, 1.6), wrap.labels(topics, 10), xpd = TRUE)
 } else{
   text(1:(ncol(question_tab) - 1) - 0.12, par("usr")[4] + 2.1, wrap.labels(topics, 10), xpd = TRUE, srt = 35)
