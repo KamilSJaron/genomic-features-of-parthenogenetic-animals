@@ -120,6 +120,14 @@ rule download_all :
 		expand("data/{sp}/genome.fa.gz", sp=species_with_genomes),
 		raw_read_files
 
+rule download_genomes :
+	input :
+                expand("data/{sp}/genome.fa.gz", sp=species_with_genomes)
+
+rule download_annotations :
+        input : 
+                expand("data/{sp}/annotation.gff3.gz", sp=species_with_annotation)
+
 ## trimm_all : trimm all reads
 rule trimm_all :
 	input :
