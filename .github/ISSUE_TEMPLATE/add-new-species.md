@@ -21,6 +21,7 @@ DOI: [DOI]
 - [ ] smudgeplot
 - [ ] palindromes
 - [ ] TEs
+- [ ] HGT
 
 **Literature search**
 - [ ] origin of asexuality

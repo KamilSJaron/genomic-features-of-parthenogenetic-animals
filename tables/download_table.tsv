@@ -7,6 +7,9 @@ Rmag1	Rotaria_magnacalcarata	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/239/
 Lcla1	Leptopilina_clavipes	http://parasitoids.labs.vu.nl/parasitoids/leptopilina/data/lclav_genome.fa	SRR7028347	http://animalecology.labs.vu.nl/parasitoids/leptopilina/data/lclav_annotation.gff3
 Tpre1	Trichogramma_pretiosum	ftp://ftp.hgsc.bcm.edu/I5K-pilot/Trichogramma_pretiosum/genome_assemblies/NCBI_submitted/Tpre_scaffolds.50.fa	SRR1191749	ftp://ftp.hgsc.bcm.edu/I5K-pilot/Trichogramma_pretiosum/maker_annotation/version_0.5.3/TPRE.Models.gff3
 Obir1	Ooceraea_biroi	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Ooceraea_biroi/latest_assembly_versions/GCF_000611835.1_CerBir1.0/GCF_000611835.1_CerBir1.0_genomic.fna.gz	SRR1192095,SRR1192097,SRR1192107	ftp://ftp.ncbi.nlm.nih.gov/genomes/Cerapachys_biroi/GFF/ref_CerBir1.0_top_level.gff3.gz
+Amel1	Apis_mellifera_capensis	NA	SRR8061554	NA
+Amel2	Apis_mellifera_capensis	NA	SRR8061555	NA
+Amel3	Apis_mellifera_capensis	NA	SRR8061556	NA
 Aruf1	Aptinothrips_rufus	manual	manual	NA
 Fcan1	Folsomia_candida	http://animalecology.labs.vu.nl/collembolomics/folsomia/data/fcand_genome.fa	SRR2743547	http://animalecology.labs.vu.nl/collembolomics/folsomia/data/fcand_genes.gff
 Dpul1	Daphnia_pulex	http://daphniagenomes.org/sites/default/files/Daphnia_pulex_PA42_v3.0.fasta	NA	NA
@@ -29,5 +32,6 @@ Mare3	Meloidogyne_arenaria	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/003/133/80
 Mflo1	Meloidogyne_floridensis	https://github.com/HullUni-bioinformatics/MIG-Phylogenomics/blob/master/meloidogyne_assemblies/MfloSJ1.scf.fasta.gz?raw=true	SRR4242474,SRR4242475	https://github.com/HullUni-bioinformatics/MIG-Phylogenomics/blob/master/annotation/MfloSJ1.augustus.gff3.gz?raw=true
 Ment1	Meloidogyne_enterolobii	https://github.com/HullUni-bioinformatics/MIG-Phylogenomics/blob/master/meloidogyne_assemblies/Ent_gapClosed.fa.gz?raw=true	SRR4242472,SRR4242473	https://github.com/HullUni-bioinformatics/MIG-Phylogenomics/blob/master/annotation/menterolobii.augustus.gff3?raw=true
 Anan1	Acrobeloides_nanus	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/406/225/GCA_900406225.1_v1/GCA_900406225.1_v1_genomic.fna.gz	SRR7511511,SRR7511512,SRR7511513,SRR7511514,SRR7511516,SRR7511517,SRR7511518,SRR7511518,SRR7511519,SRR7511520,SRR7511521,SRR7511522,SRR7511523,SRR7511524,SRR7511525	manual
+Mbel1	Mesorhabditis_belari	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/900/631/915/GCA_900631915.1_M.Belari_Hybrid_genome/GCA_900631915.1_M.Belari_Hybrid_genome_genomic.fna.gz	ERR2983771	manual
 Hduj1	Hypsibius_dujardini	http://download.tardigrades.org/v1/sequence/Hypsibius_dujardini_nHd.3.1.5.scaffolds.fa.gz	ERR1147177,ERR1147178	http://download.tardigrades.org/v1/features/Hypsibius_dujardini_nHd.3.1.5.gff3.gz
 Rvar1	Ramazzottius_varieornatus	http://download.tardigrades.org/v1/sequence/Ramazzottius_varieornatus_Rv101.scaffolds.fa.gz	DRR013908,DRR013909,DRR013910	http://download.tardigrades.org/v1/features/Ramazzottius_varieornatus_Rv101.gff3.gz

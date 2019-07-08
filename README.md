@@ -9,11 +9,12 @@ List of performed analysis :
 
 - [GenomeScope](https://github.com/schatzlab/genomescope) `v2 dev` - genome profiling from kmer spectra of sequencing reads. Estimate of genome size, heterozygosity and repetitive content.
 - [smudgeplot](https://github.com/tbenavi1/smudgeplot) `v0.1.3` - Estimation of ploidy and heterozygosity structure, helps in interpretation of GenomeScope kmer spectra.
-- [KAT](https://github.com/TGAC/KAT) `2.4.1` - Kmer spectra analysis in context of genome assembly. Resolving how much are individual haplotypes collapsed in the assembly.
 - [MUMmer](https://github.com/mummer4/mummer/blob/master/MANUAL.md) `v4.0.0beta2` - Genome self-alignment. Evaluation of genome structure.
 - [dnaPipeTE](https://github.com/clemgoub/dnaPipeTE) `v1.2` - Evaluation of repetitive content using sequencing reads.
 - [BUSCO](https://busco.ezlab.org/) `v3` - Benchmarking using single copy orthologs. Evaluation of unusual conserved gene content.
 - [MCScanX](http://chibba.pgml.uga.edu/mcscan2/) `untagged version` released 28.3.2013 - Collinearity and palindrome analysis. Evaluation of abundance of palindromes in asexual genomes.
+- [hgt](https://github.com/reubwn/hgt) the latest commit `917ce74` - Analysis of horizontal gene transfer.
+- [KAT](https://github.com/TGAC/KAT) `2.4.1` - Kmer spectra analysis in context of genome assembly. Resolving how much are individual haplotypes collapsed in the assembly. (performed, but the analysis was not used for any interpretation in the manuscript)
 
 ## Sample labels
 
