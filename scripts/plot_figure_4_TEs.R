@@ -1,8 +1,13 @@
+#!/usr/bin/env Rscript
+args = commandArgs(trailingOnly=TRUE)
+
 ############
 # Get data #
 ############
 
 source('scripts/R_functions/load_genome_table.R')
+
+presentation <- ifelse( "--presentation" %in% args, T, F)
 
 genome_tab <- load_genome_table(c(1:5,15:18))
 genome_tab <- genome_tab[nrow(genome_tab):1,]
@@ -77,19 +82,24 @@ sp_labels <- paste(genus_names, species_names, sep = '. ')
 sp_labels[9] <- "Panagrolaimus sp."
 sp_labels <- lapply(sp_labels, function(x){bquote(italic(.(x)))})
 
-pdf('figures/fig3_TEs_BUSCO.pdf', width = 12, height = 8)
+filename <- paste0('figures/fig4_TEs',
+                   ifelse(presentation, '_presentation', '') ,
+                   '.pdf')
+pdf(filename, width = 12, height = 8)
 
 par(mar = c(5, 7, 1, 0.5) + 0.1)
 
 plot(NULL, bty = 'n', axes=FALSE, xlim = xlim, ylim = ylim,
-    xlab = "TEs [ % ]", ylab = NA, cex.lab = 1.3
+    xlab = "TEs [ % ]", ylab = NA, cex.lab = ifelse(presentation, 2, 1.3),
 )
-axis(1, cex.axis = 1.2)
-mtext(do.call(expression, sp_labels), line = 2.8, side = 2, at = bp, las = 2, adj = 0.5)
+axis(1, cex.axis = ifelse(presentation, 1.6, 1.2))
+if ( !presentation ){
+    mtext(do.call(expression, sp_labels), line = 2.8, side = 2, at = bp, las = 2, adj = 0.5)
+}
 # axis(2, at = bp, labels, las = 1)
 
 sapply(1:5, plot_bars)
 legend('topright', bty = 'n', c('DNA', 'LINE', 'LTR', 'SINE', 'Helitron'),
-       pch = 20, col = pal, cex = 1.2, title = 'TE classes')
+       pch = 20, col = pal, cex = ifelse(presentation, 2, 1.2), title = 'TE classes')
 
 dev.off()

@@ -223,7 +223,7 @@ plot_ploits <- function(hyb_origin = "no", presentation = F){
     # }
 }
 
-fig_file <- paste0('figures/fig2a_heterozygosity',
+fig_file <- paste0('figures/fig2_heterozygosity',
                    ifelse(presentation, '_presentation', ''),
                    ifelse(excl_rotifers, '_excl_rotifers', ''),
                    ifelse(roti_arrow, '_roti_arrow', ''),

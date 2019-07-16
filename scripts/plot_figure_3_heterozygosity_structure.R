@@ -33,7 +33,7 @@ tetra_tab['Avag1','heter'] <- ceiling(max(tetra_tab$heter, na.rm = T))
 # pal <- c("#D95F02", "#7570B3", "#1B9E77")
                pal <- c("#D81B60CA", "#1E88E5", "#FFC107", "#004D40AA")
 
-pdf('figures/fig2b_heterozygosity_of_tetraploids.pdf', width = 8, height = 6)
+pdf('figures/fig3_heterozygosity_of_tetraploids.pdf', width = 8, height = 6)
 
 spaces <- c(rep(0.4, 3), rep(0.2, 2), 0.6, 0.2, 0.4, rep(0.2, 3))
 bar_pos <- barplot(c(rep(NA, 5), tetra_tab$heter), col = pal[1],
