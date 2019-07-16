@@ -47,23 +47,7 @@ all_species = list(set(map(lambda x: x[0:4], all_samples)))
 
 genome_stat_files = expand("data/{sp}/genome.stats", sp=species_with_genomes)
 busco_files = expand("data/{sp}/busco", sp=species_with_genomes)
-
-mapping_files = []
-theta_files = []
-wind_size = 1000000
-# we need to find all combinations of sequencing reads and references, so
-# we iterate though all species
-for spec in all_species :
-	# iterate though all references of that species
-	for ref in [x for x in species_with_genomes if x.startswith(spec)]:
-		# iterate though all samples with reads given species
-		for samp in [x for x in species_with_reads if x.startswith(spec)]:
-			# for heterozygosity estimates
-			theta_file = 'data/' + samp + '/' + ref + '_w' + str(wind_size) + '_theta_estimates.txt'
-			theta_files.append(theta_file)
-			# for
-			mapping_file = 'data/' + samp + '/map_to_' + ref + '.bam'
-			mapping_files.append(mapping_file)
+mapping_files = expand("data/{sp}/all_reads.bam", sp=species_with_reads_and_genomes)
 
 ### if environmental variable USE_LOCAL contains anything, it will compute on /scratch/local
 cluster_script = os.environ.get("USE_LOCAL")
@@ -106,10 +90,6 @@ rule calculate_blast :
 rule calculate_genome_stats :
 	input : genome_stat_files
 
-## calculate_thetas : calculate theta estimates
-rule calculate_thetas :
-	input : theta_files
-
 ## map_all : map all samples reads to all reference genomes of the same species
 rule map_all :
 	input : mapping_files
@@ -125,7 +105,7 @@ rule download_genomes :
                 expand("data/{sp}/genome.fa.gz", sp=species_with_genomes)
 
 rule download_annotations :
-        input : 
+        input :
                 expand("data/{sp}/annotation.gff3.gz", sp=species_with_annotation)
 
 ## trimm_all : trimm all reads
@@ -180,8 +160,8 @@ rule index_reference :
 rule map_reads :
 	threads : 16
 	resources : mem=104857600, tmp=40000
-	input : "data/{reference}/genome.fa.gz.bwt", lambda wildcards: sample_accesions[wildcards.sample]
-	output : "data/{sample}/map_to_{reference}.bam"
+	input : "data/{sample}/genome.fa.gz.bwt", lambda wildcards: sample_accesions[wildcards.sample]
+	output : "data/{sample}/all_reads.bam"
 	shell :
 		cluster_script + "scripts/map_reads.sh {wildcards.sample} {wildcards.reference} data/{wildcards.sample}/trimmed_reads/*.fastq.gz data/{wildcards.reference}/genome.fa.gz.* {output}"
 
@@ -198,14 +178,6 @@ rule annotate_repeats :
 	input : lambda wildcards: sample_accesions[wildcards.sample]
 	output : "data/{sample}/dnaPipeTE"
 	shell : "scripts/annotate_repeats.sh data/{wildcards.sample}/trimmed_reads {wildcards.sample} {output}"
-
-rule estimate_theta :
-	threads : 1
-	resources : mem=50000000, tmp=50000
-	input : "data/{sample}/map_to_{reference}.bam", "data/{sample}/map_to_{reference}.bam.bai"
-	output : "data/{sample}/{reference}_w{window_size}_theta_estimates.txt"
-	shell :
-		cluster_script + "scripts/est_theta.sh {wildcards.sample} {wildcards.reference} {wildcards.window_size} {input} {output}"
 
 rule plot_all :
 	threads : 1

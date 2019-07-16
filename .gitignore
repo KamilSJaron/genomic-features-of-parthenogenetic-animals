@@ -3,3 +3,7 @@ logs
 figures
 .snakemake
 backup
+scripts/local_manipulation
+LaTeX
+*.docx
+*.pdf
