@@ -143,13 +143,15 @@ genome_tab[genome_tab$code %in% c("Avag1", "Rmag1"),'ploidy'] <- 4
 
 parse_genomescope_summary <- function(file){
     genoscope_file <- readLines(file)
-    est_ploidy <- as.numeric(ssplit(genoscope_file[3], ' ')[3])
+    model_ploidy <- grepl("p = ", genoscope_file)
+    est_ploidy <- as.numeric(ssplit(genoscope_file[model_ploidy], ' ')[3])
 
     homozygous_pattern <- paste(rep('A', est_ploidy), collapse='')
     line <- ssplit(genoscope_file[grepl(homozygous_pattern, genoscope_file)], ' ')
     line <- line[line != '']
-    heterozygosity_min <- round(100 - as.numeric(substr(line[3], 0, nchar(line[3]) - 1)), 2)
-    heterozygosity_max <- round(100 - as.numeric(substr(line[2], 0, nchar(line[2]) - 1)), 2)
+    heterozygosity_position <- which(grepl(homozygous_pattern, line)) + 1
+    heterozygosity_min <- round(100 - as.numeric(substr(line[heterozygosity_position], 0, nchar(line[heterozygosity_position]) - 1)), 2)
+    heterozygosity_max <- round(100 - as.numeric(substr(line[heterozygosity_position + 1], 0, nchar(line[heterozygosity_position + 1]) - 1)), 2)
     heterozygosity <- mean(c(heterozygosity_min, heterozygosity_max))
 
     line <- ssplit(genoscope_file[grepl("Haploid", genoscope_file)], ' ')
@@ -215,6 +217,7 @@ literature_data <- literature_data[literature_data$code %in% genome_tab$code,]
 genome_tab$callular_mechanism <- NA
 genome_tab$hybrid_origin <- NA
 
+row.names(genome_tab) <- genome_tab$code
 columns <- c('callular_mechanism', 'hybrid_origin')
 genome_tab[literature_data$code, columns] <- literature_data[, columns]
 
@@ -231,8 +234,8 @@ genome_tab[literature_data$code, columns] <- literature_data[, columns]
 #  tardigrades
 desired_order <- c('Pfor1',
                    'Avag1', 'Aric1', 'Rmac1', 'Rmag1',
-                   'Lcla1', 'Tpre1', 'Obir1', 'Aruf1', 'Fcan1', 'Dpul1', 'Dpul2', 'Dpul3', 'Pvir1',
-                   'Psam1', 'Dcor1', 'Dpac1', 'Pdav1', 'Ps591', 'Ps791', 'Minc1', 'Minc2', 'Mjav1', 'Mjav2', 'Mare1', 'Mare2', 'Mare3', 'Mflo1', 'Ment1', 'Anan1',
+                   'Lcla1', 'Tpre1', 'Obir1', 'Amel1', 'Amel2', 'Amel3', 'Aruf1', 'Fcan1', 'Dpul1', 'Dpul2', 'Dpul3', 'Pvir1',
+                   'Psam1', 'Mbel1', 'Dcor1', 'Dpac1', 'Pdav1', 'Ps591', 'Ps791', 'Minc1', 'Minc2', 'Mjav1', 'Mjav2', 'Mare1', 'Mare2', 'Mare3', 'Mflo1', 'Ment1', 'Anan1',
                    'Hduj1', 'Rvar1')
 if ( length(desired_order) == nrow(genome_tab) ){
     genome_tab <- genome_tab[desired_order, ]
