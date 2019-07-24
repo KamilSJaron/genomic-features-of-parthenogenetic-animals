@@ -3,40 +3,21 @@ args = commandArgs(trailingOnly=TRUE)
 
 require('gsheet')
 require('RColorBrewer')
-# library('extrafont')
 
-# loadfonts(device = "pdf", quiet=TRUE)
+source('scripts/R_functions/wrap_labels.R')
 
-# if flag --presentation is specified; a figre for presentation is generated
-presentation <- F
-if ( length(args) == 1 ) {
-  if ( args[1] == "--presentation" ){
-    presentation = T
-  }
-}
+presentation <- ifelse( "--presentation" %in% args, T, F)
+refs <- ifelse( "--refs" %in% args, T, F)
+tricolor <- ifelse( "--tricolor" %in% args, T, F)
 
 pal <- c("white",brewer.pal(3,'BuGn')[-1], "grey") #[c(2,3,1)]#[c(2,3,5)]
 shift <- 15
 
-# functions to wrap text from https://stackoverflow.com/a/20241729/2962344
-# Core wrapping function
-wrap.it <- function(x, len) {
-  sapply(x, function(y) paste(strwrap(y, len), collapse = "\n"), USE.NAMES = FALSE)
-}
+#################
+# Proccess data #
+#################
 
-
-# Call this function with a list or vector
-wrap.labels <- function(x, len) {
-  if (is.list(x)) {
-    lapply(x, wrap.it, len)
-  } else {
-    wrap.it(x, len)
-  }
-}
-
-############
-# Get data #
-############
+### BACKGROUND MATRIX ###
 
 question_tab <- read.csv(text=gsheet2text("https://docs.google.com/spreadsheets/export?id=1T4BHQxzMGMlWiNJ7G9OLPXzdNBCqMw0mSO7C_ggGEbc&format=csv&gid=1327405223", format='csv'), stringsAsFactors=FALSE)
 
@@ -45,15 +26,15 @@ question_matrix <- as.matrix(question_tab[,plotted_cols])
 
 convertor <- function(x){
   x <- substr(x, 1, 1)
-	if(x == "b"){
-		return(3)
-	} else if(x == "q"){
-		return(2)
-	} else if(x == "d"){
+    if(x == "b"){
+        return(3)
+    } else if(x == "q"){
+        return(2)
+    } else if(x == "d"){
     return(4)
   } else {
-		return(0)
-	}
+        return(0)
+    }
 }
 
 # sapply(question_tab$species, function(x){expression(italic(x))})
@@ -64,31 +45,91 @@ heat_matrix <- matrix(sapply(question_matrix, FUN = convertor), nrow = nrow(ques
 heat_matrix <- apply(heat_matrix, 2, rev)
 heat_matrix <- t(heat_matrix)
 
-# extract references
-ref_matrix <- matrix(sapply(question_matrix, FUN = function(x){ substr(x, 2, max(2, nchar(x))) }), nrow = nrow(question_tab))
-# separate references by , and take unique list
-ref_list <- unique(unlist(strsplit(t(ref_matrix), ',')))
-ref_tags <- lapply(1:length(ref_list), function(x){ x + shift})
-names(ref_tags) <- ref_list
-
-# substitute ref with a key
-for(ref in ref_list){
-  ref_matrix <- gsub(ref, ref_tags[ref], ref_matrix)
+if ( tricolor ){
+  heat_matrix[heat_matrix == 3] <- 2
 }
 
-# nicer formating ( [] around and space after comma)
-ref_matrix <- matrix(sapply(ref_matrix, FUN = function(x){ if(x != ""){ paste0('[', x, ']') } else { return("") } }), nrow = nrow(ref_matrix))
-ref_matrix <- gsub(",", ", ", ref_matrix)
+if ( refs ){
+  ### REFERENCES ###
+  ref_matrix <- matrix(sapply(question_matrix, FUN = function(x){ substr(x, 2, max(2, nchar(x))) }), nrow = nrow(question_tab))
+  # separate references by , and take unique list
+  ref_list <- unique(unlist(strsplit(t(ref_matrix), ',')))
+  ref_tags <- lapply(1:length(ref_list), function(x){ x + shift})
+  names(ref_tags) <- ref_list
+
+  # substitute ref with a key
+  for(ref in ref_list){
+    ref_matrix <- gsub(ref, ref_tags[ref], ref_matrix)
+  }
+
+  # nicer formating ( [] around and space after comma)
+  ref_matrix <- matrix(sapply(ref_matrix, FUN = function(x){ if(x != ""){ paste0('[', x, ']') } else { return("") } }), nrow = nrow(ref_matrix))
+  ref_matrix <- gsub(",", ", ", ref_matrix)
+} else {
+  ### VALUES ###
+  columns <- c('code',
+               'increased mutation accomulation', # mutation accumulation
+               'adaptive evolution',
+               'haplotype_divergence[%]',
+               'palindromes [ # ]',
+               'gene conversion [ events / (generation * site) ]',
+               'TEs [ % ]',
+               'HGT [ % ]',
+               'expansion of gene families',
+               'missing sex related genes')
+
+  literature_numbers <- read.csv(text = gsheet2text("https://docs.google.com/spreadsheets/d/1T4BHQxzMGMlWiNJ7G9OLPXzdNBCqMw0mSO7C_ggGEbc/edit?usp=sharing", format='csv'),
+                                 stringsAsFactors = F, skip = 1, header = T, check.names = F)
+  literature_numbers <- literature_numbers[, columns]
+
+  sp_code <- function(code){ substr(code, 1, 4) }
+  ### some of the species have more values -> range or list??
+  squashed_lit_nums <- data.frame(code = unique(sp_code(literature_numbers$code)), stringsAsFactors = F)
+  squashed_lit_nums[, columns[-1]] <- NA
+
+  # remove "Ps59", "Ps79"
+  squashed_lit_nums <- squashed_lit_nums[!squashed_lit_nums$code %in% c("Ps59", "Ps79"),]
+  row.names(squashed_lit_nums) <- squashed_lit_nums$code
+
+  merge_vals <- function(one_col_vals){
+    # remove missing vals
+    one_col_vals <- one_col_vals[!(is.na(one_col_vals) | one_col_vals == 'NA')]
+    if ( length(one_col_vals) == 0 ){
+      return("")
+    }
+    if ( length(one_col_vals) == 1 ){
+      return(one_col_vals)
+    }
+    paste(one_col_vals, collapse = ', ')
+  }
+
+  for ( line in 1:nrow(squashed_lit_nums) ){
+    sp <- sp_code(squashed_lit_nums[line, 'code'])
+    if ( sp == "Pdav" ){
+      to_squash <- sp_code(literature_numbers$code) %in% c("Pdav", "Ps59", "Ps79")
+    } else {
+      to_squash <- sp_code(literature_numbers$code) == sp
+    }
+    vals <- literature_numbers[to_squash, columns]
+    if ( nrow(vals) > 1 ){
+      squashed_lit_nums[sp, columns[-1]] <- apply(vals[,-1], 2, merge_vals)
+    } else {
+      vals[is.na(vals)] <- ""
+      squashed_lit_nums[sp, columns[-1]] <- vals[-1]
+    }
+  }
+}
 
 ########
 # plot #
 ########
 
-presentation_string <- ifelse(presentation, '_presentation', '')
-file_to_save <- paste0('figures/fig1_genomic_studies', presentation_string ,'.pdf')
+file_to_save <- paste0('figures/fig1_genomic_studies',
+                       ifelse(refs, '_refs', ''),
+                       ifelse(presentation, '_presentation', ''), '.pdf')
 # , family="Arial"
 # height could be (ncol(ref_matrix) * 0.15 + 0.4) (which matches approximatelly the spacing required for new column)
-pdf(file_to_save, width=6, height=4.3, pointsize=8)
+pdf(file_to_save, width=8, height=4.3, pointsize=8)
 
 # I will need space on the left side of the plot and above
 par(mar = c(0, 8, 4, 0) + 0.1)
@@ -107,7 +148,9 @@ topics <- gsub("\\.", " ", colnames(question_tab)[plotted_cols])
 if (presentation) {
   text(1:(ncol(question_tab) - 1), par("usr")[4] + 1.55 + c(0, 1.6), wrap.labels(topics, 10), xpd = TRUE)
 } else{
-  text(1:(ncol(question_tab) - 1) - 0.12, par("usr")[4] + 2.1, wrap.labels(topics, 10), xpd = TRUE, srt = 27)
+  topics <- paste(topics, c('','', ' [%]', '[#]', '[e/g*nt]', '[%]', '[%]', '', ' [l/s] '))
+  text(1:(ncol(question_tab) - 1), par("usr")[4] + 2.1, wrap.labels(topics, 11), xpd = TRUE)
+  # text(1:(ncol(question_tab) - 1) - 0.12, par("usr")[4] + 2.1, wrap.labels(topics, 10), xpd = TRUE, srt = 27)
 }
 
 # create a black box around
@@ -115,9 +158,17 @@ box()
 # lines(c(3.5, 3.5), c(-1000,1000), lwd = 1.5, lty = 1)
 # lines(c(10.5, 10.5), c(-1000,1000), lwd = 1.5, lty = 2)
 
+# adding references -> replace with numbers!!!
 if (!presentation){
-  for(line in nrow(ref_matrix):1){
-    text(1:ncol(ref_matrix), line - 0.7, ref_matrix[nrow(ref_matrix) + 1 - line,], pos = 3, cex = 0.875)
+  if ( refs ){
+    for(line in nrow(ref_matrix):1){
+      text(1:ncol(ref_matrix), line - 0.7, ref_matrix[nrow(ref_matrix) + 1 - line,], pos = 3, cex = 0.875)
+    }
+  } else{
+    squashed_lit_nums <- squashed_lit_nums[,-1] # remove column with sp names
+    for(line in nrow(squashed_lit_nums):1){
+      text(1:ncol(squashed_lit_nums), line - 0.7, squashed_lit_nums[nrow(squashed_lit_nums) + 1 - line,], pos = 3, cex = 0.875)
+    }
   }
 }
 

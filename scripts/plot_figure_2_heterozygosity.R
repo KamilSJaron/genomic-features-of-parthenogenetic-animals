@@ -17,6 +17,7 @@ excl_rotifers <- ifelse( "--excl_rotifers" %in% args, T, F)
 roti_arrow <- ifelse( "--arrow" %in% args, T, F)
 split_axis <- ifelse( "--split_axis" %in% args, T, F)
 homoeolog <- ifelse( "--homoeolog" %in% args, T, F)
+rm_boxes <- ifelse( "--rm_boxes" %in% args, T, F)
 
 ############
 # Get data #
@@ -107,7 +108,7 @@ plot_corpus <- function(presentation = F){
     if ( split_axis ){
         ymax <- ifelse(homoeolog, 33.2, 39)
         gap.plot(100, c(-5), gap=c(g_from, g_to), xlim = c(0.65, 3.35), ylim = c(0, ymax),
-            xlab = "Hybrid origin", ylab = "Divergence [%]", cex.lab = general_cex)
+            xlab = "Hybrid origin", ylab = "Heterozygosity [%]", cex.lab = general_cex)
         rect(par("usr")[1], par("usr")[3], par("usr")[2], g_from, col=rgb(0.92,0.92,0.92))
         rect(par("usr")[1], g_from*(1+0.02), par("usr")[2], par("usr")[4], col=rgb(0.92,0.92,0.92))
         axis.break(2, g_from, breakcol="snow", style="gap")
@@ -118,7 +119,7 @@ plot_corpus <- function(presentation = F){
     } else {
         ymax <- ifelse(roti_arrow, 9.75, 12.4)
         plot(NULL, bty = 'n', axes=FALSE, xlim = c(0.65, 3.35), ylim = c(0, ymax),
-            xlab = "Hybrid origin", ylab = "Divergence [%]",
+            xlab = "Hybrid origin", ylab = "Heterozygosity [%]",
             pch = NA, col = rgb(0.878,0.878,0.878), cex.lab = general_cex)
             axis(2, las = 1, lwd = 0)
         rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col=rgb(0.92,0.92,0.92))
@@ -156,14 +157,16 @@ plot_corpus <- function(presentation = F){
         }
     }
 
-    boxplot_col <- rgb(0.66, 0.66, 0.66, alpha=0.5)
-    known_hybrid_orig_tab <- genome_tab[genome_tab$hybrid_origin != 'unknown',]
-    with(known_hybrid_orig_tab,
-             boxplot(heterozygosity ~ hybrid_origin, bty = 'n', axes=FALSE,
-                      xlab = "Hybrid origin", ylab = "Divergence [%]",
-                      pch = NA, col = boxplot_col, cex.lab = general_cex, add = T
-             )
-    )
+    if ( !rm_boxes ){
+        boxplot_col <- rgb(0.66, 0.66, 0.66, alpha=0.5)
+        known_hybrid_orig_tab <- genome_tab[genome_tab$hybrid_origin != 'unknown',]
+        with(known_hybrid_orig_tab,
+                 boxplot(heterozygosity ~ hybrid_origin, bty = 'n', axes=FALSE,
+                          xlab = "Hybrid origin", ylab = "Heterozygosity [%]",
+                          pch = NA, col = boxplot_col, cex.lab = general_cex, add = T
+                 )
+        )
+    }
 
     # grid(lwd = 1.2, col = 'gray', nx=NA, ny=NULL)
     grid(lwd = 2, col = 1, nx=3, ny=NA)
@@ -205,12 +208,21 @@ plot_ploits <- function(hyb_origin = "no", presentation = F){
 
     if ( homoeolog ){
         composite <- which(subset$ploidy > 2)
-        points((at + misplacement)[composite], subset$heterozygosity[composite],
-               bg = pal[subset$callular_mechanism][composite],
-               pch = 24, cex = point_size)
-        points(at + misplacement, subset$heterozygosity,
-               bg = pal[subset$callular_mechanism],
-               pch = 25, cex = point_size)
+        if ( hyb_origin == "yes" ){
+            points(at + misplacement, subset$heterozygosity,
+                   bg = pal[subset$callular_mechanism],
+                   pch = 24, cex = point_size)
+            points((at + misplacement)[composite], subset$heterozygosity[composite],
+                   bg = pal[subset$callular_mechanism][composite],
+                   pch = 25, cex = point_size)
+        } else {
+            points((at + misplacement)[composite], subset$heterozygosity[composite],
+                   bg = pal[subset$callular_mechanism][composite],
+                   pch = 24, cex = point_size)
+            points(at + misplacement, subset$heterozygosity,
+                   bg = pal[subset$callular_mechanism],
+                   pch = 25, cex = point_size)
+        }
     } else {
         points(at + misplacement, subset$heterozygosity,
                col = pal[subset$callular_mechanism],
@@ -282,13 +294,13 @@ if ( roti_arrow ){
 if ( homoeolog ){
     legend(
         0.54, 13.5, bty = 'n', cex = ifelse(presentation, 1.6, 1.2),
-        paste(c('homoeolog', 'homolog', 'composite'), 'divergence'),
-        pch = c(24, 25, 24)
+        paste(c('homoeolog', 'composite', 'allelic'), 'heterozygosity'),
+        pch = c(24, 24, 25)
     )
     legend(
         0.54, 13.5, bty = 'n', cex = ifelse(presentation, 1.6, 1.2),
         rep(' ', 3),
-        pch = c(NA, NA, 25)
+        pch = c(NA, 25, NA)
     )
 }
 
