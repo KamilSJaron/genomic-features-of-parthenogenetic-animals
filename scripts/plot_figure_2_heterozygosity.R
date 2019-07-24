@@ -73,7 +73,6 @@ if ( excl_rotifers ) {
     rotifers_homo <- sapply(diploid_rot_genomescope_files, function(x) { parse_genomescope_summary(x)[3] })
     rotifers_total <- rotifers_ohno + rotifers_homo
 
-    # whatever will be the homoeolog divergence
     if ( homoeolog ) {
         genome_tab[rotifers,'heterozygosity'] <- 50
     } else {
