@@ -82,6 +82,9 @@ if ( refs ){
                                  stringsAsFactors = F, skip = 1, header = T, check.names = F)
   literature_numbers <- literature_numbers[, columns]
 
+  to_round <- "Dcor1" != literature_numbers$code
+  literature_numbers[to_round, "TEs [ % ]"] <- round(literature_numbers[to_round, "TEs [ % ]"], 1)
+
   sp_code <- function(code){ substr(code, 1, 4) }
   ### some of the species have more values -> range or list??
   squashed_lit_nums <- data.frame(code = unique(sp_code(literature_numbers$code)), stringsAsFactors = F)
