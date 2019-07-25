@@ -56,7 +56,7 @@ if cluster_script == None :
 else :
 	cluster_script = "scripts/use_local.sh "
 
-localrules : help, all, calculate_busco, calculate_selfalignment, calculate_heterozygosity_using_kmers, calculate_genome_kmer_content, calculate_genome_stats, calculate_thetas, map_all, download_all, trimm_all
+localrules : help, all, calculate_busco, calculate_selfalignment, calculate_heterozygosity_using_kmers, calculate_genome_kmer_content, calculate_genome_stats, map_all, download_all, trimm_all
 
 ## all
 rule all :

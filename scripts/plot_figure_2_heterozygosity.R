@@ -127,7 +127,7 @@ plot_corpus <- function(presentation = F){
 
     axis(1, labels = hyb_origins, at = 1:3, tick = F, line = F, cex.axis = general_cex)
 
-    if ( presentation) {
+    if ( presentation & !split_axis ) {
       filledellipse(rx1 = 3.5, ry1 = 0.21, col = ellipse_col, angle = 90.8, dr = 0.1, mid = c(1.97, 9.3))
       filledellipse(rx1 = 3.8, ry1 = 0.2, col = ellipse_col, angle = 87.5, dr = 0.1, mid = c(3.13, 6))
       filledellipse(rx1 = 0.15, ry1 = 0.93, col = ellipse_col, angle = 0, dr = 0.1, mid = c(2.68, 4.87))
@@ -181,7 +181,7 @@ plot_corpus <- function(presentation = F){
              "unknown meiosis",
              "unknown",
              "functional mitosis"),
-           col = pal, pch = c(rep(20,6)), cex = ifelse(presentation, 1.6, 1.2))
+           col = pal, pch = c(rep(20,6)), cex = ifelse(presentation, 1.5, 1.2))
     # legend('topleft', bty = 'n',
     #        c("gamete duplication", "terminal fusion", "central fusion", "unknown automixis", "unknown", "functional apomixis",
     #          '','diploid','triploid', 'tetraploid'),
@@ -234,8 +234,8 @@ plot_ploits <- function(hyb_origin = "no", presentation = F){
     # }
 }
 
-fig_file <- paste0('figures/fig2_heterozygosity',
-                   ifelse(presentation, '_presentation', ''),
+fig_file <- paste0('figures/', ifelse(presentation, 'presentation/', ''),
+                   'fig2_heterozygosity',
                    ifelse(excl_rotifers, '_excl_rotifers', ''),
                    ifelse(roti_arrow, '_roti_arrow', ''),
                    ifelse(split_axis, '_split_axis', ''),
@@ -291,16 +291,30 @@ if ( roti_arrow ){
 }
 
 if ( homoeolog ){
-    legend(
-        0.54, 13.5, bty = 'n', cex = ifelse(presentation, 1.6, 1.2),
-        paste(c('homoeolog', 'composite', 'allelic'), 'heterozygosity'),
-        pch = c(24, 24, 25)
-    )
-    legend(
-        0.54, 13.5, bty = 'n', cex = ifelse(presentation, 1.6, 1.2),
-        rep(' ', 3),
-        pch = c(NA, 25, NA)
-    )
+    if ( presentation ){
+            legend(
+                2.53, 18.5, bty = 'n', cex = 1.5,
+                paste(c('homoeolog', 'composite', 'allelic'), 'heterozygosity'),
+                pch = c(24, 24, 25)
+            )
+            legend(
+                2.53, 18.5, bty = 'n', cex = 1.5,
+                rep(' ', 3),
+                pch = c(NA, 25, NA)
+            )
+    } else {
+            legend(
+                0.54, 13.5, bty = 'n', cex = 1.2,
+                paste(c('homoeolog', 'composite', 'allelic'), 'heterozygosity'),
+                pch = c(24, 24, 25)
+            )
+            legend(
+                0.54, 13.5, bty = 'n', cex = 1.2,
+                rep(' ', 3),
+                pch = c(NA, 25, NA)
+            )
+    }
+
 }
 
 dev.off()

@@ -3,6 +3,8 @@
 # this part is required only for Vital-it (if you have running BUSCO, delete it)
 module add SequenceAnalysis/HMM-Profile/hmmer/3.1b2
 module add SequenceAnalysis/GenePrediction/augustus/3.2.3
+module add Blast/ncbi-blast/2.2.31+
+
 export AUGUSTUS_CONFIG_PATH=/home/kjaron/src/busco-master/augustus_config
 
 if [ -z "$TMPDIR" ]; then
