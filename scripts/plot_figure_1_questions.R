@@ -8,6 +8,7 @@ source('scripts/R_functions/wrap_labels.R')
 
 presentation <- ifelse( "--presentation" %in% args, T, F)
 refs <- ifelse( "--refs" %in% args, T, F)
+both <- ifelse( "--both" %in% args, T, F)
 tricolor <- ifelse( "--tricolor" %in% args, T, F)
 
 pal <- c("white",brewer.pal(3,'BuGn')[-1], "grey") #[c(2,3,1)]#[c(2,3,5)]
@@ -65,7 +66,8 @@ if ( refs ){
   # nicer formating ( [] around and space after comma)
   ref_matrix <- matrix(sapply(ref_matrix, FUN = function(x){ if(x != ""){ paste0('[', x, ']') } else { return("") } }), nrow = nrow(ref_matrix))
   ref_matrix <- gsub(",", ", ", ref_matrix)
-} else {
+}
+if ( both | !refs ) {
   ### VALUES ###
   columns <- c('code',
                'increased mutation accomulation', # mutation accumulation
@@ -129,10 +131,16 @@ if ( refs ){
 
 file_to_save <- paste0('figures/fig1_genomic_studies',
                        ifelse(refs, '_refs', ''),
+                       ifelse(both, '_both', ''),
                        ifelse(presentation, '_presentation', ''), '.pdf')
 # , family="Arial"
 # height could be (ncol(ref_matrix) * 0.15 + 0.4) (which matches approximatelly the spacing required for new column)
-pdf(file_to_save, width=8, height=4.3, pointsize=8)
+if ( both ){
+  height <- (ncol(ref_matrix) * 0.8 + 0.4)
+} else {
+  height <- 4.3
+}
+pdf(file_to_save, width = 8, height = height, pointsize = 8)
 
 # I will need space on the left side of the plot and above
 par(mar = c(0, 8, 4, 0) + 0.1)
@@ -152,8 +160,12 @@ if (presentation) {
   text(1:(ncol(question_tab) - 1), par("usr")[4] + 1.55 + c(0, 1.6), wrap.labels(topics, 10), xpd = TRUE)
 } else{
   topics <- paste(topics, c('','', ' [%]', '[#]', '[e/g*nt]', '[%]', '[%]', '', ' [l/s] '))
-  text(1:(ncol(question_tab) - 1), par("usr")[4] + 2.1, wrap.labels(topics, 11), xpd = TRUE)
-  # text(1:(ncol(question_tab) - 1) - 0.12, par("usr")[4] + 2.1, wrap.labels(topics, 10), xpd = TRUE, srt = 27)
+  if ( both ){
+    text(1:(ncol(question_tab) - 1), par("usr")[4] + 0.85, wrap.labels(topics, 11), xpd = TRUE)
+  } else {
+    text(1:(ncol(question_tab) - 1), par("usr")[4] + 2.1, wrap.labels(topics, 11), xpd = TRUE)
+    # text(1:(ncol(question_tab) - 1) - 0.12, par("usr")[4] + 2.1, wrap.labels(topics, 10), xpd = TRUE, srt = 27)
+  }
 }
 
 # create a black box around
@@ -163,14 +175,22 @@ box()
 
 # adding references -> replace with numbers!!!
 if (!presentation){
-  if ( refs ){
+  if ( refs & !both ){
     for(line in nrow(ref_matrix):1){
       text(1:ncol(ref_matrix), line - 0.7, ref_matrix[nrow(ref_matrix) + 1 - line,], pos = 3, cex = 0.875)
     }
-  } else{
+  }
+  if ( !both | !refs ) {
     squashed_lit_nums <- squashed_lit_nums[,-1] # remove column with sp names
     for(line in nrow(squashed_lit_nums):1){
       text(1:ncol(squashed_lit_nums), line - 0.7, squashed_lit_nums[nrow(squashed_lit_nums) + 1 - line,], pos = 3, cex = 0.875)
+    }
+  }
+  if ( both ){
+    squashed_lit_nums <- squashed_lit_nums[,-1] # remove column with sp names
+    for(line in nrow(squashed_lit_nums):1){
+      text(1:ncol(squashed_lit_nums), line - 0.1, squashed_lit_nums[nrow(squashed_lit_nums) + 1 - line,], pos = 3, cex = 0.875)
+      text(1:ncol(ref_matrix), line - 0.51, ref_matrix[nrow(ref_matrix) + 1 - line,], pos = 3, cex = 0.875)
     }
   }
 }

@@ -137,8 +137,7 @@ for(genomescope_file in genomescope_files){
 # tetraploids have for some reason a problem with summaries, all other ploidies have values corresponding to figures, tetraplods do not
 # therefore I use values from their figures:
 
-genome_tab[c('Aric1', 'Rmac1', 'Rmag1', 'Mjav2', 'Mare2'),
-           'heterozygosity'] <- c(6.1, 12.4, 11.7, 8.5, 8.1)
+genome_tab[c('Mjav2', 'Mare2'), 'heterozygosity'] <- c(8.5, 8.1)
 
 #####################################################
 ###                LITERATURE DATA                ###
