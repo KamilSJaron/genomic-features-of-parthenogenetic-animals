@@ -7,7 +7,7 @@ One of difficulties is to compare different genomics projects that are based on 
 
 List of performed analysis :
 
-- [GenomeScope](https://github.com/schatzlab/genomescope) `v2 dev` - genome profiling from kmer spectra of sequencing reads. Estimate of genome size, heterozygosity and repetitive content.
+- [GenomeScope](https://github.com/tbenavi1/genomescope) `v2 dev` - genome profiling from kmer spectra of sequencing reads. Estimate of genome size, heterozygosity and repetitive content.
 - [smudgeplot](https://github.com/tbenavi1/smudgeplot) `v0.1.3` - Estimation of ploidy and heterozygosity structure, helps in interpretation of GenomeScope kmer spectra.
 - [MUMmer](https://github.com/mummer4/mummer/blob/master/MANUAL.md) `v4.0.0beta2` - Genome self-alignment. Evaluation of genome structure.
 - [dnaPipeTE](https://github.com/clemgoub/dnaPipeTE) `v1.2` - Evaluation of repetitive content using sequencing reads.
