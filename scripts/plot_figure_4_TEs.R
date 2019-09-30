@@ -56,7 +56,7 @@ pal <- c('#FF6A42', # DNA
          '#B966F4', # SINE
          '#8b0000') # helitron
 
-spaces <- c(0.1, 0.1, 1, rep(0.1, 10),1 , rep(0.15, 7), 1, rep(0.15, 3), 1)
+spaces <- c(0.1, 0.1, 1, rep(0.1, 10), 1 , rep(0.15, 10), 1, rep(0.15, 3), 1)
 plot_bars <- function(index){
     if (index == 5){
         bar_sizes <- TEs[,5]
@@ -75,11 +75,9 @@ xlim <- c(0,max(rowSums(TEs), na.rm = T))
 
 # labels
 names_split <- strsplit(genome_tab$species, "_")
-genus_names <- sapply(names_split, substr, 1, 1)[1,]
+genus_names <- sapply(names_split, function(x){substr(x[1], 1, 1)})
 species_names <- sapply(names_split, function(x){ x[2] })
-species_names[10] <- c("davidi")
 sp_labels <- paste(genus_names, species_names, sep = '. ')
-sp_labels[9] <- "Panagrolaimus sp."
 sp_labels <- lapply(sp_labels, function(x){bquote(italic(.(x)))})
 
 filename <- paste0('figures/fig4_TEs',

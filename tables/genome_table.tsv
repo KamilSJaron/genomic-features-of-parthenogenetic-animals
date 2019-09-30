@@ -21,7 +21,8 @@ Psam1	Plectus_sambesii	functional_apomixis	NA	2	186.7	19	23.4	75.87	13.34	16.4	1
 Mbel1	Mesorhabditis_belari	unknown_automixis	NA	2	163.5	1.7	469	79.74	7.74	3.56	12.53	148.5	1.19	25.64	10.7	1.7	36.6
 Dcor1	Diploscapter_coronatus	central_fusion	yes	2	170.5	0.5	1007.7	91.55	4.58	67.92	3.87	84.2	5.105	12.04	7.6	0.6	65.5
 Dpac1	Diploscapter_pachys	central_fusion	yes	2	157.7	10.8	124.2	90.63	5.3	49.49	4.07	94.3	5.26	43.13	2.6	1.3	34.7
-Pdav1	Panagrolaimus_davidiDAW1	unknown_automixis	yes	3	163.2	51.9	4.9	31.36	9.16	4.18	59.47	123.8	5.715	48.6	3.5	0.8	21
+Pdav1	Panagrolaimus_davidi	unknown_automixis	yes	3	163.2	51.9	4.9	31.36	9.16	4.18	59.47	123.8	5.715	48.6	3.5	0.8	21
+Anan1	Acrobeloides_nanus	terminal_fusion	NA	2	248.1	30.8	19.6	73.93	6.13	9.71	19.94	261.9	2.385	63.06	12.5	6	86.2
 Minc1	Meloidogyne_incognita	functional_apomixis	yes	3	183.5	12.1	38.6	61.71	7.84	36.35	30.45	NA	NA	NA	NA	NA	NA
 Minc2	Meloidogyne_incognita	functional_apomixis	yes	3	148.1	245.3	12.2	52.34	9.16	19.45	38.49	69	6.37	30.6	8	1.6	47.9
 Mjav1	Meloidogyne_javanica	functional_apomixis	yes	4	235.8	31.3	10.4	61.1	7.54	31.06	31.36	NA	NA	NA	NA	NA	NA
@@ -31,6 +32,5 @@ Mare2	Meloidogyne_arenaria	functional_apomixis	yes	4	165.4	58.3	10.3	55.91	9.47	
 Mare3	Meloidogyne_arenaria	functional_apomixis	yes	4	284	2.2	204.6	61.35	8.28	33.74	30.37	NA	NA	NA	NA	NA	NA
 Mflo1	Meloidogyne_floridensis	NA	yes	3	74.9	9.1	13.3	49.9	8.66	2.95	41.45	67.3	2.795	28.88	6.9	1.8	39.1
 Ment1	Meloidogyne_enterolobii	functional_apomixis	yes	3	166.3	68.4	10.3	49.69	10.39	17.62	39.92	88.1	6.065	39.5	6.6	1.3	28.1
-Anan1	Acrobeloides_nanus	terminal_fusion	NA	2	248.1	30.8	19.6	73.93	6.13	9.71	19.94	261.9	2.385	63.06	12.5	6	86.2
 Hduj1	Hypsibius_dujardini	terminal_fusion	NA	2	135	13.2	50.5	84.36	2.97	1.94	12.68	NA	NA	NA	1.3	1.9	13.1
 Rvar1	Ramazzottius_varieornatus	NA	NA	2	55.8	0.2	3294.9	85.17	2.04	1.23	12.78	51	0.455	6.6	1.7	1.1	8.1
