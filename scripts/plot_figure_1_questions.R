@@ -161,7 +161,7 @@ if (presentation) {
 } else{
   topics <- paste(topics, c('','', ' [%]', '[#]', '[e/g*nt]', '[%]', '[%]', '', ' [l/s] '))
   if ( both ){
-    text(1:(ncol(question_tab) - 1), par("usr")[4] + 0.85, wrap.labels(topics, 11), xpd = TRUE)
+    text(1:(ncol(question_tab) - 1), par("usr")[4] + 1.05, wrap.labels(topics, 11), xpd = TRUE)
   } else {
     text(1:(ncol(question_tab) - 1), par("usr")[4] + 2.1, wrap.labels(topics, 11), xpd = TRUE)
     # text(1:(ncol(question_tab) - 1) - 0.12, par("usr")[4] + 2.1, wrap.labels(topics, 10), xpd = TRUE, srt = 27)

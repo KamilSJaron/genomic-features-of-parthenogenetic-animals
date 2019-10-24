@@ -121,7 +121,7 @@ def parse_alignment(buffer):
         gap_between = min(min(gene_pos_cl2)) - max(max(gene_pos_cl1))
     else:
         gap_between = min(min(gene_pos_cl1)) - max(max(gene_pos_cl2))
-    return("\t".join([str(gap_between), get_gap_within(gene_pos_cl1), get_gap_within(gene_pos_cl2)]))
+    return("\t".join([str(len(buffer)), str(gap_between), get_gap_within(gene_pos_cl1), get_gap_within(gene_pos_cl2)]))
 
 def is_rerverse_tandem(header):
     header = header.rstrip().split(" ")
@@ -170,5 +170,5 @@ print("Created:\t", out_name)
 print("Reverse synteny blocks found:\t", putative_palindrome_count)
 print("Palindromes found:\t", palindrome_count)
 print("Palindrome table")
-print("spacer\tblock1_internal_gaps\tblock2_internal_gaps")
+print("genes\tspacer\tblock1_internal_gaps\tblock2_internal_gaps")
 print("\n".join(palindrome_distances))

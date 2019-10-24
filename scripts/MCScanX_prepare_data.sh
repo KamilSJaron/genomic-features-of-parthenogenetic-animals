@@ -47,6 +47,7 @@ zcat $GFF > $GFF_UNZIPED
 
 # for P sambesii I had to remove two genes from the annotation (mapping outside of the assembled genome...)
 
+#GFF_UNZIPED=data/Mbel1/fixed_annotation.gff3
 gffread -g $GENOME_UNZIPED -y $PROTEINS $GFF_UNZIPED
 sed -i'' -e 's/.$//' $PROTEINS
 

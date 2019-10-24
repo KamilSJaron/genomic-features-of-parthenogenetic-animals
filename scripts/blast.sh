@@ -1,4 +1,4 @@
-module add Development/java/1.8.0_172;
+module add Development/java/1.8.0_222;
 module add Blast/ncbi-blast/2.7.1+;
 
 PROTEINS=$1
