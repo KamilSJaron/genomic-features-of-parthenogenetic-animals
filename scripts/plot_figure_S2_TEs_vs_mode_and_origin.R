@@ -94,7 +94,7 @@ tiff("figures/Supp_fig2_rep_TE_patterns.tiff",
 ####
 plot_tab <- genome_tab[!is.na(genome_tab$TEs),]
 
-tiff("figures/Supp_fig2b_TEs.tiff",
+tiff("figures/Supp_fig4_TEs.tiff",
      width = 8, height = 8, units = 'in', res = 90)
 # # png('figures/Supp_fig2b_TEs.png')
 

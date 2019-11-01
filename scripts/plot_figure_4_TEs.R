@@ -45,6 +45,18 @@ load_TE_tab <- function(x){
 TEs <- as.data.frame(t(sapply(row.names(genome_tab), load_TE_tab))[,c(4,2,1,3,6)])
 colnames(TEs) <- c('DNA', 'LINE', 'LTR', 'SINE', 'Helitron')
 TEs <- TEs[,5:1] * 100
+rownames(TEs)
+
+# c('DNA', 'LINE', 'LTR', 'SINE', 'Helitron')
+if( presentation ){
+    TEs['5_Tge',] <- rev(c(11.57, 4.57, 3.05, 0.03, 0.39))
+    TEs['4_Tte',] <- rev(c(11.65, 5.68, 3.27, 0.13, 0.54))
+    TEs['3_Tms',] <- rev(c(12.67, 5.73, 3.14, 1.06, 0.45))
+    TEs['2_Tsi',] <- rev(c(12.5, 4.57, 3.67, 1.07, 0.36))
+    TEs['1_Tdi',] <- rev(c(10.72, 5.32, 3.08, 0.91, 0.46))
+    TEs <- TEs[c(1:17, 30:34, 18:29),]
+}
+
 
 ########
 # plot #
@@ -56,7 +68,21 @@ pal <- c('#FF6A42', # DNA
          '#B966F4', # SINE
          '#8b0000') # helitron
 
-spaces <- c(0.1, 0.1, 1, rep(0.1, 10), 1 , rep(0.15, 10), 1, rep(0.15, 3), 1)
+if ( presentation ){
+    pal <- c(grey(0.5),
+             grey(0.2),
+             grey(0.8),
+             grey(0.35),
+             grey(0.65))
+}
+
+gap_size <- ifelse(presentation, 1.5, 1)
+spacing <- ifelse(presentation, 0.2, 0.15)
+arthropods <- ifelse(presentation, 15, 10)
+spaces <- c(rep(spacing, 2), gap_size,
+            rep(spacing, 10), gap_size,
+            rep(spacing, arthropods), gap_size,
+            rep(spacing, 3), gap_size)
 plot_bars <- function(index){
     if (index == 5){
         bar_sizes <- TEs[,5]
@@ -80,24 +106,31 @@ species_names <- sapply(names_split, function(x){ x[2] })
 sp_labels <- paste(genus_names, species_names, sep = '. ')
 sp_labels <- lapply(sp_labels, function(x){bquote(italic(.(x)))})
 
-filename <- paste0('figures/fig4_TEs',
+filename <- paste0('figures/',
+                   ifelse(presentation, 'presentation/', ''),
+                   'fig4_TEs',
                    ifelse(presentation, '_presentation', '') ,
                    '.pdf')
-pdf(filename, width = 12, height = 8)
+pdf(filename, width = ifelse(presentation, 9, 12), height = 8)
 
 par(mar = c(5, 7, 1, 0.5) + 0.1)
 
 plot(NULL, bty = 'n', axes=FALSE, xlim = xlim, ylim = ylim,
-    xlab = "TEs [ % ]", ylab = NA, cex.lab = ifelse(presentation, 2, 1.3),
+    xlab = "TEs [ % ]", ylab = NA, cex.lab = ifelse(presentation, 1.6, 1.3),
 )
-axis(1, cex.axis = ifelse(presentation, 1.6, 1.2))
+axis(1, cex.axis = ifelse(presentation, 1.4, 1.2))
 if ( !presentation ){
     mtext(do.call(expression, sp_labels), line = 2.8, side = 2, at = bp, las = 2, adj = 0.5)
 }
 # axis(2, at = bp, labels, las = 1)
 
 sapply(1:5, plot_bars)
-legend('topright', bty = 'n', c('DNA', 'LINE', 'LTR', 'SINE', 'Helitron'),
-       pch = 20, col = pal, cex = ifelse(presentation, 2, 1.2), title = 'TE classes')
+if ( presentation ){
+    legend('bottomright', bty = 'n', c('DNA', 'LINE', 'LTR', 'SINE', 'Helitron'),
+           pch = 15, col = pal, cex = 1.4, horiz = T)
+} else {
+    legend('topright', bty = 'n', c('DNA', 'LINE', 'LTR', 'SINE', 'Helitron'),
+           pch = 20, col = pal, cex = 1.2, title = 'TE classes')
+}
 
 dev.off()
