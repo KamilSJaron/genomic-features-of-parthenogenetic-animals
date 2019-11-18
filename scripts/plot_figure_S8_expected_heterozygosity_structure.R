@@ -23,17 +23,18 @@ naively_expected_trial <- sapply(observed_het, get_exp_triallelic)
 total_heterozygosities <- seq(0, 8, len = 100)
 triallelic_exp <- sapply(total_heterozygosities, get_exp_triallelic)
 
-tiff("figures/Supp_fig2_rep_TE_patterns.tiff")
+tiff("figures/Supp_fig8.tiff", width = 800, height = 600, 'px', res = 100, compression = 'rle')
 
 plot(triallelic_exp ~ total_heterozygosities,
      xlab = 'Heterozygosity [%]',
-     ylab = 'Naively expected triallelic loci [%]', ylim = c(0, max(triploids$ABC)),
+     ylab = 'Triallelic loci [%]', ylim = c(0, max(triploids$ABC)),
      type = 'l')
 # points(observed_het, naively_expected_trial, pch = 20)
 points(observed_het, triploids$ABC, pch = 20)
 text(observed_het, triploids$ABC, triploids$code, pos = 1)
 
-legend('topleft', bty = 'n', pch = c(NA, 20), lty = c(1, NA), c('expected', 'observed'))
+legend('topleft', bty = 'n', pch = c(NA, 20), lty = c(1, NA), c('predicted', 'observed'))
+# text(total_heterozygosities[70], 0, 'predicted % of triallelic loci', pos = 3   )
 
 dev.off()
 

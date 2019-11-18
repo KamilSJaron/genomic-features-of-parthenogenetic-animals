@@ -20,7 +20,7 @@ rownames(genome_tab) <- genome_tab$code
 #  - TEs or Repeats are not significant to hybrid origin (p-value for both = 0.3636)
 
 ### testing heterozygosity
-het_tab <- genome_tab[!is.na(genome_tab$heterozygosity), c('hybrid_origin', 'reproduction_mode', 'ploidy', 'heterozygosity')]
+het_tab <- genome_tab[!is.na(genome_tab$heterozygosity), c('hybrid_origin', 'callular_mechanism', 'ploidy', 'heterozygosity')]
 het_tab <- het_tab[!is.na(het_tab$hybrid_origin),]
 
 wilcox.test(heterozygosity ~ hybrid_origin, het_tab)
@@ -33,7 +33,7 @@ wilcox.test(heterozygosity ~ hybrid_origin, het_tab)
 
 ### parametric
 
-summary(lm(heterozygosity ~ reproduction_mode, data = het_tab))
+summary(lm(heterozygosity ~ callular_mechanism, data = het_tab))
 
 # nothing will be significant if there will be as many categories as
 
@@ -69,26 +69,26 @@ summary(lm(heterozygosity ~ hybrid_origin + ploidy, data = het_tab))
 # ploidy here is an effect of every extra haplotype above diploidy (tri -> + 2.05, tetra -> + 4.1)
 
 ### testing repeats
-rep_tab <- genome_tab[!is.na(genome_tab$repeats), c('hybrid_origin', 'reproduction_mode', 'repeats', 'TEs')]
+rep_tab <- genome_tab[!is.na(genome_tab$repeats), c('hybrid_origin', 'callular_mechanism', 'repeats', 'TEs')]
 
-rep_tab <- rep_tab[!is.na(rep_tab$reproduction_mode) & !is.na(rep_tab$TEs),]
+rep_tab <- rep_tab[!is.na(rep_tab$callular_mechanism) & !is.na(rep_tab$TEs),]
 
 wilcox.test(TEs ~ hybrid_origin, rep_tab)
 
 # 	Wilcoxon rank sum test
 #
 # data:  TEs by hybrid_origin
-# W = 30, p-value = 0.3636
+# W = 32, p-value = 1
 # alternative hypothesis: true location shift is not equal to 0
 
-rep_tab$reproduction_mode[rep_tab$reproduction_mode != "functional_apomixis"] <- "automixis"
+rep_tab$callular_mechanism[rep_tab$callular_mechanism != "functional_apomixis"] <- "automixis"
 
 # extracted directly fromt the output files to resolve the tie
 rep_tab['Lcla1','TEs'] <- 12.538
 rep_tab['Anan1','TEs'] <- 12.524
-# wilcox.test(TEs ~ reproduction_mode, rep_tab)
+wilcox.test(TEs ~ callular_mechanism, rep_tab)
 # 	Wilcoxon rank sum test
 #
-# data:  TEs by reproduction_mode
-# W = 42, p-value = 0.8421
+# data:  TEs by callular_mechanism
+# W = 55, p-value = 0.8446
 # alternative hypothesis: true location shift is not equal to 0

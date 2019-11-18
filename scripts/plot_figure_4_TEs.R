@@ -111,7 +111,7 @@ filename <- paste0('figures/',
                    'fig4_TEs',
                    ifelse(presentation, '_presentation', '') ,
                    '.pdf')
-pdf(filename, width = ifelse(presentation, 9, 12), height = 8)
+pdf(filename, width = ifelse(presentation, 10.5, 12), height = 8)
 
 par(mar = c(5, 7, 1, 0.5) + 0.1)
 
