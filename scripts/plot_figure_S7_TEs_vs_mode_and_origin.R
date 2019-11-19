@@ -71,8 +71,8 @@ plot_ploits <- function(hyb_origin = "no", .var = "repeats"){
 ####
 
 
-tiff("figures/Supp_fig2_rep_TE_patterns.tiff",
-     width = 12, height = 6, units = 'in', res = 90)
+# tiff("figures/Supp_fig2_rep_TE_patterns.tiff",
+#      width = 12, height = 6, units = 'in', res = 90)
 # pdf('figures/Supp_fig2_rep_TE_patterns.pdf', width = 16, height = 8)
 
 # tiff("figures/Supp_fig2a_repetitions.tiff",
@@ -94,7 +94,7 @@ tiff("figures/Supp_fig2_rep_TE_patterns.tiff",
 ####
 plot_tab <- genome_tab[!is.na(genome_tab$TEs),]
 
-tiff("figures/Supp_fig4_TEs.tiff",
+tiff("figures/supp_fig7_TEs.tiff",
      width = 8, height = 8, units = 'in', res = 90)
 # # png('figures/Supp_fig2b_TEs.png')
 

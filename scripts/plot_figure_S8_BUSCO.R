@@ -62,7 +62,7 @@ spaces <- c(0.1, 0.1, 1, rep(0.1, 15),1 , rep(0.15, 5), 1, rep(0.15, 3), 1)
 busco_pal <- c('#fed976', '#fd8d3c','grey')
 
 # png('figures/Supp_figure_BUSCO.png')
-pdf('figures/Supp_figure_BUSCO.pdf') #, width = 10, height = 6
+pdf('figures/supp_fig8_BUSCO.pdf') #, width = 10, height = 6
 # plot BUSCO
 # 'c(bottom, left, top, right)'
 par(mar = c(5, 4.5, 1, 2) + 0.1)
