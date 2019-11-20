@@ -10,13 +10,11 @@ genome_tab <- genome_tab[,c(2,5,13:17)]
 samples_with_values <- !apply(is.na(genome_tab[,3:7]), 1, all)
 
 genome_tab <- genome_tab[samples_with_values,]
-genome_tab[c(18, 25),'haploid_length[M]'] <- asm_sizes
 
 names_split <- strsplit(genome_tab$species, "_")
-genus_names <- sapply(names_split, substr, 1, 1)[1,]
+genus_names <- sapply(genome_tab$species, substr, 1, 1)
 species_names <- sapply(names_split, function(x){ x[2] })
 sp_labels <- paste(genus_names, species_names, sep = '. ')
-sp_labels[c(17,18)] <- c("P. davidi", "Panagrolaimus sp.")
 genome_tab$species <- sp_labels
 
 write.table(genome_tab, tab_file, quote = F, sep = '\t', row.names = F)
