@@ -1,7 +1,7 @@
 ### Tables in the manuscript
 
 - [palindrome_table.tsv](palindrome_table.tsv) - **Table 1**
-- **Supplementary Table 1**, overview of analyzed species. This table with typeset in LaTeX; the source can be found [here](LaTeX/SM_table_1_reproduction_modes.tex).
+- **Supplementary Table 1**, overview of analyzed species. This table with typeset in LaTeX; the source can be found [here](../LaTeX/SM_table_1_reproduction_modes.tex) and the corresponding pdf can be found [here](https://www.overleaf.com/read/xpzjkrnpnxrm).
 - [genome_table_infered_from_reads.tsv](genome_table_infered_from_reads.tsv) - **Supplementary Table 2**, genomic features derived from sequencing reads
 - [assembly_table.tsv](assembly_table.tsv) - **Supplementary Table 3**, a table of genome assemblies; statistics, BUSCO and gene annotation stats
 - [HGT_table.tsv](assembly_table.tsv) - **Supplementary Table 4**,
@@ -15,7 +15,7 @@
 - [download_table_sexuals.tsv](download_table_sexuals.tsv) - analogical table to [download_table.tsv](download_table.tsv) containing sexual sister species when available; this data were used for HGT analysis and for genome comparison of the crayfish to its sister species.
 - [triploid_heterozygosity.tsv](triploid_heterozygosity.tsv) - the estimates of the heterozygosity distribution in triploid genomes; used to generate Figure 3
 - [tetraploid_heterozygosity.tsv](tetraploid_heterozygosity.tsv) - the estimates of the heterozygosity distribution in tetraploid genomes; used to generate Figure 3
-- [gene_annotations.tsv](gene_annotations.tsv) - a summary table of tags in `gtf` and `gff` files referred in [download_table.tsv](download_table.tsv); used to extract protein sequences form genomes and annotation files for palindromes and HGT analyses.
+- [gene_annotations.tsv](gene_annotations.tsv) - a summary table of tags in `gtf` computed by [scripts/make_annotation_table.sh](../scripts/make_annotation_table.sh) script using `gff` files referred in [download_table.tsv](download_table.tsv); used to extract protein sequences form genomes and annotation files for palindromes and HGT analyses.
 
 ### Other published data
 

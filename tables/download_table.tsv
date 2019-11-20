@@ -12,7 +12,6 @@ Amel2	Apis_mellifera_capensis	NA	SRR8061555	NA
 Amel3	Apis_mellifera_capensis	NA	SRR8061556	NA
 Aruf1	Aptinothrips_rufus	ftp://ftp.ebi.ac.uk/pub/databases/ena/wgs/public/ca/CABIKL01.fasta.gz	SRR9852496	NA
 Fcan1	Folsomia_candida	http://animalecology.labs.vu.nl/collembolomics/folsomia/data/fcand_genome.fa	SRR2743547	http://animalecology.labs.vu.nl/collembolomics/folsomia/data/fcand_genes.gff
-Dpul1	Daphnia_pulex	http://daphniagenomes.org/sites/default/files/Daphnia_pulex_PA42_v3.0.fasta	NA	NA
 Dpul2	Daphnia_pulex	NA	SRR2148392	NA
 Dpul3	Daphnia_pulex	NA	SRR2148389	NA
 Pvir1	Procambarus_virginalis	http://marmorkrebs.dkfz.de/downloads/genome/pvirGEN-0.4/Pvir04.fa.gz	SRR5115148,SRR5115143,SRR5115145,SRR5115147,SRR5115146,SRR5115144	http://marmorkrebs.dkfz.de/downloads/genome/pvirGEN-0.4/Pvir04.annotation.gff.gz
