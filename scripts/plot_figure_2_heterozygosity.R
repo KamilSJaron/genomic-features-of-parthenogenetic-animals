@@ -127,6 +127,8 @@ plot_corpus <- function(presentation = F){
 
     axis(1, labels = hyb_origins, at = 1:3, tick = F, line = F, cex.axis = general_cex)
 
+    # Apis elipse
+    filledellipse(rx1 = 0.15, ry1 = 1.5, col = ellipse_col, angle = 0, dr = 0.1, mid = c(1.24, 1.5))
     if ( presentation & !split_axis ) {
       filledellipse(rx1 = 3.5, ry1 = 0.21, col = ellipse_col, angle = 90.8, dr = 0.1, mid = c(1.97, 9.3))
       filledellipse(rx1 = 3.8, ry1 = 0.2, col = ellipse_col, angle = 87.5, dr = 0.1, mid = c(3.13, 6))
@@ -196,10 +198,6 @@ plot_ploits <- function(hyb_origin = "no", presentation = F){
     subset <- subset[order(subset$callular_mechanism),]
     subset <- subset[!is.na(subset$heterozygosity),]
 
-    if(hyb_origin == "unknown" & !excl_rotifers){
-        subset <- subset[c(1,2,5,3,4,6:9),]
-    }
-
     at <- which(hyb_origin == hyb_origins)
     misplacement <- seq(from = -0.45, to = 0.45, length = nrow(subset) + 2)[2:(nrow(subset)+1)]
     # symbols <- c(NA, 19, 17, 15)
@@ -267,13 +265,13 @@ if ( homoeolog ){
     rotifers_to_plot <- rotifers_ohno - (g_to - g_from)
 
     points(xpos, rotifers_to_plot,
-           bg = pal[c(5,5,6,6)],
+           bg = pal[6],
            pch = 24, cex = point_size) #symbols[subset$ploidy]
     # points(xpos, rotifers_to_plot,
     #        pch = 24, cex = point_size) #conture_symbols[subset$ploidy]
 
     points(xpos, rotifers_homo,
-           bg = pal[c(5,5,6,6)],
+           bg = pal[6],
            pch = 25, cex = point_size) #symbols[subset$ploidy]
     # points(xpos, rotifers_homo,
     #        pch = 25, cex = point_size) #conture_symbols[subset$ploidy]

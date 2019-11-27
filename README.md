@@ -5,7 +5,27 @@ This repository serves for the analyses performed for a metastudy of asexual gen
 The idea is to review all genomes of asexual animals and compare patterns observed. Other eukaryotes will be only discussed.
 One of difficulties is to compare different genomics projects that are based on different inference methods and focus on different aspects. Therefore we estimate the most of the genomic properties using unified methodology.
 
-List of performed analysis :
+### Regenerating figures
+
+The main figures are be plotted by following R scripts
+
+```
+Rscript scripts/plot_figure_1_questions.R --tricolor
+Rscript scripts/plot_figure_2_heterozygosity.R --split_axis --homoeolog --rm_boxes
+Rscript scripts/plot_figure_3_heterozygosity_structure.R
+Rscript scripts/plot_figure_4_TEs.R
+```
+
+The supplementary figures
+
+```
+# supp figure 1 is a derivative of figure 1
+Rscript scripts/plot_figure_1_questions.R --refs --both --tricolor
+Rscript scripts/plot_figure_S4_expected_heterozygosity_structure.R
+Rscript scripts/plot_figure_S7_TEs_vs_mode_and_origin.R
+```
+
+### List of performed analysis
 
 - [GenomeScope](https://github.com/tbenavi1/genomescope) `v2 dev` - genome profiling from kmer spectra of sequencing reads. Estimate of genome size, heterozygosity and repetitive content.
 - [smudgeplot](https://github.com/tbenavi1/smudgeplot) `v0.1.3` - Estimation of ploidy and heterozygosity structure, helps in interpretation of GenomeScope kmer spectra.

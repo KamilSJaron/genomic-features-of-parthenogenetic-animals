@@ -3,8 +3,8 @@ code	species	callular_mechanism	hybrid_origin	ploidy	assembly_size[M]	number_of_
 Pfor1	Poecilia_formosa	functional_apomixis	yes	2	748.9	4	1574.2	98.06	0.51	7.57	1.43	988.2	1.73	58.02	17.9	1	26.1
 Avag1	Adineta_vaga	functional_apomixis	NA	4	217.9	36.2	260.3	90.29	1.43	67.08	8.28	97.8	2.4	15.51	2.2	0.5	22.9
 Aric1	Adineta_ricciae	functional_apomixis	NA	4	174.5	4.1	276.8	88.34	2.25	62.99	9.41	87.5	5.545	9.56	0.7	0.3	5.2
-Rmac1	Rotaria_macrura	NA	NA	4	234.7	29.3	73.2	89.16	1.64	15.24	9.2	260.1	0.125	27.26	8	2.1	42.8
-Rmag1	Rotaria_magnacalcarata	NA	NA	4	180.5	20.9	53.2	90.49	1.02	16.16	8.49	226.4	0.49	36.67	9.1	1.3	38.4
+Rmac1	Rotaria_macrura	functional_apomixis	NA	4	234.7	29.3	73.2	89.16	1.64	15.24	9.2	260.1	0.125	27.26	8	2.1	42.8
+Rmag1	Rotaria_magnacalcarata	functional_apomixis	NA	4	180.5	20.9	53.2	90.49	1.02	16.16	8.49	226.4	0.49	36.67	9.1	1.3	38.4
 Lcla1	Leptopilina_clavipes	gamete_duplication	no	2	255.4	36.6	13.8	93.87	4.09	0.82	2.04	273.9	0.3	32.81	12.5	1	34.8
 Tpre1	Trichogramma_pretiosum	gamete_duplication	no	2	195.1	0.4	3706.2	98.36	0.31	4.4	1.33	192.7	0.03	15.06	6.2	2.3	21.5
 Obir1	Ooceraea_biroi	central_fusion	no	2	212.8	4.6	1350.7	98.16	1.02	1.02	0.82	184.8	0.53	9.91	12.1	0.6	19.7
