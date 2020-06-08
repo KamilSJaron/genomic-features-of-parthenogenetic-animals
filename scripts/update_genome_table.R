@@ -6,7 +6,7 @@ library('gsheet')
 
 # table to update
 tab_file <- 'tables/genome_table.tsv'
-genome_tab <- read.table(tab_file, header = T, stringsAsFactors = F, skip = 1, check.names = F)
+genome_tab <- read.table(tab_file, header = T, stringsAsFactors = F, skip = 1, check.names = F, sep = '\t')
 row.names(genome_tab) <- genome_tab$code
 
 # following line corrects names that are automatically replaced when R loads the table
@@ -150,21 +150,25 @@ literature_data <- literature_data[,c(2, 8, 9)]
 
 repr_col <- 'cellular mechanism of asexuality'
 
-mitotic <- grepl('mitotic', literature_data[,repr_col]) | grepl('endoduplication', literature_data[,repr_col])
-central_fusion <- grepl('central', literature_data[,repr_col])
-terminal_fusion <- grepl('terminal', literature_data[,repr_col])
-gdupl <- grepl('gamete dupl', literature_data[,repr_col])
-unknown_meiotic <- grepl('meiotic', literature_data[,repr_col]) & ! (central_fusion | terminal_fusion | mitotic)
+mitotic <- grepl('^functionally mitotic', literature_data[,repr_col])
+central_fusion <- grepl('^central fusion', literature_data[,repr_col])
+terminal_fusion <- grepl('^terminal fusion', literature_data[,repr_col])
+gdupl <- grepl('^gamete duplication', literature_data[,repr_col])
+unknown_meiotic <- grepl('^unknown meiotic', literature_data[,repr_col])
 
 # create three categories
-literature_data$callular_mechanism <- NA # unknown is default
-literature_data$callular_mechanism[mitotic] <- 'functional_apomixis' # mitosis or endoduplication
-literature_data$callular_mechanism[central_fusion] <- 'central_fusion'  # automixis central fusion
-literature_data$callular_mechanism[terminal_fusion] <- 'terminal_fusion' # automixis terminal fusion
-literature_data$callular_mechanism[gdupl] <- 'gamete_duplication'  # gamete duplications
-literature_data$callular_mechanism[unknown_meiotic] <- 'unknown_automixis' # unknown automixis
+callular_mechanisms <- rep(NA, nrow(literature_data)) # unknown is default
+callular_mechanisms[mitotic] <- 'functional_apomixis' # mitosis or endoduplication
+callular_mechanisms[central_fusion] <- 'central_fusion'  # automixis central fusion
+callular_mechanisms[terminal_fusion] <- 'terminal_fusion' # automixis terminal fusion
+callular_mechanisms[gdupl] <- 'gamete_duplication'  # gamete duplications
+callular_mechanisms[unknown_meiotic] <- 'unknown_automixis' # unknown automixis
+
+literature_data$callular_mechanism <- callular_mechanisms
+# literature_data$callular_mechanisms <- callular_mechanisms
 
 literature_data <- literature_data[literature_data$code %in% genome_tab$code,]
+# merge(genome_tab[, c('code', 'callular_mechanism')], literature_data[, c('code', 'callular_mechanisms')])
 
 genome_tab$callular_mechanism <- NA
 genome_tab$hybrid_origin <- NA
@@ -186,7 +190,7 @@ genome_tab[literature_data$code, columns] <- literature_data[, columns]
 #  tardigrades
 desired_order <- c('Pfor1',
                    'Avag1', 'Aric1', 'Rmac1', 'Rmag1',
-                   'Lcla1', 'Tpre1', 'Obir1', 'Amel1', 'Amel2', 'Amel3', 'Aruf1', 'Fcan1', 'Dpul1', 'Dpul2', 'Dpul3', 'Pvir1',
+                   'Lcla1', 'Tpre1', 'Obir1', 'Amel1', 'Amel2', 'Aruf1', 'Fcan1', 'Dpul2', 'Dpul3', 'Pvir1',
                    'Psam1', 'Mbel1', 'Dcor1', 'Dpac1', 'Pdav1', 'Anan1', 'Minc1', 'Minc2', 'Mjav1', 'Mjav2', 'Mare1', 'Mare2', 'Mare3', 'Mflo1', 'Ment1',
                    'Hduj1', 'Rvar1')
 if ( length(desired_order) == nrow(genome_tab) ){

@@ -9,7 +9,6 @@ Tpre1	Trichogramma_pretiosum	ftp://ftp.hgsc.bcm.edu/I5K-pilot/Trichogramma_preti
 Obir1	Ooceraea_biroi	ftp.ncbi.nih.gov/genomes/refseq/invertebrate/Ooceraea_biroi/latest_assembly_versions/GCF_000611835.1_CerBir1.0/GCF_000611835.1_CerBir1.0_genomic.fna.gz	SRR1192095,SRR1192097,SRR1192107	ftp://ftp.ncbi.nlm.nih.gov/genomes/Cerapachys_biroi/GFF/ref_CerBir1.0_top_level.gff3.gz
 Amel1	Apis_mellifera_capensis	NA	SRR8061554	NA
 Amel2	Apis_mellifera_capensis	NA	SRR8061555	NA
-Amel3	Apis_mellifera_capensis	NA	SRR8061556	NA
 Aruf1	Aptinothrips_rufus	ftp://ftp.ebi.ac.uk/pub/databases/ena/wgs/public/ca/CABIKL01.fasta.gz	SRR9852496	NA
 Fcan1	Folsomia_candida	http://animalecology.labs.vu.nl/collembolomics/folsomia/data/fcand_genome.fa	SRR2743547	http://animalecology.labs.vu.nl/collembolomics/folsomia/data/fcand_genes.gff
 Dpul2	Daphnia_pulex	NA	SRR2148392	NA

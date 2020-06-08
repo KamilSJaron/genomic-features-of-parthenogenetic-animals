@@ -9,19 +9,18 @@ Lcla1	Leptopilina_clavipes	gamete_duplication	no	2	255.4	36.6	13.8	93.87	4.09	0.
 Tpre1	Trichogramma_pretiosum	gamete_duplication	no	2	195.1	0.4	3706.2	98.36	0.31	4.4	1.33	192.7	0.03	15.06	6.2	2.3	21.5
 Obir1	Ooceraea_biroi	central_fusion	no	2	212.8	4.6	1350.7	98.16	1.02	1.02	0.82	184.8	0.53	9.91	12.1	0.6	19.7
 Amel1	Apis_mellifera_capensis	central_fusion	no	2	NA	NA	NA	NA	NA	NA	NA	238.8	0.82	16.13	5.5	0.4	26.1
-Amel2	Apis_mellifera_capensis	central_fusion	no	2	NA	NA	NA	NA	NA	NA	NA	236.9	0.86	15.39	5.3	0.3	25.8
-Amel3	Apis_mellifera_capensis	central_fusion	no	2	NA	NA	NA	NA	NA	NA	NA	142.1	1.195	8.46	3.6	1.1	21.1
+Amel2	Apis_mellifera_capensis	central_fusion		2	NA	NA	NA	NA	NA	NA	NA	236.9	0.86	15.39	5.3	0.3	25.8
 Aruf1	Aptinothrips_rufus	gamete_duplication	no	2	339.9	301.7	4.1	97.55	1.33	0.82	1.12	362.7	0.25	31.27	8.4	2.9	38.2
 Fcan1	Folsomia_candida	terminal_fusion	no	2	221.7	0.2	6519.4	93.15	1.64	1.94	5.21	295.7	0.125	45.81	8.9	0.5	28.1
 Dpul2	Daphnia_pulex	central_fusion	yes	2	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	6.1	4.5	22.8
 Dpul3	Daphnia_pulex	central_fusion	yes	2	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	5.5	4.1	22.9
 Pvir1	Procambarus_virginalis	functional_apomixis	NA	3	3290.5	1942.8	39.3	87.12	6.44	0.92	6.44	3528.2	1.845	83.09	34.7	2.6	55.2
-Psam1	Plectus_sambesii	functional_apomixis	NA	2	186.7	19	23.4	75.87	13.34	16.4	10.79	117.7	3.775	24.14	4.2	1.3	27.9
+Psam1	Plectus_sambesii	unknown_automixis	NA	2	186.7	19	23.4	75.87	13.34	16.4	10.79	117.7	3.775	24.14	4.2	1.3	27.9
 Mbel1	Mesorhabditis_belari	unknown_automixis	NA	2	163.5	1.7	469	79.74	7.74	3.56	12.53	148.5	1.19	25.64	10.7	1.7	36.6
-Dcor1	Diploscapter_coronatus	central_fusion	yes	2	170.5	0.5	1007.7	91.55	4.58	67.92	3.87	84.2	5.105	12.04	7.6	0.6	65.5
-Dpac1	Diploscapter_pachys	central_fusion	yes	2	157.7	10.8	124.2	90.63	5.3	49.49	4.07	94.3	5.26	43.13	2.6	1.3	34.7
-Pdav1	Panagrolaimus_davidi	unknown_automixis	yes	3	163.2	51.9	4.9	31.36	9.16	4.18	59.47	123.8	5.715	48.6	3.5	0.8	21
-Anan1	Acrobeloides_nanus	terminal_fusion	NA	2	248.1	30.8	19.6	73.93	6.13	9.71	19.94	261.9	2.385	63.06	12.5	6	86.2
+Dcor1	Diploscapter_coronatus	NA	yes	2	170.5	0.5	1007.7	91.55	4.58	67.92	3.87	84.2	5.105	12.04	7.6	0.6	65.5
+Dpac1	Diploscapter_pachys	functional_apomixis	yes	2	157.7	10.8	124.2	90.63	5.3	49.49	4.07	94.3	5.26	43.13	2.6	1.3	34.7
+Pdav1	Panagrolaimus_davidi	NA	yes	3	163.2	51.9	4.9	31.36	9.16	4.18	59.47	123.8	5.715	48.6	3.5	0.8	21
+Anan1	Acrobeloides_nanus	unknown_automixis	NA	2	248.1	30.8	19.6	73.93	6.13	9.71	19.94	261.9	2.385	63.06	12.5	6	86.2
 Minc1	Meloidogyne_incognita	functional_apomixis	yes	3	183.5	12.1	38.6	61.71	7.84	36.35	30.45	NA	NA	NA	NA	NA	NA
 Minc2	Meloidogyne_incognita	functional_apomixis	yes	3	148.1	245.3	12.2	52.34	9.16	19.45	38.49	69	6.37	30.6	8	1.6	47.9
 Mjav1	Meloidogyne_javanica	functional_apomixis	yes	4	235.8	31.3	10.4	61.1	7.54	31.06	31.36	NA	NA	NA	NA	NA	NA
