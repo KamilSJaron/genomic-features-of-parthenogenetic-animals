@@ -1,6 +1,6 @@
-# Review of parthenogenetic genomes
+# Genomic features of parthenogenetic animals
 
-This is a repository of analyses performed in [Genomic features of parthenogenetic animals](https://www.biorxiv.org/content/10.1101/497495v2).
+This repository is archived with [![DOI](https://zenodo.org/badge/106611468.svg)](https://zenodo.org/badge/latestdoi/106611468) and it is for the analyses performed in [Genomic features of parthenogenetic animals](https://www.biorxiv.org/content/10.1101/497495v2).
 
 The idea is to review all genomes of asexual animals and compare patterns observed.
 One of difficulties is to compare different genomics projects that are based on different inference methods and focus on different aspects. Therefore we estimate all the genomic features possible using unified methodology.
