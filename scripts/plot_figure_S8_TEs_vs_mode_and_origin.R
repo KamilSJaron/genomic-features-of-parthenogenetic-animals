@@ -94,7 +94,7 @@ plot_ploits <- function(hyb_origin = "no", .var = "repeats"){
 ####
 plot_tab <- genome_tab[!is.na(genome_tab$TEs),]
 
-tiff("figures/SM_Figure_7_TEs.tiff",
+tiff("figures/SM_Figure_8_TEs.tiff",
      width = 8, height = 8, units = 'in', res = 90)
 # # png('figures/Supp_fig2b_TEs.png')
 

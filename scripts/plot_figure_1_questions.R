@@ -142,7 +142,7 @@ if ( both ){
 }
 
 if (refs && both && tricolor){
-    file_to_save <- "figures/SM_Figure_1_genomic_studies.pdf"
+    file_to_save <- "figures/SM_Figure_3_genomic_studies.pdf"
 }
 
 pdf(file_to_save, width = 8, height = height, pointsize = 8)
