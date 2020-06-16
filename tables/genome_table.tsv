@@ -9,7 +9,7 @@ Lcla1	Leptopilina_clavipes	gamete_duplication	no	2	255.4	36.6	13.8	93.87	4.09	0.
 Tpre1	Trichogramma_pretiosum	gamete_duplication	no	2	195.1	0.4	3706.2	98.36	0.31	4.4	1.33	192.7	0.03	15.06	6.2	2.3	21.5
 Obir1	Ooceraea_biroi	central_fusion	no	2	212.8	4.6	1350.7	98.16	1.02	1.02	0.82	184.8	0.53	9.91	12.1	0.6	19.7
 Amel1	Apis_mellifera_capensis	central_fusion	no	2	NA	NA	NA	NA	NA	NA	NA	238.8	0.82	16.13	5.5	0.4	26.1
-Amel2	Apis_mellifera_capensis	central_fusion		2	NA	NA	NA	NA	NA	NA	NA	236.9	0.86	15.39	5.3	0.3	25.8
+Amel2	Apis_mellifera_capensis	central_fusion	no	2	NA	NA	NA	NA	NA	NA	NA	236.9	0.86	15.39	5.3	0.3	25.8
 Aruf1	Aptinothrips_rufus	gamete_duplication	no	2	339.9	301.7	4.1	97.55	1.33	0.82	1.12	362.7	0.25	31.27	8.4	2.9	38.2
 Fcan1	Folsomia_candida	terminal_fusion	no	2	221.7	0.2	6519.4	93.15	1.64	1.94	5.21	295.7	0.125	45.81	8.9	0.5	28.1
 Dpul2	Daphnia_pulex	central_fusion	yes	2	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	6.1	4.5	22.8
