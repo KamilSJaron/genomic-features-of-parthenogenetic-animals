@@ -37,5 +37,4 @@ There are couple more transcriptomes. Like lineus worms; great divergence of all
 Promising systems :
 
 - _C. hookeri_ has sexual and asexual populations and a reference genome of the sexual is available already, disadvantage is it's enormous size (~4.5Gbp). C. hookeri could complement studies of very recent asexual _D. pulex_ show particularities in gene conversion. The system also suffering by contagious asexuality.
-- Timema a system studied in our lab provides couple of replicates. The disadvantage is that they are hard to breed in lab. We are working on it.
 - Sequencing of tardigrades could complement studies of bdeliod rotifer since they are sharing tolerance to extreme environmental changes that could be related to asexuality. The downside is that we do not know much about tardigrade modes of reproduction, we just know that some of the populations are female only. However a comprehensive evaluation was not done till now. The second problem of this otherwise exciting system is difficulties for genome sequencing as was demonstrated.
