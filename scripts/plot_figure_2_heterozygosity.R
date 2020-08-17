@@ -127,6 +127,8 @@ plot_corpus <- function(presentation = F){
 
     axis(1, labels = hyb_origins, at = 1:3, tick = F, line = F, cex.axis = general_cex)
 
+    # Apis elipse
+    filledellipse(rx1 = 0.13, ry1 = 1.4, col = ellipse_col, angle = 0, dr = 0.1, mid = c(1.28, 1.5))
     if ( presentation & !split_axis ) {
       filledellipse(rx1 = 3.5, ry1 = 0.21, col = ellipse_col, angle = 90.8, dr = 0.1, mid = c(1.97, 9.3))
       filledellipse(rx1 = 3.8, ry1 = 0.2, col = ellipse_col, angle = 87.5, dr = 0.1, mid = c(3.13, 6))
@@ -146,11 +148,11 @@ plot_corpus <- function(presentation = F){
     }
     if ( split_axis ){
         if ( homoeolog ){
-            filledellipse(rx1 = 3.6, ry1 = 0.28, col = ellipse_col, angle = 90, dr = 0.1, mid = c(2.05, 14.55))
+            filledellipse(rx1 = 3.6, ry1 = 0.28, col = ellipse_col, angle = 90, dr = 0.1, mid = c(2.15, 14.55))
             # Meloidogyne
-            filledellipse(rx1 = 3.8, ry1 = 0.24, col = ellipse_col, angle = 86.5, dr = 0.1, mid = c(3.17, 6))
+            filledellipse(rx1 = 3.9, ry1 = 0.22, col = ellipse_col, angle = 88, dr = 0.1, mid = c(3.12, 6))
             # diploscapter
-            filledellipse(rx1 = 0.16, ry1 = 1.3, col = ellipse_col, angle = 0, dr = 0.1, mid = c(2.67, 4.6))
+            filledellipse(rx1 = 0.098, ry1 = 1.8, col = ellipse_col, angle = 0, dr = 0.1, mid = c(2.77, 5.5))
         } else {
             filledellipse(rx1 = 6.5, ry1 = 0.25, col = ellipse_col, angle = 90, dr = 0.1, mid = c(2.06, 17.5))
         }
@@ -178,9 +180,9 @@ plot_corpus <- function(presentation = F){
            c("gamete duplication",
              "terminal fusion",
              "central fusion",
-             "unknown meiosis",
+             "unknown meiotic",
              "unknown",
-             "functional mitosis"),
+             "functional mitotic"),
            col = pal, pch = c(rep(20,6)), cex = ifelse(presentation, 1.5, 1.2))
     # legend('topleft', bty = 'n',
     #        c("gamete duplication", "terminal fusion", "central fusion", "unknown automixis", "unknown", "functional apomixis",
@@ -196,8 +198,8 @@ plot_ploits <- function(hyb_origin = "no", presentation = F){
     subset <- subset[order(subset$callular_mechanism),]
     subset <- subset[!is.na(subset$heterozygosity),]
 
-    if(hyb_origin == "unknown" & !excl_rotifers){
-        subset <- subset[c(1,2,5,3,4,6:9),]
+    if (hyb_origin == "yes"){
+        subset <- subset[c(2,1,5,3,6:9,4),]
     }
 
     at <- which(hyb_origin == hyb_origins)
@@ -261,19 +263,19 @@ if ( homoeolog ){
 
     misplacement <- seq(from = -0.45, to = 0.45, length = unknown_repr + 2)[2:(unknown_repr+1)]
     print(misplacement)
-    xpos <- 2 + misplacement[c(4,5,6,7)]
+    xpos <- 2 + misplacement[c(5:8)]
     # symbols <- c(NA, 19, 17, 15)
     # conture_symbols <- c(NA, 21, 24, 22)
     rotifers_to_plot <- rotifers_ohno - (g_to - g_from)
 
     points(xpos, rotifers_to_plot,
-           bg = pal[c(5,5,6,6)],
+           bg = pal[6],
            pch = 24, cex = point_size) #symbols[subset$ploidy]
     # points(xpos, rotifers_to_plot,
     #        pch = 24, cex = point_size) #conture_symbols[subset$ploidy]
 
     points(xpos, rotifers_homo,
-           bg = pal[c(5,5,6,6)],
+           bg = pal[6],
            pch = 25, cex = point_size) #symbols[subset$ploidy]
     # points(xpos, rotifers_homo,
     #        pch = 25, cex = point_size) #conture_symbols[subset$ploidy]

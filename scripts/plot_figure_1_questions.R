@@ -142,6 +142,11 @@ if ( both ){
 } else {
   height <- 4.3
 }
+
+if (refs && both && tricolor){
+    file_to_save <- "figures/SM_Figure_3_genomic_studies.pdf"
+}
+
 pdf(file_to_save, width = 8, height = height, pointsize = 8)
 
 # I will need space on the left side of the plot and above
@@ -161,7 +166,7 @@ topics <- gsub("\\.", " ", colnames(question_tab)[plotted_cols])
 if (presentation) {
   text(1:(ncol(question_tab) - 1), par("usr")[4] + 1.55 + c(0, 1.6), wrap.labels(topics, 10), xpd = TRUE)
 } else{
-  topics <- paste(topics, c('','', ' [%]', '[#]', '[e/g*nt]', '[%]', '[%]', '', ' [l/s] '))
+  topics <- paste(topics, c('','', ' [%]', '[#]', '[e/(g*nt)]', '[%]', '[%]', '', ' [l/s] '))
   if ( both ){
     text(1:(ncol(question_tab) - 1), par("usr")[4] + 1.05, wrap.labels(topics, 11), xpd = TRUE)
   } else {

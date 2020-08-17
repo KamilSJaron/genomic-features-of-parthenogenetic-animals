@@ -6,6 +6,7 @@
 \usepackage{longtable}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{caption}
 \usepackage[latin1]{inputenc}
 \usepackage[table]{xcolor}
 
@@ -20,41 +21,41 @@
   \centering
   \rowcolors{2}{gray!25}{white}
 
-    \begin{longtable}[H]{ C{.13\textwidth} C{.1\textwidth} C{.12\textwidth} L{.15\textwidth} L{.179\textwidth} C{.04\textwidth} C{.082\textwidth} C{.062\textwidth}}
-      \caption{Cellular mechanisms of asexuality} \\
-      species & common name & NCBI accesion & reproduction mode & evidence & hybrid origin & age of asexuality [y] & references \\
+    \begin{longtable}[H]{ C{.13\textwidth} C{.1\textwidth} C{.12\textwidth} L{.13\textwidth} L{.199\textwidth} C{.04\textwidth} C{.082\textwidth} C{.062\textwidth}}
+        \captionsetup{labelformat=empty}
+        \caption{\textbf{Supplementary table 1: Overview of analysed species.} This information was collected directly from the cited literature. References include information regarding cellular mode of reproduction, origin of asexuality and/or the age of asexuality. }
+        \label{Table:S3} \\
+      species & common name & NCBI accesion & cellular mechanism of parthenogenesis & evidence & hybrid origin & age of asexuality [y] & references \\
       \hline
-      \textit{Poecilia formosa} & amazon molly & SAMN01797685 & sperm-dependent apomixis & cytology, genetics & yes & 100 k & \cite{Lamatsch2000} \\
+      \textit{Poecilia formosa} & amazon molly & SAMN01797685 & sperm-dependent functional mitotic & cytology, genetics & yes & 100 k & \cite{Lamatsch2000} \\
       \hline
-      \textit{Adineta vaga} & bdelloid rotifer & SAMEA2043852 & apomixis & & & ~46 M & \cite{MarkWelch1998, Welch2003} \\
-      \textit{Adineta ricciae} & bdelloid rotifer & SAMEA104393659 & apomixis &  & & ~46 M & \cite{PouchkinaStantcheva2007, Welch2003} \\
-      \textit{Rotaria macrura} & bdelloid rotifer & SAMEA104393678 &  & & & ~46 M &  \\
-      \textit{Rotaria magnacalcarata} & bdelloid rotifer & SAMEA104393684 &  & & & ~46 M &  \\
+      \textit{Adineta vaga} & bdelloid rotifer & SAMEA2043852 & functional mitotic & stained karyotypes have no apparent chromosome pairs & & ~46 M & \cite{MarkWelch1998, Welch2003} \\
+      \textit{Adineta ricciae} & bdelloid rotifer & SAMEA104393659 & functional mitotic &  & & ~46 M & \cite{PouchkinaStantcheva2007, Welch2003} \\
+      \textit{Rotaria macrura} & bdelloid rotifer & SAMEA104393678 & functional mitotic & no direct evidence\footnote{Meiosis was not observed in two bdelloid rotifers \textit{Habrotrocha tridens} and \textit{Philodina roseola}, both members of \textit{Philodinidae}, the same family as \textit{Rotaria}. } & & ~46 M & \cite{hsu1956, hsu1956b}  \\
+      \textit{Rotaria magnacalcarata} & bdelloid rotifer & SAMEA104393684 & functional mitotic & no direct evidence\footnotemark[1] & & ~46 M & \cite{hsu1956, hsu1956b} \\
       \hline
       \textit{Leptopilina clavipes} & parasitoid wasp & SAMN02047179 & gamete duplication\footnote{\textit{Wolbachia} induced} & cytology & no & 6-43 k & \cite{Pannebakker2004} \\
-      \textit{Trichogramma pretiosum} & trichogramma wasp & SAMN02439301 & gamete duplication$^1$ & cytology, genetic markers & no & "few" & \cite{ArdilaGarcia2010, Gokhman2017} \\
-      \textit{Ooceraea biroi}\footnote{formerly \textit{Cerapachys biroi}} & raider ant & SAMN02428046 & central fusion automixis & cytology, RAD seq & no & & \cite{Oxley2014} \\
-      \textit{Apis mellifera capensis} & cape honey bee & SAMN10245906 & central fusion automixis & cytology & no & at least 20 & \cite{Verma1983} \\
-      \textit{Aptinothrips rufus} & thrip &  & gamete duplication\footnote{suggested that it's endosymbiont induced} & & no & 150-200 k & \cite{Fontcuberta2016} \\
-      \textit{Folsomia candida} & springtail & SAMN04196550 & terminal fusion automixis$^3$ & cytology & no & & \cite{Riparbelli2006} \\
-      \textit{Daphnia pulex} & water flea & SAMN03964753 SAMN03964750 & central fusion automixis equivalent & No separation at meiosis I; abortive meiosis & yes & 1-170 k & \cite{Hiruta2010} \\
-      \textit{Procambarus virginalis} & marbled crayfish & SAMN07142640 & apomixis & microsat study, histological evidence &  & less than 30 & \cite{Vogt2004,Martin2015,Vogt2015} \\
+      \textit{Trichogramma pretiosum} & trichogramma wasp & SAMN02439301 & gamete duplication\footnotemark[2] & cytology, genetic markers & no & "few" & \cite{ArdilaGarcia2010, Gokhman2017} \\
+      \textit{Ooceraea biroi}\footnote{formerly \textit{Cerapachys biroi}} & raider ant & SAMN02428046 & central fusion & cytology, RAD seq & no & & \cite{Oxley2014} \\
+      \textit{Apis mellifera capensis} & cape honey bee &  SAMN10245904 SAMN10245906 & central fusion & cytology & no & 20 & \cite{Verma1983} \\
+      \textit{Aptinothrips rufus} & thrip &  & gamete duplication\footnote{suggested that it is endosymbiont induced} & & no & 150-200 k & \cite{Fontcuberta2016} \\
+      \textit{Folsomia candida} & springtail & SAMN04196550 & terminal fusion\footnotemark[4] & cytology & no & & \cite{Riparbelli2006} \\
+      \textit{Daphnia pulex} & water flea & SAMN03964753 SAMN03964750 & central fusion equivalent & No separation at meiosis I; abortive meiosis & yes & 1-170 k & \cite{Hiruta2010} \\
+      \textit{Procambarus virginalis} & marbled crayfish & SAMN07142640 & functional mitotic & microsat study, histological evidence &  & less than 30 & \cite{Vogt2004,Martin2015,Vogt2015} \\
       \hline
-      \textit{Plectus sambesii} & nemotode & SAMN07227113 & endoduplication & 2 meiotic divisions, 2 polar bodies, but no fusions were observed &  & & \cite{Lahl2006} \\
-      \textit{Mesorhabditis belari} & nemotode & SAMEA5150020 & sperm-dependent unknown automixis & cytology &  &  & \cite{Grosmaire2019} \\
-      \textit{Diploscapter coronatus} & nemotode & SAMD00025087 & automixis central fusion & Only 1 meiotic division, given heterozygosity, must be separation of chromatids (would probably mean meiosis is inverted) & yes & & \cite{Lahl2006,Hiraki2017} \\
-      \textit{Diploscapter pachys} & nematode & SAMN03456257 & central fusion automixis equivalent & meiosis I skipped, no recombination, only sister chromatid separation - a model & yes & 18 M\footnote{Assuming non-hybrid origin suggested by Hiraki at al. 2017.} & \cite{Fradin2017} \\
-      \textit{Panagrolaimus davidi} & nemotode & SAMN02741088 & unknown automixis & cytology; polar body produced & yes & 1.3-8.5 M & \cite{Schiffer2017} \\
-      \textit{Panagrolaimus PS1159} & nemotode & - & unknown automixis & cytology; polar body produced & yes & 1.3-8.5 M & \cite{Schiffer2017} \\
-      \textit{Panagrolaimus PS1579} & nemotode & SAMN06329916 & unknown automixis & cytology; polar body produced & yes & 1.3-8.5 M & \cite{Schiffer2017} \\
-      \textit{Acrobeloides nanus} & nemotode & SAMN06041019 & terminal fusion equivalent & & & & \cite{Lahl2006} \\
-      \textit{Meloidogyne incognita} & root-knot nematode & SAMEA104032784 SAMN05712521 & apomixis & & yes & "recently" & \cite{Triantaphyllou1981, VanderBeek1998, Lunt2014} \\
-      \textit{Meloidogyne javanica} & root-knot nematode & SAMEA3298191 SAMN05712519 & apomixis & & yes & "recently" & \cite{Lunt2014} \\
-      \textit{Meloidogyne arenaria} & root-knot nematode & SAMEA3298190 SAMN05712513 SAMN08721831 & apomixis & & yes & "recently" & \cite{Lunt2014} \\
-      \textit{Meloidogyne floridensis} & peach root-knot nematode & SAMN05712529 & unknown automixis & cytology; mismatch in ploidy (see S1) & yes & "recently" & \cite{Handoo2004, Lunt2014} \\
-      \textit{Meloidogyne enterolobii} & root-knot nematode & SAMN05712528 & apomixis & & yes & "recently" & \cite{Lunt2014}\\
+      \textit{Plectus sambesii} & nemotode & SAMN07227113 & unknown meiotic & 2 meiotic divisions, 2 polar bodies, but no fusions were observed, putative endoduplication &  & & \cite{Lahl2006} \\
+      \textit{Mesorhabditis belari} & nemotode & SAMEA5150020 & unknown meiotic & cytology; 2 meiotic divisions observed &  &  & \cite{grosmaire2019} \\
+      \textit{Diploscapter coronatus} & nemotode & SAMD00025087 & unknown & & yes & & \cite{Lahl2006,Hiraki2017} \\
+      \textit{Diploscapter pachys} & nematode & SAMN03456257 & functional mitotic & formally central fusion (meiosis I skipped), no recombination, only sister chromatid separation & yes & 18 M\footnote{Assuming non-hybrid origin suggested by Hiraki at al. 2017.} & \cite{Fradin2017} \\
+      \textit{Panagrolaimus davidi} & nemotode & SAMN02741088 & unknown & polar body produced & yes & 1.3-8.5 M & \cite{Schiffer2017} \\
+      \textit{Acrobeloides nanus} & nemotode & SAMN06041019 & unknown meiotic & & & & \cite{Lahl2006} \\
+      \textit{Meloidogyne incognita} & root-knot nematode & SAMEA104032784 SAMN05712521 & functional mitotic & & yes & "recently" & \cite{Triantaphyllou1981, VanderBeek1998, Lunt2014} \\
+      \textit{Meloidogyne javanica} & root-knot nematode & SAMEA3298191 SAMN05712519 & functional mitotic & & yes & "recently" & \cite{Lunt2014} \\
+      \textit{Meloidogyne arenaria} & root-knot nematode & SAMEA3298190 SAMN05712513 SAMN08721831 & functional mitotic & & yes & "recently" & \cite{Lunt2014} \\
+      \textit{Meloidogyne floridensis} & peach root-knot nematode & SAMN05712529 & unknown & meiotic mechanism suggested by cytology; however the study conflicts in ploidy with the data in this study (see S1) & yes & "recently" & \cite{Handoo2004, Lunt2014} \\
+      \textit{Meloidogyne enterolobii} & root-knot nematode & SAMN05712528 & functional mitotic & & yes & "recently" & \cite{Lunt2014}\\
       \hline
-      \textit{Hypsibius dujardini} & tardigrade; water bear & SAMEA3679301 & automixis terminal fusion equivalent & meiosis II suppressed & & & \cite{Ammermann1967} \\
+      \textit{Hypsibius dujardini} & tardigrade; water bear & SAMEA3679301 & terminal fusion equivalent & meiosis II suppressed & & & \cite{Ammermann1967} \\
       \textit{Ramazzottius varieornatus} & tardigrade; water bear; Kumamushi & SAMD00054187 & & no males have been found & & & \footnote{personal communication with Mark Blaxter} \\
 
     \end{longtable}

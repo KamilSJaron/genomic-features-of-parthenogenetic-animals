@@ -23,7 +23,8 @@ naively_expected_trial <- sapply(observed_het, get_exp_triallelic)
 total_heterozygosities <- seq(0, 8, len = 100)
 triallelic_exp <- sapply(total_heterozygosities, get_exp_triallelic)
 
-tiff("figures/supp_fig4_expected_triallelic.tiff", width = 800, height = 600, 'px', res = 100, compression = 'rle')
+# tiff("figures/supp_fig4_expected_triallelic.tiff", width = 800, height = 600, 'px', res = 100, compression = 'rle')
+pdf("figures/SM_Figure_6_expected_triallelic.pdf", width = 8, height = 6)
 
 plot(triallelic_exp ~ total_heterozygosities,
      xlab = 'Heterozygosity [%]',
