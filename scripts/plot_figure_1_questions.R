@@ -12,7 +12,7 @@ both <- ifelse( "--both" %in% args, T, F)
 tricolor <- ifelse( "--tricolor" %in% args, T, F)
 
 pal <- c("white",brewer.pal(3,'BuGn')[-1], "grey") #[c(2,3,1)]#[c(2,3,5)]
-shift <- 15
+shift <- 16
 
 #################
 # Proccess data #
@@ -57,6 +57,7 @@ if ( refs ){
   ref_list <- unique(unlist(strsplit(t(ref_matrix), ',')))
   ref_tags <- lapply(1:length(ref_list), function(x){ x + shift})
   names(ref_tags) <- ref_list
+  print(ref_list, row.names = FALSE)
 
   # substitute ref with a key
   for(ref in ref_list){
@@ -67,6 +68,7 @@ if ( refs ){
   ref_matrix <- matrix(sapply(ref_matrix, FUN = function(x){ if(x != ""){ paste0('[', x, ']') } else { return("") } }), nrow = nrow(ref_matrix))
   ref_matrix <- gsub(",", ", ", ref_matrix)
 }
+
 if ( both | !refs ) {
   ### VALUES ###
   columns <- c('code',

@@ -91,23 +91,3 @@ The very last think to look at are program dependencies. These are actually hard
 - this should be extracted to loading script, so it get's separated from execution scripts
 
 I know it sounds that there is a lot of things to do for reproduction of this analysis. However, I tried my best to combine reproducibility and good computational practice (like using local storage). I will wonk on that.
-
-## Snakemake tips
-
-apparently I can produce a graph of the workflow (it's really pretty) :
-
-```
-snakemake --forceall --dag | dot -Tpng > dag1.png
-```
-
-Snakemake version of `make clean` (removed all downloaded and coputed data) is
-
-```
-rm $(snakemake --summary | tail -n+2 | cut -f1)
-```
-
-Snakemake version of GNU make dry run (show commands, don't execute them) is
-
-```
-snakemake -p --quiet -n
-```
