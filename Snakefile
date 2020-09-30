@@ -60,7 +60,7 @@ localrules : help, all, calculate_busco, calculate_selfalignment, calculate_hete
 
 ## all
 rule all :
-	input : theta_files, genome_stat_files, busco_files
+	input : genome_stat_files, busco_files
 
 ## calculate_busco
 rule calculate_busco :
@@ -178,13 +178,6 @@ rule annotate_repeats :
 	input : lambda wildcards: sample_accesions[wildcards.sample]
 	output : "data/{sample}/dnaPipeTE"
 	shell : "scripts/annotate_repeats.sh data/{wildcards.sample}/trimmed_reads {wildcards.sample} {output}"
-
-rule plot_all :
-	threads : 1
-	resources : mem=500000, tmp=5000
-	input : expand(theta_files)
-	output : "figures/species_heterozygosity.png"
-	shell : "script scripts/parse_thetas.R"
 
 rule run_busco :
 	threads : 16

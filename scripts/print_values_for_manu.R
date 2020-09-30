@@ -13,6 +13,12 @@ genome_tab <- genome_tab[!genome_tab$code %in% c('Ps591', 'Ps791', 'Dpul1', 'Dpu
 diploids <- genome_tab$ploidy == 2 & !is.na(genome_tab$ploidy)
 otherploids <- genome_tab$ploidy != 2 & !is.na(genome_tab$ploidy)
 
+# genome_tab$heterozygosity[genome_tab$code %in% c('Avag1', 'Aric1', 'Rmac1', 'Rmag1')] <- 33.21
+# range(genome_tab$heterozygosity[diploids], na.rm = T)
+# range(genome_tab$heterozygosity[otherploids], na.rm = T)
+# median(genome_tab$heterozygosity[diploids], na.rm = T)
+# median(genome_tab$heterozygosity[otherploids], na.rm = T)
+
 number_of_species <- length(unique(genome_tab$species))
 
 genome_tab$callular_mechanism[is.na(genome_tab$callular_mechanism)] <- "unknown"
