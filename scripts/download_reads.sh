@@ -22,7 +22,7 @@ URL_R2=ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${ACCESION::6}/"$ACCESION"/"$ACCESION"
 wget $URL_R1 -O $R1_file
 wget $URL_R2 -O $R2_file
 
-if [[ -z $R1_file ]]; then
+if [[ -s $R1_file ]]; then
     echo "reads found at $URL_R1"
     exit 0;
 fi
@@ -37,7 +37,7 @@ URL_R2=ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${ACCESION::6}/00${ACCESION: -1}/"$ACC
 wget $URL_R1 -O $R1_file
 wget $URL_R2 -O $R2_file
 
-if [[ -z $R1_file ]]; then
+if [[ -s $R1_file ]]; then
     echo "reads found at $URL_R1"
     exit 0;
 fi
@@ -53,7 +53,7 @@ URL=ftp://ftp.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/${ACCESION::3}/${
 wget $URL -O data/"$SPECIES"/raw_reads/"$ACCESION".sra
 fastq-dump data/"$SPECIES"/raw_reads/"$ACCESION".sra --outdir data/$SPECIES/raw_reads --split-files --gzip && rm data/"$SPECIES"/raw_reads/"$ACCESION".sra
 
-if [[ -z $R1_file ]]; then
+if [[ -s $R1_file ]]; then
     echo "reads found at $URL"
     exit 0;
 fi
